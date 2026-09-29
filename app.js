@@ -24,31 +24,31 @@
     es: { name: 'Español', locale: 'es-MX' },
     pt: { name: 'Português', locale: 'pt-BR' }
   };
-  const SURUM = '202609292339'; // surum.py tarafından yazılır (önbellek kırıcı)
+  const SURUM = '202609300045'; // surum.py tarafından yazılır (önbellek kırıcı)
   const FONTS = { arab: 'fonts/arab.css', deva: 'fonts/deva.css', thai: 'fonts/thai.css' }; // sitenin kendi sunucusundan
   // Öncelik sırası kullanıcının satış planından. İlk dil = ülkenin varsayılanı.
   const COUNTRIES = [
-    { c: 'IN', r: 'asia', langs: ['en', 'hi'], ig: 'purixxrf.in', ex: '+91 98765 43210' },
+    { c: 'IN', r: 'asia', langs: ['en', 'hi'], ig: 'purixxrf', ex: '+91 98765 43210' },
     { c: 'TR', r: 'eu', langs: ['tr', 'en'], ig: 'purixxrf.tr', ex: '+90 532 123 45 67' },
-    { c: 'AE', r: 'me', langs: ['en', 'ar'], ig: 'purixxrf.ae', ex: '+971 50 123 4567' },
-    { c: 'SA', r: 'me', langs: ['ar', 'en'], ig: 'purixxrf.sa', ex: '+966 50 123 4567' },
-    { c: 'CN', r: 'asia', langs: ['zh', 'en'], ig: 'purixxrf.cn', ex: '+86 131 2345 6789' },
-    { c: 'US', r: 'am', langs: ['en'], ig: 'purixxrf.us', ex: '+1 212 555 0123' },
-    { c: 'EG', r: 'me', langs: ['ar', 'en'], ig: 'purixxrf.eg', ex: '+20 100 123 4567' },
-    { c: 'PK', r: 'asia', langs: ['en'], ig: 'purixxrf.pk', ex: '+92 300 1234567' },
-    { c: 'ID', r: 'asia', langs: ['id', 'en'], ig: 'purixxrf.id', ex: '+62 812 3456 7890' },
-    { c: 'IR', r: 'me', langs: ['fa', 'en'], ig: 'purixxrf.ir', ex: '+98 912 345 6789' },
-    { c: 'KW', r: 'me', langs: ['ar', 'en'], ig: 'purixxrf.kw', ex: '+965 5000 1234' },
-    { c: 'IT', r: 'eu', langs: ['it', 'en'], ig: 'purixxrf.it', ex: '+39 312 345 6789' },
-    { c: 'GB', r: 'eu', langs: ['en'], ig: 'purixxrf.gb', ex: '+44 7700 900123' },
-    { c: 'DE', r: 'eu', langs: ['de', 'en'], ig: 'purixxrf.de', ex: '+49 151 23456789' },
-    { c: 'MY', r: 'asia', langs: ['ms', 'en'], ig: 'purixxrf.my', ex: '+60 12 345 6789' },
-    { c: 'SG', r: 'asia', langs: ['en', 'zh'], ig: 'purixxrf.sg', ex: '+65 8123 4567' },
-    { c: 'TH', r: 'asia', langs: ['th', 'en'], ig: 'purixxrf.th', ex: '+66 81 234 5678' },
-    { c: 'VN', r: 'asia', langs: ['vi', 'en'], ig: 'purixxrf.vn', ex: '+84 912 345 678' },
-    { c: 'MX', r: 'am', langs: ['es', 'en'], ig: 'purixxrf.mx', ex: '+52 55 1234 5678' },
-    { c: 'BR', r: 'am', langs: ['pt', 'en'], ig: 'purixxrf.br', ex: '+55 11 91234 5678' },
-    { c: 'INTL', r: 'intl', langs: ['en', 'tr'], ig: 'purixxrf.tr', ex: '+00 000 000 0000' }
+    { c: 'AE', r: 'me', langs: ['en', 'ar'], ig: 'purixxrf', ex: '+971 50 123 4567' },
+    { c: 'SA', r: 'me', langs: ['ar', 'en'], ig: 'purixxrf', ex: '+966 50 123 4567' },
+    { c: 'CN', r: 'asia', langs: ['zh', 'en'], ig: 'purixxrf', ex: '+86 131 2345 6789' },
+    { c: 'US', r: 'am', langs: ['en'], ig: 'purixxrf', ex: '+1 212 555 0123' },
+    { c: 'EG', r: 'me', langs: ['ar', 'en'], ig: 'purixxrf', ex: '+20 100 123 4567' },
+    { c: 'PK', r: 'asia', langs: ['en'], ig: 'purixxrf', ex: '+92 300 1234567' },
+    { c: 'ID', r: 'asia', langs: ['id', 'en'], ig: 'purixxrf', ex: '+62 812 3456 7890' },
+    { c: 'IR', r: 'me', langs: ['fa', 'en'], ig: 'purixxrf', ex: '+98 912 345 6789' },
+    { c: 'KW', r: 'me', langs: ['ar', 'en'], ig: 'purixxrf', ex: '+965 5000 1234' },
+    { c: 'IT', r: 'eu', langs: ['it', 'en'], ig: 'purixxrf', ex: '+39 312 345 6789' },
+    { c: 'GB', r: 'eu', langs: ['en'], ig: 'purixxrf', ex: '+44 7700 900123' },
+    { c: 'DE', r: 'eu', langs: ['de', 'en'], ig: 'purixxrf', ex: '+49 151 23456789' },
+    { c: 'MY', r: 'asia', langs: ['ms', 'en'], ig: 'purixxrf', ex: '+60 12 345 6789' },
+    { c: 'SG', r: 'asia', langs: ['en', 'zh'], ig: 'purixxrf', ex: '+65 8123 4567' },
+    { c: 'TH', r: 'asia', langs: ['th', 'en'], ig: 'purixxrf', ex: '+66 81 234 5678' },
+    { c: 'VN', r: 'asia', langs: ['vi', 'en'], ig: 'purixxrf', ex: '+84 912 345 678' },
+    { c: 'MX', r: 'am', langs: ['es', 'en'], ig: 'purixxrf', ex: '+52 55 1234 5678' },
+    { c: 'BR', r: 'am', langs: ['pt', 'en'], ig: 'purixxrf', ex: '+55 11 91234 5678' },
+    { c: 'INTL', r: 'intl', langs: ['en', 'tr'], ig: 'purixxrf', ex: '+00 000 000 0000' }
   ];
   const REGIONS = ['asia', 'me', 'eu', 'am', 'intl'];
   const byCode = Object.fromEntries(COUNTRIES.map(x => [x.c, x]));
@@ -127,8 +127,8 @@
     // Gizlilik bağlantıları: Türkçe → KVKK aydınlatma metni, diğer diller → İngilizce gizlilik bildirimi (yeni sekmede, form kaybolmasın)
     const gizlilik = lang === 'tr' ? 'kvkk.html' : 'privacy.html';
     $$('[data-t="f.kvkk"] a, [data-t="foot.kvkk"]').forEach(a => { a.href = gizlilik; a.target = '_blank'; a.rel = 'noopener'; });
-    // Broşür: Türkçe → TR PDF, diğer diller → EN PDF
-    $$('[data-t="foot.bro"]').forEach(a => { a.href = `assets/purix-x1-brosur-${lang === 'tr' ? 'tr' : 'en'}.pdf${SURUM ? '?v=' + SURUM : ''}`; a.target = '_blank'; a.rel = 'noopener'; });
+    // Broşür: her dilin kendi PDF'i (14 dil)
+    $$('[data-t="foot.bro"]').forEach(a => { a.href = `assets/purix-x1-brosur-${lang}.pdf${SURUM ? '?v=' + SURUM : ''}`; a.target = '_blank'; a.rel = 'noopener'; });
 
     if (save) {
       store.set('purix-c', ctry.c); store.set('purix-l', lang);
@@ -583,7 +583,8 @@
   // Talebi Apps Script'e gönder (config.js'teki PURIX_API). Adres yoksa mokap gibi davranır.
   const kaynak = (() => {
     const q = new URLSearchParams(location.search), utm = q.get('utm_source');
-    if (utm) return utm;
+    // ör. "instagram / 2026-w40 / olcum-reels": hangi paylaşımdan geldiği panelde görünür
+    if (utm) return [utm, q.get('utm_campaign'), q.get('utm_content')].filter(Boolean).join(' / ').slice(0, 120);
     try { const r = document.referrer && new URL(document.referrer).hostname; if (r && r !== location.hostname) return r.replace(/^www\./, ''); } catch {}
     return 'Doğrudan';
   })();
