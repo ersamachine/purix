@@ -24,7 +24,7 @@
     es: { name: 'Español', locale: 'es-MX' },
     pt: { name: 'Português', locale: 'pt-BR' }
   };
-  const SURUM = '202609292016'; // surum.py tarafından yazılır (önbellek kırıcı)
+  const SURUM = '202609292233'; // surum.py tarafından yazılır (önbellek kırıcı)
   const FONTS = { arab: 'fonts/arab.css', deva: 'fonts/deva.css', thai: 'fonts/thai.css' }; // sitenin kendi sunucusundan
   // Öncelik sırası kullanıcının satış planından. İlk dil = ülkenin varsayılanı.
   const COUNTRIES = [
@@ -233,17 +233,180 @@
   }
 
   /* ---------- Nasıl ölçer ---------- */
-  (function howLoop() {
-    const sec = $('#nasil'), dg = $('#diagram'), items = $$('#steps li');
-    if (reduce) { items.forEach(li => li.classList.add('on')); dg.dataset.step = 3; return; }
+  const tr = k => t(k); // çeviri (sahne içinde 't' zaman değişkeni)
+  /* ---------- Nasıl ölçer: gerçek cihaz üzerinde ölçüm sahnesi ---------- */
+  (function measureScene() {
+    const sec = $('#nasil'), view = $('#xsView'), inner = $('#xsInner'), items = $$('#steps li');
+    if (!view) return;
+    const el = id => document.getElementById(id);
+    const open = el('xsOpen'), closed = el('xsClosed'), scr = el('xsScreen'), placed = el('xsPlaced'), cut = el('xsCut');
+    const focus = el('xsFocus'), win = el('xsWin');
+    const hand1 = el('xsHand1'), hand2 = el('xsHand2'), tap = el('xsTap'), playBtn = el('xsPlay'), playIc = el('xsPlayIc');
+    const suSt = el('suSt'), suK = el('suK'), suStart = el('suStart'), suRing = el('suRing'), suSpec = el('suSpec'), suProg = el('suProg');
+    const V = [0, 1, 2, 3].map(i => el('suV' + i)), B = [0, 1, 2, 3].map(i => el('suB' + i));
+    const COMP = [['Au', 91.67], ['Ag', 4.10], ['Cu', 3.95], ['Zn', .28]];
+    const compObj = Object.fromEntries(COMP);
+
+    // Ekran camının köşeleri (sahne koordinatı, iki fotoğrafta da aynı yere hizalı)
+    const QUAD = [[280.4, 388.1], [748.3, 374.4], [800.4, 714.5], [307.9, 740.0]], SW = 480, SH = 352;
+    const H = (() => { // (0,0)-(SW,SH) dikdörtgenini QUAD dörtgenine taşıyan homografi
+      const src = [[0, 0], [SW, 0], [SW, SH], [0, SH]], A = [], b = [];
+      src.forEach(([x, y], i) => { const [u, v] = QUAD[i];
+        A.push([x, y, 1, 0, 0, 0, -u * x, -u * y]); b.push(u);
+        A.push([0, 0, 0, x, y, 1, -v * x, -v * y]); b.push(v); });
+      for (let c = 0; c < 8; c++) { let p = c; for (let r = c + 1; r < 8; r++) if (Math.abs(A[r][c]) > Math.abs(A[p][c])) p = r;
+        [A[c], A[p]] = [A[p], A[c]]; [b[c], b[p]] = [b[p], b[c]];
+        for (let r = 0; r < 8; r++) if (r !== c) { const f = A[r][c] / A[c][c]; for (let k = c; k < 8; k++) A[r][k] -= f * A[c][k]; b[r] -= f * b[c]; } }
+      return b.map((v, i) => v / A[i][i]);
+    })();
+    scr.style.transform = `matrix3d(${H[0]},${H[3]},0,${H[6]},${H[1]},${H[4]},0,${H[7]},0,0,1,0,${H[2]},${H[5]},0,1)`;
+    const proj = (x, y) => { const w = H[6] * x + H[7] * y + 1; return [(H[0] * x + H[1] * y + H[2]) / w, (H[3] * x + H[4] * y + H[5]) / w]; };
+
+    const fit = () => { inner.style.transform = `scale(${view.clientWidth / 900})`; };
+    new ResizeObserver(fit).observe(view); fit();
+
+    const START_PT = proj(28 + 118 * .74, 352 - 18 - 3 - 10 - 20); // parmak START'ın sağ-ortasına dokunur
+    const T = 16, PLACE = [412, 296], HOLD = [428, 258], OFF1 = [1190, 170], OFF2 = [1190, START_PT[1] + 30];
+    const REL = [PLACE[0] + 96, PLACE[1] - 4]; // bilezik bırakılınca işaret parmağının ucu
+    const cl = v => Math.max(0, Math.min(1, v)), ez = v => v < .5 ? 2 * v * v : 1 - Math.pow(-2 * v + 2, 2) / 2;
+    const seg = (t, a, b) => ez(cl((t - a) / (b - a)));
+    const mix = (p, q, k) => [p[0] + (q[0] - p[0]) * k, p[1] + (q[1] - p[1]) * k];
+    const STEP_AT = [0, 4, 7, 11];
+    const NS = 'http://www.w3.org/2000/svg';
+
+    // birincil ışın konisi (tüp ağzından pencereye)
+    const SRC = [333, 530], DST = [410, 452];
+    (() => { const dx = DST[0] - SRC[0], dy = DST[1] - SRC[1], L = Math.hypot(dx, dy), px = -dy / L, py = dx / L;
+      el('xsBeam').setAttribute('points', [[SRC, 3], [DST, 15], [DST, -15], [SRC, -3]].map(([q, w]) => `${(q[0] + px * w).toFixed(1)},${(q[1] + py * w).toFixed(1)}`).join(' ')); })();
+    const phot = el('xsPhot'), PH = [];
+    for (let i = 0; i < 9; i++) { const c = document.createElementNS(NS, 'circle'); c.setAttribute('r', 3.2); c.setAttribute('fill', '#FFF6DA'); phot.appendChild(c); PH.push(c); }
+    // floresans dalgaları: numuneden dedektöre, her element kendi dalga boyunda
+    const WAVES = [['xsWAu', [416, 452], [486, 534], 13], ['xsWAg', [422, 453], [492, 538], 8], ['xsWCu', [428, 454], [498, 542], 17]];
+    const wave = (a, b, lam, ph, grow) => { const dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L, n = 70, pts = [];
+      for (let i = 0; i <= n * grow; i++) { const s = i / n * L, amp = 5.2 * Math.sin(Math.PI * i / n); const o = amp * Math.sin(s / lam * 2 * Math.PI - ph);
+        pts.push(`${i ? 'L' : 'M'}${(a[0] + ux * s - uy * o).toFixed(1)} ${(a[1] + uy * s + ux * o).toFixed(1)}`); }
+      return pts.join(''); };
+    // altın konfeti (kurumsal renkler)
+    const conf = el('xsConf'), CF = [], COLORS = ['#B48C50', '#E4CB93', '#F3D48E', '#8B5E14', '#FFF6DA', '#1C1917'];
+    let sd = 7; const rnd = () => (sd = (sd * 16807) % 2147483647) / 2147483647;
+    for (let i = 0; i < 90; i++) {
+      const kind = i % 3, e = document.createElementNS(NS, kind === 2 ? 'circle' : 'rect');
+      if (kind === 2) e.setAttribute('r', 2.6 + rnd() * 2); else { const w = kind ? 7 : 11, h = kind ? 7 : 5; e.setAttribute('x', -w / 2); e.setAttribute('y', -h / 2); e.setAttribute('width', w); e.setAttribute('height', h); e.setAttribute('rx', kind ? 1 : 1.5); }
+      e.setAttribute('fill', COLORS[i % COLORS.length]); e.setAttribute('opacity', 0); conf.appendChild(e);
+      const ang = -Math.PI / 2 + (rnd() - .5) * 2.6, sp = 200 + rnd() * 260;
+      CF.push({ e, x: 450 + (rnd() - .5) * 200, y: 124, vx: Math.cos(ang) * sp * 1.5, vy: Math.sin(ang) * sp - 60, r: rnd() * 360, vr: (rnd() - .5) * 900, dl: rnd() * .25 });
+    }
+    const leg = [['xsLAu', 'Au Lα', 9.713], ['xsLAg', 'Ag Kα', 22.163], ['xsLCu', 'Cu Kα', 8.048]];
+
+    function handPos(t) { // [x, y, el1 opaklığı, el2 opaklığı]
+      if (t < .3) return [...OFF1, 0, 0];
+      if (t < 1.5) return [...mix(OFF1, HOLD, seg(t, .3, 1.5)), 1, 0];
+      if (t < 1.9) return [...mix(HOLD, PLACE, seg(t, 1.5, 1.9)), 1, 0];
+      if (t < 2.15) { const k = cl((t - 1.9) / .25); return [...PLACE, 1 - k, k]; }
+      if (t < 3.2) return [...mix(REL, OFF2, seg(t, 2.15, 3.2)), 0, 1];
+      if (t < 5.0) return [...OFF2, 0, 0];
+      if (t < 5.8) return [...mix(OFF2, START_PT, seg(t, 5.0, 5.8)), 0, 1];
+      if (t < 6.1) { const k = Math.sin(cl((t - 5.8) / .3) * Math.PI); return [START_PT[0] - 3 * k, START_PT[1] + 4 * k, 0, 1]; }
+      if (t < 7.0) return [...mix(START_PT, OFF2, seg(t, 6.1, 7.0)), 0, 1];
+      return [...OFF2, 0, 0];
+    }
+    const fmt = v => v.toFixed(2);
+    let lastStep = 0, lastSpec = -1, lastLeg = '';
+
+    function render(t) {
+      const S = START_PT;
+      const openA = t < 4.2 ? 1 : t < 4.65 ? 1 - seg(t, 4.2, 4.65) : t < 15.4 ? 0 : seg(t, 15.4, 15.85);
+      open.style.opacity = openA; closed.style.opacity = 1 - openA;
+      const isPlaced = t >= 1.9 && t < 15.6;
+      placed.setAttribute('opacity', isPlaced ? openA : 0);
+      suRing.setAttribute('opacity', isPlaced ? 1 : 0);
+      // eller
+      const [hx, hy, o1, o2] = handPos(t);
+      hand1.setAttribute('transform', `translate(${hx.toFixed(1)} ${hy.toFixed(1)})`); hand1.setAttribute('opacity', o1);
+      const h2 = t < 2.15 ? REL : [hx, hy];
+      hand2.setAttribute('transform', `translate(${h2[0].toFixed(1)} ${h2[1].toFixed(1)})`); hand2.setAttribute('opacity', o2);
+      // dokunma
+      suStart.classList.toggle('press', t >= 5.85 && t < 6.35);
+      const tk = cl((t - 5.9) / .6);
+      tap.setAttribute('cx', S[0]); tap.setAttribute('cy', S[1]);
+      tap.setAttribute('r', 8 + 34 * tk); tap.setAttribute('opacity', t >= 5.9 && t < 6.5 ? (1 - tk) : 0);
+      // X-ışını floresansı
+      const cutA = t < 7 ? 0 : t < 7.5 ? seg(t, 7, 7.5) : t < 10.6 ? 1 : t < 11.1 ? 1 - seg(t, 10.6, 11.1) : 0;
+      cut.setAttribute('opacity', cutA);
+      if (cutA > 0) {
+        const bOn = cl((t - 7.5) / .35) * (t < 10.8 ? 1 : 0), fOn = cl((t - 8.1) / .4) * (t < 10.8 ? 1 : 0);
+        el('xsBeam').setAttribute('opacity', (.75 + .25 * Math.sin(t * 22)) * bOn);
+        el('xsCore').setAttribute('opacity', .8 * bOn);
+        PH.forEach((c, i) => { const f = ((t * 1.6 + i / PH.length) % 1); c.setAttribute('cx', SRC[0] + (DST[0] - SRC[0]) * f); c.setAttribute('cy', SRC[1] + (DST[1] - SRC[1]) * f); c.setAttribute('opacity', bOn * Math.sin(f * Math.PI)); });
+        el('xsHit').setAttribute('opacity', bOn * (.6 + .3 * Math.sin(t * 14)));
+        el('xsHit').setAttribute('r', 38 + 6 * Math.sin(t * 9));
+        focus.setAttribute('fill', bOn ? '#F3D48E' : '#57534E'); win.setAttribute('fill', fOn ? '#F3D48E' : '#57534E');
+        el('xsWaves').setAttribute('opacity', fOn);
+        const grow = cl((t - 8.1) / .6);
+        WAVES.forEach(([id, a, b, lam]) => el(id).setAttribute('d', wave(a, b, lam, t * 14, grow)));
+        el('xsLeg').setAttribute('opacity', fOn);
+        const legTxt = leg.map(l => num(l[2])).join();
+        if (legTxt !== lastLeg) { lastLeg = legTxt; leg.forEach(([id, n, e]) => { el(id).textContent = `${n} · ${num(e)} keV`; }); }
+        const cp = cl((t - 8.1) / 2.5);
+        el('xsCps').textContent = `${Math.round(48210 * cp * (0.97 + .03 * Math.sin(t * 13))).toLocaleString(html.lang === 'tr' ? 'tr-TR' : 'en-US')} cps`;
+        el('xsLed').setAttribute('r', fOn && Math.sin(t * 30) > 0 ? 3.5 : 0);
+        const mx = shape(spec(9.713, { Au: 100 })) * 1.08, pts = [];
+        for (let i = 0; i <= 90; i++) { const E = i / 90 * 30, y = shape(spec(E, compObj) * ez(cp)); pts.push(`${(564 + i / 90 * 208).toFixed(1)},${(516 - Math.min(y / mx, 1) * 48).toFixed(1)}`); }
+        el('xsCutSpec').setAttribute('points', cp ? pts.join(' ') : '');
+      }
+      // ekran: sayım ve sonuç
+      const p = cl((t - 6) / 6.6), done = t >= 12.6 && t < 15.6, busy = t >= 5.9 && t < 12.6;
+      suProg.style.transform = `scaleX(${t >= 15.6 ? 0 : p})`;
+      suSt.textContent = done ? 'COMPLETE' : busy ? `MEASURING ${Math.round(p * 45)} s` : 'READY';
+      suSt.className = 'su-st' + (done ? ' done' : busy ? ' busy' : '');
+      suK.textContent = done ? '22.00 K' : '—';
+      const conv = t < 7.5 ? 0 : cl((t - 7.5) / 5.1);
+      COMP.forEach(([elm, v], i) => {
+        if (t < 7.5 || t >= 15.6) { V[i].textContent = '—'; B[i].style.width = '0'; return; }
+        const noise = done ? 0 : (1 - conv) * .18 * Math.sin(t * 11 + i * 2.1);
+        const val = v * (1 + noise) * (done ? 1 : .35 + .65 * conv);
+        V[i].textContent = fmt(val); B[i].style.width = Math.max(1.5, val) + '%';
+      });
+      const sc = t < 6 || t >= 15.6 ? 0 : ez(p);
+      if (Math.abs(sc - lastSpec) > .004) {
+        lastSpec = sc;
+        if (!sc) suSpec.setAttribute('points', '');
+        else { let max = shape(spec(9.713, { Au: 100 })) * 1.08, pts = [];
+          for (let i = 0; i <= 140; i++) { const E = i / 140 * 30, y = shape(spec(E, compObj) * sc); pts.push(`${(i / 140 * 280).toFixed(1)},${(86 - Math.min(y / max, 1) * 80).toFixed(1)}`); }
+          suSpec.setAttribute('points', pts.join(' ')); }
+      }
+      // sonuç kartı ve konfeti
+      const dA = t < 12.8 ? 0 : t < 13.2 ? seg(t, 12.8, 13.2) : t < 15.2 ? 1 : 1 - seg(t, 15.2, 15.6);
+      const sc2 = .92 + .08 * dA;
+      el('xsDone').setAttribute('opacity', dA);
+      el('xsDone').setAttribute('transform', `translate(450 120) scale(${sc2.toFixed(3)}) translate(-450 -120)`);
+      const ct = t - 12.85;
+      CF.forEach(q => { const d = ct - q.dl;
+        if (reduce || d <= 0 || d > 2.6) { q.e.setAttribute('opacity', 0); return; }
+        const x = q.x + q.vx * d * .9, y = q.y + q.vy * d + 650 * d * d;
+        q.e.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${(q.r + q.vr * d).toFixed(0)})`);
+        q.e.setAttribute('opacity', d > 2 ? (2.6 - d) / .6 : 1); });
+      // adımlar
+      const st = t < 4 ? 1 : t < 7 ? 2 : t < 11 ? 3 : 4;
+      if (st !== lastStep) { lastStep = st; items.forEach(li => li.classList.toggle('on', +li.dataset.step === st)); }
+    }
+    if (reduce) { items.forEach(li => li.classList.add('on')); render(14); items.forEach(li => li.classList.add('on')); playBtn.hidden = true; return; }
     sec.classList.add('anim');
-    let step = 0, timer = null;
-    const go = () => { step = step % 3 + 1; dg.dataset.step = step; items.forEach(li => li.classList.toggle('on', +li.dataset.step === step)); };
-    new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !timer) { go(); timer = setInterval(go, 2400); }
-      else if (!e.isIntersecting && timer) { clearInterval(timer); timer = null; }
-    }, { threshold: .35 }).observe(sec);
-    items.forEach(li => li.addEventListener('click', () => { step = +li.dataset.step - 1; go(); }));
+    let t = 0, playing = true, visible = false, last = 0;
+    const loop = now => {
+      if (!visible) { last = 0; return; }
+      if (last && playing) t = (t + Math.min(.05, (now - last) / 1000)) % T;
+      last = now; render(t); requestAnimationFrame(loop);
+    };
+    new IntersectionObserver(([e]) => { const was = visible; visible = e.isIntersecting; if (visible && !was) requestAnimationFrame(loop); }, { threshold: .25 }).observe(view);
+    const setPlay = on => {
+      playing = on;
+      playIc.setAttribute('d', on ? 'M6 4h3v12H6zM11 4h3v12h-3z' : 'M6 4l10 6-10 6z');
+      playBtn.dataset.tAria = on ? 'how.pause' : 'how.play'; playBtn.setAttribute('aria-label', tr(on ? 'how.pause' : 'how.play'));
+    };
+    playBtn.addEventListener('click', () => setPlay(!playing));
+    items.forEach(li => li.addEventListener('click', () => { t = STEP_AT[+li.dataset.step - 1] + .01; lastStep = 0; setPlay(true); }));
+    render(0);
   })();
 
   /* ---------- Canlı analiz ---------- */
