@@ -1,395 +1,441 @@
 <!doctype html>
-<html lang="tr">
+<html lang="tr" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PURIX — XRF Altın Analiz Cihazları</title>
-<meta name="description" content="PURIX X1 XRF altın analiz cihazı: kuyumcular, rafineriler ve ayar evleri için 30 saniyede, tahribatsız ve ±0,03% hassasiyetle ayar ölçümü.">
-<link rel="icon" href="assets/purix-mark.png">
+<title data-t="meta.title">PURIX X1 · XRF altın analiz cihazı</title>
+<meta name="description" data-t-content="meta.desc" content="PURIX X1 XRF altın analiz cihazı: kuyumcu, rafineri ve ayar evleri için 30 saniyede, parçaya dokunmadan ayar ve element ölçümü.">
+<meta name="theme-color" content="#F4F4F1">
+<link rel="icon" type="image/png" href="assets/favicon-64.png">
+<link rel="canonical" href="https://www.purixxrf.com/">
+<link rel="alternate" hreflang="tr" href="https://www.purixxrf.com/?l=tr">
+<link rel="alternate" hreflang="en" href="https://www.purixxrf.com/?l=en">
+<link rel="alternate" hreflang="hi" href="https://www.purixxrf.com/?l=hi">
+<link rel="alternate" hreflang="ar" href="https://www.purixxrf.com/?l=ar">
+<link rel="alternate" hreflang="zh" href="https://www.purixxrf.com/?l=zh">
+<link rel="alternate" hreflang="fa" href="https://www.purixxrf.com/?l=fa">
+<link rel="alternate" hreflang="id" href="https://www.purixxrf.com/?l=id">
+<link rel="alternate" hreflang="ms" href="https://www.purixxrf.com/?l=ms">
+<link rel="alternate" hreflang="th" href="https://www.purixxrf.com/?l=th">
+<link rel="alternate" hreflang="vi" href="https://www.purixxrf.com/?l=vi">
+<link rel="alternate" hreflang="it" href="https://www.purixxrf.com/?l=it">
+<link rel="alternate" hreflang="de" href="https://www.purixxrf.com/?l=de">
+<link rel="alternate" hreflang="es" href="https://www.purixxrf.com/?l=es">
+<link rel="alternate" hreflang="pt" href="https://www.purixxrf.com/?l=pt">
+<link rel="alternate" hreflang="x-default" href="https://www.purixxrf.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PURIX">
+<meta property="og:title" content="PURIX X1 · XRF gold analyzer">
+<meta property="og:description" content="Karat and element analysis in 30 seconds, without touching the piece. For jewellers, refineries and assay offices.">
+<meta property="og:url" content="https://www.purixxrf.com/">
+<meta property="og:image" content="https://www.purixxrf.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script>
+/* Erken dil/ülke tespiti: yanlış dilin bir an görünmesini önler */
+(function(){
+  var C={IN:'en',TR:'tr',AE:'en',SA:'ar',CN:'zh',US:'en',EG:'ar',PK:'en',ID:'id',IR:'fa',KW:'ar',IT:'it',GB:'en',DE:'de',MY:'ms',SG:'en',TH:'th',VN:'vi',MX:'es',BR:'pt',INTL:'en'};
+  var RTL={ar:1,fa:1}, q=new URLSearchParams(location.search), c=(q.get('c')||'').toUpperCase(), l=(q.get('l')||'').toLowerCase();
+  // Linkte ülke varsa o ülkenin dili; hafızadaki dil yalnızca aynı ülke için geçerli
+  try{ var sc=localStorage.getItem('purix-c')||'', sl=localStorage.getItem('purix-l')||''; if(!C[c]) c=sc; if(!l && c===sc) l=sl; }catch(e){}
+  if(!C[c]){ var n=(navigator.language||'en').toLowerCase(), p=n.split('-'), r=(p[1]||'').toUpperCase();
+    var byLang={tr:'TR',hi:'IN',ur:'PK',zh:'CN',id:'ID',ms:'MY',fa:'IR',it:'IT',de:'DE',th:'TH',vi:'VN',ar:'AE',es:'MX',pt:'BR'};
+    c = C[r] && r!=='INTL' ? r : (byLang[p[0]] || 'INTL'); }
+  if(!l) l=C[c];
+  window.PURIX_BOOT={c:c,l:l};
+  var h=document.documentElement; h.lang=l; h.dir=RTL[l]?'rtl':'ltr'; h.className='js'+(l!=='tr'?' i18n-wait':'');
+  setTimeout(function(){h.classList.remove('i18n-wait')},2500);
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..750&display=swap">
+<link rel="preload" as="image" href="assets/x1-hero.webp" imagesrcset="assets/x1-hero-560.webp 560w, assets/x1-hero.webp 880w" imagesizes="(max-width: 960px) 92vw, 46vw" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip" href="#main" data-t="skip">İçeriğe geç</a>
 
-<!-- ÜST ŞERİT -->
-<div class="util">
-  <div class="wrap util-in">
-    <p>Türkiye yetkili distribütörü · Kurulum, eğitim ve NDK lisans desteği</p>
-    <div class="util-r">
-      <a href="tel:+902120000000">+90 212 000 00 00</a>
-      <span class="lang"><b>TR</b> / <a href="#">EN</a></span>
-    </div>
-  </div>
-</div>
-
-<!-- NAV -->
 <header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="#" aria-label="PURIX ana sayfa">
-      <img src="assets/purix-mark.png" alt="" width="30" height="38">
-      <span class="brand-txt"><b>PURIX</b><small>PRECISION IN PURITY</small></span>
+    <a class="brand" href="#top" aria-label="PURIX">
+      <img src="assets/mark-128.webp" alt="" width="26" height="33">
+      <span class="brand-word">PURIX</span>
     </a>
-    <nav class="menu" aria-label="Ana menü">
-      <div class="has-mega">
-        <a href="#modeller">Ürünler <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
-        <div class="mega">
-          <a href="#urun" class="mega-card mega-hero">
-            <img src="assets/x1-front.jpg" alt="PURIX X1 önden görünüm">
-            <span><em>Amiral model</em><b>PURIX X1</b>Masaüstü XRF altın analiz cihazı</span>
-          </a>
-          <div class="mega-list">
-            <p class="eyebrow">Seri</p>
-            <a href="#modeller"><b>X1</b><span>Si-PIN · kuyumcu ve alım-satım</span></a>
-            <a href="#modeller"><b>X1 PRO</b><span>SDD · rafineri ve toptan</span></a>
-            <a href="#modeller"><b>X1 LAB</b><span>SDD + 4 kolimatör · ayar evi</span></a>
-            <a href="#modeller" class="mega-all">Tüm modelleri karşılaştır →</a>
-          </div>
-        </div>
-      </div>
-      <a href="#uygulama">Uygulamalar</a>
-      <a href="#demo">Canlı analiz</a>
-      <a href="#servis">Servis</a>
-      <a href="#sss">SSS</a>
+    <nav class="menu" aria-label="Ana menü" data-t-aria="nav.aria">
+      <a href="#nasil" data-t="nav.how">Nasıl ölçer</a>
+      <a href="#demo" data-t="nav.demo">Canlı analiz</a>
+      <a href="#seri" data-t="nav.series">X1 serisi</a>
+      <a href="#uygulama" data-t="nav.apps">Uygulamalar</a>
+      <a href="#servis" data-t="nav.service">Servis</a>
     </nav>
-    <div class="nav-cta">
-      <a class="btn btn-ghost btn-sm hide-s" href="#teklif">Demo planla</a>
-      <a class="btn btn-dark btn-sm" href="#teklif">Teklif iste</a>
-      <button class="burger" aria-label="Menüyü aç" aria-expanded="false" id="burger"><span></span><span></span></button>
+    <div class="nav-end">
+      <button class="loc-btn" type="button" id="locBtn" aria-haspopup="dialog" aria-controls="locDlg" aria-label="Ülke ve dil" data-t-aria="nav.loc">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M2 10h16M10 2c2.4 2.3 3.6 5 3.6 8s-1.2 5.7-3.6 8M10 2C7.6 4.3 6.4 7 6.4 10s1.2 5.7 3.6 8"/></svg>
+        <span class="loc-code" id="locCode">TR</span><span class="loc-lang" id="locLang">Türkçe</span>
+      </button>
+      <a class="btn btn-ink btn-sm nav-cta" href="#teklif" data-t="cta.quote">Teklif iste</a>
+      <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Menü" data-t-aria="nav.menu"><span></span><span></span></button>
     </div>
   </div>
-  <div class="drawer" id="drawer">
-    <a href="#urun">PURIX X1</a><a href="#modeller">Modeller</a><a href="#uygulama">Uygulamalar</a><a href="#demo">Canlı analiz</a><a href="#servis">Servis</a><a href="#sss">SSS</a><a href="#teklif" class="btn btn-dark">Teklif iste</a>
+  <div class="drawer" id="drawer" hidden>
+    <a href="#nasil" data-t="nav.how">Nasıl ölçer</a>
+    <a href="#demo" data-t="nav.demo">Canlı analiz</a>
+    <a href="#seri" data-t="nav.series">X1 serisi</a>
+    <a href="#uygulama" data-t="nav.apps">Uygulamalar</a>
+    <a href="#servis" data-t="nav.service">Servis</a>
+    <a class="btn btn-ink" href="#teklif" data-t="cta.quote">Teklif iste</a>
   </div>
+  <div class="progress" aria-hidden="true"><span id="progress"></span></div>
 </header>
 
-<main>
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap hero-in">
+<main id="main">
+
+<!-- GİRİŞ -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow rise" style="--d:0">PURIX X1 · XRF altın analiz cihazı</p>
-      <h1 class="rise" style="--d:1">Ayar tahmin<br>edilmez.<br><span class="gold-txt">Ölçülür.</span></h1>
-      <p class="lede rise" style="--d:2">Bileziği kesmeden, mihenk taşına sürmeden, asit damlatmadan. PURIX X1, 30 saniyede altının içindeki her elementi yüzde yüzüne raporlar.</p>
-      <div class="hero-cta rise" style="--d:3">
-        <a class="btn btn-gold" href="#teklif">Fiyat teklifi al</a>
-        <a class="btn btn-ghost" href="#demo"><span class="play" aria-hidden="true"></span>Canlı analizi dene</a>
+      <h1 id="hero-title" class="seq" style="--i:0" data-t="hero.title">Ayar tahmin edilmez.<br>Ölçülür.</h1>
+      <p class="lede seq" style="--i:1" data-t="hero.lede">PURIX X1, altının içindeki her elementi 30 saniyede ve parçaya dokunmadan yüzde yüzüne raporlar. Kesme yok, mihenk yok, asit yok.</p>
+      <div class="hero-cta seq" style="--i:2">
+        <a class="btn btn-gold" href="#teklif" data-t="cta.quote">Teklif iste</a>
+        <a class="btn btn-line" href="#demo" data-t="hero.demo">Canlı analizi dene</a>
       </div>
     </div>
-    <div class="hero-visual">
-      <img class="hero-img" src="assets/x1-hero.jpg" alt="Kapağı açık PURIX X1 XRF altın analiz cihazı, ekranında Au 91,67% sonucu" width="880" height="945">
-      <div class="readout rise" style="--d:4">
-        <p class="ro-top"><span class="dot"></span>Son ölçüm · 22 ayar bilezik</p>
-        <p class="ro-main"><b>91,67</b><i>% Au</i></p>
-        <p class="ro-row"><span>916,7 ‰</span><span>22,00 K</span><span>30 sn</span></p>
+    <figure class="hero-fig">
+      <img class="hero-img" src="assets/x1-hero.webp" srcset="assets/x1-hero-560.webp 560w, assets/x1-hero.webp 880w" sizes="(max-width: 960px) 92vw, 46vw" width="880" height="945" alt="Kapağı açık PURIX X1 XRF altın analiz cihazı" data-t-alt="hero.alt" fetchpriority="high">
+      <div class="readout" aria-hidden="true">
+        <p class="ro-cap" data-t="hero.ro">Son ölçüm: 22 ayar bilezik</p>
+        <p class="ro-val"><b id="roVal">91,67</b><span>% Au</span></p>
+        <dl class="ro-row">
+          <div><dt data-t="u.mil">milyem</dt><dd id="roMil">916,7</dd></div>
+          <div><dt data-t="u.karat">ayar</dt><dd id="roK">22,00</dd></div>
+          <div><dt data-t="u.time">süre</dt><dd data-t="ro.time">30 sn</dd></div>
+        </dl>
       </div>
-    </div>
+    </figure>
   </div>
-  <div class="spectrum-band" aria-hidden="true">
-    <svg id="heroSpec" viewBox="0 0 1600 170" preserveAspectRatio="none"></svg>
-    <div class="spec-labels" id="heroLabels"></div>
-  </div>
-</section>
 
-<!-- ÖLÇÜM FİŞİ -->
-<section class="ticket" aria-label="Temel değerler">
-  <div class="wrap ticket-in">
-    <div><span class="t-k">Hassasiyet</span><span class="t-v">±0,03<small>%</small></span><span class="t-n">Au, 9999 altında</span></div>
-    <div><span class="t-k">Ölçüm süresi</span><span class="t-v">30<small>sn</small></span><span class="t-n">Numune başına</span></div>
-    <div><span class="t-k">Numune</span><span class="t-v">0<small>hasar</small></span><span class="t-n">Kesme, kazıma yok</span></div>
-    <div><span class="t-k">Element aralığı</span><span class="t-v">S–U</span><span class="t-n">Au, Ag, Pt, Pd, Rh, Ir, Ru…</span></div>
+  <div class="spectrum" dir="ltr" aria-hidden="true">
+    <svg id="heroSpec" viewBox="0 0 1600 180" preserveAspectRatio="none"></svg>
+    <div class="spec-tags" id="heroTags"></div>
   </div>
-</section>
 
-<!-- AMİRAL ÜRÜN -->
-<section class="flagship" id="urun">
-  <div class="wrap flag-in">
-    <div class="flag-media reveal">
-      <img src="assets/x1-front.jpg" alt="PURIX X1 önden: 10,1 inç dokunmatik ekran ve altın çerçeve" loading="lazy">
-      <span class="pin" style="--x:47%;--y:12%"><i></i><em>Tek elle açılan<br>amortisörlü kapak</em></span>
-      <span class="pin" style="--x:22%;--y:48%"><i></i><em>10,1″ dokunmatik ekran,<br>dahili bilgisayar</em></span>
-      <span class="pin pin-r" style="--x:78%;--y:84%"><i></i><em>Titreşim sönümleyen<br>pirinç ayaklar</em></span>
-    </div>
-    <div class="flag-copy reveal">
-      <p class="eyebrow">Amiral model</p>
-      <h2>PURIX X1</h2>
-      <p class="lede">Kuyumcu tezgâhına sığan boyutlarda, laboratuvar sınıfı bir spektrometre. Numuneyi hazneye koyun, kapağı kapatın, başlat'a dokunun.</p>
-      <ul class="facts">
-        <li><b>Çoklu FP algoritması</b><span>Standart gerektirmeden bilinmeyen alaşımları hesaplar; ayar evi standartlarıyla kalibre edilir.</span></li>
-        <li><b>Kaplama ve dolgu uyarısı</b><span>Yüzey ile alaşım arasındaki uyumsuzluğu işaretler; altın kaplı bakır ve tungsten dolgu şüphesini ekranda gösterir.</span></li>
-        <li><b>HD numune kamerası</b><span>Ölçülen noktayı görürsünüz; görüntü ve sonuç aynı rapora kaydedilir.</span></li>
-        <li><b>Tek dokunuşla rapor</b><span>Logolu PDF, termal fiş veya Excel. Müşteriye ölçüm belgesiyle teslim edin.</span></li>
-      </ul>
-      <div class="flag-cta">
-        <a class="btn btn-dark" href="#modeller">Teknik özellikler</a>
-        <a class="link-arrow" href="#teklif">Broşür indir (PDF)</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CANLI ANALİZ DEMO -->
-<section class="lab" id="demo">
   <div class="wrap">
-    <div class="lab-head reveal">
-      <p class="eyebrow eyebrow-gold">Canlı analiz</p>
-      <h2>Bir numune seçin,<br>X1 ne gördüğünü göstersin.</h2>
-      <p>Aşağıdaki ekran, cihazın gerçek arayüzünü taklit eder. Her element, spektrumda kendine özgü enerjide bir tepe oluşturur; tepenin yüksekliği miktarını söyler.</p>
+    <dl class="specs">
+      <div><dt data-t="spec.prec">Hassasiyet</dt><dd id="specPrec">±0,03 %</dd><p data-t="spec.precN">Au, X1 PRO ile</p></div>
+      <div><dt data-t="spec.time">Ölçüm süresi</dt><dd data-t="spec.timeV">30 sn</dd><p data-t="spec.timeN">Numune başına</p></div>
+      <div><dt data-t="spec.dmg">Numuneye etkisi</dt><dd data-t="spec.dmgV">Yok</dd><p data-t="spec.dmgN">Kesme, kazıma, asit yok</p></div>
+      <div><dt data-t="spec.el">Element aralığı</dt><dd dir="ltr">S – U</dd><p dir="ltr">Au, Ag, Pt, Pd, Cu, Zn, Ni…</p></div>
+    </dl>
+  </div>
+</section>
+
+<!-- NEDEN XRF -->
+<section class="why" id="neden" aria-labelledby="why-title">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="why-title" data-t="why.title">Mihenk taşı yorumlar.<br>Asit yüzeye bakar.<br>XRF sayar.</h2>
+      <p data-t="why.lede">Hurda alımında yarım ayarlık bir yanılgı, gram başına gerçek bir kayıptır. Üç yöntemi aynı ölçütlerle yan yana koyduk.</p>
     </div>
+    <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="why-title">
+      <table class="methods">
+        <thead>
+          <tr><th scope="col"><span class="sr" data-t="why.crit">Ölçüt</span></th><th scope="col" data-t="why.m1">Mihenk taşı</th><th scope="col" data-t="why.m2">Asit testi</th><th scope="col" class="hl">PURIX XRF</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row" data-t="why.r1">Parçaya etkisi</th><td data-t="why.r1a">Çizik bırakır</td><td data-t="why.r1b">Yüzeyi aşındırır</td><td class="hl" data-t="why.r1c">Dokunmaz</td></tr>
+          <tr><th scope="row" data-t="why.r2">Sonuç</th><td data-t="why.r2a">Göz kararı ayar</td><td data-t="why.r2b">Ayar aralığı (ör. 14–18)</td><td class="hl" data-t="why.r2c">Her elementin yüzdesi</td></tr>
+          <tr><th scope="row" data-t="why.r3">Süre</th><td data-t="why.r3a">1–2 dakika</td><td data-t="why.r3b">2–5 dakika</td><td class="hl" data-t="why.r3c">30 saniye</td></tr>
+          <tr><th scope="row" data-t="why.r4">Kaplama tespiti</th><td data-t="no">Hayır</td><td data-t="why.r4b">Sınırlı</td><td class="hl" data-t="why.r4c">Uyarı verir</td></tr>
+          <tr><th scope="row" data-t="why.r5">Kayıt</th><td data-t="none">Yok</td><td data-t="none">Yok</td><td class="hl" data-t="why.r5c">PDF ve fiş raporu</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
-    <div class="console reveal">
-      <aside class="samples" role="radiogroup" aria-label="Numune seçimi">
-        <p class="c-label">Numune</p>
-        <button role="radio" aria-checked="true" data-s="bilezik"><b>22 ayar bilezik</b><span>Kuyumcu vitrini</span></button>
-        <button role="radio" aria-checked="false" data-s="gram"><b>Gram altın</b><span>24 ayar külçe</span></button>
-        <button role="radio" aria-checked="false" data-s="yuzuk"><b>18 ayar yüzük</b><span>Beyaz taşlı</span></button>
-        <button role="radio" aria-checked="false" data-s="kolye"><b>14 ayar kolye</b><span>İthal zincir</span></button>
-        <button role="radio" aria-checked="false" data-s="sahte"><b>Şüpheli bilezik</b><span>Müşteriden alım</span></button>
-      </aside>
+<!-- NASIL ÖLÇER -->
+<section class="how" id="nasil" aria-labelledby="how-title">
+  <div class="wrap how-grid">
+    <div class="how-copy">
+      <h2 id="how-title" data-t="how.title">Otuz saniyede ne oluyor?</h2>
+      <ol class="steps" id="steps">
+        <li data-step="1"><span class="n">1</span><div><h3 data-t="how.s1">Uyarma</h3><p data-t="how.s1p">Tüp, numuneye düşük güçlü X-ışını gönderir. Kapak kapanmadan tüp çalışmaz.</p></div></li>
+        <li data-step="2"><span class="n">2</span><div><h3 data-t="how.s2">Floresans</h3><p data-t="how.s2p">Her element kendine özgü enerjide ikincil ışın yayar: altın 9,71 keV'de, gümüş 22,16 keV'de.</p></div></li>
+        <li data-step="3"><span class="n">3</span><div><h3 data-t="how.s3">Sayım</h3><p data-t="how.s3p">Dedektör bu ışınları sayar; yazılım tepeleri oranlara çevirir ve ayarı hesaplar.</p></div></li>
+      </ol>
+    </div>
+    <figure class="diagram" id="diagram" data-step="0" dir="ltr">
+      <svg viewBox="0 0 520 380" role="img" aria-labelledby="dgTitle">
+        <title id="dgTitle" data-t="how.dg">XRF ölçüm şeması: X-ışını tüpü numuneyi uyarır, numune floresans yayar, dedektör sayar.</title>
+        <defs>
+          <linearGradient id="gm" x1="0" x2="1"><stop offset="0" stop-color="#7A5628"/><stop offset=".5" stop-color="#E6CC92"/><stop offset="1" stop-color="#9C7438"/></linearGradient>
+        </defs>
+        <rect x="40" y="300" width="440" height="10" rx="5" class="dg-base"/>
+        <g class="dg-tube">
+          <rect x="52" y="54" width="130" height="64" rx="12"/>
+          <circle cx="160" cy="86" r="9" class="dg-focus"/>
+          <text x="66" y="92" class="dg-lbl" data-t="how.tube">X-ışını tüpü</text>
+        </g>
+        <path class="dg-beam" d="M168 106 L252 276"/>
+        <g class="dg-sample">
+          <ellipse cx="260" cy="286" rx="46" ry="12" fill="none" stroke="url(#gm)" stroke-width="9"/>
+          <text x="260" y="340" text-anchor="middle" class="dg-lbl" data-t="how.sample">Numune</text>
+        </g>
+        <g class="dg-rays">
+          <path d="M270 274 L370 120"/>
+          <path d="M280 276 L384 128"/>
+          <path d="M262 272 L358 114"/>
+        </g>
+        <g class="dg-det">
+          <rect x="340" y="54" width="130" height="64" rx="12"/>
+          <circle cx="362" cy="100" r="7" class="dg-win"/>
+          <text x="380" y="92" class="dg-lbl" data-t="how.det">Dedektör</text>
+        </g>
+        <g class="dg-spec">
+          <path d="M340 238 L360 238 L366 232 L372 238 L392 238 L398 170 L404 238 L412 238 L418 192 L424 238 L446 238 L452 226 L458 238 L472 238"/>
+          <text x="340" y="262" class="dg-lbl dg-small">keV</text>
+        </g>
+      </svg>
+    </figure>
+  </div>
+</section>
 
+<!-- CANLI ANALİZ -->
+<section class="demo" id="demo" aria-labelledby="demo-title">
+  <div class="wrap">
+    <div class="head head-row">
+      <h2 id="demo-title" data-t="demo.title">Bir numune seçin,<br>sonucu görün.</h2>
+      <p data-t="demo.lede">Bu ekran X1'in arayüzünü taklit eder. Spektrumdaki her tepe bir elementtir; tepenin yüksekliği o elementin miktarını gösterir.</p>
+    </div>
+    <div class="console">
+      <div class="samples" role="radiogroup" aria-labelledby="sampleLbl">
+        <p id="sampleLbl" class="c-lbl" data-t="demo.sample">Numune</p>
+        <button type="button" role="radio" aria-checked="true" data-s="bilezik"><b data-t="s.bilezik">22 ayar bilezik</b><span data-t="s.bilezikN">Vitrin ürünü</span></button>
+        <button type="button" role="radio" aria-checked="false" data-s="gram"><b data-t="s.gram">Gram altın</b><span data-t="s.gramN">24 ayar külçe</span></button>
+        <button type="button" role="radio" aria-checked="false" data-s="yuzuk"><b data-t="s.yuzuk">18 ayar beyaz altın yüzük</b><span data-t="s.yuzukN">Paladyumlu alaşım</span></button>
+        <button type="button" role="radio" aria-checked="false" data-s="kolye"><b data-t="s.kolye">14 ayar kolye</b><span data-t="s.kolyeN">İthal zincir</span></button>
+        <button type="button" role="radio" aria-checked="false" data-s="sahte"><b data-t="s.sahte">Şüpheli bilezik</b><span data-t="s.sahteN">Müşteriden alım</span></button>
+      </div>
       <div class="screen">
-        <div class="scr-bar">
-          <span>GOLD ANALYSIS</span>
-          <span class="scr-status" id="scrStatus"><i></i>Hazır</span>
+        <div class="scr-top">
+          <span class="scr-name">GOLD ANALYSIS</span>
+          <span class="scr-state" id="scrState"><i></i><span id="scrStateTxt">Hazır</span></span>
         </div>
         <div class="scr-body">
-          <div class="scr-chart">
-            <canvas id="specCanvas" aria-label="XRF spektrumu" role="img"></canvas>
-            <div class="scr-prog"><span id="prog"></span></div>
+          <div class="scr-chart" dir="ltr">
+            <canvas id="specCanvas" role="img" aria-label="XRF spektrumu" data-t-aria="demo.chart"></canvas>
+            <div class="scr-prog" aria-hidden="true"><span id="prog"></span></div>
           </div>
           <div class="scr-side">
-            <table class="elem" aria-live="polite">
-              <thead><tr><th>Element</th><th>%</th><th></th></tr></thead>
+            <table class="elem">
+              <thead><tr><th scope="col" data-t="demo.el">Element</th><th scope="col">%</th><th scope="col"><span class="sr" data-t="demo.bar">Oran</span></th></tr></thead>
               <tbody id="elemBody"></tbody>
             </table>
-            <div class="verdict" id="verdict">
-              <div><span>Ayar</span><b id="vKarat">—</b></div>
-              <div><span>Milyem</span><b id="vMil">—</b></div>
+            <div class="verdict">
+              <div><span data-t="u.karatC">Ayar</span><b id="vK">—</b></div>
+              <div><span data-t="u.milC">Milyem</span><b id="vM">—</b></div>
             </div>
-            <p class="vnote" id="vNote">Bir numune seçin ve analizi başlatın.</p>
+            <p class="vnote" id="vNote" aria-live="polite"></p>
           </div>
         </div>
         <div class="scr-foot">
-          <button class="btn btn-gold" id="runBtn">Analizi başlat</button>
-          <span class="scr-hint">Cihazda 30 sn sürer · burada hızlandırıldı</span>
+          <button class="btn btn-gold" type="button" id="runBtn">Analizi başlat</button>
+          <span class="scr-hint" data-t="demo.hint">Cihazda 30 sn sürer; burada hızlandırıldı.</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MODELLER -->
-<section class="models" id="modeller">
+<!-- X1 SERİSİ -->
+<section class="series" id="seri" aria-labelledby="series-title">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">X1 serisi</p>
-      <h2>Aynı gövde, üç dedektör sınıfı.</h2>
-      <p>İşletmenizin ölçtüğü malzemeye göre seçin. Her üçü de aynı kasa, aynı arayüz ve aynı servis ağıyla gelir.</p>
+    <div class="head head-row">
+      <h2 id="series-title" data-t="ser.title">X1 serisi</h2>
+      <p data-t="ser.lede">Aynı gövde, aynı arayüz, aynı servis ağı. Ölçtüğünüz malzemeye göre üç dedektör sınıfından birini seçin.</p>
     </div>
-    <div class="cmp reveal" role="table" aria-label="Model karşılaştırma">
-      <div class="cmp-row cmp-h" role="row">
-        <div role="columnheader"></div>
-        <div role="columnheader"><b>X1</b><span>Kuyumcu, alım-satım, rehin</span></div>
-        <div role="columnheader" class="cmp-feat"><em>En çok tercih edilen</em><b>X1 PRO</b><span>Rafineri, toptancı, atölye</span></div>
-        <div role="columnheader"><b>X1 LAB</b><span>Ayar evi, laboratuvar</span></div>
+    <div class="tabs" role="tablist" aria-labelledby="series-title" id="tabs"></div>
+    <div class="model" id="modelPanel" role="tabpanel" tabindex="0">
+      <figure class="model-fig">
+        <img src="assets/x1-front.webp" width="450" height="390" alt="PURIX X1 önden görünüm" data-t-alt="ser.alt" loading="lazy" decoding="async">
+      </figure>
+      <div class="model-body" id="modelBody"></div>
+    </div>
+    <details class="all">
+      <summary data-t="ser.all">Üç modeli yan yana karşılaştır</summary>
+      <div class="cmp-wrap" tabindex="0" role="region" aria-label="Model karşılaştırma" data-t-aria="ser.allAria">
+        <table class="cmp" id="cmpTable"></table>
       </div>
-      <div class="cmp-row" role="row"><div role="rowheader">Dedektör</div><div>Si-PIN</div><div class="cmp-feat">SDD, 25 mm²</div><div>Hızlı SDD, 50 mm²</div></div>
-      <div class="cmp-row" role="row"><div role="rowheader">Au hassasiyeti</div><div>±0,05%</div><div class="cmp-feat">±0,03%</div><div>±0,01%</div></div>
-      <div class="cmp-row" role="row"><div role="rowheader">Çözünürlük</div><div>≤ 165 eV</div><div class="cmp-feat">≤ 139 eV</div><div>≤ 125 eV</div></div>
-      <div class="cmp-row" role="row"><div role="rowheader">Ölçüm süresi</div><div>30–60 sn</div><div class="cmp-feat">15–30 sn</div><div>10–30 sn</div></div>
-      <div class="cmp-row" role="row"><div role="rowheader">Kolimatör</div><div>Sabit 1 mm</div><div class="cmp-feat">1 mm / 2 mm</div><div>0,2 · 0,5 · 1 · 2 mm otomatik</div></div>
-      <div class="cmp-row" role="row"><div role="rowheader">Pt grubu (Pt, Pd, Rh, Ir)</div><div><span class="dash">—</span></div><div class="cmp-feat"><span class="ok">✓</span></div><div><span class="ok">✓</span></div></div>
-      <div class="cmp-row" role="row"><div role="rowheader">Kaplama kalınlığı</div><div><span class="dash">—</span></div><div class="cmp-feat"><span class="ok">✓</span></div><div><span class="ok">✓</span> çok katman</div></div>
-      <div class="cmp-row" role="row"><div role="rowheader">Ekran / bilgisayar</div><div>10,1″ dahili</div><div class="cmp-feat">10,1″ dahili + harici ekran</div><div>10,1″ dahili + harici ekran</div></div>
-      <div class="cmp-row cmp-f" role="row"><div></div><div><a class="btn btn-ghost btn-sm" href="#teklif" data-model="X1">X1 için teklif</a></div><div class="cmp-feat"><a class="btn btn-gold btn-sm" href="#teklif" data-model="X1 PRO">X1 PRO için teklif</a></div><div><a class="btn btn-ghost btn-sm" href="#teklif" data-model="X1 LAB">X1 LAB için teklif</a></div></div>
-    </div>
-    <p class="cmp-common reveal">Tüm modellerde: 50 kV mikro odaklı X-ışını tüpü · HD numune kamerası · kapak emniyet kilidi · 330 × 280 × 95 mm hazne · 230 V, 100 W</p>
+    </details>
+    <p class="common" data-t="ser.common">Tüm modellerde: 50 kV mikro odaklı X-ışını tüpü, HD numune kamerası, kapak emniyet kilidi, 10,1″ dokunmatik ekran ve dahili bilgisayar, 100–240 V.</p>
   </div>
 </section>
 
-<!-- DETAYLAR -->
-<section class="craft" id="detay">
-  <div class="wrap craft-in">
-    <div class="craft-copy reveal">
-      <p class="eyebrow">Tasarım</p>
-      <h2>Vitrininizin<br>yanında durabilir.</h2>
-      <p>Çoğu analiz cihazı arka odaya saklanır. X1, müşterinin gözü önünde ölçüm yapmanız için tasarlandı: sonuç ekranı müşteriye döner, güveni ölçüm kurar.</p>
+<!-- TASARIM -->
+<section class="craft" id="tasarim" aria-labelledby="craft-title">
+  <div class="wrap craft-grid">
+    <div class="craft-copy">
+      <h2 id="craft-title" data-t="craft.title">Vitrinin yanında durmak için tasarlandı.</h2>
+      <p data-t="craft.lede">Çoğu analiz cihazı arka odaya saklanır. X1, ölçümü müşterinin gözü önünde yapmanız için tasarlandı: sonuç ekranı müşteriye döner, güveni rakam kurar.</p>
       <dl class="craft-list">
-        <div><dt>Gövde</dt><dd>Porselen beyazı toz boya, fırçalanmış şampanya altın çerçeve</dd></div>
-        <div><dt>Kapak</dt><dd>Gazlı amortisör; açık kalır, sessiz kapanır</dd></div>
-        <div><dt>Soğutma</dt><dd>Yan yüzeyde üçgen desenli pasif hava kanalları</dd></div>
+        <div><dt data-t="craft.b">Gövde</dt><dd data-t="craft.bV">Porselen beyazı toz boya, fırçalanmış şampanya altın çerçeve</dd></div>
+        <div><dt data-t="craft.l">Kapak</dt><dd data-t="craft.lV">Gazlı amortisör; açık kalır, sessiz kapanır</dd></div>
+        <div><dt data-t="craft.c">Soğutma</dt><dd data-t="craft.cV">Yan yüzeyde üçgen desenli pasif hava kanalları</dd></div>
       </dl>
     </div>
-    <figure class="craft-fig f1 reveal"><img src="assets/x1-handle.jpg" alt="Kapak üzerindeki fırçalanmış altın tutamak" loading="lazy"><figcaption>Fırçalanmış altın tutamak</figcaption></figure>
-    <figure class="craft-fig f2 reveal"><img src="assets/x1-vent.jpg" alt="Yan panelde üçgen desenli havalandırma" loading="lazy"><figcaption>Isıl denge için hava kanalları</figcaption></figure>
-    <div class="safety reveal">
-      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l14 6v10c0 9-6 15-14 18C12 34 6 28 6 19V9z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 20l4.5 4.5 8.5-9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+    <figure class="shot s1"><img src="assets/x1-handle.webp" width="235" height="177" alt="Kapaktaki fırçalanmış altın tutamak" data-t-alt="craft.h" loading="lazy" decoding="async"><figcaption data-t="craft.h">Kapaktaki fırçalanmış altın tutamak</figcaption></figure>
+    <figure class="shot s2"><img src="assets/x1-vent.webp" width="235" height="205" alt="Yan paneldeki üçgen desenli hava kanalları" data-t-alt="craft.v" loading="lazy" decoding="async"><figcaption data-t="craft.v">Yan paneldeki hava kanalları</figcaption></figure>
+    <div class="safety">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l14 6v10c0 9-6 15-14 18C12 34 6 28 6 19V9z"/><path d="M13.5 20l4.5 4.5 8.5-9"/></svg>
       <div>
-        <b>Radyasyon güvenliği</b>
-        <p>Kapak açıldığında tüp anında kapanır. Gövde yüzeyinde kaçak doz &lt; 1 µSv/sa. NDK lisans başvuru dosyanızı biz hazırlıyoruz.</p>
+        <h3 data-t="craft.s">Radyasyon güvenliği</h3>
+        <p data-t="craft.sP">Kapak açıldığı anda tüp kapanır. Gövde yüzeyinde ölçülen doz 1 µSv/sa altındadır. Ülkenizde gereken radyasyon lisansı için teknik dosyayı biz sağlarız.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- UYGULAMALAR -->
-<section class="apps" id="uygulama">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Uygulamalar</p>
-      <h2>Altının el değiştirdiği her yerde.</h2>
+<section class="apps" id="uygulama" aria-labelledby="apps-title">
+  <div class="wrap apps-grid">
+    <div class="apps-head">
+      <h2 id="apps-title" data-t="apps.title">Altının el değiştirdiği her yerde.</h2>
+      <p data-t="apps.lede">Sektörünüzü bulun; hangi modelle başlamanız gerektiği yanında yazıyor.</p>
     </div>
-    <div class="app-grid">
-      <article class="app reveal">
-        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="29" r="12"/><path d="M18 13l6-6 6 6-6 5z"/></svg>
-        <h3>Kuyumcular</h3>
-        <p>Hurda alımında ayarı müşterinin önünde ölçün, fiyatı rakamla savunun.</p>
-      </article>
-      <article class="app reveal">
-        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 14h24l-3 22H15z"/><path d="M17 22h14M20 8c0 3 3 3 3 6M27 8c0 3 3 3 3 6"/></svg>
-        <h3>Rafineriler</h3>
-        <p>Giriş malzemesini ve çıkış külçesini aynı cihazla doğrulayın; safsızlık elementlerini takip edin.</p>
-      </article>
-      <article class="app reveal">
-        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M19 7h10M21 7v12L11 38a2 2 0 002 3h22a2 2 0 002-3L27 19V7"/><path d="M15 31h18"/></svg>
-        <h3>Ayar evleri ve laboratuvarlar</h3>
-        <p>Çok kolimatörlü X1 LAB ile küçük parçalarda bile ±0,01% tekrarlanabilirlik.</p>
-      </article>
-      <article class="app reveal">
-        <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="15" width="30" height="22" rx="2"/><path d="M18 15v-4h12v4M9 24h30M22 24v4h4v-4"/></svg>
-        <h3>Rehin ve altın kredisi</h3>
-        <p>Teminata alınan her parçanın ölçüm raporunu dosyaya ekleyin; kaplama ve dolgu riskini ortadan kaldırın.</p>
-      </article>
-      <article class="app reveal">
-        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 28l6-12h20l6 12z"/><path d="M8 28v6h32v-6M17 16l3-6h8l3 6"/></svg>
-        <h3>Külçe ve sikke</h3>
-        <p>Gram altın, cumhuriyet altını ve yatırımlık sikkeleri ambalajından çıkarmadan kontrol edin.</p>
-      </article>
-      <article class="app reveal">
-        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8l7 12h-5M24 8l-7 12M12 34l-5-9 7-3M36 34h-9l3 5M12 34h8M36 34l4-7"/></svg>
-        <h3>Geri dönüşüm</h3>
-        <p>Elektronik hurda ve katalizörde değerli metal içeriğini, satın almadan önce belirleyin.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- SÜREÇ -->
-<section class="steps">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Bir ölçüm nasıl yapılır</p>
-      <h2>Dört adım, otuz saniye.</h2>
-    </div>
-    <ol class="step-list">
-      <li class="reveal"><span class="s-n">1</span><b>Yerleştir</b><p>Parçayı haznedeki cam plakaya koyun. Kamera ölçüm noktasını gösterir.</p></li>
-      <li class="reveal"><span class="s-n">2</span><b>Kapat</b><p>Kapak kapanınca emniyet kilidi devreye girer, tüp hazır olur.</p></li>
-      <li class="reveal"><span class="s-n">3</span><b>Başlat</b><p>X-ışını, numunedeki atomları uyarır; dedektör geri dönen enerjiyi sayar.</p></li>
-      <li class="reveal"><span class="s-n">4</span><b>Raporla</b><p>Ayar, milyem ve tüm elementler ekranda. Fiş ya da PDF olarak verin.</p></li>
-    </ol>
+    <ul class="app-list">
+      <li><h3 data-t="a1">Kuyumcular</h3><p data-t="a1p">Hurda alımında ayarı müşterinin önünde ölçün, fiyatı rakamla savunun.</p><span class="chip">X1</span></li>
+      <li><h3 data-t="a2">Rehin ve altın kredisi</h3><p data-t="a2p">Teminata alınan her parçanın ölçüm raporunu dosyaya ekleyin; kaplama riskini masada yakalayın.</p><span class="chip">X1</span></li>
+      <li><h3 data-t="a3">Külçe ve sikke</h3><p data-t="a3p">Külçe ve yatırımlık sikkeleri ambalajından çıkarmadan kontrol edin.</p><span class="chip">X1</span></li>
+      <li><h3 data-t="a4">Rafineriler</h3><p data-t="a4p">Giriş malzemesini ve çıkış külçesini aynı cihazla doğrulayın, safsızlıkları takip edin.</p><span class="chip">X1 PRO</span></li>
+      <li><h3 data-t="a5">Toptancı ve atölyeler</h3><p data-t="a5p">Alaşım reçetesini üretim öncesi ve sonrası doğrulayın; beyaz altında paladyumu ölçün.</p><span class="chip">X1 PRO</span></li>
+      <li><h3 data-t="a6">Ayar evleri ve laboratuvarlar</h3><p data-t="a6p">Çok kolimatörlü ölçümle küçük parçalarda bile ±0,01 % tekrarlanabilirlik.</p><span class="chip">X1 LAB</span></li>
+    </ul>
   </div>
 </section>
 
 <!-- SERVİS -->
-<section class="service" id="servis">
-  <div class="wrap service-in">
-    <div class="svc-copy reveal">
-      <p class="eyebrow eyebrow-gold">Türkiye'de servis</p>
-      <h2>Cihazı teslim etmekle<br>işimiz bitmiyor.</h2>
-      <p>Kurulumdan kalibrasyona kadar her adımda karşınızda Türkçe konuşan bir mühendis var.</p>
-      <a class="btn btn-gold" href="#teklif">Servis ekibiyle görüş</a>
+<section class="service" id="servis" aria-labelledby="svc-title">
+  <div class="wrap svc-grid">
+    <div class="svc-head">
+      <h2 id="svc-title" data-t="svc.title">Cihazı teslim etmek işin başlangıcı.</h2>
+      <p data-t="svc.lede">Kurulumdan kalibrasyona kadar her adımda yerel iş ortağımız ve merkez teknik ekibimiz yanınızda.</p>
+      <a class="btn btn-gold" href="#teklif" data-t="svc.cta">Servis ekibiyle görüşün</a>
     </div>
     <ul class="svc-list">
-      <li class="reveal"><b>Yerinde kurulum ve eğitim</b><span>Teslimat günü kurulum, personel eğitimi ve ilk kalibrasyon dahil.</span></li>
-      <li class="reveal"><b>NDK lisans desteği</b><span>Radyasyon kaynağı lisans dosyası, ölçüm raporu ve başvuru takibi.</span></li>
-      <li class="reveal"><b>2 yıl garanti</b><span>X-ışını tüpü ve dedektör dahil. Uzatılmış garanti seçeneği.</span></li>
-      <li class="reveal"><b>48 saatte müdahale</b><span>Uzaktan bağlantıyla ilk teşhis; gerekirse yedek cihaz.</span></li>
-      <li class="reveal"><b>Sertifikalı referans standartlar</b><span>8, 14, 18, 22 ve 24 ayar kalibrasyon setleri cihazla birlikte.</span></li>
+      <li><h3 data-t="v1">Yerinde kurulum ve eğitim</h3><p data-t="v1p">Teslimat sonrası kurulum, personel eğitimi ve ilk kalibrasyon fiyata dahil.</p></li>
+      <li><h3 data-t="v2">Lisans desteği</h3><p data-t="v2p">Ülkenizdeki radyasyon lisansı veya kaydı için teknik dosya ve doz ölçüm raporu.</p></li>
+      <li><h3 data-t="v3">2 yıl garanti</h3><p data-t="v3p">X-ışını tüpü ve dedektör dahil. İsteğe bağlı uzatılmış garanti.</p></li>
+      <li><h3 data-t="v4">48 saatte müdahale</h3><p data-t="v4p">Uzaktan bağlantıyla ilk teşhis; gerekirse yedek cihaz.</p></li>
+      <li><h3 data-t="v5">Referans standartlar</h3><p data-t="v5p">8, 14, 18, 22 ve 24 ayar kalibrasyon seti cihazla birlikte gelir.</p></li>
     </ul>
   </div>
 </section>
 
 <!-- SSS -->
-<section class="faq" id="sss">
-  <div class="wrap faq-in">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Sık sorulanlar</p>
-      <h2>Satın almadan önce.</h2>
-    </div>
+<section class="faq" id="sss" aria-labelledby="faq-title">
+  <div class="wrap faq-grid">
+    <h2 id="faq-title" data-t="faq.title">Satın almadan önce sorulanlar</h2>
     <div class="faq-list">
-      <details class="reveal"><summary>XRF, mihenk taşı ve asitle kıyaslandığında ne kadar güvenilir?</summary><p>Mihenk taşı ustanın gözüne, asit testi yalnızca yüzeye bağlıdır. XRF her elementin oranını sayısal olarak verir ve sonuç tekrarlanabilir. Parçaya hiçbir şekilde zarar vermez.</p></details>
-      <details class="reveal"><summary>Altın kaplı veya içi dolgulu sahte parçaları yakalar mı?</summary><p>X1, yüzey alaşımı ile beklenen alaşım arasında tutarsızlık gördüğünde uyarı verir. Kalın kaplamalarda ve tungsten dolguda X1 PRO'nun kaplama kalınlığı modu ve farklı noktalardan ölçüm önerilir. Şüpheli durumlarda yıkıcı test için yönlendirme yaparız.</p></details>
-      <details class="reveal"><summary>Cihaz radyasyon yayar mı, lisans gerekir mi?</summary><p>Tüp yalnızca kapak kapalıyken çalışır ve gövde yüzeyinde ölçülen doz doğal fon seviyesine yakındır. Türkiye'de X-ışını cihazları için NDK lisansı gerekir; başvuru dosyasını sizin adınıza hazırlıyoruz.</p></details>
-      <details class="reveal"><summary>Teslimat ve kurulum ne kadar sürer?</summary><p>Stoktaki modeller İstanbul içinde 2 iş günü, diğer illerde 5 iş günü içinde kurulur. Eğitim yaklaşık 2 saattir.</p></details>
-      <details class="reveal"><summary>Ödeme ve kiralama seçenekleri var mı?</summary><p>Peşin, banka kartlarına taksit ve 12–36 ay arası operasyonel kiralama seçenekleri sunuyoruz. Teklif formunda tercihinizi belirtin.</p></details>
+      <details><summary data-t="q1">XRF, mihenk taşı ve asitle kıyaslandığında ne kadar güvenilir?</summary><p data-t="q1a">Mihenk taşı ustanın gözüne, asit testi yalnızca yüzeye bağlıdır. XRF her elementin oranını sayısal olarak verir, sonuç tekrarlanabilir ve parçaya hiçbir şekilde zarar vermez.</p></details>
+      <details><summary data-t="q2">Altın kaplı ya da içi dolgulu parçaları yakalar mı?</summary><p data-t="q2a">X1, yüzey alaşımı beklenen alaşımla tutarsız olduğunda uyarı verir. Kalın kaplama ve tungsten dolgu şüphesinde X1 PRO'nun kaplama modu ve birden fazla noktadan ölçüm önerilir.</p></details>
+      <details><summary data-t="q3">Cihaz radyasyon yayar mı, lisans gerekir mi?</summary><p data-t="q3a">Tüp yalnızca kapak kapalıyken çalışır; gövde yüzeyindeki doz doğal fon seviyesine yakındır. Çoğu ülkede X-ışını cihazları için ulusal radyasyon otoritesinden lisans veya kayıt gerekir; başvuru için gereken teknik dosyayı sağlıyoruz.</p></details>
+      <details><summary data-t="q4">Teslimat ve kurulum ne kadar sürer?</summary><p data-t="q4a">Stoktaki modeller siparişten sonra 5–10 iş günü içinde gönderilir. Kurulumu yerel iş ortağımız yapar; personel eğitimi yaklaşık 2 saat sürer.</p></details>
+      <details><summary data-t="q5">Hangi ödeme ve kiralama seçenekleri var?</summary><p data-t="q5a">Peşin ödeme, akreditif (L/C) ve bazı ülkelerde iş ortaklarımız üzerinden kiralama. Tercihinizi teklif formunda belirtin.</p></details>
     </div>
   </div>
 </section>
 
 <!-- TEKLİF -->
-<section class="quote" id="teklif">
-  <div class="wrap quote-in">
-    <div class="q-copy reveal">
-      <img src="assets/purix-mark.png" alt="" width="54" height="68">
-      <h2>Teklifinizi<br>hazırlayalım.</h2>
-      <p>Formu doldurun, bir iş günü içinde işletmenize uygun model ve fiyatla dönelim. İsterseniz cihazı işyerinizde, kendi altınlarınızla deneyin.</p>
-      <ul class="q-contact">
-        <li><span>Telefon</span><a href="tel:+902120000000">+90 212 000 00 00</a></li>
-        <li><span>E-posta</span><a href="mailto:info@purix.com.tr">info@purix.com.tr</a></li>
-        <li><span>Showroom</span>Kapalıçarşı yakını, Fatih / İstanbul</li>
-      </ul>
+<section class="quote" id="teklif" aria-labelledby="quote-title">
+  <div class="wrap quote-grid">
+    <div class="q-side">
+      <h2 id="quote-title" data-t="qt.title">Teklifinizi hazırlayalım.</h2>
+      <p data-t="qt.lede">Formu doldurun, bir iş günü içinde işletmenize uygun model ve fiyatla dönelim. İsterseniz cihazı işyerinizde, kendi altınlarınızla deneyin.</p>
+      <dl class="contact">
+        <div><dt data-t="c.country">Ülke</dt><dd><button type="button" class="link-btn" id="cCountry" data-open-loc>—</button></dd></div>
+        <div><dt>Instagram</dt><dd><a id="cIg" href="https://www.instagram.com/purixxrf.tr/" target="_blank" rel="noopener" dir="ltr">@purixxrf.tr</a></dd></div>
+        <div><dt>WhatsApp</dt><dd><a href="#teklif" dir="ltr">+90 500 000 00 00</a></dd></div>
+        <div><dt data-t="c.mail">E-posta</dt><dd><a href="mailto:info@purix.com.tr" dir="ltr">info@purix.com.tr</a></dd></div>
+        <div><dt data-t="c.show">Merkez</dt><dd data-t="c.showV">İstanbul, Türkiye</dd></div>
+        <div><dt data-t="c.hours">Çalışma saatleri</dt><dd data-t="c.hoursV">Hafta içi 09.00–18.30 (GMT+3)</dd></div>
+      </dl>
     </div>
-    <form class="q-form reveal" id="qForm" novalidate>
-      <div class="f-row">
-        <label>Ad soyad<input name="ad" autocomplete="name" required></label>
-        <label>Firma<input name="firma" autocomplete="organization"></label>
+
+    <div class="q-main">
+      <form class="form" id="qForm" novalidate>
+        <div class="err-sum" id="errSum" role="alert" tabindex="-1" hidden>
+          <h3 id="errTitle" data-t="f.errT">Formda düzeltilmesi gereken alanlar var</h3>
+          <ul id="errList"></ul>
+        </div>
+        <div class="row">
+          <div class="field"><label for="fAd" data-t="f.name">Ad soyad</label><input id="fAd" name="ad" autocomplete="name" required aria-describedby="fAd-e"><p class="f-err" id="fAd-e"></p></div>
+          <div class="field"><label for="fFirma"><span data-t="f.company">Firma</span> <small data-t="f.opt">(isteğe bağlı)</small></label><input id="fFirma" name="firma" autocomplete="organization"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="fTel" data-t="f.phone">Telefon</label><input id="fTel" name="tel" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" required aria-describedby="fTel-h fTel-e"><p class="f-help" id="fTel-h"></p><p class="f-err" id="fTel-e"></p></div>
+          <div class="field"><label for="fMail"><span data-t="f.mail">E-posta</span> <small data-t="f.opt">(isteğe bağlı)</small></label><input id="fMail" name="mail" type="email" autocomplete="email" dir="ltr" aria-describedby="fMail-e"><p class="f-err" id="fMail-e"></p></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="fSektor" data-t="f.sector">Sektör</label>
+            <select id="fSektor" name="sektor">
+              <option data-t="o1">Kuyumcu</option><option data-t="o2">Rehin / altın kredisi</option><option data-t="o3">Rafineri</option><option data-t="o4">Toptancı / atölye</option><option data-t="o5">Ayar evi / laboratuvar</option><option data-t="o6">Diğer</option>
+            </select></div>
+          <div class="field"><label for="fModel" data-t="f.model">Model</label>
+            <select id="fModel" name="model">
+              <option value="" data-t="f.undecided">Henüz karar vermedim</option><option>X1</option><option>X1 PRO</option><option>X1 LAB</option>
+            </select></div>
+        </div>
+        <fieldset class="chips">
+          <legend data-t="f.want">Ne istiyorsunuz?</legend>
+          <label><input type="checkbox" name="istek" value="teklif" checked><span data-t="f.w1">Fiyat teklifi</span></label>
+          <label><input type="checkbox" name="istek" value="demo"><span data-t="f.w2">İşyerimde demo</span></label>
+          <label><input type="checkbox" name="istek" value="kiralama"><span data-t="f.w3">Kiralama</span></label>
+        </fieldset>
+        <div class="field"><label for="fMsg"><span data-t="f.msg">Mesajınız</span> <small data-t="f.opt">(isteğe bağlı)</small></label><textarea id="fMsg" name="mesaj" rows="3" aria-describedby="fMsg-h"></textarea><p class="f-help" id="fMsg-h" data-t="f.msgH">Günlük ölçüm adediniz ve ölçtüğünüz ürünler, doğru modeli önermemize yardımcı olur.</p></div>
+        <div class="field check"><input type="checkbox" id="fKvkk" required aria-describedby="fKvkk-e"><label for="fKvkk" data-t="f.kvkk"><a href="#">Gizlilik bildirimini</a> okudum; bilgilerimin bu talep için kullanılmasını onaylıyorum.</label><p class="f-err" id="fKvkk-e"></p></div>
+        <div class="hp" aria-hidden="true"><label>Web sitesi<input name="web" tabindex="-1" autocomplete="off"></label></div>
+        <p class="f-err" id="fSendErr" role="alert"></p>
+        <button class="btn btn-ink btn-block" type="submit" data-t="f.submit">Teklif iste</button>
+      </form>
+      <div class="done" id="done" tabindex="-1" hidden>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22"/><path d="M14 24.5l7 7 13-14"/></svg>
+        <h3 data-t="f.doneT">Teklif talebiniz alındı</h3>
+        <p data-t="f.doneP">Bir iş günü içinde sizinle iletişime geçeceğiz.</p>
       </div>
-      <div class="f-row">
-        <label>Telefon<input name="tel" type="tel" autocomplete="tel" required placeholder="05xx xxx xx xx"></label>
-        <label>E-posta<input name="mail" type="email" autocomplete="email"></label>
-      </div>
-      <div class="f-row">
-        <label>Sektör<select name="sektor"><option>Kuyumcu</option><option>Rafineri</option><option>Ayar evi / laboratuvar</option><option>Rehin / altın kredisi</option><option>Geri dönüşüm</option><option>Diğer</option></select></label>
-        <label>Model<select name="model" id="fModel"><option>Henüz karar vermedim</option><option>X1</option><option>X1 PRO</option><option>X1 LAB</option></select></label>
-      </div>
-      <fieldset class="f-chips">
-        <legend>Ne istiyorsunuz?</legend>
-        <label><input type="checkbox" name="istek" value="teklif" checked><span>Fiyat teklifi</span></label>
-        <label><input type="checkbox" name="istek" value="demo"><span>İşyerimde demo</span></label>
-        <label><input type="checkbox" name="istek" value="kiralama"><span>Kiralama</span></label>
-      </fieldset>
-      <label>Mesajınız<textarea name="mesaj" rows="3" placeholder="Günlük ölçüm adediniz, ölçtüğünüz ürünler…"></textarea></label>
-      <label class="kvkk"><input type="checkbox" required> <span><a href="#">KVKK aydınlatma metnini</a> okudum, iletişim için bilgilerimin kullanılmasını onaylıyorum.</span></label>
-      <button class="btn btn-dark btn-block" type="submit">Teklif iste</button>
-      <p class="f-msg" id="fMsg" role="status"></p>
-    </form>
+    </div>
   </div>
 </section>
 </main>
 
 <footer class="foot">
-  <div class="wrap foot-in">
+  <div class="wrap foot-grid">
     <div class="foot-brand">
-      <img src="assets/purix-mark.png" alt="" width="44" height="56">
-      <p><b>PURIX</b><small>PRECISION IN PURITY</small></p>
+      <img src="assets/mark-128.webp" alt="" width="40" height="51" loading="lazy">
+      <div><span class="brand-word">PURIX</span><p>Precision in purity</p></div>
     </div>
-    <div class="foot-cols">
-      <div><p class="f-h">Ürünler</p><a href="#modeller">X1</a><a href="#modeller">X1 PRO</a><a href="#modeller">X1 LAB</a><a href="#teklif">Kalibrasyon standartları</a></div>
-      <div><p class="f-h">Kaynaklar</p><a href="#teklif">Broşür (PDF)</a><a href="#sss">Sık sorulanlar</a><a href="#demo">XRF nasıl çalışır</a><a href="#teklif">Kullanım kılavuzu</a></div>
-      <div><p class="f-h">Kurumsal</p><a href="#">Hakkımızda</a><a href="#servis">Servis ve destek</a><a href="#">Sertifikalar</a><a href="#teklif">İletişim</a></div>
-    </div>
+    <nav class="foot-nav" aria-label="Alt menü" data-t-aria="foot.aria">
+      <div><h3 data-t="foot.p">Ürünler</h3><a href="#seri">X1</a><a href="#seri">X1 PRO</a><a href="#seri">X1 LAB</a></div>
+      <div><h3 data-t="foot.r">Kaynaklar</h3><a href="#nasil" data-t="nav.how">Nasıl ölçer</a><a href="#sss" data-t="foot.faq">Sık sorulanlar</a><a href="#teklif" data-t="foot.bro">Broşür (PDF)</a></div>
+      <div><h3 data-t="foot.c">Kurumsal</h3><a href="#servis" data-t="nav.service">Servis</a><a href="#teklif" data-t="foot.contact">İletişim</a><a href="#" data-t="foot.kvkk">Gizlilik</a><a id="fIg" href="https://www.instagram.com/purixxrf.tr/" target="_blank" rel="noopener">Instagram</a></div>
+    </nav>
   </div>
-  <div class="wrap foot-bot">
-    <span>© 2026 PURIX. Tüm hakları saklıdır.</span>
-    <span><a href="#">KVKK</a> · <a href="#">Çerez politikası</a></span>
-  </div>
+  <div class="wrap foot-bot"><span>© 2026 PURIX</span><button type="button" class="link-btn foot-loc" data-open-loc><span id="footLoc">Türkiye · Türkçe</span></button></div>
 </footer>
 
-<a class="wa" href="#teklif" aria-label="WhatsApp ile yazın">
-  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4a12 12 0 00-10.3 18.1L4 28l6.1-1.6A12 12 0 1016 4zm0 21.8a9.8 9.8 0 01-5-1.4l-.4-.2-3.6.9 1-3.5-.2-.4A9.8 9.8 0 1116 25.8zm5.4-7.3c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8 8 0 01-2.4-1.5 9 9 0 01-1.6-2c-.2-.3 0-.5.1-.6l.5-.5.3-.5a.5.5 0 000-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 00-.8.4 3.4 3.4 0 00-1 2.5 5.9 5.9 0 001.2 3.1 13.4 13.4 0 005.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 002-1.4 2.5 2.5 0 00.2-1.4c-.1-.2-.3-.3-.6-.4z" fill="currentColor"/></svg>
-</a>
+<dialog class="loc-dlg" id="locDlg" aria-labelledby="locTitle">
+  <div class="loc-head">
+    <h2 id="locTitle" data-t="loc.title">Ülkenizi seçin</h2>
+    <button type="button" class="loc-x" id="locClose" aria-label="Kapat" data-t-aria="loc.close"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
+  </div>
+  <p class="loc-lede" data-t="loc.lede">Dil, Instagram hesabı ve iletişim bilgileri seçtiğiniz ülkeye göre değişir.</p>
+  <div class="loc-langs" id="locLangs" role="group" aria-labelledby="locLangLbl"><span id="locLangLbl" data-t="loc.lang">Dil</span><div id="locLangBtns"></div></div>
+  <div class="loc-list" id="locList"></div>
+</dialog>
 
+<script src="config.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
