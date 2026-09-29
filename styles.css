@@ -100,7 +100,7 @@ dl,dd{margin:0}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
 .hero-fig{position:relative;margin:0}
 .hero-img{width:100%;max-width:660px;margin-inline-start:auto;mix-blend-mode:multiply}
-.readout{position:absolute;inset-inline-start:0;top:10%;width:228px;padding:16px 18px;border-radius:var(--r-md);background:rgba(28,25,23,.95);color:#fff;box-shadow:0 30px 60px -28px rgba(28,25,23,.7);border:1px solid rgba(228,203,147,.22)}
+.readout{position:absolute;inset-inline-start:-20%;top:46%;width:228px;padding:16px 18px;border-radius:var(--r-md);background:rgba(28,25,23,.95);color:#fff;box-shadow:0 30px 60px -28px rgba(28,25,23,.7);border:1px solid rgba(228,203,147,.22)}
 .ro-cap{font-size:12.5px;color:#C9C3BA;display:flex;align-items:center;gap:8px}
 .ro-cap::before{content:"";width:7px;height:7px;border-radius:50%;background:#79C98A;box-shadow:0 0 0 3px rgba(121,201,138,.2)}
 .ro-val{display:flex;align-items:baseline;gap:8px;margin:10px 0 12px}
@@ -482,7 +482,7 @@ mark.ph{background:#FFF1C9;color:#6E4B22;padding:1px 6px;border-radius:5px;font-
   .hero-grid,.how-grid,.model,.apps-grid,.svc-grid,.faq-grid,.quote-grid{grid-template-columns:1fr}
   .head-row{grid-template-columns:1fr}
   .hero-fig{max-width:560px;margin:0 auto;width:100%}
-  .readout{top:2%;inset-inline-start:0}
+  .readout{position:relative;top:auto;bottom:auto;inset-inline-start:auto;margin:-28px auto 0;width:min(320px,100%)}
   .specs{grid-template-columns:1fr 1fr}
   .specs>div:nth-child(3){border-inline-start:0;padding-inline-start:0}
   .specs>div:nth-child(n+3){border-top:1px solid var(--line-2)}

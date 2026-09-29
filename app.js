@@ -24,6 +24,7 @@
     es: { name: 'Español', locale: 'es-MX' },
     pt: { name: 'Português', locale: 'pt-BR' }
   };
+  const SURUM = '202609292016'; // surum.py tarafından yazılır (önbellek kırıcı)
   const FONTS = { arab: 'fonts/arab.css', deva: 'fonts/deva.css', thai: 'fonts/thai.css' }; // sitenin kendi sunucusundan
   // Öncelik sırası kullanıcının satış planından. İlk dil = ülkenin varsayılanı.
   const COUNTRIES = [
@@ -85,7 +86,7 @@
   function loadLang(code) {
     if (window.PURIX_LANG[code]) return Promise.resolve(window.PURIX_LANG[code]);
     return new Promise(res => {
-      const s = document.createElement('script'); s.src = `lang/${code}.js`;
+      const s = document.createElement('script'); s.src = `lang/${code}.js${SURUM ? '?v=' + SURUM : ''}`;
       s.onload = () => res(window.PURIX_LANG[code] || null); s.onerror = () => res(null);
       document.head.appendChild(s);
     });
@@ -93,7 +94,7 @@
   const fontsLoaded = {};
   function loadFont(script) {
     if (!script || !FONTS[script] || fontsLoaded[script]) return;
-    const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = FONTS[script];
+    const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = FONTS[script] + (SURUM ? '?v=' + SURUM : '');
     document.head.appendChild(l); fontsLoaded[script] = 1;
   }
 
