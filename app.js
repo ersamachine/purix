@@ -24,7 +24,7 @@
     es: { name: 'Español', locale: 'es-MX' },
     pt: { name: 'Português', locale: 'pt-BR' }
   };
-  const SURUM = '202609292233'; // surum.py tarafından yazılır (önbellek kırıcı)
+  const SURUM = '202609292339'; // surum.py tarafından yazılır (önbellek kırıcı)
   const FONTS = { arab: 'fonts/arab.css', deva: 'fonts/deva.css', thai: 'fonts/thai.css' }; // sitenin kendi sunucusundan
   // Öncelik sırası kullanıcının satış planından. İlk dil = ülkenin varsayılanı.
   const COUNTRIES = [
@@ -55,13 +55,13 @@
   // Yalnızca Türkiye + Türkçe için geçerli yerel metinler
   const OVERRIDES = {
     TR: { tr: {
-      'meta.desc': 'PURIX X1 XRF altın analiz cihazı: kuyumcu, rafineri ve ayar evleri için 30–60 saniyede, parçaya dokunmadan ayar ve element ölçümü. Türkiye\'de kurulum, eğitim ve NDK lisans desteği.',
-      'craft.sP': 'Kapak açıldığı anda tüp kapanır. Gövde yüzeyinde ölçülen doz 1 µSv/sa altındadır. NDK lisans başvuru dosyanızı biz hazırlarız.',
-      'a3p': 'Gram altın, cumhuriyet altını ve yatırımlık sikkeleri ambalajından çıkarmadan kontrol edin.',
+      'meta.desc': 'PURIX X1 XRF altın analiz cihazı: kuyumcu, rafineri ve ayar evleri için 30–60 saniyede, parçaya zarar vermeden ayar ve element ölçümü. Türkiye\'de kurulum, eğitim ve NDK lisans desteği.',
+      'craft.sP': 'Kapak açıldığı anda tüp kapanır. NDK lisans başvurusu için gereken teknik dosyanın ve doz hızı ölçüm raporunun hazırlanmasında destek oluyoruz.',
+      'a3p': 'Gram altın, cumhuriyet altını ve yatırımlık sikkelerin yüzey bileşimini saniyeler içinde, zarar vermeden kontrol edin.',
       'svc.lede': 'Kurulumdan kalibrasyona kadar her adımda karşınızda Türkçe konuşan bir mühendis var.',
-      'v1p': 'Teslimat günü kurulum, personel eğitimi ve ilk kalibrasyon fiyata dahil.',
-      'v2': 'NDK lisans desteği', 'v2p': 'Radyasyon kaynağı lisans dosyası, doz ölçüm raporu ve başvuru takibi.',
-      'q3a': 'Tüp yalnızca kapak kapalıyken çalışır; gövde yüzeyindeki doz doğal fon seviyesine yakındır. Türkiye\'de X-ışını cihazları için NDK lisansı gerekir ve başvuru dosyasını sizin adınıza hazırlarız.',
+      'v1p': 'Kurulum, personel eğitimi ve ilk kalibrasyon desteği; kapsam teklifte belirtilir.',
+      'v2': 'NDK lisans desteği', 'v2p': 'NDK lisans başvurusu için gereken teknik belgelerin hazırlanmasında ve başvuru takibinde destek.',
+      'q3a': 'Tüp yalnızca kapak kapalıyken çalışır. Türkiye\'de X-ışını cihazları için NDK lisansı gerekir; başvuru dosyasının hazırlanmasında destek oluyoruz.',
       'q4a': 'Stoktaki modeller İstanbul içinde 2 iş günü, diğer illerde 5 iş günü içinde kurulur. Personel eğitimi yaklaşık 2 saat sürer.',
       'q5': 'Taksit veya kiralama seçeneği var mı?', 'q5a': 'Peşin ödeme, kredi kartına taksit ve 12–36 ay operasyonel kiralama seçenekleri var. Tercihinizi teklif formunda belirtin.',
       'c.show': 'Showroom', 'c.showV': 'Kapalıçarşı yakını, Fatih / İstanbul', 'c.hoursV': 'Hafta içi 09.00–18.30',
@@ -122,10 +122,13 @@
     $('#cIg').href = igUrl; $('#cIg').textContent = '@' + ctry.ig; $('#fIg').href = igUrl;
     $('#footLoc').textContent = `${cn} · ${L.name}`;
     $('#fTel-h').textContent = t('f.phoneH').replace('{ex}', ctry.ex);
-    $$('[data-fmt]').forEach(el => { el.innerHTML = iso(el.dataset.fmt.replace(/\{([\d.]+)\}/g, (_, n) => num(+n, (n.split('.')[1] || '').length))); });
+    const pct = s => lang === 'tr' ? s.replace(/(\d[\d.,]*)\s?%/g, '%$1') : s; // Türkçede yüzde işareti sayıdan önce (TDK)
+    $$('[data-fmt]').forEach(el => { el.innerHTML = iso(pct(el.dataset.fmt.replace(/\{([\d.]+)\}/g, (_, n) => num(+n, (n.split('.')[1] || '').length)))); });
     // Gizlilik bağlantıları: Türkçe → KVKK aydınlatma metni, diğer diller → İngilizce gizlilik bildirimi (yeni sekmede, form kaybolmasın)
     const gizlilik = lang === 'tr' ? 'kvkk.html' : 'privacy.html';
     $$('[data-t="f.kvkk"] a, [data-t="foot.kvkk"]').forEach(a => { a.href = gizlilik; a.target = '_blank'; a.rel = 'noopener'; });
+    // Broşür: Türkçe → TR PDF, diğer diller → EN PDF
+    $$('[data-t="foot.bro"]').forEach(a => { a.href = `assets/purix-x1-brosur-${lang === 'tr' ? 'tr' : 'en'}.pdf${SURUM ? '?v=' + SURUM : ''}`; a.target = '_blank'; a.rel = 'noopener'; });
 
     if (save) {
       store.set('purix-c', ctry.c); store.set('purix-l', lang);

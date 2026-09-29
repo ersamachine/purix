@@ -190,6 +190,7 @@ dl,dd{margin:0}
 .xs-leg text{fill:#D8D2C8;font:500 13px var(--f);font-variant-numeric:tabular-nums}
 .xs-done{font:650 30px var(--f);font-stretch:112%;letter-spacing:-.01em}
 .xs-done2{fill:#CFC8BE;font:500 15px var(--f)}
+[dir=rtl] .xs-done,[dir=rtl] .xs-done2{direction:rtl} /* sahne dir=ltr; Arapça/Farsça cümle sonu noktası doğru tarafta kalsın */
 .xs-play{position:absolute;right:clamp(12px,2vw,22px);bottom:clamp(12px,2vw,22px);width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.9);display:grid;place-items:center}
 .xs-play svg{width:16px;height:16px;fill:var(--ink)}
 .xs-play:hover{border-color:var(--ink-3)}
