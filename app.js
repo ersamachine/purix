@@ -475,8 +475,12 @@
       btn.disabled = true; btn.textContent = t('f.sending');
       try {
         const r = await fetch(api, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ islem: 'talep', veri }) });
-        const j = await r.json();
-        if (!j.ok) throw new Error(j.hata || 'fail');
+        let j = null; try { j = await r.clone().json(); } catch {}
+        if (j) { if (!j.ok) throw new Error(j.hata || 'fail'); }
+        // Google yanıtı googleusercontent.com'dan verir; oraya yönlendirildiysek kayıt zaten yapılmıştır
+        // (bazı ağlarda bu yanıt sayfası 404 döner ama talep tabloya yazılmış olur).
+        else if (!/googleusercontent\.com/.test(r.url)) throw new Error('HTTP ' + r.status);
+        else console.warn('PURIX: yanıt okunamadı, talep Google tarafından alındı', r.status);
       } catch (e2) {
         btn.disabled = false; btn.innerHTML = label; err.textContent = t('e.send'); return;
       }

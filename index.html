@@ -1,441 +1,499 @@
 <!doctype html>
-<html lang="tr" dir="ltr">
+<html lang="tr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title data-t="meta.title">PURIX X1 · XRF altın analiz cihazı</title>
-<meta name="description" data-t-content="meta.desc" content="PURIX X1 XRF altın analiz cihazı: kuyumcu, rafineri ve ayar evleri için 30 saniyede, parçaya dokunmadan ayar ve element ölçümü.">
-<meta name="theme-color" content="#F4F4F1">
-<link rel="icon" type="image/png" href="assets/favicon-64.png">
-<link rel="canonical" href="https://www.purixxrf.com/">
-<link rel="alternate" hreflang="tr" href="https://www.purixxrf.com/?l=tr">
-<link rel="alternate" hreflang="en" href="https://www.purixxrf.com/?l=en">
-<link rel="alternate" hreflang="hi" href="https://www.purixxrf.com/?l=hi">
-<link rel="alternate" hreflang="ar" href="https://www.purixxrf.com/?l=ar">
-<link rel="alternate" hreflang="zh" href="https://www.purixxrf.com/?l=zh">
-<link rel="alternate" hreflang="fa" href="https://www.purixxrf.com/?l=fa">
-<link rel="alternate" hreflang="id" href="https://www.purixxrf.com/?l=id">
-<link rel="alternate" hreflang="ms" href="https://www.purixxrf.com/?l=ms">
-<link rel="alternate" hreflang="th" href="https://www.purixxrf.com/?l=th">
-<link rel="alternate" hreflang="vi" href="https://www.purixxrf.com/?l=vi">
-<link rel="alternate" hreflang="it" href="https://www.purixxrf.com/?l=it">
-<link rel="alternate" hreflang="de" href="https://www.purixxrf.com/?l=de">
-<link rel="alternate" hreflang="es" href="https://www.purixxrf.com/?l=es">
-<link rel="alternate" hreflang="pt" href="https://www.purixxrf.com/?l=pt">
-<link rel="alternate" hreflang="x-default" href="https://www.purixxrf.com/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="PURIX">
-<meta property="og:title" content="PURIX X1 · XRF gold analyzer">
-<meta property="og:description" content="Karat and element analysis in 30 seconds, without touching the piece. For jewellers, refineries and assay offices.">
-<meta property="og:url" content="https://www.purixxrf.com/">
-<meta property="og:image" content="https://www.purixxrf.com/assets/og-image.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<script>
-/* Erken dil/ülke tespiti: yanlış dilin bir an görünmesini önler */
-(function(){
-  var C={IN:'en',TR:'tr',AE:'en',SA:'ar',CN:'zh',US:'en',EG:'ar',PK:'en',ID:'id',IR:'fa',KW:'ar',IT:'it',GB:'en',DE:'de',MY:'ms',SG:'en',TH:'th',VN:'vi',MX:'es',BR:'pt',INTL:'en'};
-  var RTL={ar:1,fa:1}, q=new URLSearchParams(location.search), c=(q.get('c')||'').toUpperCase(), l=(q.get('l')||'').toLowerCase();
-  // Linkte ülke varsa o ülkenin dili; hafızadaki dil yalnızca aynı ülke için geçerli
-  try{ var sc=localStorage.getItem('purix-c')||'', sl=localStorage.getItem('purix-l')||''; if(!C[c]) c=sc; if(!l && c===sc) l=sl; }catch(e){}
-  if(!C[c]){ var n=(navigator.language||'en').toLowerCase(), p=n.split('-'), r=(p[1]||'').toUpperCase();
-    var byLang={tr:'TR',hi:'IN',ur:'PK',zh:'CN',id:'ID',ms:'MY',fa:'IR',it:'IT',de:'DE',th:'TH',vi:'VN',ar:'AE',es:'MX',pt:'BR'};
-    c = C[r] && r!=='INTL' ? r : (byLang[p[0]] || 'INTL'); }
-  if(!l) l=C[c];
-  window.PURIX_BOOT={c:c,l:l};
-  var h=document.documentElement; h.lang=l; h.dir=RTL[l]?'rtl':'ltr'; h.className='js'+(l!=='tr'?' i18n-wait':'');
-  setTimeout(function(){h.classList.remove('i18n-wait')},2500);
-})();
-</script>
+<meta name="robots" content="noindex, nofollow">
+<title>PURIX Panel</title>
+<link rel="icon" type="image/png" href="../assets/favicon-64.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..750&display=swap">
-<link rel="preload" as="image" href="assets/x1-hero.webp" imagesrcset="assets/x1-hero-560.webp 560w, assets/x1-hero.webp 880w" imagesizes="(max-width: 960px) 92vw, 46vw" fetchpriority="high">
-<link rel="stylesheet" href="styles.css">
+<style>
+:root{
+  --bg:#F4F4F1;--surface:#fff;--ink:#1C1917;--ink-2:#57534E;--ink-3:#78716C;--line:#D6D3D1;--line-2:#E7E5E4;
+  --gold-text:#8B5E14;--gold:#B48C50;--gold-l:#E4CB93;--stone:#1C1917;--ok:#2F7D4A;--warn:#B4452A;
+  --metal:linear-gradient(100deg,#6E4B22 0%,#B48C50 24%,#ECD49E 46%,#C9A465 60%,#8A6331 82%,#B48C50 100%);
+  --f:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;--r:16px;--ease:cubic-bezier(.22,.7,.12,1);
+  /* durum renkleri */
+  --s-yeni:#8B5E14;--s-ilet:#3B6EA8;--s-teklif:#6D5BB8;--s-demo:#1F8A8A;--s-kaz:#2F7D4A;--s-kay:#9A938A;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.5 var(--f);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.01em}
+.wide{font-stretch:118%}
+.num{font-stretch:78%;font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--gold-text);outline-offset:2px;border-radius:6px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* Giriş */
+.login{min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(60% 60% at 50% 30%,#fff,transparent),var(--bg)}
+.login-card{width:min(400px,100%);background:var(--surface);border-radius:24px;padding:36px 32px;box-shadow:0 30px 80px -40px rgba(28,25,23,.45)}
+.login-card img{width:40px;margin-bottom:18px}
+.login-card h1{font-size:26px;font-stretch:118%}
+.login-card p{color:var(--ink-2);margin:6px 0 24px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label{font-size:13.5px;font-weight:550}
+.inp{width:100%;min-height:46px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);transition:border-color .2s,box-shadow .2s}
+.inp:focus{outline:none;border-color:var(--gold-text);background:#fff;box-shadow:0 0 0 3px rgba(139,94,20,.14)}
+textarea.inp{resize:vertical;min-height:80px}
+.err{color:var(--warn);font-size:13.5px;min-height:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;border:1px solid transparent;font-weight:600;font-size:14.5px;white-space:nowrap;text-decoration:none;transition:background-color .2s,border-color .2s,transform .12s}
+.btn:active{transform:scale(.98)}
+.btn-ink{background:var(--ink);color:#fff}.btn-ink:hover{background:#000}
+.btn-line{border-color:var(--line);background:var(--surface)}.btn-line:hover{border-color:var(--ink-3)}
+.btn-gold{background:var(--metal);background-size:200% 100%;color:#1F1406}
+.btn-sm{min-height:36px;padding:0 14px;font-size:13.5px}
+.btn-danger{color:var(--warn);border-color:#E9C9C0;background:#FFF8F6}
+.btn[disabled]{opacity:.55;cursor:progress}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Uygulama iskeleti */
+.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+.side{background:var(--stone);color:#D8D2C8;padding:22px 14px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 10px 22px}
+.brand img{width:24px}
+.brand b{font-stretch:125%;font-weight:700;letter-spacing:.07em;color:#fff;font-size:18px}
+.brand small{display:block;font-size:11px;color:#A8A29E;letter-spacing:.02em}
+.nav-btn{display:flex;align-items:center;gap:12px;width:100%;min-height:44px;padding:0 12px;border:0;border-radius:12px;background:transparent;color:#D8D2C8;text-align:start;font-weight:500;transition:background-color .2s,color .2s}
+.nav-btn svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.nav-btn:hover{background:rgba(255,255,255,.06);color:#fff}
+.nav-btn[aria-current="page"]{background:rgba(228,203,147,.14);color:var(--gold-l)}
+.nav-btn .badge{margin-inline-start:auto;min-width:22px;height:22px;padding:0 7px;border-radius:999px;background:var(--gold);color:#1F1406;font-size:12px;font-weight:700;display:grid;place-items:center}
+.side-foot{margin-top:auto;padding:12px;font-size:12.5px;color:#8C857B;border-top:1px solid #3A3431}
+.side-foot button{margin-top:10px;width:100%}
+.main{min-width:0;padding:24px clamp(16px,3vw,36px) 48px}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.top h1{font-size:26px;font-stretch:118%}
+.top .sub{color:var(--ink-3);font-size:13.5px}
+.top-end{margin-inline-start:auto;display:flex;gap:8px;align-items:center}
+.demo-bar{background:#FFF6E3;border:1px solid #EBD39C;color:#6E4B22;border-radius:12px;padding:10px 14px;font-size:13.5px;margin-bottom:18px}
+.burger{display:none}
+
+/* Kartlar */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}
+.kpi{background:var(--surface);border-radius:var(--r);padding:18px 20px;box-shadow:0 1px 0 var(--line-2)}
+.kpi span{display:block;font-size:13.5px;color:var(--ink-2)}
+.kpi b{display:block;font-size:36px;font-weight:560;line-height:1.1;margin:6px 0 2px}
+.kpi small{color:var(--ink-3);font-size:12.5px}
+.kpi.accent{background:var(--stone);color:#F5F2EC}
+.kpi.accent span{color:#CFC8BE}.kpi.accent small{color:#A8A29E}.kpi.accent b{color:var(--gold-l)}
+.grid2{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:14px;margin-bottom:14px}
+.card{background:var(--surface);border-radius:var(--r);padding:18px 20px;box-shadow:0 1px 0 var(--line-2);min-width:0}
+.card h2{font-size:16px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.card h2 small{font-weight:400;color:var(--ink-3);font-size:12.5px}
+.chart{width:100%;height:190px;display:block}
+.chart .b{fill:#D9C39A}.chart .b.today{fill:var(--gold-text)}
+.chart .ax{stroke:var(--line-2)}
+.chart text{font:500 11px var(--f);fill:var(--ink-3)}
+.hbar{display:grid;grid-template-columns:minmax(130px,1fr) 2fr 36px;gap:10px;align-items:center;padding:6px 0;font-size:14px}
+.hbar .t{height:8px;border-radius:4px;background:var(--line-2);overflow:hidden}
+.hbar .t i{display:block;height:100%;background:var(--gold);border-radius:4px}
+.hbar .v{text-align:end;font-weight:600}
+.funnel .hbar .t i{background:var(--c)}
+.empty{color:var(--ink-3);font-size:14px;padding:18px 0;text-align:center}
+
+/* Talepler */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:13.5px;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip em{font-style:normal;font-size:12px;opacity:.7}
+.filters .inp{min-height:38px;width:auto}
+.filters .search{flex:1 1 220px}
+.table-wrap{background:var(--surface);border-radius:var(--r);box-shadow:0 1px 0 var(--line-2);overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:12px 14px;text-align:start;border-bottom:1px solid var(--line-2);white-space:nowrap}
+th{font-weight:600;font-size:12.5px;color:var(--ink-2);background:#FAFAF8;position:sticky;top:0}
+tbody tr{cursor:pointer;transition:background-color .15s}
+tbody tr:hover{background:#FAF7F0}
+tbody tr.is-new td:first-child{box-shadow:inset 3px 0 0 var(--gold)}
+td .who b{display:block;font-weight:600}
+td .who small{color:var(--ink-3)}
+.cc{display:inline-grid;place-items:center;min-width:34px;height:24px;padding:0 6px;border-radius:6px;background:var(--bg);font-stretch:112%;font-weight:650;font-size:12px;color:var(--gold-text)}
+.pill{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:999px;font-size:12.5px;font-weight:600;background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c)}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c)}
+.muted{color:var(--ink-3)}
+.pager{display:flex;justify-content:space-between;align-items:center;padding:12px 4px;color:var(--ink-3);font-size:13.5px}
+
+/* Detay çekmecesi */
+.drawer{position:fixed;inset:0;z-index:50;display:flex;justify-content:flex-end;background:rgba(28,25,23,.35);opacity:0;pointer-events:none;transition:opacity .25s}
+.drawer.open{opacity:1;pointer-events:auto}
+.drawer-in{width:min(520px,100%);height:100%;background:var(--bg);overflow:auto;transform:translateX(24px);transition:transform .3s var(--ease);display:flex;flex-direction:column}
+.drawer.open .drawer-in{transform:none}
+.d-head{position:sticky;top:0;background:var(--bg);padding:20px 22px 14px;border-bottom:1px solid var(--line-2);display:flex;gap:12px;align-items:flex-start;z-index:1}
+.d-head h2{font-size:22px;font-stretch:112%}
+.d-head .muted{font-size:13px}
+.x{margin-inline-start:auto;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;flex-shrink:0}
+.x svg{width:14px;height:14px;stroke:var(--ink);stroke-width:1.8}
+.d-body{padding:18px 22px 40px;display:flex;flex-direction:column;gap:14px}
+.acts{display:flex;flex-wrap:wrap;gap:8px}
+.kv{display:grid;grid-template-columns:120px 1fr;gap:8px 14px;font-size:14px}
+.kv dt{color:var(--ink-3)}
+.kv dd{margin:0;word-break:break-word}
+.msg{white-space:pre-wrap;background:var(--bg);border-radius:12px;padding:12px 14px;font-size:14px}
+.notes{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.notes li{background:var(--bg);border-radius:12px;padding:10px 12px;font-size:14px}
+.notes li small{display:block;color:var(--ink-3);font-size:12px;margin-bottom:2px}
+.toast{position:fixed;bottom:20px;inset-inline-start:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;opacity:0;transition:.3s var(--ease);z-index:60;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%)}
+
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:1fr}}
+@media (max-width:820px){
+  .app{grid-template-columns:1fr}
+  .side{position:fixed;inset:0 auto 0 0;width:260px;z-index:40;transform:translateX(-100%);transition:transform .3s var(--ease)}
+  .side.open{transform:none;box-shadow:20px 0 60px rgba(0,0,0,.3)}
+  .burger{display:inline-flex}
+  th.hide-s,td.hide-s{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
 </head>
 <body>
-<a class="skip" href="#main" data-t="skip">İçeriğe geç</a>
-
-<header class="nav" id="nav">
-  <div class="wrap nav-in">
-    <a class="brand" href="#top" aria-label="PURIX">
-      <img src="assets/mark-128.webp" alt="" width="26" height="33">
-      <span class="brand-word">PURIX</span>
-    </a>
-    <nav class="menu" aria-label="Ana menü" data-t-aria="nav.aria">
-      <a href="#nasil" data-t="nav.how">Nasıl ölçer</a>
-      <a href="#demo" data-t="nav.demo">Canlı analiz</a>
-      <a href="#seri" data-t="nav.series">X1 serisi</a>
-      <a href="#uygulama" data-t="nav.apps">Uygulamalar</a>
-      <a href="#servis" data-t="nav.service">Servis</a>
-    </nav>
-    <div class="nav-end">
-      <button class="loc-btn" type="button" id="locBtn" aria-haspopup="dialog" aria-controls="locDlg" aria-label="Ülke ve dil" data-t-aria="nav.loc">
-        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M2 10h16M10 2c2.4 2.3 3.6 5 3.6 8s-1.2 5.7-3.6 8M10 2C7.6 4.3 6.4 7 6.4 10s1.2 5.7 3.6 8"/></svg>
-        <span class="loc-code" id="locCode">TR</span><span class="loc-lang" id="locLang">Türkçe</span>
-      </button>
-      <a class="btn btn-ink btn-sm nav-cta" href="#teklif" data-t="cta.quote">Teklif iste</a>
-      <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Menü" data-t-aria="nav.menu"><span></span><span></span></button>
-    </div>
-  </div>
-  <div class="drawer" id="drawer" hidden>
-    <a href="#nasil" data-t="nav.how">Nasıl ölçer</a>
-    <a href="#demo" data-t="nav.demo">Canlı analiz</a>
-    <a href="#seri" data-t="nav.series">X1 serisi</a>
-    <a href="#uygulama" data-t="nav.apps">Uygulamalar</a>
-    <a href="#servis" data-t="nav.service">Servis</a>
-    <a class="btn btn-ink" href="#teklif" data-t="cta.quote">Teklif iste</a>
-  </div>
-  <div class="progress" aria-hidden="true"><span id="progress"></span></div>
-</header>
-
-<main id="main">
 
 <!-- GİRİŞ -->
-<section class="hero" id="top" aria-labelledby="hero-title">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <h1 id="hero-title" class="seq" style="--i:0" data-t="hero.title">Ayar tahmin edilmez.<br>Ölçülür.</h1>
-      <p class="lede seq" style="--i:1" data-t="hero.lede">PURIX X1, altının içindeki her elementi 30 saniyede ve parçaya dokunmadan yüzde yüzüne raporlar. Kesme yok, mihenk yok, asit yok.</p>
-      <div class="hero-cta seq" style="--i:2">
-        <a class="btn btn-gold" href="#teklif" data-t="cta.quote">Teklif iste</a>
-        <a class="btn btn-line" href="#demo" data-t="hero.demo">Canlı analizi dene</a>
+<section class="login" id="login" hidden>
+  <form class="login-card" id="loginForm">
+    <img src="../assets/mark-128.webp" alt="" width="40" height="51">
+    <h1>PURIX Panel</h1>
+    <p>Teklif taleplerini görmek için giriş yapın.</p>
+    <div class="field"><label for="pw">Şifre</label><input class="inp" id="pw" type="password" autocomplete="current-password" required></div>
+    <p class="err" id="loginErr" role="alert"></p>
+    <button class="btn btn-ink" style="width:100%" type="submit" id="loginBtn">Giriş yap</button>
+  </form>
+</section>
+
+<!-- UYGULAMA -->
+<div class="app" id="app" hidden>
+  <aside class="side" id="side">
+    <div class="brand"><img src="../assets/mark-128.webp" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
+    <button class="nav-btn" data-view="genel" aria-current="page"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"/></svg>Genel bakış</button>
+    <button class="nav-btn" data-view="talepler"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Talepler<span class="badge" id="newBadge" hidden>0</span></button>
+    <button class="nav-btn" data-view="ayarlar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>Ayarlar</button>
+    <button class="nav-btn" onclick="window.open('../','_blank')"><svg viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg>Siteyi aç</button>
+    <div class="side-foot"><span id="syncInfo">—</span><button class="btn btn-line btn-sm" id="logout" style="background:transparent;color:#D8D2C8;border-color:#3A3431">Çıkış yap</button></div>
+  </aside>
+
+  <main class="main">
+    <div class="top">
+      <button class="btn btn-line btn-sm burger" id="burger" aria-label="Menü"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div><h1 id="title">Genel bakış</h1><div class="sub" id="subtitle"></div></div>
+      <div class="top-end">
+        <button class="btn btn-line btn-sm" id="refresh"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 11-2.3-5.7M20 4v5h-5"/></svg>Yenile</button>
       </div>
     </div>
-    <figure class="hero-fig">
-      <img class="hero-img" src="assets/x1-hero.webp" srcset="assets/x1-hero-560.webp 560w, assets/x1-hero.webp 880w" sizes="(max-width: 960px) 92vw, 46vw" width="880" height="945" alt="Kapağı açık PURIX X1 XRF altın analiz cihazı" data-t-alt="hero.alt" fetchpriority="high">
-      <div class="readout" aria-hidden="true">
-        <p class="ro-cap" data-t="hero.ro">Son ölçüm: 22 ayar bilezik</p>
-        <p class="ro-val"><b id="roVal">91,67</b><span>% Au</span></p>
-        <dl class="ro-row">
-          <div><dt data-t="u.mil">milyem</dt><dd id="roMil">916,7</dd></div>
-          <div><dt data-t="u.karat">ayar</dt><dd id="roK">22,00</dd></div>
-          <div><dt data-t="u.time">süre</dt><dd data-t="ro.time">30 sn</dd></div>
+    <div class="demo-bar" id="demoBar" hidden>Demo modu: aşağıdaki talepler örnek veridir. Google Apps Script bağlantısı yapıldığında gerçek talepler görünür.</div>
+
+    <!-- GENEL -->
+    <section id="v-genel">
+      <div class="kpis" id="kpis"></div>
+      <div class="grid2">
+        <div class="card"><h2>Son 30 gün <small>günlük talep sayısı</small></h2><svg class="chart" id="trend" role="img" aria-label="Son 30 günün günlük talep grafiği"></svg></div>
+        <div class="card funnel"><h2>Durum dağılımı</h2><div id="byStatus"></div></div>
+      </div>
+      <div class="grid2">
+        <div class="card"><h2>Ülkelere göre <small>tüm zamanlar</small></h2><div id="byCountry"></div></div>
+        <div class="card"><h2>Modellere göre</h2><div id="byModel"></div><h2 style="margin-top:18px">Sektörlere göre</h2><div id="bySector"></div></div>
+      </div>
+      <div class="card"><h2>Son talepler <button class="btn btn-line btn-sm" data-go="talepler">Tümünü gör</button></h2><div class="table-wrap" style="box-shadow:none"><table><tbody id="recent"></tbody></table></div></div>
+    </section>
+
+    <!-- TALEPLER -->
+    <section id="v-talepler" hidden>
+      <div class="filters">
+        <div class="chips" id="statusChips" role="group" aria-label="Duruma göre filtre"></div>
+      </div>
+      <div class="filters">
+        <input class="inp search" id="q" type="search" placeholder="Ad, firma, telefon veya e-posta ara" aria-label="Ara">
+        <select class="inp" id="fCountry" aria-label="Ülke"></select>
+        <select class="inp" id="fModel" aria-label="Model"><option value="">Tüm modeller</option><option>X1</option><option>X1 PRO</option><option>X1 LAB</option><option value="-">Kararsız</option></select>
+        <button class="btn btn-line btn-sm" id="csv"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Excel'e aktar (CSV)</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tarih</th><th>Talep eden</th><th>Ülke</th><th class="hide-s">Telefon</th><th class="hide-s">Model</th><th class="hide-s">Sektör</th><th>Durum</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <div class="pager"><span id="count"></span></div>
+    </section>
+
+    <!-- AYARLAR -->
+    <section id="v-ayarlar" hidden>
+      <div class="card" style="max-width:640px">
+        <h2>E-posta bildirimi</h2>
+        <p class="muted" style="margin:-6px 0 14px">Siteden yeni talep gelince bu adreslere e-posta gönderilir. Birden fazla adresi virgülle ayırın.</p>
+        <form id="setForm">
+          <div class="field"><label for="notify">Bildirim adresleri</label><input class="inp" id="notify" type="text" autocomplete="email" placeholder="ornek@firma.com, satis@firma.com"></div>
+          <p class="err" id="setErr" role="alert"></p>
+          <button class="btn btn-ink" type="submit">Kaydet</button>
+        </form>
+      </div>
+      <div class="card" style="max-width:640px;margin-top:14px">
+        <h2>Bağlantı</h2>
+        <dl class="kv"><dt>Veri kaynağı</dt><dd id="apiInfo"></dd><dt>Şifre</dt><dd>Apps Script editöründe <b>sifreBelirle</b> fonksiyonu ile değiştirilir.</dd><dt>Oturum</dt><dd>6 saat sonra otomatik kapanır.</dd></dl>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- DETAY -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-in" role="dialog" aria-modal="true" aria-labelledby="dTitle" id="drawerIn"></div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="../config.js"></script>
+<script>
+(() => {
+  const API = (window.PURIX_API || '').trim();
+  const DEMO = !API;
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const esc = x => String(x == null ? '' : x).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const ss = { get(k) { try { return sessionStorage.getItem(k); } catch { return null; } }, set(k, v) { try { sessionStorage.setItem(k, v); } catch {} }, del(k) { try { sessionStorage.removeItem(k); } catch {} } };
+  const DURUM_RENK = { 'Yeni': 'var(--s-yeni)', 'İletişime geçildi': 'var(--s-ilet)', 'Teklif gönderildi': 'var(--s-teklif)', 'Demo planlandı': 'var(--s-demo)', 'Kazanıldı': 'var(--s-kaz)', 'Kaybedildi': 'var(--s-kay)' };
+  const DIAL = { IN: '91', TR: '90', AE: '971', SA: '966', CN: '86', US: '1', EG: '20', PK: '92', ID: '62', IR: '98', KW: '965', IT: '39', GB: '44', DE: '49', MY: '60', SG: '65', TH: '66', VN: '84', MX: '52', BR: '55' };
+  let regionName; try { const dn = new Intl.DisplayNames(['tr'], { type: 'region' }); regionName = c => c === 'INTL' ? 'Uluslararası' : (c ? dn.of(c) : '—'); } catch { regionName = c => c || '—'; }
+  const fmtD = iso => { const d = new Date(iso); return isNaN(d) ? '—' : d.toLocaleDateString('tr-TR', { day: '2-digit', month: '2-digit', year: 'numeric' }) + ' ' + d.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }); };
+  const ago = iso => { const m = Math.round((Date.now() - new Date(iso)) / 60000); return m < 60 ? m + ' dk önce' : m < 1440 ? Math.round(m / 60) + ' sa önce' : Math.round(m / 1440) + ' gün önce'; };
+  const pill = d => `<span class="pill" style="--c:${DURUM_RENK[d] || 'var(--ink-3)'}">${esc(d)}</span>`;
+  const toast = m => { const t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('on'), 2600); };
+
+  let token = ss.get('purix_token'), data = [], durumlar = Object.keys(DURUM_RENK), bildirim = '';
+  let view = 'genel', fStatus = '', current = null;
+
+  /* ---------- API ---------- */
+  async function api(islem, extra = {}) {
+    if (DEMO) return demoApi(islem, extra);
+    // Google'ın yanıt sayfası bazen geçici olarak 404 verir; okuma işlemleri bir kez daha denenir.
+    let j = null;
+    for (let deneme = 0; deneme < (islem === 'liste' || islem === 'giris' ? 3 : 1); deneme++) {
+      try {
+        const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ islem, token, ...extra }) });
+        j = await r.json(); break;
+      } catch (e) { if (deneme < 2) await new Promise(res => setTimeout(res, 800)); }
+    }
+    if (!j) throw new Error('Sunucuya ulaşılamadı. Bağlantınızı kontrol edip Yenile düğmesine basın.');
+    if (!j.ok) { if (j.yetki) { logout(true); } throw new Error(j.hata || 'Hata'); }
+    return j;
+  }
+
+  /* ---------- Giriş ---------- */
+  $('#loginForm').addEventListener('submit', async e => {
+    e.preventDefault(); const b = $('#loginBtn'); b.disabled = true; $('#loginErr').textContent = '';
+    try { const j = await api('giris', { sifre: $('#pw').value }); token = j.token; ss.set('purix_token', token); $('#pw').value = ''; start(); }
+    catch (err) { $('#loginErr').textContent = err.message; $('#pw').focus(); }
+    finally { b.disabled = false; }
+  });
+  function logout(expired) {
+    if (!expired && token && !DEMO) api('cikis').catch(() => {});
+    token = null; ss.del('purix_token'); clearInterval(timer);
+    $('#app').hidden = true; $('#login').hidden = false; $('#loginErr').textContent = expired ? 'Oturum süresi doldu, yeniden giriş yapın.' : ''; $('#pw').focus();
+  }
+  $('#logout').addEventListener('click', () => logout(false));
+
+  /* ---------- Veri ---------- */
+  let timer;
+  async function load(silent) {
+    try {
+      const j = await api('liste');
+      const onceki = new Set(data.map(x => x.ID));
+      data = j.talepler || []; durumlar = j.durumlar || durumlar; bildirim = j.bildirim || '';
+      if (silent && onceki.size) { const yeni = data.filter(x => !onceki.has(x.ID)); if (yeni.length) toast(`${yeni.length} yeni talep geldi`); }
+      $('#syncInfo').textContent = 'Güncellendi ' + new Date().toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+      render();
+    } catch (err) { if (!silent) toast(err.message); }
+  }
+  function start() {
+    $('#login').hidden = true; $('#app').hidden = false; $('#demoBar').hidden = !DEMO;
+    $('#apiInfo').textContent = DEMO ? 'Bağlı değil (demo verisi)' : 'Google Apps Script · ' + API.replace(/^https:\/\/script\.google\.com\/macros\/s\//, '').slice(0, 14) + '…';
+    load(); clearInterval(timer); timer = setInterval(() => load(true), 60000);
+  }
+  $('#refresh').addEventListener('click', () => load());
+
+  /* ---------- Görünümler ---------- */
+  const TITLES = { genel: 'Genel bakış', talepler: 'Talepler', ayarlar: 'Ayarlar' };
+  function go(v) {
+    view = v; $$('.nav-btn[data-view]').forEach(b => b.dataset.view === v ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current'));
+    Object.keys(TITLES).forEach(k => $('#v-' + k).hidden = k !== v); $('#title').textContent = TITLES[v];
+    $('#side').classList.remove('open'); render();
+  }
+  $$('[data-view]').forEach(b => b.addEventListener('click', () => go(b.dataset.view)));
+  document.addEventListener('click', e => { const g = e.target.closest('[data-go]'); if (g) go(g.dataset.go); });
+  $('#burger').addEventListener('click', () => $('#side').classList.toggle('open'));
+
+  function render() {
+    const yeni = data.filter(x => x.Durum === 'Yeni').length;
+    $('#newBadge').hidden = !yeni; $('#newBadge').textContent = yeni;
+    $('#subtitle').textContent = data.length ? `${data.length} talep · ${yeni} yeni` : 'Henüz talep yok';
+    if (view === 'genel') renderGenel(); else if (view === 'talepler') renderList(); else renderAyar();
+  }
+
+  const bars = (pairs, total, colorOf) => pairs.length ? pairs.map(([k, v]) => `<div class="hbar"${colorOf ? ` style="--c:${colorOf(k)}"` : ''}><span>${esc(k)}</span><div class="t"><i style="width:${v ? Math.max(3, v / total * 100) : 0}%"></i></div><span class="v num">${v}</span></div>`).join('') : '<p class="empty">Veri yok</p>';
+  const countBy = (f) => { const m = {}; data.forEach(x => { const k = f(x); m[k] = (m[k] || 0) + 1; }); return Object.entries(m).sort((a, b) => b[1] - a[1]); };
+
+  function renderGenel() {
+    const now = new Date(), ay = data.filter(x => { const d = new Date(x.Zaman); return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear(); }).length;
+    const hafta = data.filter(x => now - new Date(x.Zaman) < 7 * 864e5).length;
+    const kaz = data.filter(x => x.Durum === 'Kazanıldı').length, kapanan = kaz + data.filter(x => x.Durum === 'Kaybedildi').length;
+    const yeni = data.filter(x => x.Durum === 'Yeni').length;
+    $('#kpis').innerHTML = `
+      <div class="kpi accent"><span>İşlem bekleyen</span><b class="num">${yeni}</b><small>durumu "Yeni" olan talepler</small></div>
+      <div class="kpi"><span>Bu hafta</span><b class="num">${hafta}</b><small>son 7 gün</small></div>
+      <div class="kpi"><span>Bu ay</span><b class="num">${ay}</b><small>toplam ${data.length} talep</small></div>
+      <div class="kpi"><span>Kazanılan</span><b class="num">${kaz}</b><small>${kapanan ? 'kapanan taleplerin %' + Math.round(kaz / kapanan * 100) + "'i" : 'henüz kapanan yok'}</small></div>`;
+    // 30 günlük grafik
+    const days = [...Array(30)].map((_, i) => { const d = new Date(now); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() - 29 + i); return d; });
+    const cnt = days.map(d => data.filter(x => { const z = new Date(x.Zaman); return z >= d && z < new Date(+d + 864e5); }).length);
+    const svg = $('#trend'), W = svg.clientWidth || 600, H = 190, max = Math.max(3, ...cnt), bw = W / 30;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.innerHTML = `<line class="ax" x1="0" y1="${H - 22}" x2="${W}" y2="${H - 22}"/>` + cnt.map((c, i) => {
+      const h = c / max * (H - 44), x = i * bw + bw * .18;
+      return `<rect class="b${i === 29 ? ' today' : ''}" x="${x}" y="${H - 22 - h}" width="${bw * .64}" height="${Math.max(h, c ? 2 : 0)}" rx="2"><title>${days[i].toLocaleDateString('tr-TR')}: ${c} talep</title></rect>` +
+        (c ? `<text x="${x + bw * .32}" y="${H - 26 - h}" text-anchor="middle">${c}</text>` : '') +
+        (i % 7 === 1 || i === 29 ? `<text x="${x + bw * .32}" y="${H - 6}" text-anchor="middle">${days[i].toLocaleDateString('tr-TR', { day: '2-digit', month: '2-digit' })}</text>` : '');
+    }).join('');
+    const st = durumlar.map(d => [d, data.filter(x => x.Durum === d).length]);
+    $('#byStatus').innerHTML = data.length ? bars(st, data.length, k => DURUM_RENK[k]) : '<p class="empty">Veri yok</p>';
+    $('#byCountry').innerHTML = bars(countBy(x => regionName(x['Ülke'])).slice(0, 12), data.length);
+    $('#byModel').innerHTML = bars(countBy(x => x.Model || 'Kararsız'), data.length);
+    $('#bySector').innerHTML = bars(countBy(x => x['Sektör'] || '—').slice(0, 6), data.length);
+    $('#recent').innerHTML = data.slice(0, 6).map(rowHtml).join('') || '<tr><td class="empty">Henüz talep yok. Siteden gelen talepler burada görünür.</td></tr>';
+  }
+
+  function rowHtml(x) {
+    return `<tr data-id="${esc(x.ID)}" class="${x.Durum === 'Yeni' ? 'is-new' : ''}" tabindex="0">
+      <td><span class="num">${fmtD(x.Zaman)}</span><br><small class="muted">${ago(x.Zaman)}</small></td>
+      <td><div class="who"><b>${esc(x['Ad soyad'])}</b><small>${esc(x.Firma || '—')}</small></div></td>
+      <td><span class="cc" title="${esc(regionName(x['Ülke']))}">${esc(x['Ülke'] || '—')}</span></td>
+      <td class="hide-s num">${esc(x.Telefon)}</td><td class="hide-s">${esc(x.Model || '—')}</td><td class="hide-s">${esc(x['Sektör'] || '—')}</td>
+      <td>${pill(x.Durum)}</td></tr>`;
+  }
+
+  function filtered() {
+    const q = $('#q').value.trim().toLocaleLowerCase('tr'), c = $('#fCountry').value, m = $('#fModel').value;
+    return data.filter(x => (!fStatus || x.Durum === fStatus) && (!c || x['Ülke'] === c) && (!m || (m === '-' ? !x.Model : x.Model === m)) &&
+      (!q || [x['Ad soyad'], x.Firma, x.Telefon, x['E-posta'], x.ID].join(' ').toLocaleLowerCase('tr').includes(q)));
+  }
+  function renderList() {
+    $('#statusChips').innerHTML = [['', 'Tümü', data.length], ...durumlar.map(d => [d, d, data.filter(x => x.Durum === d).length])]
+      .map(([v, l, n]) => `<button class="chip" data-st="${esc(v)}" aria-pressed="${fStatus === v}">${esc(l)} <em>${n}</em></button>`).join('');
+    const sel = $('#fCountry'), cur = sel.value, codes = [...new Set(data.map(x => x['Ülke']).filter(Boolean))].sort((a, b) => regionName(a).localeCompare(regionName(b), 'tr'));
+    sel.innerHTML = '<option value="">Tüm ülkeler</option>' + codes.map(c => `<option value="${esc(c)}">${esc(regionName(c))}</option>`).join(''); sel.value = cur;
+    const rows = filtered();
+    $('#rows').innerHTML = rows.map(rowHtml).join('') || `<tr><td colspan="7" class="empty">${data.length ? 'Bu filtreyle eşleşen talep yok.' : 'Henüz talep yok. Siteden gelen talepler burada görünür.'}</td></tr>`;
+    $('#count').textContent = `${rows.length} / ${data.length} talep`;
+  }
+  $('#statusChips').addEventListener('click', e => { const b = e.target.closest('[data-st]'); if (b) { fStatus = b.dataset.st; renderList(); } });
+  ['#q', '#fCountry', '#fModel'].forEach(s => $(s).addEventListener('input', renderList));
+  document.addEventListener('click', e => { const tr = e.target.closest('tr[data-id]'); if (tr) openDetail(tr.dataset.id); });
+  document.addEventListener('keydown', e => { const tr = e.target.closest && e.target.closest('tr[data-id]'); if (tr && e.key === 'Enter') openDetail(tr.dataset.id); if (e.key === 'Escape') closeDetail(); });
+
+  /* ---------- Detay ---------- */
+  function waLink(x) {
+    let d = String(x.Telefon || '').replace(/[^\d+]/g, '');
+    if (!d) return '';
+    if (d.startsWith('+')) d = d.slice(1); else if (d.startsWith('00')) d = d.slice(2); else if (DIAL[x['Ülke']]) d = DIAL[x['Ülke']] + d.replace(/^0+/, '');
+    return 'https://wa.me/' + d;
+  }
+  function openDetail(id) {
+    const x = data.find(t => t.ID === id); if (!x) return; current = x;
+    const notes = String(x.Notlar || '').split('\n').filter(Boolean).map(n => { const i = n.indexOf(' · '); return `<li><small>${esc(n.slice(0, i))}</small>${esc(n.slice(i + 3))}</li>`; }).reverse().join('');
+    const wa = waLink(x);
+    $('#drawerIn').innerHTML = `
+      <div class="d-head"><div><h2 id="dTitle">${esc(x['Ad soyad'])}</h2><div class="muted">${esc(x.Firma || 'Firma belirtilmedi')} · ${esc(x.ID)}</div></div>
+        <button class="x" data-close aria-label="Kapat"><svg viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15"/></svg></button></div>
+      <div class="d-body">
+        <div class="acts">
+          ${wa ? `<a class="btn btn-ink btn-sm" href="${esc(wa)}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
+          ${x.Telefon ? `<a class="btn btn-line btn-sm" href="tel:${esc(String(x.Telefon).replace(/[^\d+]/g, ''))}">Ara</a>` : ''}
+          ${x['E-posta'] ? `<a class="btn btn-line btn-sm" href="mailto:${esc(x['E-posta'])}?subject=${encodeURIComponent('PURIX ' + (x.Model || 'X1') + ' teklifi')}">E-posta</a>` : ''}
+        </div>
+        <div class="field"><label for="dStatus">Durum</label><select class="inp" id="dStatus">${durumlar.map(d => `<option ${d === x.Durum ? 'selected' : ''}>${esc(d)}</option>`).join('')}</select></div>
+        <dl class="kv">
+          <dt>Geliş</dt><dd>${fmtD(x.Zaman)} <span class="muted">(${ago(x.Zaman)})</span></dd>
+          <dt>Ülke / dil</dt><dd>${esc(regionName(x['Ülke']))} · ${esc(String(x.Dil || '').toUpperCase())}</dd>
+          <dt>Telefon</dt><dd class="num">${esc(x.Telefon)}</dd>
+          <dt>E-posta</dt><dd>${esc(x['E-posta'] || '—')}</dd>
+          <dt>Sektör</dt><dd>${esc(x['Sektör'] || '—')}</dd>
+          <dt>Model</dt><dd>${esc(x.Model || 'Karar vermedi')}</dd>
+          <dt>İstek</dt><dd>${esc(x['İstek'] || '—')}</dd>
+          <dt>Kaynak</dt><dd>${esc(x.Kaynak || 'Doğrudan')}</dd>
         </dl>
-      </div>
-    </figure>
-  </div>
+        ${x.Mesaj ? `<div><h3 style="font-size:14px;margin-bottom:6px">Mesaj</h3><div class="msg">${esc(x.Mesaj)}</div></div>` : ''}
+        <div><h3 style="font-size:14px;margin-bottom:8px">Notlar</h3>
+          <form id="noteForm" class="field"><textarea class="inp" id="noteTxt" placeholder="Örneğin: Fiyat WhatsApp ile gönderildi, 3 Ekim'de demo" aria-label="Not"></textarea>
+          <div><button class="btn btn-ink btn-sm" type="submit">Not ekle</button></div></form>
+          <ul class="notes">${notes || '<li class="muted">Henüz not yok.</li>'}</ul></div>
+        <div style="margin-top:10px"><button class="btn btn-danger btn-sm" id="delBtn">Talebi sil</button></div>
+      </div>`;
+    const dr = $('#drawer'); dr.classList.add('open'); dr.setAttribute('aria-hidden', 'false'); $('[data-close]').focus();
+  }
+  function closeDetail() { const dr = $('#drawer'); if (!dr.classList.contains('open')) return; dr.classList.remove('open'); dr.setAttribute('aria-hidden', 'true'); current = null; }
+  $('#drawer').addEventListener('click', e => { if (e.target.id === 'drawer' || e.target.closest('[data-close]')) closeDetail(); });
+  async function update(payload, msg) {
+    try { const j = await api('guncelle', { id: current.ID, ...payload });
+      if (j.silindi) { data = data.filter(x => x.ID !== current.ID); closeDetail(); }
+      else { Object.assign(current, j.talep); openDetail(current.ID); }
+      render(); toast(msg);
+    } catch (err) { toast(err.message); }
+  }
+  $('#drawer').addEventListener('change', e => { if (e.target.id === 'dStatus') update({ durum: e.target.value }, 'Durum güncellendi'); });
+  $('#drawer').addEventListener('submit', e => { if (e.target.id === 'noteForm') { e.preventDefault(); const t = $('#noteTxt').value.trim(); if (t) update({ not: t }, 'Not eklendi'); } });
+  $('#drawer').addEventListener('click', e => { if (e.target.id === 'delBtn' && confirm('Bu talep kalıcı olarak silinsin mi?')) update({ sil: true }, 'Talep silindi'); });
 
-  <div class="spectrum" dir="ltr" aria-hidden="true">
-    <svg id="heroSpec" viewBox="0 0 1600 180" preserveAspectRatio="none"></svg>
-    <div class="spec-tags" id="heroTags"></div>
-  </div>
+  /* ---------- CSV ---------- */
+  $('#csv').addEventListener('click', () => {
+    const cols = ['ID', 'Zaman', 'Ad soyad', 'Firma', 'Telefon', 'E-posta', 'Ülke', 'Dil', 'Sektör', 'Model', 'İstek', 'Mesaj', 'Kaynak', 'Durum', 'Notlar'];
+    const cell = v => { let s = String(v == null ? '' : v); if (/^[=+\-@]/.test(s)) s = "'" + s; return '"' + s.replace(/"/g, '""') + '"'; };
+    const csv = '﻿' + [cols.join(';'), ...filtered().map(x => cols.map(c => cell(c === 'Zaman' ? fmtD(x[c]) : x[c])).join(';'))].join('\r\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    a.download = 'purix-talepler-' + new Date().toISOString().slice(0, 10) + '.csv'; a.click(); URL.revokeObjectURL(a.href);
+  });
 
-  <div class="wrap">
-    <dl class="specs">
-      <div><dt data-t="spec.prec">Hassasiyet</dt><dd id="specPrec">±0,03 %</dd><p data-t="spec.precN">Au, X1 PRO ile</p></div>
-      <div><dt data-t="spec.time">Ölçüm süresi</dt><dd data-t="spec.timeV">30 sn</dd><p data-t="spec.timeN">Numune başına</p></div>
-      <div><dt data-t="spec.dmg">Numuneye etkisi</dt><dd data-t="spec.dmgV">Yok</dd><p data-t="spec.dmgN">Kesme, kazıma, asit yok</p></div>
-      <div><dt data-t="spec.el">Element aralığı</dt><dd dir="ltr">S – U</dd><p dir="ltr">Au, Ag, Pt, Pd, Cu, Zn, Ni…</p></div>
-    </dl>
-  </div>
-</section>
+  /* ---------- Ayarlar ---------- */
+  function renderAyar() { if (document.activeElement !== $('#notify')) $('#notify').value = bildirim; }
+  $('#setForm').addEventListener('submit', async e => {
+    e.preventDefault(); $('#setErr').textContent = '';
+    try { const j = await api('ayarlar', { bildirim: $('#notify').value }); bildirim = j.bildirim; toast('Bildirim adresleri kaydedildi'); }
+    catch (err) { $('#setErr').textContent = err.message; }
+  });
 
-<!-- NEDEN XRF -->
-<section class="why" id="neden" aria-labelledby="why-title">
-  <div class="wrap">
-    <div class="head">
-      <h2 id="why-title" data-t="why.title">Mihenk taşı yorumlar.<br>Asit yüzeye bakar.<br>XRF sayar.</h2>
-      <p data-t="why.lede">Hurda alımında yarım ayarlık bir yanılgı, gram başına gerçek bir kayıptır. Üç yöntemi aynı ölçütlerle yan yana koyduk.</p>
-    </div>
-    <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="why-title">
-      <table class="methods">
-        <thead>
-          <tr><th scope="col"><span class="sr" data-t="why.crit">Ölçüt</span></th><th scope="col" data-t="why.m1">Mihenk taşı</th><th scope="col" data-t="why.m2">Asit testi</th><th scope="col" class="hl">PURIX XRF</th></tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row" data-t="why.r1">Parçaya etkisi</th><td data-t="why.r1a">Çizik bırakır</td><td data-t="why.r1b">Yüzeyi aşındırır</td><td class="hl" data-t="why.r1c">Dokunmaz</td></tr>
-          <tr><th scope="row" data-t="why.r2">Sonuç</th><td data-t="why.r2a">Göz kararı ayar</td><td data-t="why.r2b">Ayar aralığı (ör. 14–18)</td><td class="hl" data-t="why.r2c">Her elementin yüzdesi</td></tr>
-          <tr><th scope="row" data-t="why.r3">Süre</th><td data-t="why.r3a">1–2 dakika</td><td data-t="why.r3b">2–5 dakika</td><td class="hl" data-t="why.r3c">30 saniye</td></tr>
-          <tr><th scope="row" data-t="why.r4">Kaplama tespiti</th><td data-t="no">Hayır</td><td data-t="why.r4b">Sınırlı</td><td class="hl" data-t="why.r4c">Uyarı verir</td></tr>
-          <tr><th scope="row" data-t="why.r5">Kayıt</th><td data-t="none">Yok</td><td data-t="none">Yok</td><td class="hl" data-t="why.r5c">PDF ve fiş raporu</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
+  /* ---------- Demo verisi (API bağlanana kadar) ---------- */
+  let demo = null;
+  function demoApi(islem, x) {
+    if (!demo) {
+      const C = ['IN', 'IN', 'IN', 'TR', 'TR', 'AE', 'AE', 'SA', 'CN', 'US', 'EG', 'PK', 'ID', 'KW', 'IT', 'DE', 'MY', 'TH', 'VN', 'MX', 'BR', 'GB', 'SG'];
+      const N = ['Rahul Mehta', 'Ayşe Kaya', 'Omar Al-Harbi', 'Wei Zhang', 'John Carter', 'Fatima Noor', 'Budi Santoso', 'Marco Rossi', 'Lukas Weber', 'Siti Aminah', 'Somchai P.', 'Nguyễn Văn An', 'Carlos Ruiz', 'Ana Souza', 'Ahmed Hassan', 'Priya Shah', 'Mehmet Demir', 'Khalid Al-Sabah'];
+      const F = ['Mehta Jewellers', 'Kaya Kuyumculuk', 'Al Harbi Gold', 'Shenzhen Gold Co.', 'Carter Pawn', '', 'Toko Emas Jaya', 'Oreficeria Rossi', 'Weber Goldankauf', 'Kedai Emas Siti', '', 'Vàng Bạc An', 'Joyería Ruiz', 'Souza Joias', 'Cairo Gold', 'Shah Bullion', 'Demir Rafineri', 'Sabah Gold'];
+      const S = ['Kuyumcu', 'Kuyumcu', 'Rehin / altın kredisi', 'Rafineri', 'Toptancı / atölye', 'Ayar evi / laboratuvar'];
+      const M = ['X1', 'X1', 'X1 PRO', 'X1 PRO', 'X1 LAB', ''];
+      const D = ['Yeni', 'Yeni', 'Yeni', 'İletişime geçildi', 'Teklif gönderildi', 'Teklif gönderildi', 'Demo planlandı', 'Kazanıldı', 'Kaybedildi'];
+      let s = 7; const r = n => (s = (s * 9301 + 49297) % 233280, Math.floor(s / 233280 * n));
+      demo = [...Array(46)].map((_, i) => {
+        const z = new Date(Date.now() - (i * 15.5 + r(10)) * 36e5), c = C[r(C.length)], k = r(N.length), d = i < 5 ? 'Yeni' : D[r(D.length)];
+        return { ID: 'PX-DEMO-' + (1000 + i), Zaman: z.toISOString(), 'Ad soyad': N[k], Firma: F[k], Telefon: '+' + (DIAL[c] || '1') + ' 5' + (100000000 + r(899999999)), 'E-posta': F[k] ? 'info@example.com' : '', 'Ülke': c, Dil: 'en', 'Sektör': S[r(S.length)], Model: M[r(M.length)], 'İstek': ['teklif', 'teklif, demo', 'kiralama'][r(3)], Mesaj: r(3) ? '' : 'Günde yaklaşık 40 ölçüm yapıyoruz, 22 ayar bilezik ağırlıklı.', Kaynak: ['instagram.com', 'Doğrudan', 'google.com'][r(3)], Sayfa: '/?c=' + c.toLowerCase(), Durum: d, Notlar: d === 'Yeni' ? '' : '28.09.2026 14:10 · İlk görüşme yapıldı', 'Güncelleme': z.toISOString() };
+      });
+    }
+    return new Promise(res => setTimeout(() => {
+      if (islem === 'giris') return res({ ok: true, token: 'demo' });
+      if (islem === 'liste') return res({ ok: true, talepler: demo.map(o => ({ ...o })), durumlar: Object.keys(DURUM_RENK), bildirim: 'ornek@purixxrf.com' });
+      if (islem === 'guncelle') { const t = demo.find(o => o.ID === x.id); if (x.sil) { demo = demo.filter(o => o !== t); return res({ ok: true, silindi: true }); }
+        if (x.durum) t.Durum = x.durum; if (x.not) t.Notlar = (t.Notlar ? t.Notlar + '\n' : '') + new Date().toLocaleString('tr-TR').slice(0, 16) + ' · ' + x.not; return res({ ok: true, talep: { ...t } }); }
+      if (islem === 'ayarlar') return res({ ok: true, bildirim: x.bildirim });
+      res({ ok: true });
+    }, 150));
+  }
 
-<!-- NASIL ÖLÇER -->
-<section class="how" id="nasil" aria-labelledby="how-title">
-  <div class="wrap how-grid">
-    <div class="how-copy">
-      <h2 id="how-title" data-t="how.title">Otuz saniyede ne oluyor?</h2>
-      <ol class="steps" id="steps">
-        <li data-step="1"><span class="n">1</span><div><h3 data-t="how.s1">Uyarma</h3><p data-t="how.s1p">Tüp, numuneye düşük güçlü X-ışını gönderir. Kapak kapanmadan tüp çalışmaz.</p></div></li>
-        <li data-step="2"><span class="n">2</span><div><h3 data-t="how.s2">Floresans</h3><p data-t="how.s2p">Her element kendine özgü enerjide ikincil ışın yayar: altın 9,71 keV'de, gümüş 22,16 keV'de.</p></div></li>
-        <li data-step="3"><span class="n">3</span><div><h3 data-t="how.s3">Sayım</h3><p data-t="how.s3p">Dedektör bu ışınları sayar; yazılım tepeleri oranlara çevirir ve ayarı hesaplar.</p></div></li>
-      </ol>
-    </div>
-    <figure class="diagram" id="diagram" data-step="0" dir="ltr">
-      <svg viewBox="0 0 520 380" role="img" aria-labelledby="dgTitle">
-        <title id="dgTitle" data-t="how.dg">XRF ölçüm şeması: X-ışını tüpü numuneyi uyarır, numune floresans yayar, dedektör sayar.</title>
-        <defs>
-          <linearGradient id="gm" x1="0" x2="1"><stop offset="0" stop-color="#7A5628"/><stop offset=".5" stop-color="#E6CC92"/><stop offset="1" stop-color="#9C7438"/></linearGradient>
-        </defs>
-        <rect x="40" y="300" width="440" height="10" rx="5" class="dg-base"/>
-        <g class="dg-tube">
-          <rect x="52" y="54" width="130" height="64" rx="12"/>
-          <circle cx="160" cy="86" r="9" class="dg-focus"/>
-          <text x="66" y="92" class="dg-lbl" data-t="how.tube">X-ışını tüpü</text>
-        </g>
-        <path class="dg-beam" d="M168 106 L252 276"/>
-        <g class="dg-sample">
-          <ellipse cx="260" cy="286" rx="46" ry="12" fill="none" stroke="url(#gm)" stroke-width="9"/>
-          <text x="260" y="340" text-anchor="middle" class="dg-lbl" data-t="how.sample">Numune</text>
-        </g>
-        <g class="dg-rays">
-          <path d="M270 274 L370 120"/>
-          <path d="M280 276 L384 128"/>
-          <path d="M262 272 L358 114"/>
-        </g>
-        <g class="dg-det">
-          <rect x="340" y="54" width="130" height="64" rx="12"/>
-          <circle cx="362" cy="100" r="7" class="dg-win"/>
-          <text x="380" y="92" class="dg-lbl" data-t="how.det">Dedektör</text>
-        </g>
-        <g class="dg-spec">
-          <path d="M340 238 L360 238 L366 232 L372 238 L392 238 L398 170 L404 238 L412 238 L418 192 L424 238 L446 238 L452 226 L458 238 L472 238"/>
-          <text x="340" y="262" class="dg-lbl dg-small">keV</text>
-        </g>
-      </svg>
-    </figure>
-  </div>
-</section>
-
-<!-- CANLI ANALİZ -->
-<section class="demo" id="demo" aria-labelledby="demo-title">
-  <div class="wrap">
-    <div class="head head-row">
-      <h2 id="demo-title" data-t="demo.title">Bir numune seçin,<br>sonucu görün.</h2>
-      <p data-t="demo.lede">Bu ekran X1'in arayüzünü taklit eder. Spektrumdaki her tepe bir elementtir; tepenin yüksekliği o elementin miktarını gösterir.</p>
-    </div>
-    <div class="console">
-      <div class="samples" role="radiogroup" aria-labelledby="sampleLbl">
-        <p id="sampleLbl" class="c-lbl" data-t="demo.sample">Numune</p>
-        <button type="button" role="radio" aria-checked="true" data-s="bilezik"><b data-t="s.bilezik">22 ayar bilezik</b><span data-t="s.bilezikN">Vitrin ürünü</span></button>
-        <button type="button" role="radio" aria-checked="false" data-s="gram"><b data-t="s.gram">Gram altın</b><span data-t="s.gramN">24 ayar külçe</span></button>
-        <button type="button" role="radio" aria-checked="false" data-s="yuzuk"><b data-t="s.yuzuk">18 ayar beyaz altın yüzük</b><span data-t="s.yuzukN">Paladyumlu alaşım</span></button>
-        <button type="button" role="radio" aria-checked="false" data-s="kolye"><b data-t="s.kolye">14 ayar kolye</b><span data-t="s.kolyeN">İthal zincir</span></button>
-        <button type="button" role="radio" aria-checked="false" data-s="sahte"><b data-t="s.sahte">Şüpheli bilezik</b><span data-t="s.sahteN">Müşteriden alım</span></button>
-      </div>
-      <div class="screen">
-        <div class="scr-top">
-          <span class="scr-name">GOLD ANALYSIS</span>
-          <span class="scr-state" id="scrState"><i></i><span id="scrStateTxt">Hazır</span></span>
-        </div>
-        <div class="scr-body">
-          <div class="scr-chart" dir="ltr">
-            <canvas id="specCanvas" role="img" aria-label="XRF spektrumu" data-t-aria="demo.chart"></canvas>
-            <div class="scr-prog" aria-hidden="true"><span id="prog"></span></div>
-          </div>
-          <div class="scr-side">
-            <table class="elem">
-              <thead><tr><th scope="col" data-t="demo.el">Element</th><th scope="col">%</th><th scope="col"><span class="sr" data-t="demo.bar">Oran</span></th></tr></thead>
-              <tbody id="elemBody"></tbody>
-            </table>
-            <div class="verdict">
-              <div><span data-t="u.karatC">Ayar</span><b id="vK">—</b></div>
-              <div><span data-t="u.milC">Milyem</span><b id="vM">—</b></div>
-            </div>
-            <p class="vnote" id="vNote" aria-live="polite"></p>
-          </div>
-        </div>
-        <div class="scr-foot">
-          <button class="btn btn-gold" type="button" id="runBtn">Analizi başlat</button>
-          <span class="scr-hint" data-t="demo.hint">Cihazda 30 sn sürer; burada hızlandırıldı.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- X1 SERİSİ -->
-<section class="series" id="seri" aria-labelledby="series-title">
-  <div class="wrap">
-    <div class="head head-row">
-      <h2 id="series-title" data-t="ser.title">X1 serisi</h2>
-      <p data-t="ser.lede">Aynı gövde, aynı arayüz, aynı servis ağı. Ölçtüğünüz malzemeye göre üç dedektör sınıfından birini seçin.</p>
-    </div>
-    <div class="tabs" role="tablist" aria-labelledby="series-title" id="tabs"></div>
-    <div class="model" id="modelPanel" role="tabpanel" tabindex="0">
-      <figure class="model-fig">
-        <img src="assets/x1-front.webp" width="450" height="390" alt="PURIX X1 önden görünüm" data-t-alt="ser.alt" loading="lazy" decoding="async">
-      </figure>
-      <div class="model-body" id="modelBody"></div>
-    </div>
-    <details class="all">
-      <summary data-t="ser.all">Üç modeli yan yana karşılaştır</summary>
-      <div class="cmp-wrap" tabindex="0" role="region" aria-label="Model karşılaştırma" data-t-aria="ser.allAria">
-        <table class="cmp" id="cmpTable"></table>
-      </div>
-    </details>
-    <p class="common" data-t="ser.common">Tüm modellerde: 50 kV mikro odaklı X-ışını tüpü, HD numune kamerası, kapak emniyet kilidi, 10,1″ dokunmatik ekran ve dahili bilgisayar, 100–240 V.</p>
-  </div>
-</section>
-
-<!-- TASARIM -->
-<section class="craft" id="tasarim" aria-labelledby="craft-title">
-  <div class="wrap craft-grid">
-    <div class="craft-copy">
-      <h2 id="craft-title" data-t="craft.title">Vitrinin yanında durmak için tasarlandı.</h2>
-      <p data-t="craft.lede">Çoğu analiz cihazı arka odaya saklanır. X1, ölçümü müşterinin gözü önünde yapmanız için tasarlandı: sonuç ekranı müşteriye döner, güveni rakam kurar.</p>
-      <dl class="craft-list">
-        <div><dt data-t="craft.b">Gövde</dt><dd data-t="craft.bV">Porselen beyazı toz boya, fırçalanmış şampanya altın çerçeve</dd></div>
-        <div><dt data-t="craft.l">Kapak</dt><dd data-t="craft.lV">Gazlı amortisör; açık kalır, sessiz kapanır</dd></div>
-        <div><dt data-t="craft.c">Soğutma</dt><dd data-t="craft.cV">Yan yüzeyde üçgen desenli pasif hava kanalları</dd></div>
-      </dl>
-    </div>
-    <figure class="shot s1"><img src="assets/x1-handle.webp" width="235" height="177" alt="Kapaktaki fırçalanmış altın tutamak" data-t-alt="craft.h" loading="lazy" decoding="async"><figcaption data-t="craft.h">Kapaktaki fırçalanmış altın tutamak</figcaption></figure>
-    <figure class="shot s2"><img src="assets/x1-vent.webp" width="235" height="205" alt="Yan paneldeki üçgen desenli hava kanalları" data-t-alt="craft.v" loading="lazy" decoding="async"><figcaption data-t="craft.v">Yan paneldeki hava kanalları</figcaption></figure>
-    <div class="safety">
-      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l14 6v10c0 9-6 15-14 18C12 34 6 28 6 19V9z"/><path d="M13.5 20l4.5 4.5 8.5-9"/></svg>
-      <div>
-        <h3 data-t="craft.s">Radyasyon güvenliği</h3>
-        <p data-t="craft.sP">Kapak açıldığı anda tüp kapanır. Gövde yüzeyinde ölçülen doz 1 µSv/sa altındadır. Ülkenizde gereken radyasyon lisansı için teknik dosyayı biz sağlarız.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- UYGULAMALAR -->
-<section class="apps" id="uygulama" aria-labelledby="apps-title">
-  <div class="wrap apps-grid">
-    <div class="apps-head">
-      <h2 id="apps-title" data-t="apps.title">Altının el değiştirdiği her yerde.</h2>
-      <p data-t="apps.lede">Sektörünüzü bulun; hangi modelle başlamanız gerektiği yanında yazıyor.</p>
-    </div>
-    <ul class="app-list">
-      <li><h3 data-t="a1">Kuyumcular</h3><p data-t="a1p">Hurda alımında ayarı müşterinin önünde ölçün, fiyatı rakamla savunun.</p><span class="chip">X1</span></li>
-      <li><h3 data-t="a2">Rehin ve altın kredisi</h3><p data-t="a2p">Teminata alınan her parçanın ölçüm raporunu dosyaya ekleyin; kaplama riskini masada yakalayın.</p><span class="chip">X1</span></li>
-      <li><h3 data-t="a3">Külçe ve sikke</h3><p data-t="a3p">Külçe ve yatırımlık sikkeleri ambalajından çıkarmadan kontrol edin.</p><span class="chip">X1</span></li>
-      <li><h3 data-t="a4">Rafineriler</h3><p data-t="a4p">Giriş malzemesini ve çıkış külçesini aynı cihazla doğrulayın, safsızlıkları takip edin.</p><span class="chip">X1 PRO</span></li>
-      <li><h3 data-t="a5">Toptancı ve atölyeler</h3><p data-t="a5p">Alaşım reçetesini üretim öncesi ve sonrası doğrulayın; beyaz altında paladyumu ölçün.</p><span class="chip">X1 PRO</span></li>
-      <li><h3 data-t="a6">Ayar evleri ve laboratuvarlar</h3><p data-t="a6p">Çok kolimatörlü ölçümle küçük parçalarda bile ±0,01 % tekrarlanabilirlik.</p><span class="chip">X1 LAB</span></li>
-    </ul>
-  </div>
-</section>
-
-<!-- SERVİS -->
-<section class="service" id="servis" aria-labelledby="svc-title">
-  <div class="wrap svc-grid">
-    <div class="svc-head">
-      <h2 id="svc-title" data-t="svc.title">Cihazı teslim etmek işin başlangıcı.</h2>
-      <p data-t="svc.lede">Kurulumdan kalibrasyona kadar her adımda yerel iş ortağımız ve merkez teknik ekibimiz yanınızda.</p>
-      <a class="btn btn-gold" href="#teklif" data-t="svc.cta">Servis ekibiyle görüşün</a>
-    </div>
-    <ul class="svc-list">
-      <li><h3 data-t="v1">Yerinde kurulum ve eğitim</h3><p data-t="v1p">Teslimat sonrası kurulum, personel eğitimi ve ilk kalibrasyon fiyata dahil.</p></li>
-      <li><h3 data-t="v2">Lisans desteği</h3><p data-t="v2p">Ülkenizdeki radyasyon lisansı veya kaydı için teknik dosya ve doz ölçüm raporu.</p></li>
-      <li><h3 data-t="v3">2 yıl garanti</h3><p data-t="v3p">X-ışını tüpü ve dedektör dahil. İsteğe bağlı uzatılmış garanti.</p></li>
-      <li><h3 data-t="v4">48 saatte müdahale</h3><p data-t="v4p">Uzaktan bağlantıyla ilk teşhis; gerekirse yedek cihaz.</p></li>
-      <li><h3 data-t="v5">Referans standartlar</h3><p data-t="v5p">8, 14, 18, 22 ve 24 ayar kalibrasyon seti cihazla birlikte gelir.</p></li>
-    </ul>
-  </div>
-</section>
-
-<!-- SSS -->
-<section class="faq" id="sss" aria-labelledby="faq-title">
-  <div class="wrap faq-grid">
-    <h2 id="faq-title" data-t="faq.title">Satın almadan önce sorulanlar</h2>
-    <div class="faq-list">
-      <details><summary data-t="q1">XRF, mihenk taşı ve asitle kıyaslandığında ne kadar güvenilir?</summary><p data-t="q1a">Mihenk taşı ustanın gözüne, asit testi yalnızca yüzeye bağlıdır. XRF her elementin oranını sayısal olarak verir, sonuç tekrarlanabilir ve parçaya hiçbir şekilde zarar vermez.</p></details>
-      <details><summary data-t="q2">Altın kaplı ya da içi dolgulu parçaları yakalar mı?</summary><p data-t="q2a">X1, yüzey alaşımı beklenen alaşımla tutarsız olduğunda uyarı verir. Kalın kaplama ve tungsten dolgu şüphesinde X1 PRO'nun kaplama modu ve birden fazla noktadan ölçüm önerilir.</p></details>
-      <details><summary data-t="q3">Cihaz radyasyon yayar mı, lisans gerekir mi?</summary><p data-t="q3a">Tüp yalnızca kapak kapalıyken çalışır; gövde yüzeyindeki doz doğal fon seviyesine yakındır. Çoğu ülkede X-ışını cihazları için ulusal radyasyon otoritesinden lisans veya kayıt gerekir; başvuru için gereken teknik dosyayı sağlıyoruz.</p></details>
-      <details><summary data-t="q4">Teslimat ve kurulum ne kadar sürer?</summary><p data-t="q4a">Stoktaki modeller siparişten sonra 5–10 iş günü içinde gönderilir. Kurulumu yerel iş ortağımız yapar; personel eğitimi yaklaşık 2 saat sürer.</p></details>
-      <details><summary data-t="q5">Hangi ödeme ve kiralama seçenekleri var?</summary><p data-t="q5a">Peşin ödeme, akreditif (L/C) ve bazı ülkelerde iş ortaklarımız üzerinden kiralama. Tercihinizi teklif formunda belirtin.</p></details>
-    </div>
-  </div>
-</section>
-
-<!-- TEKLİF -->
-<section class="quote" id="teklif" aria-labelledby="quote-title">
-  <div class="wrap quote-grid">
-    <div class="q-side">
-      <h2 id="quote-title" data-t="qt.title">Teklifinizi hazırlayalım.</h2>
-      <p data-t="qt.lede">Formu doldurun, bir iş günü içinde işletmenize uygun model ve fiyatla dönelim. İsterseniz cihazı işyerinizde, kendi altınlarınızla deneyin.</p>
-      <dl class="contact">
-        <div><dt data-t="c.country">Ülke</dt><dd><button type="button" class="link-btn" id="cCountry" data-open-loc>—</button></dd></div>
-        <div><dt>Instagram</dt><dd><a id="cIg" href="https://www.instagram.com/purixxrf.tr/" target="_blank" rel="noopener" dir="ltr">@purixxrf.tr</a></dd></div>
-        <div><dt>WhatsApp</dt><dd><a href="#teklif" dir="ltr">+90 500 000 00 00</a></dd></div>
-        <div><dt data-t="c.mail">E-posta</dt><dd><a href="mailto:info@purix.com.tr" dir="ltr">info@purix.com.tr</a></dd></div>
-        <div><dt data-t="c.show">Merkez</dt><dd data-t="c.showV">İstanbul, Türkiye</dd></div>
-        <div><dt data-t="c.hours">Çalışma saatleri</dt><dd data-t="c.hoursV">Hafta içi 09.00–18.30 (GMT+3)</dd></div>
-      </dl>
-    </div>
-
-    <div class="q-main">
-      <form class="form" id="qForm" novalidate>
-        <div class="err-sum" id="errSum" role="alert" tabindex="-1" hidden>
-          <h3 id="errTitle" data-t="f.errT">Formda düzeltilmesi gereken alanlar var</h3>
-          <ul id="errList"></ul>
-        </div>
-        <div class="row">
-          <div class="field"><label for="fAd" data-t="f.name">Ad soyad</label><input id="fAd" name="ad" autocomplete="name" required aria-describedby="fAd-e"><p class="f-err" id="fAd-e"></p></div>
-          <div class="field"><label for="fFirma"><span data-t="f.company">Firma</span> <small data-t="f.opt">(isteğe bağlı)</small></label><input id="fFirma" name="firma" autocomplete="organization"></div>
-        </div>
-        <div class="row">
-          <div class="field"><label for="fTel" data-t="f.phone">Telefon</label><input id="fTel" name="tel" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" required aria-describedby="fTel-h fTel-e"><p class="f-help" id="fTel-h"></p><p class="f-err" id="fTel-e"></p></div>
-          <div class="field"><label for="fMail"><span data-t="f.mail">E-posta</span> <small data-t="f.opt">(isteğe bağlı)</small></label><input id="fMail" name="mail" type="email" autocomplete="email" dir="ltr" aria-describedby="fMail-e"><p class="f-err" id="fMail-e"></p></div>
-        </div>
-        <div class="row">
-          <div class="field"><label for="fSektor" data-t="f.sector">Sektör</label>
-            <select id="fSektor" name="sektor">
-              <option data-t="o1">Kuyumcu</option><option data-t="o2">Rehin / altın kredisi</option><option data-t="o3">Rafineri</option><option data-t="o4">Toptancı / atölye</option><option data-t="o5">Ayar evi / laboratuvar</option><option data-t="o6">Diğer</option>
-            </select></div>
-          <div class="field"><label for="fModel" data-t="f.model">Model</label>
-            <select id="fModel" name="model">
-              <option value="" data-t="f.undecided">Henüz karar vermedim</option><option>X1</option><option>X1 PRO</option><option>X1 LAB</option>
-            </select></div>
-        </div>
-        <fieldset class="chips">
-          <legend data-t="f.want">Ne istiyorsunuz?</legend>
-          <label><input type="checkbox" name="istek" value="teklif" checked><span data-t="f.w1">Fiyat teklifi</span></label>
-          <label><input type="checkbox" name="istek" value="demo"><span data-t="f.w2">İşyerimde demo</span></label>
-          <label><input type="checkbox" name="istek" value="kiralama"><span data-t="f.w3">Kiralama</span></label>
-        </fieldset>
-        <div class="field"><label for="fMsg"><span data-t="f.msg">Mesajınız</span> <small data-t="f.opt">(isteğe bağlı)</small></label><textarea id="fMsg" name="mesaj" rows="3" aria-describedby="fMsg-h"></textarea><p class="f-help" id="fMsg-h" data-t="f.msgH">Günlük ölçüm adediniz ve ölçtüğünüz ürünler, doğru modeli önermemize yardımcı olur.</p></div>
-        <div class="field check"><input type="checkbox" id="fKvkk" required aria-describedby="fKvkk-e"><label for="fKvkk" data-t="f.kvkk"><a href="#">Gizlilik bildirimini</a> okudum; bilgilerimin bu talep için kullanılmasını onaylıyorum.</label><p class="f-err" id="fKvkk-e"></p></div>
-        <div class="hp" aria-hidden="true"><label>Web sitesi<input name="web" tabindex="-1" autocomplete="off"></label></div>
-        <p class="f-err" id="fSendErr" role="alert"></p>
-        <button class="btn btn-ink btn-block" type="submit" data-t="f.submit">Teklif iste</button>
-      </form>
-      <div class="done" id="done" tabindex="-1" hidden>
-        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22"/><path d="M14 24.5l7 7 13-14"/></svg>
-        <h3 data-t="f.doneT">Teklif talebiniz alındı</h3>
-        <p data-t="f.doneP">Bir iş günü içinde sizinle iletişime geçeceğiz.</p>
-      </div>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer class="foot">
-  <div class="wrap foot-grid">
-    <div class="foot-brand">
-      <img src="assets/mark-128.webp" alt="" width="40" height="51" loading="lazy">
-      <div><span class="brand-word">PURIX</span><p>Precision in purity</p></div>
-    </div>
-    <nav class="foot-nav" aria-label="Alt menü" data-t-aria="foot.aria">
-      <div><h3 data-t="foot.p">Ürünler</h3><a href="#seri">X1</a><a href="#seri">X1 PRO</a><a href="#seri">X1 LAB</a></div>
-      <div><h3 data-t="foot.r">Kaynaklar</h3><a href="#nasil" data-t="nav.how">Nasıl ölçer</a><a href="#sss" data-t="foot.faq">Sık sorulanlar</a><a href="#teklif" data-t="foot.bro">Broşür (PDF)</a></div>
-      <div><h3 data-t="foot.c">Kurumsal</h3><a href="#servis" data-t="nav.service">Servis</a><a href="#teklif" data-t="foot.contact">İletişim</a><a href="#" data-t="foot.kvkk">Gizlilik</a><a id="fIg" href="https://www.instagram.com/purixxrf.tr/" target="_blank" rel="noopener">Instagram</a></div>
-    </nav>
-  </div>
-  <div class="wrap foot-bot"><span>© 2026 PURIX</span><button type="button" class="link-btn foot-loc" data-open-loc><span id="footLoc">Türkiye · Türkçe</span></button></div>
-</footer>
-
-<dialog class="loc-dlg" id="locDlg" aria-labelledby="locTitle">
-  <div class="loc-head">
-    <h2 id="locTitle" data-t="loc.title">Ülkenizi seçin</h2>
-    <button type="button" class="loc-x" id="locClose" aria-label="Kapat" data-t-aria="loc.close"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
-  </div>
-  <p class="loc-lede" data-t="loc.lede">Dil, Instagram hesabı ve iletişim bilgileri seçtiğiniz ülkeye göre değişir.</p>
-  <div class="loc-langs" id="locLangs" role="group" aria-labelledby="locLangLbl"><span id="locLangLbl" data-t="loc.lang">Dil</span><div id="locLangBtns"></div></div>
-  <div class="loc-list" id="locList"></div>
-</dialog>
-
-<script src="config.js"></script>
-<script src="app.js"></script>
+  /* ---------- Başlat ---------- */
+  if (token || DEMO && ss.get('purix_demo')) start(); else { $('#login').hidden = false; $('#pw').focus(); }
+  if (DEMO) { $('#loginErr').textContent = ''; $('#loginForm').addEventListener('submit', () => ss.set('purix_demo', '1')); }
+})();
+</script>
 </body>
 </html>
