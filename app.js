@@ -24,11 +24,7 @@
     es: { name: 'Español', locale: 'es-MX' },
     pt: { name: 'Português', locale: 'pt-BR' }
   };
-  const FONTS = {
-    arab: 'https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400..700&display=swap',
-    deva: 'https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400..700&display=swap',
-    thai: 'https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400..700&display=swap'
-  };
+  const FONTS = { arab: 'fonts/arab.css', deva: 'fonts/deva.css', thai: 'fonts/thai.css' }; // sitenin kendi sunucusundan
   // Öncelik sırası kullanıcının satış planından. İlk dil = ülkenin varsayılanı.
   const COUNTRIES = [
     { c: 'IN', r: 'asia', langs: ['en', 'hi'], ig: 'purixxrf.in', ex: '+91 98765 43210' },
