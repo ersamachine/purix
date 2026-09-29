@@ -213,9 +213,9 @@
       tags.appendChild(s);
     }
     const ln = $('.ln', svg), pk = $$('.pk', tags);
-    const finish = () => { band.classList.add('drawn'); pk.forEach(p => p.classList.add('on')); heroShown = heroComp.Au; renderReadout(heroShown); ln.style.strokeDashoffset = 0; };
+    const finish = () => { band.classList.add('drawn'); pk.forEach(p => p.classList.add('on')); heroShown = heroComp.Au; renderReadout(heroShown); ln.style.strokeDasharray = 'none'; ln.style.strokeDashoffset = 0; }; // geniş ekranlarda çizginin yarıda kalmaması için
     if (reduce) return finish();
-    const len = ln.getTotalLength();
+    const len = ln.getTotalLength() * Math.max(1, svg.getBoundingClientRect().width / 1600) * 1.05;
     ln.style.strokeDasharray = len; ln.style.strokeDashoffset = len;
     const t0 = performance.now() + 450, dur = 2400, ease = x => 1 - Math.pow(1 - x, 3);
     let done = false;
