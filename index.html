@@ -37,7 +37,8 @@
 (function(){
   var C={IN:'en',TR:'tr',AE:'en',SA:'ar',CN:'zh',US:'en',EG:'ar',PK:'en',ID:'id',IR:'fa',KW:'ar',IT:'it',GB:'en',DE:'de',MY:'ms',SG:'en',TH:'th',VN:'vi',MX:'es',BR:'pt',INTL:'en'};
   var RTL={ar:1,fa:1}, q=new URLSearchParams(location.search), c=(q.get('c')||'').toUpperCase(), l=(q.get('l')||'').toLowerCase();
-  try{ if(!C[c]) c=localStorage.getItem('purix-c')||''; if(!l) l=localStorage.getItem('purix-l')||''; }catch(e){}
+  // Linkte ülke varsa o ülkenin dili; hafızadaki dil yalnızca aynı ülke için geçerli
+  try{ var sc=localStorage.getItem('purix-c')||'', sl=localStorage.getItem('purix-l')||''; if(!C[c]) c=sc; if(!l && c===sc) l=sl; }catch(e){}
   if(!C[c]){ var n=(navigator.language||'en').toLowerCase(), p=n.split('-'), r=(p[1]||'').toUpperCase();
     var byLang={tr:'TR',hi:'IN',ur:'PK',zh:'CN',id:'ID',ms:'MY',fa:'IR',it:'IT',de:'DE',th:'TH',vi:'VN',ar:'AE',es:'MX',pt:'BR'};
     c = C[r] && r!=='INTL' ? r : (byLang[p[0]] || 'INTL'); }
