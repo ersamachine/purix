@@ -23,7 +23,7 @@
 
   --wrap:1280px;
   --gut:clamp(20px,4vw,48px);
-  --sec:clamp(88px,11vw,160px);
+  --sec:clamp(64px,7.5vw,112px);
   --r-lg:28px;
   --r-md:18px;
   --r-sm:12px;
@@ -50,7 +50,7 @@ dl,dd{margin:0}
 .skip:focus{top:12px}
 
 /* Başlık blokları */
-.head{max-width:760px;margin-bottom:clamp(40px,5vw,64px)}
+.head{max-width:760px;margin-bottom:clamp(32px,4vw,52px)}
 .head p,.lede{color:var(--ink-2);font-size:clamp(17px,1.3vw,19px);max-width:60ch}
 .head h2+p{margin-top:22px}
 .head-row{max-width:none;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px 64px;align-items:end}
@@ -128,7 +128,7 @@ dl,dd{margin:0}
 .spec-tags .tk.last{transform:translateX(calc(-100% - 6px))}
 
 .specs{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);margin-top:34px}
-.specs>div{padding:26px 24px 40px;border-inline-start:1px solid var(--line-2)}
+.specs>div{padding:22px 24px 26px;border-inline-start:1px solid var(--line-2)}
 .specs>div:first-child{border-inline-start:0;padding-inline-start:0}
 .specs dt{font-size:14px;color:var(--ink-2)}
 .specs dd{font-stretch:var(--w-data);font-weight:520;font-size:clamp(34px,3.3vw,46px);line-height:1.1;letter-spacing:-.01em;margin:6px 0 4px;font-variant-numeric:tabular-nums}
@@ -144,7 +144,7 @@ dl,dd{margin:0}
 @keyframes img{from{opacity:0;transform:translateX(18px) scale(.985)}}
 
 /* NEDEN */
-.why{padding:var(--sec) 0 calc(var(--sec) * .6)}
+.why{padding:calc(var(--sec) * .8) 0 calc(var(--sec) * .5)}
 .cmp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--r-md)}
 .cmp-wrap:focus-visible{outline-offset:6px}
 .methods{width:100%;min-width:640px;border-collapse:separate;border-spacing:0;font-size:16px}
