@@ -54,7 +54,7 @@
   // Yalnızca Türkiye + Türkçe için geçerli yerel metinler
   const OVERRIDES = {
     TR: { tr: {
-      'meta.desc': 'PURIX X1 XRF altın analiz cihazı: kuyumcu, rafineri ve ayar evleri için 30 saniyede, parçaya dokunmadan ayar ve element ölçümü. Türkiye\'de kurulum, eğitim ve NDK lisans desteği.',
+      'meta.desc': 'PURIX X1 XRF altın analiz cihazı: kuyumcu, rafineri ve ayar evleri için 30–60 saniyede, parçaya dokunmadan ayar ve element ölçümü. Türkiye\'de kurulum, eğitim ve NDK lisans desteği.',
       'craft.sP': 'Kapak açıldığı anda tüp kapanır. Gövde yüzeyinde ölçülen doz 1 µSv/sa altındadır. NDK lisans başvuru dosyanızı biz hazırlarız.',
       'a3p': 'Gram altın, cumhuriyet altını ve yatırımlık sikkeleri ambalajından çıkarmadan kontrol edin.',
       'svc.lede': 'Kurulumdan kalibrasyona kadar her adımda karşınızda Türkçe konuşan bir mühendis var.',
@@ -121,7 +121,7 @@
     $('#cIg').href = igUrl; $('#cIg').textContent = '@' + ctry.ig; $('#fIg').href = igUrl;
     $('#footLoc').textContent = `${cn} · ${L.name}`;
     $('#fTel-h').textContent = t('f.phoneH').replace('{ex}', ctry.ex);
-    $('#specPrec').innerHTML = iso(`±${num(.03)} %`);
+    $$('[data-fmt]').forEach(el => { el.innerHTML = iso(el.dataset.fmt.replace(/\{([\d.]+)\}/g, (_, n) => num(+n, (n.split('.')[1] || '').length))); });
     // Gizlilik bağlantıları: Türkçe → KVKK aydınlatma metni, diğer diller → İngilizce gizlilik bildirimi (yeni sekmede, form kaybolmasın)
     const gizlilik = lang === 'tr' ? 'kvkk.html' : 'privacy.html';
     $$('[data-t="f.kvkk"] a, [data-t="foot.kvkk"]').forEach(a => { a.href = gizlilik; a.target = '_blank'; a.rel = 'noopener'; });
@@ -132,7 +132,6 @@
       history.replaceState(null, '', u.pathname + u.search + u.hash);
     }
     renderReadout(heroShown);
-    renderSeries();
     demoRelabel();
     clearErrors();
     if (dlg.open) renderLocale();
@@ -358,43 +357,6 @@
   runBtn.addEventListener('click', run);
   let rz; addEventListener('resize', () => { cancelAnimationFrame(rz); rz = requestAnimationFrame(() => { if (!running) draw(SAMPLES[cur], shown.t, shown.seed); }); });
 
-  /* ---------- X1 serisi (yer tutucu teknik değerler) ---------- */
-  const MODELS = [
-    { id: 'X1', key: 'X1', det: () => iso('Si-PIN'), prec: .05, res: 165, time: [30, 60], col: () => t('m.fixed').replace('{v}', iso('1 mm')), pt: false, coat: false, out: false },
-    { id: 'X1 PRO', key: 'PRO', det: () => iso('SDD 25 mm²'), prec: .03, res: 139, time: [15, 30], col: () => iso('1 / 2 mm'), pt: true, coat: true, out: true },
-    { id: 'X1 LAB', key: 'LAB', det: () => t('m.fastSdd') + ' ' + iso('50 mm²'), prec: .01, res: 125, time: [10, 30], col: () => t('m.auto').replace('{v}', iso([.2, .5, 1, 2].map(v => v.toLocaleString(LANGS[lang].locale)).join(' · ') + ' mm')), pt: true, coat: true, out: true }
-  ];
-  const KEYS = ['det', 'prec', 'res', 'time', 'col', 'pt', 'coat', 'out'];
-  const val = (m, k) => {
-    const v = m[k];
-    if (typeof v === 'boolean') return v ? t('m.yes') : t('m.no');
-    if (k === 'prec') return iso(`±${num(v)} %`);
-    if (k === 'res') return iso(`≤ ${v} eV`);
-    if (k === 'time') return `${iso(`${v[0]}–${v[1]}`)} ${t('u.s')}`;
-    return v();
-  };
-  let model = 1;
-  const tabs = $('#tabs'), mBody = $('#modelBody'), panel = $('#modelPanel');
-  function renderSeries(animate) {
-    tabs.innerHTML = MODELS.map((m, i) => `<button type="button" role="tab" id="tab-${i}" aria-controls="modelPanel" aria-selected="${i === model}" tabindex="${i === model ? 0 : -1}">${m.id}</button>`).join('');
-    panel.setAttribute('aria-labelledby', 'tab-' + model);
-    const m = MODELS[model];
-    const markup = `<p class="m-name">${m.id}</p><p class="m-for">${t('m.' + m.key + '.for')}</p>
-      <dl class="m-specs">${KEYS.slice(0, 6).map(k => `<div><dt>${t('sl.' + k)}</dt><dd>${val(m, k)}</dd></div>`).join('')}</dl>
-      <div class="m-cta"><a class="btn btn-gold" href="#teklif" data-model="${m.id}">${t('m.quoteFor').replace('{m}', m.id)}</a></div>`;
-    if (animate && !reduce) { mBody.classList.add('swap'); setTimeout(() => { mBody.innerHTML = markup; mBody.classList.remove('swap'); }, 180); }
-    else mBody.innerHTML = markup;
-    $('#cmpTable').innerHTML = `<thead><tr><th scope="col"><span class="sr">${t('m.specCol')}</span></th>${MODELS.map(x => `<th scope="col">${x.id}</th>`).join('')}</tr></thead>
-      <tbody>${KEYS.map(k => `<tr><th scope="row">${t('sl.' + k)}</th>${MODELS.map(x => `<td>${val(x, k)}</td>`).join('')}</tr>`).join('')}</tbody>`;
-  }
-  tabs.addEventListener('click', e => { const b = e.target.closest('[role=tab]'); if (!b) return; model = +b.id.split('-')[1]; renderSeries(true); $('#tab-' + model).focus(); });
-  tabs.addEventListener('keydown', e => {
-    const rtl = html.dir === 'rtl';
-    const d = { ArrowRight: rtl ? -1 : 1, ArrowLeft: rtl ? 1 : -1, Home: -99, End: 99 }[e.key]; if (d == null) return;
-    e.preventDefault(); model = Math.abs(d) > 1 ? (d > 0 ? 2 : 0) : (model + d + 3) % 3; renderSeries(true); $('#tab-' + model).focus();
-  });
-  document.addEventListener('click', e => { const a = e.target.closest('[data-model]'); if (a) $('#fModel').value = a.dataset.model; });
-
   /* ---------- Nav ---------- */
   const nav = $('#nav'), bar = $('#progress');
   let ticking = false;
@@ -468,7 +430,7 @@
         ad: f.get('ad'), firma: f.get('firma'), tel: f.get('tel'), mail: f.get('mail'),
         ulke: country.c, dil: lang,
         sektor: $('#fSektor').selectedOptions[0].dataset.t ? TR0[$('#fSektor').selectedOptions[0].dataset.t] : f.get('sektor'),
-        model: f.get('model'), istek: f.getAll('istek').join(', '), mesaj: f.get('mesaj'),
+        model: 'X1', istek: f.getAll('istek').join(', '), mesaj: f.get('mesaj'),
         kaynak, sayfa: location.pathname + location.search, ua: navigator.userAgent.slice(0, 200), web: f.get('web')
       };
       btn.disabled = true; btn.textContent = t('f.sending');
