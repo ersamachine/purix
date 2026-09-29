@@ -126,6 +126,9 @@
     $('#footLoc').textContent = `${cn} · ${L.name}`;
     $('#fTel-h').textContent = t('f.phoneH').replace('{ex}', ctry.ex);
     $('#specPrec').innerHTML = iso(`±${num(.03)} %`);
+    // Gizlilik bağlantıları: Türkçe → KVKK aydınlatma metni, diğer diller → İngilizce gizlilik bildirimi (yeni sekmede, form kaybolmasın)
+    const gizlilik = lang === 'tr' ? 'kvkk.html' : 'privacy.html';
+    $$('[data-t="f.kvkk"] a, [data-t="foot.kvkk"]').forEach(a => { a.href = gizlilik; a.target = '_blank'; a.rel = 'noopener'; });
 
     if (save) {
       store.set('purix-c', ctry.c); store.set('purix-l', lang);
