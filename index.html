@@ -395,6 +395,8 @@
         </fieldset>
         <div class="field"><label for="fMsg"><span data-t="f.msg">Mesajınız</span> <small data-t="f.opt">(isteğe bağlı)</small></label><textarea id="fMsg" name="mesaj" rows="3" aria-describedby="fMsg-h"></textarea><p class="f-help" id="fMsg-h" data-t="f.msgH">Günlük ölçüm adediniz ve ölçtüğünüz ürünler, doğru modeli önermemize yardımcı olur.</p></div>
         <div class="field check"><input type="checkbox" id="fKvkk" required aria-describedby="fKvkk-e"><label for="fKvkk" data-t="f.kvkk"><a href="#">Gizlilik bildirimini</a> okudum; bilgilerimin bu talep için kullanılmasını onaylıyorum.</label><p class="f-err" id="fKvkk-e"></p></div>
+        <div class="hp" aria-hidden="true"><label>Web sitesi<input name="web" tabindex="-1" autocomplete="off"></label></div>
+        <p class="f-err" id="fSendErr" role="alert"></p>
         <button class="btn btn-ink btn-block" type="submit" data-t="f.submit">Teklif iste</button>
       </form>
       <div class="done" id="done" tabindex="-1" hidden>
@@ -432,6 +434,7 @@
   <div class="loc-list" id="locList"></div>
 </dialog>
 
+<script src="config.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

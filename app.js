@@ -449,9 +449,41 @@
       errList.innerHTML = bad.map(([id, m]) => `<li><a href="#${id}">${m}</a></li>`).join('');
       sum.hidden = false; sum.focus(); return;
     }
-    sum.hidden = true; form.hidden = true;
-    const done = $('#done'); done.hidden = false; done.focus();
+    sum.hidden = true;
+    send();
   });
+  // Talebi Apps Script'e gönder (config.js'teki PURIX_API). Adres yoksa mokap gibi davranır.
+  const kaynak = (() => {
+    const q = new URLSearchParams(location.search), utm = q.get('utm_source');
+    if (utm) return utm;
+    try { const r = document.referrer && new URL(document.referrer).hostname; if (r && r !== location.hostname) return r.replace(/^www\./, ''); } catch {}
+    return 'Doğrudan';
+  })();
+  async function send() {
+    const btn = $('button[type=submit]', form), err = $('#fSendErr'), label = btn.innerHTML;
+    const api = (window.PURIX_API || '').trim();
+    err.textContent = '';
+    if (api) {
+      const f = new FormData(form);
+      const veri = {
+        ad: f.get('ad'), firma: f.get('firma'), tel: f.get('tel'), mail: f.get('mail'),
+        ulke: country.c, dil: lang,
+        sektor: $('#fSektor').selectedOptions[0].dataset.t ? TR0[$('#fSektor').selectedOptions[0].dataset.t] : f.get('sektor'),
+        model: f.get('model'), istek: f.getAll('istek').join(', '), mesaj: f.get('mesaj'),
+        kaynak, sayfa: location.pathname + location.search, ua: navigator.userAgent.slice(0, 200), web: f.get('web')
+      };
+      btn.disabled = true; btn.textContent = t('f.sending');
+      try {
+        const r = await fetch(api, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ islem: 'talep', veri }) });
+        const j = await r.json();
+        if (!j.ok) throw new Error(j.hata || 'fail');
+      } catch (e2) {
+        btn.disabled = false; btn.innerHTML = label; err.textContent = t('e.send'); return;
+      }
+    }
+    form.hidden = true;
+    const done = $('#done'); done.hidden = false; done.focus();
+  }
   errList.addEventListener('click', e => { const a = e.target.closest('a'); if (!a) return; e.preventDefault(); $(a.getAttribute('href')).focus(); });
 
   /* ---------- Başlat ---------- */

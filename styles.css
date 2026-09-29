@@ -352,6 +352,8 @@ dl,dd{margin:0}
 .done h3{font-stretch:112%;font-size:24px}
 .done p{color:var(--ink-2);margin-top:10px}
 
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
 /* FOOTER */
 .foot{background:var(--stone);color:#CFC8BE;padding:64px 0 28px;font-size:15px}
 .foot-grid{display:grid;grid-template-columns:1fr 2fr;gap:40px;padding-bottom:44px}
