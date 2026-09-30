@@ -142,6 +142,52 @@ td .who small{color:var(--ink-3)}
 .toast{position:fixed;bottom:20px;inset-inline-start:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;opacity:0;transition:.3s var(--ease);z-index:60;pointer-events:none}
 .toast.on{opacity:1;transform:translateX(-50%)}
 
+/* Instagram */
+.igbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.igbar .inp{min-height:38px;width:auto}
+.iggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.igc{background:var(--surface);border-radius:var(--r);overflow:hidden;box-shadow:0 1px 0 var(--line-2);cursor:pointer;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.igc:hover{transform:translateY(-2px);box-shadow:0 10px 30px -18px rgba(28,25,23,.5)}
+.igc-img{position:relative;aspect-ratio:4/5;background:var(--bg);overflow:hidden}
+.igc-img img{width:100%;height:100%;object-fit:cover;display:block}
+.igc-img.st{background:#E7E5E0}.igc-img.st img{object-fit:contain}
+.igc-img .tg{position:absolute;inset-inline-start:8px;top:8px;background:rgba(28,25,23,.78);color:#fff;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:999px}
+.igc-img .pin{position:absolute;inset-inline-end:8px;top:8px;background:var(--gold-l);color:#1F1406;font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:999px}
+.igc-b{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px}
+.igc-b b{font-size:14.5px;line-height:1.3}
+.igc-b small{color:var(--ink-3);font-size:12.5px}
+.acct{font-size:12px;font-weight:650;color:var(--gold-text)}
+.igc-b .pill{align-self:flex-start;margin-top:4px}
+.drawer-in.wide{width:min(760px,100%)}
+.gal{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+.gal figure{margin:0;flex:none;scroll-snap-align:start;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.gal img,.gal video{border-radius:10px;background:#000;display:block;box-shadow:0 1px 0 var(--line-2)}
+.gal video{height:min(420px,62vh);max-width:78vw}
+.gal img{height:auto;width:auto;max-height:min(420px,62vh);max-width:78vw}
+.gal figcaption{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--ink-3)}
+.loading{color:var(--ink-3);font-size:14px;padding:30px 0;text-align:center}
+.box{background:var(--surface);border-radius:12px;box-shadow:0 1px 0 var(--line-2)}
+.box-h{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid var(--line-2);font-size:12.5px;color:var(--ink-3);font-weight:600}
+.box pre{margin:0;padding:12px 14px;white-space:pre-wrap;font:14px/1.55 var(--f)}
+.checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:13.5px}
+.checks li{display:flex;gap:8px;align-items:flex-start}
+.checks li::before{content:"✓";color:var(--ok);font-weight:700}
+.decide{display:flex;flex-direction:column;gap:10px;background:var(--surface);border-radius:14px;padding:14px;box-shadow:0 1px 0 var(--line-2)}
+.decide .acts .btn-ok{background:var(--ok);color:#fff}
+.hint{font-size:13px;color:var(--ink-2);background:#FFF6E3;border:1px solid #EBD39C;border-radius:10px;padding:8px 12px}
+/* Ajanlar */
+.agrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:14px}
+.ag{background:var(--surface);border-radius:var(--r);padding:16px 18px;box-shadow:0 1px 0 var(--line-2);display:flex;flex-direction:column;gap:6px}
+.ag .n{display:flex;align-items:center;gap:10px}
+.ag .n i{width:34px;height:34px;border-radius:10px;background:var(--stone);color:var(--gold-l);display:grid;place-items:center;font-style:normal;font-weight:700;font-size:14px;flex:none}
+.ag b{font-size:15px}
+.ag p{margin:0;color:var(--ink-2);font-size:13.5px}
+.ag small{color:var(--ink-3);font-size:12.5px}
+.rep summary{cursor:pointer;font-weight:600;padding:10px 0;list-style:none;display:flex;justify-content:space-between;gap:10px}
+.rep summary::-webkit-details-marker{display:none}
+.rep{border-bottom:1px solid var(--line-2)}
+.rep pre{white-space:pre-wrap;font:14px/1.55 var(--f);margin:0 0 12px;background:var(--bg);border-radius:12px;padding:12px 14px}
+
 @media (max-width:1100px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:1fr}}
 @media (max-width:820px){
   .app{grid-template-columns:1fr}
@@ -173,6 +219,8 @@ td .who small{color:var(--ink-3)}
     <div class="brand"><img src="../assets/mark-128.webp?v=202609300045" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
     <button class="nav-btn" data-view="genel" aria-current="page"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"/></svg>Genel bakış</button>
     <button class="nav-btn" data-view="talepler"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Talepler<span class="badge" id="newBadge" hidden>0</span></button>
+    <button class="nav-btn" data-view="instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r=".6"/></svg>Instagram<span class="badge" id="igBadge" hidden>0</span></button>
+    <button class="nav-btn" data-view="ajanlar"><svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16.5h5"/></svg>Ajanlar</button>
     <button class="nav-btn" data-view="ayarlar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>Ayarlar</button>
     <button class="nav-btn" onclick="window.open('../','_blank')"><svg viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg>Siteyi aç</button>
     <div class="side-foot"><span id="syncInfo">—</span><button class="btn btn-line btn-sm" id="logout" style="background:transparent;color:#D8D2C8;border-color:#3A3431">Çıkış yap</button></div>
@@ -222,6 +270,26 @@ td .who small{color:var(--ink-3)}
       <div class="pager"><span id="count"></span></div>
     </section>
 
+    <!-- INSTAGRAM -->
+    <section id="v-instagram" hidden>
+      <div class="igbar">
+        <select class="inp" id="igHafta" aria-label="Hafta"></select>
+        <div class="chips" id="igHesap" role="group" aria-label="Hesap"></div>
+      </div>
+      <div class="igbar"><div class="chips" id="igDurum" role="group" aria-label="Durum"></div></div>
+      <div class="iggrid" id="igGrid"></div>
+      <p class="empty" id="igEmpty" hidden></p>
+    </section>
+
+    <!-- AJANLAR -->
+    <section id="v-ajanlar" hidden>
+      <div class="agrid" id="agGrid"></div>
+      <div class="grid2">
+        <div class="card"><h2>Son çalışmalar <small>ajan günlüğü</small></h2><div class="table-wrap" style="box-shadow:none"><table><thead><tr><th>Zaman</th><th>Ajan</th><th>Hafta</th><th>Sonuç</th></tr></thead><tbody id="agLog"></tbody></table></div></div>
+        <div class="card"><h2>Raporlar <small>Analiz Ajanı</small></h2><div id="agRap"></div></div>
+      </div>
+    </section>
+
     <!-- AYARLAR -->
     <section id="v-ayarlar" hidden>
       <div class="card" style="max-width:640px">
@@ -250,14 +318,17 @@ td .who small{color:var(--ink-3)}
 <script src="../config.js?v=202609300045"></script>
 <script>
 (() => {
-  const API = (window.PURIX_API || '').trim();
+  // Yerel geliştirme: yalnızca localhost'ta ?api= ile sahte sunucuya bağlanılabilir (canlı sitede etkisizdir)
+  const DEV_API = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? new URLSearchParams(location.search).get('api') : '';
+  const API = (DEV_API || window.PURIX_API || '').trim();
   const DEMO = !API;
   const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
   const esc = x => String(x == null ? '' : x).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const ss = { get(k) { try { return sessionStorage.getItem(k); } catch { return null; } }, set(k, v) { try { sessionStorage.setItem(k, v); } catch {} }, del(k) { try { sessionStorage.removeItem(k); } catch {} } };
+  const ls = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
   const DURUM_RENK = { 'Yeni': 'var(--s-yeni)', 'İletişime geçildi': 'var(--s-ilet)', 'Teklif gönderildi': 'var(--s-teklif)', 'Demo planlandı': 'var(--s-demo)', 'Kazanıldı': 'var(--s-kaz)', 'Kaybedildi': 'var(--s-kay)' };
   const DIAL = { IN: '91', TR: '90', AE: '971', SA: '966', CN: '86', US: '1', EG: '20', PK: '92', ID: '62', IR: '98', KW: '965', IT: '39', GB: '44', DE: '49', MY: '60', SG: '65', TH: '66', VN: '84', MX: '52', BR: '55' };
-  let regionName; try { const dn = new Intl.DisplayNames(['tr'], { type: 'region' }); regionName = c => c === 'INTL' ? 'Uluslararası' : (c ? dn.of(c) : '—'); } catch { regionName = c => c || '—'; }
+  let regionName; try { const dn = new Intl.DisplayNames(['tr'], { type: 'region' }); regionName = c => { if (c === 'INTL') return 'Uluslararası'; if (!c) return '—'; try { return dn.of(c); } catch { return String(c); } }; } catch { regionName = c => c || '—'; }
   const fmtD = iso => { const d = new Date(iso); return isNaN(d) ? '—' : d.toLocaleDateString('tr-TR', { day: '2-digit', month: '2-digit', year: 'numeric' }) + ' ' + d.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }); };
   const ago = iso => { const m = Math.round((Date.now() - new Date(iso)) / 60000); return m < 60 ? m + ' dk önce' : m < 1440 ? Math.round(m / 60) + ' sa önce' : Math.round(m / 1440) + ' gün önce'; };
   const pill = d => `<span class="pill" style="--c:${DURUM_RENK[d] || 'var(--ink-3)'}">${esc(d)}</span>`;
@@ -271,7 +342,7 @@ td .who small{color:var(--ink-3)}
     if (DEMO) return demoApi(islem, extra);
     // Google'ın yanıt sayfası bazen geçici olarak 404 verir; okuma işlemleri bir kez daha denenir.
     let j = null;
-    for (let deneme = 0; deneme < (islem === 'liste' || islem === 'giris' ? 3 : 1); deneme++) {
+    for (let deneme = 0; deneme < (['liste', 'giris', 'ig_liste', 'ig_medya'].includes(islem) ? 3 : 1); deneme++) {
       try {
         const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ islem, token, ...extra }) });
         j = await r.json(); break;
@@ -285,24 +356,30 @@ td .who small{color:var(--ink-3)}
   /* ---------- Giriş ---------- */
   $('#loginForm').addEventListener('submit', async e => {
     e.preventDefault(); const b = $('#loginBtn'); b.disabled = true; $('#loginErr').textContent = '';
-    try { const j = await api('giris', { sifre: $('#pw').value }); token = j.token; ss.set('purix_token', token); $('#pw').value = ''; start(); }
+    try { const j = await api('giris', { sifre: $('#pw').value, cihaz: ls.get('purix_cihaz') || '' }); token = j.token; ss.set('purix_token', token); if (j.cihaz) ls.set('purix_cihaz', j.cihaz); $('#pw').value = ''; start(); }
     catch (err) { $('#loginErr').textContent = err.message; $('#pw').focus(); }
     finally { b.disabled = false; }
   });
   function logout(expired) {
     if (!expired && token && !DEMO) api('cikis').catch(() => {});
+    closeDetail(); $('#drawerIn').innerHTML = '';
+    data = []; ig = { ...ig, gonderiler: [], gunluk: [], raporlar: [], bekleyen: 0 }; igHaftaElle = false; igSig = ''; talepSig = '';
+    medyaOnbellek.forEach(p => p.then(l => l.forEach(x => x.url && URL.revokeObjectURL(x.url)), () => {})); medyaOnbellek.clear();
     token = null; ss.del('purix_token'); clearInterval(timer);
     $('#app').hidden = true; $('#login').hidden = false; $('#loginErr').textContent = expired ? 'Oturum süresi doldu, yeniden giriş yapın.' : ''; $('#pw').focus();
   }
   $('#logout').addEventListener('click', () => logout(false));
 
   /* ---------- Veri ---------- */
-  let timer;
+  let timer, talepSig = '';
   async function load(silent) {
     try {
       const j = await api('liste');
+      const sig = JSON.stringify(j.talepler || []) + (j.bildirim || '');
+      if (silent && sig === talepSig) return; talepSig = sig;
       const onceki = new Set(data.map(x => x.ID));
       data = j.talepler || []; durumlar = j.durumlar || durumlar; bildirim = j.bildirim || '';
+      if (current) current = data.find(x => x.ID === current.ID) || current;
       if (silent && onceki.size) { const yeni = data.filter(x => !onceki.has(x.ID)); if (yeni.length) toast(`${yeni.length} yeni talep geldi`); }
       $('#syncInfo').textContent = 'Güncellendi ' + new Date().toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
       render();
@@ -311,16 +388,18 @@ td .who small{color:var(--ink-3)}
   function start() {
     $('#login').hidden = true; $('#app').hidden = false; $('#demoBar').hidden = !DEMO;
     $('#apiInfo').textContent = DEMO ? 'Bağlı değil (demo verisi)' : 'Google Apps Script · ' + API.replace(/^https:\/\/script\.google\.com\/macros\/s\//, '').slice(0, 14) + '…';
-    load(); clearInterval(timer); timer = setInterval(() => load(true), 60000);
+    load(); igLoad(true); clearInterval(timer); let tik = 0;
+    timer = setInterval(() => { load(true); if (!igUcus && (++tik % 5 === 0 || view === 'instagram' || view === 'ajanlar')) igLoad(true); }, 60000);
   }
-  $('#refresh').addEventListener('click', () => load());
+  $('#refresh').addEventListener('click', () => { load(); igLoad(); });
 
   /* ---------- Görünümler ---------- */
-  const TITLES = { genel: 'Genel bakış', talepler: 'Talepler', ayarlar: 'Ayarlar' };
+  const TITLES = { genel: 'Genel bakış', talepler: 'Talepler', instagram: 'Instagram', ajanlar: 'Ajanlar', ayarlar: 'Ayarlar' };
   function go(v) {
     view = v; $$('.nav-btn[data-view]').forEach(b => b.dataset.view === v ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current'));
     Object.keys(TITLES).forEach(k => $('#v-' + k).hidden = k !== v); $('#title').textContent = TITLES[v];
     $('#side').classList.remove('open'); render();
+    if (v === 'instagram' || v === 'ajanlar') igLoad(true);
   }
   $$('[data-view]').forEach(b => b.addEventListener('click', () => go(b.dataset.view)));
   document.addEventListener('click', e => { const g = e.target.closest('[data-go]'); if (g) go(g.dataset.go); });
@@ -329,8 +408,8 @@ td .who small{color:var(--ink-3)}
   function render() {
     const yeni = data.filter(x => x.Durum === 'Yeni').length;
     $('#newBadge').hidden = !yeni; $('#newBadge').textContent = yeni;
-    $('#subtitle').textContent = data.length ? `${data.length} talep · ${yeni} yeni` : 'Henüz talep yok';
-    if (view === 'genel') renderGenel(); else if (view === 'talepler') renderList(); else renderAyar();
+    $('#subtitle').textContent = view === 'instagram' ? igAltBaslik() : view === 'ajanlar' ? '7 ajan · taslakları hazırlar, sahibin onayını bekler' : data.length ? `${data.length} talep · ${yeni} yeni` : 'Henüz talep yok';
+    if (view === 'genel') renderGenel(); else if (view === 'talepler') renderList(); else if (view === 'instagram') renderIg(); else if (view === 'ajanlar') renderAjan(); else renderAyar();
   }
 
   const bars = (pairs, total, colorOf) => pairs.length ? pairs.map(([k, v]) => `<div class="hbar"${colorOf ? ` style="--c:${colorOf(k)}"` : ''}><span>${esc(k)}</span><div class="t"><i style="width:${v ? Math.max(3, v / total * 100) : 0}%"></i></div><span class="v num">${v}</span></div>`).join('') : '<p class="empty">Veri yok</p>';
@@ -391,7 +470,7 @@ td .who small{color:var(--ink-3)}
   $('#statusChips').addEventListener('click', e => { const b = e.target.closest('[data-st]'); if (b) { fStatus = b.dataset.st; renderList(); } });
   ['#q', '#fCountry', '#fModel'].forEach(s => $(s).addEventListener('input', renderList));
   document.addEventListener('click', e => { const tr = e.target.closest('tr[data-id]'); if (tr) openDetail(tr.dataset.id); });
-  document.addEventListener('keydown', e => { const tr = e.target.closest && e.target.closest('tr[data-id]'); if (tr && e.key === 'Enter') openDetail(tr.dataset.id); if (e.key === 'Escape') closeDetail(); });
+  document.addEventListener('keydown', e => { const tr = e.target.closest && e.target.closest('tr[data-id]'); if (tr && e.key === 'Enter') openDetail(tr.dataset.id); if (e.key === 'Escape' && !(e.target.matches && e.target.matches('textarea') && e.target.value.trim())) closeDetail(); });
 
   /* ---------- Detay ---------- */
   function waLink(x) {
@@ -401,8 +480,8 @@ td .who small{color:var(--ink-3)}
     return 'https://wa.me/' + d;
   }
   function openDetail(id) {
-    const x = data.find(t => t.ID === id); if (!x) return; current = x;
-    const notes = String(x.Notlar || '').split('\n').filter(Boolean).map(n => { const i = n.indexOf(' · '); return `<li><small>${esc(n.slice(0, i))}</small>${esc(n.slice(i + 3))}</li>`; }).reverse().join('');
+    const x = data.find(t => t.ID === id); if (!x) return; current = x; igCur = null;
+    const notes = String(x.Notlar || '').split('\n').filter(Boolean).map(n => { const i = n.indexOf(' · '); return i < 0 ? `<li>${esc(n)}</li>` : `<li><small>${esc(n.slice(0, i))}</small>${esc(n.slice(i + 3))}</li>`; }).reverse().join('');
     const wa = waLink(x);
     $('#drawerIn').innerHTML = `
       <div class="d-head"><div><h2 id="dTitle">${esc(x['Ad soyad'])}</h2><div class="muted">${esc(x.Firma || 'Firma belirtilmedi')} · ${esc(x.ID)}</div></div>
@@ -431,20 +510,206 @@ td .who small{color:var(--ink-3)}
           <ul class="notes">${notes || '<li class="muted">Henüz not yok.</li>'}</ul></div>
         <div style="margin-top:10px"><button class="btn btn-danger btn-sm" id="delBtn">Talebi sil</button></div>
       </div>`;
-    const dr = $('#drawer'); dr.classList.add('open'); dr.setAttribute('aria-hidden', 'false'); $('[data-close]').focus();
+    $('#drawerIn').classList.remove('wide');
+    cekmeceAc(); $('[data-close]').focus();
   }
-  function closeDetail() { const dr = $('#drawer'); if (!dr.classList.contains('open')) return; dr.classList.remove('open'); dr.setAttribute('aria-hidden', 'true'); current = null; }
+  let sonOdak = null;
+  function cekmeceAc() { const dr = $('#drawer'); if (!dr.classList.contains('open')) sonOdak = document.activeElement; dr.classList.add('open'); dr.setAttribute('aria-hidden', 'false'); $('#app').inert = true; }
+  function closeDetail() { const dr = $('#drawer'); if (!dr.classList.contains('open')) return; dr.classList.remove('open'); dr.setAttribute('aria-hidden', 'true'); current = null; igCur = null; igCurSurum = null; $('#app').inert = false; if (sonOdak && sonOdak.focus) sonOdak.focus(); sonOdak = null; }
   $('#drawer').addEventListener('click', e => { if (e.target.id === 'drawer' || e.target.closest('[data-close]')) closeDetail(); });
+  let guncelleniyor = false;
   async function update(payload, msg) {
-    try { const j = await api('guncelle', { id: current.ID, ...payload });
-      if (j.silindi) { data = data.filter(x => x.ID !== current.ID); closeDetail(); }
-      else { Object.assign(current, j.talep); openDetail(current.ID); }
-      render(); toast(msg);
-    } catch (err) { toast(err.message); }
+    const id = current && current.ID; if (!id || guncelleniyor) return;
+    guncelleniyor = true; $$('#drawerIn button, #drawerIn select').forEach(x => x.disabled = true);
+    try { const j = await api('guncelle', { id, ...payload });
+      if (j.silindi) { data = data.filter(x => x.ID !== id); closeDetail(); }
+      else { const i = data.findIndex(x => x.ID === id); if (i >= 0) data[i] = { ...data[i], ...j.talep }; if (current && current.ID === id) openDetail(id); }
+      talepSig = ''; render(); toast(msg);
+    } catch (err) { toast(err.message); $$('#drawerIn button, #drawerIn select').forEach(x => x.disabled = false); }
+    finally { guncelleniyor = false; }
   }
   $('#drawer').addEventListener('change', e => { if (e.target.id === 'dStatus') update({ durum: e.target.value }, 'Durum güncellendi'); });
-  $('#drawer').addEventListener('submit', e => { if (e.target.id === 'noteForm') { e.preventDefault(); const t = $('#noteTxt').value.trim(); if (t) update({ not: t }, 'Not eklendi'); } });
+  $('#drawer').addEventListener('submit', e => { if (e.target.id === 'noteForm') { e.preventDefault(); const t = $('#noteTxt').value.replace(/\s*\n\s*/g, ' ').trim(); if (t) update({ not: t }, 'Not eklendi'); } });
   $('#drawer').addEventListener('click', e => { if (e.target.id === 'delBtn' && confirm('Bu talep kalıcı olarak silinsin mi?')) update({ sil: true }, 'Talep silindi'); });
+
+  /* ---------- Instagram ---------- */
+  const IG_RENK = { 'Onay bekliyor': 'var(--s-yeni)', 'Düzeltme istendi': 'var(--warn)', 'Onaylandı': 'var(--s-ilet)', 'Yayına hazır': 'var(--s-demo)', 'Yayınlandı': 'var(--s-kaz)', 'Reddedildi': 'var(--s-kay)' };
+  const HESAP = { tr: '@purixxrf.tr', global: '@purixxrf' };
+  const TUR = { reels: 'Reels', carousel: 'Carousel', post: 'Tek görsel', story: 'Story' };
+  const GUNLER = ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'];
+  let ig = { hafta: '', haftalar: [], gonderiler: [], bekleyen: 0, gunluk: [], raporlar: [], durumlar: Object.keys(IG_RENK) };
+  let igHesap = '', igDurum = '', igCur = null, igCurSurum = null, igSeq = 0, igUcus = 0, igHaftaElle = false, igSig = '', igKararSurer = false;
+  const medyaOnbellek = new Map(); // "ID#sürüm" → Promise<[{ad, mime, url}]>
+  const igPill = d => `<span class="pill" style="--c:${IG_RENK[d] || 'var(--ink-3)'}">${esc(d)}</span>`;
+  const gunYaz = (g, s) => { const d = new Date(String(g) + 'T12:00:00'); return isNaN(d) ? esc(g || '') : `${d.getDate()} ${d.toLocaleDateString('tr-TR', { month: 'long' })} ${GUNLER[d.getDay()]}${s ? ' · ' + esc(s) : ''}`; };
+  const kisaId = id => String(id).split('/').pop();
+  function igAltBaslik() { return ig.gonderiler.length ? `${ig.gonderiler.length} gönderi · ${ig.gonderiler.filter(g => g.Durum === 'Onay bekliyor').length} onay bekliyor` : 'Ajanların hazırladığı taslaklar burada görünür'; }
+
+  async function igLoad(silent, hafta) {
+    const seq = ++igSeq; igUcus++;
+    try {
+      const j = await api('ig_liste', { hafta: hafta || (igHaftaElle ? ig.hafta : '') });
+      if (seq !== igSeq) return;           // daha yeni bir istek başladı; bu yanıt eskidir
+      const sig = JSON.stringify(j); if (silent && sig === igSig) return; igSig = sig;
+      const once = igCur ? ig.gonderiler.find(x => x.ID === igCur) : null;
+      ig = { ...ig, ...j };
+      $('#igBadge').hidden = !ig.bekleyen; $('#igBadge').textContent = ig.bekleyen;
+      if (view === 'instagram' || view === 'ajanlar') render();
+      // açık gönderi yalnızca durumu ya da sürümü değiştiyse yeniden çizilir (yazılan düzeltme notu kaybolmaz)
+      if (igCur && once) { const g = ig.gonderiler.find(x => x.ID === igCur); if (g && (g.Durum !== once.Durum || g['Sürüm'] !== once['Sürüm']) && !$('#igFixTxt')?.value) igOpen(g.ID, true); }
+    } catch (err) { if (seq === igSeq && !silent) toast(err.message); }
+    finally { igUcus--; }
+  }
+
+  function renderIg() {
+    const sel = $('#igHafta');
+    sel.innerHTML = ig.haftalar.length ? ig.haftalar.map(h => `<option value="${esc(h)}" ${h === ig.hafta ? 'selected' : ''}>${esc(h.replace('-w', ' · hafta '))}</option>`).join('') : '<option value="">Henüz hafta yok</option>';
+    const say = f => ig.gonderiler.filter(f).length;
+    $('#igHesap').innerHTML = [['', 'Tüm hesaplar'], ['tr', HESAP.tr], ['global', HESAP.global]]
+      .map(([v, l]) => `<button class="chip" data-igh="${v}" aria-pressed="${igHesap === v}">${esc(l)} <em>${say(g => !v || g.Hesap === v)}</em></button>`).join('');
+    $('#igDurum').innerHTML = [['', 'Tümü'], ...ig.durumlar.map(d => [d, d])]
+      .map(([v, l]) => `<button class="chip" data-igd="${esc(v)}" aria-pressed="${igDurum === v}">${esc(l)} <em>${say(g => (!igHesap || g.Hesap === igHesap) && (!v || g.Durum === v))}</em></button>`).join('');
+    const liste = ig.gonderiler.filter(g => (!igHesap || g.Hesap === igHesap) && (!igDurum || g.Durum === igDurum))
+      .sort((a, b) => String(a['Gün']).localeCompare(String(b['Gün'])) || String(a.ID).localeCompare(String(b.ID)));
+    $('#igGrid').innerHTML = liste.map(g => {
+      const n = (g.Medya || []).filter(m => /^image/.test(m.mime)).length;
+      const tur = TUR[g['Tür']] || g['Tür'];
+      return `<article class="igc" data-ig="${esc(g.ID)}" tabindex="0" role="button" aria-label="${esc(kisaId(g.ID) + ' ' + g['Başlık'])}">
+        <div class="igc-img${g['Tür'] === 'story' ? ' st' : ''}">${g.kucuk ? `<img src="${esc(g.kucuk)}" alt="">` : ''}<span class="tg">${esc(tur)}${g['Tür'] === 'carousel' ? ' · ' + n : ''}</span>${g.Sabitle ? `<span class="pin">📌 ${esc(g.Sabitle)}</span>` : ''}</div>
+        <div class="igc-b"><span class="acct">${esc(HESAP[g.Hesap] || g.Hesap)} · ${esc(kisaId(g.ID))}</span><b>${esc(g['Başlık'])}</b><small>${gunYaz(g['Gün'], g.Saat)} · ${esc(g.Kategori || '')}</small>${igPill(g.Durum)}</div>
+      </article>`;
+    }).join('');
+    const bos = !liste.length;
+    $('#igEmpty').hidden = !bos;
+    $('#igEmpty').textContent = ig.gonderiler.length ? 'Bu filtreyle eşleşen gönderi yok.' : 'Henüz taslak yok. Ajanlar her pazartesi yeni haftanın taslaklarını buraya gönderir.';
+  }
+  $('#igHafta').addEventListener('change', e => { ig.hafta = e.target.value; igHaftaElle = true; igLoad(false, e.target.value); });
+  $('#igHesap').addEventListener('click', e => { const b = e.target.closest('[data-igh]'); if (b) { igHesap = b.dataset.igh; renderIg(); } });
+  $('#igDurum').addEventListener('click', e => { const b = e.target.closest('[data-igd]'); if (b) { igDurum = b.dataset.igd; renderIg(); } });
+  $('#igGrid').addEventListener('click', e => { const c = e.target.closest('[data-ig]'); if (c) igOpen(c.dataset.ig); });
+  $('#igGrid').addEventListener('keydown', e => { const c = e.target.closest('[data-ig]'); if (c && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); igOpen(c.dataset.ig); } });
+
+  function b64Url(veri, mime) {
+    const bin = atob(veri), u = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+    return URL.createObjectURL(new Blob([u], { type: mime }));
+  }
+  function igMedyaGetir(g) {
+    const k = g.ID + '#' + g['Sürüm'];
+    if (medyaOnbellek.has(k)) return medyaOnbellek.get(k);
+    for (const [ek, pr] of [...medyaOnbellek]) if (ek.startsWith(g.ID + '#')) { medyaOnbellek.delete(ek); pr.then(l => l.forEach(x => x.url && URL.revokeObjectURL(x.url)), () => {}); }
+    const pr = api('ig_medya', { id: g.ID }).then(j => (j.medya || []).map(m => ({ ad: m.ad, mime: m.mime, url: m.veri ? b64Url(m.veri, m.mime) : '', hata: m.hata })));
+    medyaOnbellek.set(k, pr); pr.catch(() => medyaOnbellek.delete(k));
+    return pr;
+  }
+  function kararButonlari(g) {
+    const d = g.Durum;
+    if (d === 'Onay bekliyor' || d === 'Düzeltme istendi') return `
+      <button class="btn btn-sm btn-ok" data-karar="Onaylandı">Onayla</button>
+      <button class="btn btn-line btn-sm" data-fix>Düzeltme iste</button>
+      <button class="btn btn-danger btn-sm" data-karar="Reddedildi">Reddet</button>`;
+    if (d === 'Onaylandı' || d === 'Yayına hazır') return `
+      <button class="btn btn-ink btn-sm" data-karar="Yayınlandı">Yayınlandı olarak işaretle</button>
+      <button class="btn btn-line btn-sm" data-karar="Onay bekliyor">Onayı geri al</button>`;
+    if (d === 'Reddedildi') return `<button class="btn btn-line btn-sm" data-karar="Onay bekliyor">Yeniden değerlendir</button>`;
+    return `<button class="btn btn-line btn-sm" data-karar="Onay bekliyor">Yayından önceki duruma al</button>`;
+  }
+  function kararIpucu(g) {
+    return { 'Onay bekliyor': 'Görselleri ve açıklamayı kontrol edip karar verin. Düzeltme isterseniz ne değişmesi gerektiğini yazın; Yayın Ajanı düzeltip yeniden onayınıza sunar.',
+      'Düzeltme istendi': 'Düzeltme ajanlara iletildi. Yeni sürüm yüklenince durum yeniden "Onay bekliyor" olur.',
+      'Onaylandı': 'Onaylandı. Yayın Ajanı paylaşım paketini hazırlayınca durum "Yayına hazır" olur. Paylaştıktan sonra "Yayınlandı" olarak işaretleyin.',
+      'Yayına hazır': 'Hazır. Görselleri indirip Meta Business Suite ile zamanlayın ya da Instagram uygulamasından paylaşın; ardından "Yayınlandı" olarak işaretleyin.',
+      'Yayınlandı': 'Yayınlandı. Analiz Ajanı haftalık raporda bu gönderinin sonuçlarını değerlendirir.',
+      'Reddedildi': 'Reddedildi. Ajanlar bu konuyu gelecek haftalarda önermez.' }[g.Durum] || '';
+  }
+  async function igOpen(id, sessiz) {
+    const g = ig.gonderiler.find(x => x.ID === id); if (!g) return;
+    igCur = id; igCurSurum = g['Sürüm']; current = null;
+    const notlar = String(g['Sahip notu'] || '').split('\n').filter(Boolean).map(n => { const p = n.split(' · '); return `<li><small>${esc(p[0])} · ${esc(p[1] || '')}</small>${esc(p.slice(2).join(' · '))}</li>`; }).reverse().join('');
+    const kontrol = (g.Kontrol || []).map(k => `<li>${esc(k)}</li>`).join('');
+    const kv = [['Yayın', gunYaz(g['Gün'], g.Saat)], ['Biçim', TUR[g['Tür']] || g['Tür']], ['Kategori', g.Kategori], ['Sabitle', g.Sabitle ? g.Sabitle + '. sıra' : ''],
+      ['AI etiketi', g['AI etiketi'] === 'Açık' ? 'Açık: paylaşırken Instagram’ın “Yapay zekâ bilgisi” etiketini açın' : 'Gerekmez'], ['Çıkartma', g['Çıkartma']], ['Müzik', g['Müzik']], ['UTM', g.UTM]]
+      .filter(([, v]) => v).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${k === 'Yayın' ? v : esc(v)}</dd>`).join('');
+    $('#drawerIn').classList.add('wide');
+    $('#drawerIn').innerHTML = `
+      <div class="d-head"><div><h2 id="dTitle">${esc(g['Başlık'])}</h2><div class="muted">${esc(HESAP[g.Hesap] || g.Hesap)} · ${esc(kisaId(g.ID))} · sürüm ${esc(g['Sürüm'] || 1)} · ${igPill(g.Durum)}</div></div>
+        <button class="x" data-close aria-label="Kapat"><svg viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15"/></svg></button></div>
+      <div class="d-body">
+        <div class="decide"><p class="hint" style="margin:0">${esc(kararIpucu(g))}</p><div class="acts">${kararButonlari(g)}</div>
+          <form id="igFixForm" class="field" hidden><label for="igFixTxt">Neyin değişmesini istiyorsunuz?</label><textarea class="inp" id="igFixTxt" placeholder="Örneğin: 2. karedeki başlık daha büyük olsun; açıklamadaki ilk cümle kısalsın"></textarea>
+            <div class="acts"><button class="btn btn-ink btn-sm" type="submit">Düzeltme iste</button><button class="btn btn-line btn-sm" type="button" data-fix-iptal>Vazgeç</button></div></form></div>
+        <div class="gal" id="igGal"><p class="loading">Görseller yükleniyor…</p></div>
+        ${g['Açıklama'] ? `<div class="box"><div class="box-h"><span>Açıklama</span><button class="btn btn-line btn-sm" data-kopya="Açıklama">Kopyala</button></div><pre>${esc(g['Açıklama'])}</pre></div>` : ''}
+        ${g['Alt metin'] ? `<div class="box"><div class="box-h"><span>Alt metin (Gelişmiş ayarlar)</span><button class="btn btn-line btn-sm" data-kopya="Alt metin">Kopyala</button></div><pre>${esc(g['Alt metin'])}</pre></div>` : ''}
+        <dl class="kv">${kv}</dl>
+        ${kontrol ? `<div><h3 style="font-size:14px;margin-bottom:8px">Marka Ajanı kontrolü</h3><ul class="checks">${kontrol}</ul></div>` : ''}
+        <div><h3 style="font-size:14px;margin-bottom:8px">Geçmiş</h3><ul class="notes">${notlar || '<li class="muted">Henüz not yok.</li>'}</ul></div>
+      </div>`;
+    cekmeceAc(); if (!sessiz) $('[data-close]').focus();
+    try {
+      const m = await igMedyaGetir(g);
+      if (igCur !== id) return;
+      $('#igGal').innerHTML = m.map((x, i) => {
+        const ad = kisaId(g.ID) + '-' + x.ad;
+        const el = !x.url ? `<p class="muted">${esc(x.hata || 'Dosya yok')}</p>` : /^video/.test(x.mime) ? `<video controls playsinline preload="metadata" src="${x.url}"></video>` : `<img src="${x.url}" alt="${esc(g['Başlık'])} · ${i + 1}">`;
+        const etiket = /^video/.test(x.mime) ? 'Video' : g['Tür'] === 'reels' ? 'Kapak görseli' : m.length > 1 ? `${String(i + 1).padStart(2, '0')}/${String(m.length).padStart(2, '0')}` : '';
+        return `<figure>${el}<figcaption>${etiket}${x.url ? `<a class="btn btn-line btn-sm" href="${x.url}" download="${esc(ad)}">İndir</a>` : ''}</figcaption></figure>`;
+      }).join('') || '<p class="muted">Bu gönderide medya yok.</p>';
+    } catch (err) { if (igCur === id) $('#igGal').innerHTML = `<p class="err">${esc(err.message)}</p>`; }
+  }
+  async function igKararVer(karar, not) {
+    const id = igCur; if (!id || igKararSurer) return;
+    igKararSurer = true; $$('#drawerIn .decide button').forEach(x => x.disabled = true); igSeq++;
+    try {
+      const j = await api('ig_karar', { id, karar, not: not || '', surum: igCurSurum });
+      const i = ig.gonderiler.findIndex(x => x.ID === id);
+      if (i >= 0) ig.gonderiler[i] = { ...ig.gonderiler[i], ...j.gonderi, kucuk: ig.gonderiler[i].kucuk };
+      toast({ 'Onaylandı': 'Onaylandı', 'Düzeltme istendi': 'Düzeltme isteği ajanlara iletildi', 'Reddedildi': 'Reddedildi', 'Yayınlandı': 'Yayınlandı olarak işaretlendi', 'Onay bekliyor': 'Yeniden onay bekliyor' }[karar] || 'Kaydedildi');
+      igSig = ''; render(); igOpen(id, true); igLoad(true);
+    } catch (err) {
+      toast(err.message); $$('#drawerIn .decide button').forEach(x => x.disabled = false);
+      if (/yeni bir sürümü/.test(err.message)) { igSig = ''; await igLoad(true); igOpen(id, true); }
+    } finally { igKararSurer = false; }
+  }
+  $('#drawer').addEventListener('click', e => {
+    if (!igCur) return;
+    const k = e.target.closest('[data-karar]');
+    if (k) { const karar = k.dataset.karar; if (karar === 'Reddedildi' && !confirm('Bu gönderi reddedilsin mi?')) return; igKararVer(karar); return; }
+    if (e.target.closest('[data-fix]')) { $('#igFixForm').hidden = false; $('#igFixTxt').focus(); return; }
+    if (e.target.closest('[data-fix-iptal]')) { $('#igFixForm').hidden = true; return; }
+    const c = e.target.closest('[data-kopya]');
+    if (c) { const g = ig.gonderiler.find(x => x.ID === igCur); navigator.clipboard.writeText(String(g[c.dataset.kopya] || '')).then(() => toast('Kopyalandı'), () => toast('Kopyalanamadı; metni seçip kopyalayın')); }
+  });
+  $('#drawer').addEventListener('submit', e => {
+    if (e.target.id !== 'igFixForm') return; e.preventDefault();
+    const t = $('#igFixTxt').value.trim(); if (!t) { $('#igFixTxt').focus(); return; }
+    igKararVer('Düzeltme istendi', t);
+  });
+
+  /* ---------- Ajanlar ---------- */
+  const AJANLAR = [
+    { ad: 'Türkiye İçerik Ajanı', kisa: 'TR', gorev: '@purixxrf.tr için haftalık plan, Türkçe metinler ve story planı.', takvim: 'Pazartesi 08.00' },
+    { ad: 'Global İçerik Ajanı', kisa: 'GL', gorev: '@purixxrf için haftalık plan ve İngilizce metinler (çeviri değil, ayrı yazılır).', takvim: 'Pazartesi 08.00' },
+    { ad: 'Kreatif Ajan', kisa: 'K', gorev: 'Görseller, carousel kareleri ve Reels videoları.', takvim: 'Pazartesi, planlardan sonra' },
+    { ad: 'Marka Ajanı', kisa: 'M', gorev: 'Her taslağı kurallar dosyasına göre denetler; geçemeyeni panele göndermez.', takvim: 'Her üretimden ve düzeltmeden sonra' },
+    { ad: 'Yayın Ajanı', kisa: 'Y', gorev: 'Düzeltme isteklerini uygulatır, onaylananları yayın paketine çevirir.', takvim: 'Her gün 18.00' },
+    { ad: 'Talep Ajanı', kisa: 'T', gorev: 'DM ve yorumları sınıflar, gerçek talepleri Talepler’e ekler; yanıtı sahip verir.', takvim: 'Instagram bağlantısından sonra' },
+    { ad: 'Analiz Ajanı', kisa: 'A', gorev: 'Haftalık performans ve talep raporu, gelecek hafta için en çok 3 öneri.', takvim: 'Pazar 18.00' },
+  ];
+  const AJ_RENK = { 'Başarılı': 'var(--ok)', 'Uyarı': 'var(--s-yeni)', 'Hata': 'var(--warn)' };
+  function renderAjan() {
+    $('#agGrid').innerHTML = AJANLAR.map(a => {
+      const son = ig.gunluk.find(x => x.Ajan === a.ad);
+      return `<div class="ag"><div class="n"><i>${esc(a.kisa)}</i><b>${esc(a.ad)}</b></div><p>${esc(a.gorev)}</p>
+        <small>Takvim: ${esc(a.takvim)}</small>
+        <small>${son ? `Son çalışma: ${fmtD(son.Zaman)} · <span class="pill" style="--c:${AJ_RENK[son.Durum] || 'var(--ink-3)'}">${esc(son.Durum)}</span>` : 'Henüz çalışmadı'}</small></div>`;
+    }).join('');
+    $('#agLog').innerHTML = ig.gunluk.slice(0, 40).map(x => `<tr><td class="num">${fmtD(x.Zaman)}</td><td>${esc(x.Ajan)}</td><td>${esc(x.Hafta || '—')}</td><td style="white-space:normal"><span class="pill" style="--c:${AJ_RENK[x.Durum] || 'var(--ink-3)'}">${esc(x.Durum)}</span> ${esc(x['Özet'] || '')}</td></tr>`).join('')
+      || '<tr><td colspan="4" class="empty">Ajanlar çalıştıkça burada görünür.</td></tr>';
+    const acik = new Set($$('#agRap details[open]').map(d => d.dataset.k)), ilk = !$('#agRap details');
+    $('#agRap').innerHTML = ig.raporlar.map((r, i) => `<details class="rep" data-k="${esc(r.Hafta + '|' + r['Başlık'])}"${(ilk ? i === 0 : acik.has(r.Hafta + '|' + r['Başlık'])) ? ' open' : ''}><summary><span>${esc(r['Başlık'])} · ${esc(String(r.Hafta).replace('-w', ' · hafta '))}</span><small class="muted">${fmtD(r.Zaman)}</small></summary><pre>${esc(r.Metin)}</pre></details>`).join('')
+      || '<p class="empty">İlk rapor, gönderiler yayına girdikten sonraki pazar hazırlanır.</p>';
+  }
 
   /* ---------- CSV ---------- */
   $('#csv').addEventListener('click', () => {
@@ -485,6 +750,7 @@ td .who small{color:var(--ink-3)}
       if (islem === 'guncelle') { const t = demo.find(o => o.ID === x.id); if (x.sil) { demo = demo.filter(o => o !== t); return res({ ok: true, silindi: true }); }
         if (x.durum) t.Durum = x.durum; if (x.not) t.Notlar = (t.Notlar ? t.Notlar + '\n' : '') + new Date().toLocaleString('tr-TR').slice(0, 16) + ' · ' + x.not; return res({ ok: true, talep: { ...t } }); }
       if (islem === 'ayarlar') return res({ ok: true, bildirim: x.bildirim });
+      if (islem === 'ig_liste') return res({ ok: true, hafta: '', haftalar: [], gonderiler: [], bekleyen: 0, gunluk: [], raporlar: [], durumlar: Object.keys(IG_RENK) });
       res({ ok: true });
     }, 150));
   }
