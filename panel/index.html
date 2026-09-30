@@ -164,6 +164,12 @@ td .who small{color:var(--ink-3)}
 .payl .uy{font-size:13px;color:var(--warn);margin:0}
 .igcon .h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line-2)}
 .igcon .h:last-child{border-bottom:0}
+.ad-firma b{display:block;font-weight:650}
+.ad-firma small{color:var(--ink-3);font-size:12.5px}
+.ad-p{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;font-weight:700;font-size:13px;background:color-mix(in srgb,var(--c) 14%,#fff);color:var(--c)}
+.ad-more{display:flex;justify-content:center;margin-top:12px}
+.ad-row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:600px){.ad-row2{grid-template-columns:1fr}}
 .acct{font-size:12px;font-weight:650;color:var(--gold-text)}
 .igc-b .pill{align-self:flex-start;margin-top:4px}
 .drawer-in.wide{width:min(760px,100%)}
@@ -227,6 +233,7 @@ td .who small{color:var(--ink-3)}
     <div class="brand"><img src="../assets/mark-128.webp?v=202609300045" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
     <button class="nav-btn" data-view="genel" aria-current="page"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"/></svg>Genel bakış</button>
     <button class="nav-btn" data-view="talepler"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Talepler<span class="badge" id="newBadge" hidden>0</span></button>
+    <button class="nav-btn" data-view="adaylar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".8"/></svg>Adaylar<span class="badge" id="adBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r=".6"/></svg>Instagram<span class="badge" id="igBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="ajanlar"><svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16.5h5"/></svg>Ajanlar</button>
     <button class="nav-btn" data-view="ayarlar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>Ayarlar</button>
@@ -276,6 +283,25 @@ td .who small{color:var(--ink-3)}
         </table>
       </div>
       <div class="pager"><span id="count"></span></div>
+    </section>
+
+    <!-- ADAYLAR (satış ajanları) -->
+    <section id="v-adaylar" hidden>
+      <div class="kpis" id="adKpis"></div>
+      <div class="filters"><div class="chips" id="adDurum" role="group" aria-label="Duruma göre filtre"></div></div>
+      <div class="filters">
+        <input class="inp search" id="adQ" type="search" placeholder="Firma, ilçe, kişi ya da telefon ara" aria-label="Ara">
+        <select class="inp" id="adBolge" aria-label="Bölge"></select>
+        <select class="inp" id="adPuan" aria-label="Puan"><option value="">Tüm puanlar</option><option value="A">A · yüksek</option><option value="B">B · orta</option><option value="C">C · düşük</option></select>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Firma</th><th>İl / ilçe</th><th>Puan</th><th>Durum</th><th class="hide-s">Sonraki adım</th><th class="hide-s">Eklenme</th></tr></thead>
+          <tbody id="adRows"></tbody>
+        </table>
+      </div>
+      <div class="pager"><span id="adCount"></span></div>
+      <div class="ad-more"><button class="btn btn-line btn-sm" id="adMore" hidden>Daha fazla göster</button></div>
     </section>
 
     <!-- INSTAGRAM -->
@@ -408,13 +434,14 @@ td .who small{color:var(--ink-3)}
   $('#refresh').addEventListener('click', () => { load(); igLoad(); });
 
   /* ---------- Görünümler ---------- */
-  const TITLES = { genel: 'Genel bakış', talepler: 'Talepler', instagram: 'Instagram', ajanlar: 'Ajanlar', ayarlar: 'Ayarlar' };
+  const TITLES = { genel: 'Genel bakış', talepler: 'Talepler', adaylar: 'Adaylar', instagram: 'Instagram', ajanlar: 'Ajanlar', ayarlar: 'Ayarlar' };
   function go(v) {
     view = v; $$('.nav-btn[data-view]').forEach(b => b.dataset.view === v ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current'));
     Object.keys(TITLES).forEach(k => $('#v-' + k).hidden = k !== v); $('#title').textContent = TITLES[v];
     $('#side').classList.remove('open'); render();
     if (v === 'instagram' || v === 'ajanlar') igLoad(true);
     if (v === 'instagram' || v === 'ayarlar') igBagYukle();
+    if (v === 'adaylar') adLoad();
   }
   $$('[data-view]').forEach(b => b.addEventListener('click', () => go(b.dataset.view)));
   document.addEventListener('click', e => { const g = e.target.closest('[data-go]'); if (g) go(g.dataset.go); });
@@ -423,8 +450,8 @@ td .who small{color:var(--ink-3)}
   function render() {
     const yeni = data.filter(x => x.Durum === 'Yeni').length;
     $('#newBadge').hidden = !yeni; $('#newBadge').textContent = yeni;
-    $('#subtitle').textContent = view === 'instagram' ? igAltBaslik() : view === 'ajanlar' ? '7 ajan · taslakları hazırlar, sahibin onayını bekler' : data.length ? `${data.length} talep · ${yeni} yeni` : 'Henüz talep yok';
-    if (view === 'genel') renderGenel(); else if (view === 'talepler') renderList(); else if (view === 'instagram') renderIg(); else if (view === 'ajanlar') renderAjan(); else renderAyar();
+    $('#subtitle').textContent = view === 'adaylar' ? (ad.ozet ? `${ad.ozet.toplam} firma · bugün ${ad.ozet.bugun} yeni` : 'Satış ajanlarının bulduğu firmalar') : view === 'instagram' ? igAltBaslik() : view === 'ajanlar' ? '7 ajan · taslakları hazırlar, sahibin onayını bekler' : data.length ? `${data.length} talep · ${yeni} yeni` : 'Henüz talep yok';
+    if (view === 'genel') renderGenel(); else if (view === 'talepler') renderList(); else if (view === 'adaylar') renderAd(); else if (view === 'instagram') renderIg(); else if (view === 'ajanlar') renderAjan(); else renderAyar();
   }
 
   const bars = (pairs, total, colorOf) => pairs.length ? pairs.map(([k, v]) => `<div class="hbar"${colorOf ? ` style="--c:${colorOf(k)}"` : ''}><span>${esc(k)}</span><div class="t"><i style="width:${v ? Math.max(3, v / total * 100) : 0}%"></i></div><span class="v num">${v}</span></div>`).join('') : '<p class="empty">Veri yok</p>';
@@ -530,7 +557,7 @@ td .who small{color:var(--ink-3)}
   }
   let sonOdak = null;
   function cekmeceAc() { const dr = $('#drawer'); if (!dr.classList.contains('open')) sonOdak = document.activeElement; dr.classList.add('open'); dr.setAttribute('aria-hidden', 'false'); $('#app').inert = true; }
-  function closeDetail() { const dr = $('#drawer'); if (!dr.classList.contains('open')) return; dr.classList.remove('open'); dr.setAttribute('aria-hidden', 'true'); current = null; igCur = null; igCurSurum = null; $('#app').inert = false; if (sonOdak && sonOdak.focus) sonOdak.focus(); sonOdak = null; }
+  function closeDetail() { const dr = $('#drawer'); if (!dr.classList.contains('open')) return; dr.classList.remove('open'); dr.setAttribute('aria-hidden', 'true'); current = null; igCur = null; igCurSurum = null; adCur = null; $('#app').inert = false; if (sonOdak && sonOdak.focus) sonOdak.focus(); sonOdak = null; }
   $('#drawer').addEventListener('click', e => { if (e.target.id === 'drawer' || e.target.closest('[data-close]')) closeDetail(); });
   let guncelleniyor = false;
   async function update(payload, msg) {
@@ -760,6 +787,117 @@ td .who small{color:var(--ink-3)}
     igKararVer('Düzeltme istendi', t);
   });
 
+  /* ---------- Adaylar (satış ajanları) ---------- */
+  const AD_RENK = { 'Yeni': 'var(--ink-3)', 'Mesaj hazır': 'var(--s-yeni)', 'İletişim kuruldu': 'var(--s-ilet)', 'Takipte': 'var(--s-teklif)', 'Cevap geldi': 'var(--s-demo)',
+    'Sıcak': 'var(--warn)', 'Demo': 'var(--s-demo)', 'Teklif': 'var(--s-teklif)', 'Kazanıldı': 'var(--s-kaz)', 'Kaybedildi': 'var(--s-kay)', 'İlgisiz': 'var(--s-kay)',
+    'Mevcut müşteri': 'var(--s-kaz)', 'Kara liste': 'var(--s-kay)' };
+  const PUAN_RENK = { A: 'var(--ok)', B: 'var(--s-ilet)', C: 'var(--ink-3)' };
+  const BOLGELER = ['Marmara', 'Ege', 'Akdeniz', 'İç Anadolu', 'Karadeniz', 'Doğu Anadolu', 'Güneydoğu Anadolu'];
+  let ad = { adaylar: [], toplam: 0, ozet: null, durumlar: Object.keys(AD_RENK) }, adDurum = '', adCur = null, adSeq = 0, adBas = 0, adQt = 0;
+  const adPill = d => `<span class="pill" style="--c:${AD_RENK[d] || 'var(--ink-3)'}">${esc(d)}</span>`;
+  async function adLoad(ekle) {
+    const seq = ++adSeq; if (!ekle) adBas = 0;
+    try {
+      const j = await api('aday_panel', { durum: adDurum, bolge: $('#adBolge').value, puan: $('#adPuan').value, q: $('#adQ').value.trim(), limit: 200, bas: adBas });
+      if (seq !== adSeq) return;
+      ad = { ...j, adaylar: ekle ? ad.adaylar.concat(j.adaylar) : j.adaylar };
+      const sicak = j.ozet ? (j.ozet.durum['Sıcak'] || 0) + (j.ozet.durum['Cevap geldi'] || 0) : 0;
+      $('#adBadge').hidden = !sicak; $('#adBadge').textContent = sicak;
+      if (view === 'adaylar') render();
+    } catch (err) { if (seq === adSeq) toast(err.message); }
+  }
+  function renderAd() {
+    const o = ad.ozet || { toplam: 0, bugun: 0, puan: { A: 0, B: 0, C: 0 }, durum: {}, bolge: {} }, d = o.durum || {};
+    $('#adKpis').innerHTML = `
+      <div class="kpi accent"><span>Sıcak müşteri</span><b class="num">${(d['Sıcak'] || 0) + (d['Cevap geldi'] || 0)}</b><small>cevap veren ve ilgilenen firmalar</small></div>
+      <div class="kpi"><span>Veritabanı</span><b class="num">${o.toplam}</b><small>bugün ${o.bugun} yeni firma</small></div>
+      <div class="kpi"><span>A puanlı</span><b class="num">${o.puan.A}</b><small>B: ${o.puan.B} · C: ${o.puan.C}</small></div>
+      <div class="kpi"><span>Demo / teklif</span><b class="num">${(d['Demo'] || 0) + (d['Teklif'] || 0)}</b><small>kazanılan: ${d['Kazanıldı'] || 0}</small></div>`;
+    $('#adDurum').innerHTML = [['', 'Tümü', o.toplam], ...ad.durumlar.map(x => [x, x, d[x] || 0])].filter(([v, , n]) => !v || n || v === adDurum)
+      .map(([v, l, n]) => `<button class="chip" data-add="${esc(v)}" aria-pressed="${adDurum === v}">${esc(l)} <em>${n}</em></button>`).join('');
+    const sel = $('#adBolge'), cur = sel.value;
+    sel.innerHTML = '<option value="">Tüm bölgeler</option>' + BOLGELER.map(b => `<option value="${esc(b)}">${esc(b)}${o.bolge && o.bolge[b] ? ' · ' + o.bolge[b] : ''}</option>`).join(''); sel.value = cur;
+    $('#adRows').innerHTML = ad.adaylar.map(x => `<tr data-aday="${esc(x.ID)}" tabindex="0">
+        <td class="ad-firma"><b>${esc(x.Firma)}</b><small>${esc(x.Segment || '')}${x['Karar verici'] ? ' · ' + esc(x['Karar verici']) : ''}</small></td>
+        <td>${esc(x['İl'] || '')}${x['İlçe'] ? ' / ' + esc(x['İlçe']) : ''}</td>
+        <td>${x.Puan ? `<span class="ad-p" style="--c:${PUAN_RENK[x.Puan]}">${esc(x.Puan)}</span>` : '—'}</td>
+        <td>${adPill(x.Durum || 'Yeni')}</td>
+        <td class="hide-s">${esc(x['Sonraki adım'] || '')}${x['Sonraki tarih'] ? ' <span class="muted">' + esc(x['Sonraki tarih']) + '</span>' : ''}</td>
+        <td class="hide-s num">${fmtD(x['Eklenme'])}</td></tr>`).join('')
+      || `<tr><td colspan="6" class="empty">${o.toplam ? 'Bu filtreyle eşleşen firma yok.' : 'Henüz aday yok. Satış ajanları çalıştıkça bulunan firmalar burada görünür.'}</td></tr>`;
+    $('#adCount').textContent = `${ad.adaylar.length} / ${ad.toplam} firma`;
+    $('#adMore').hidden = ad.adaylar.length >= ad.toplam;
+  }
+  $('#adDurum').addEventListener('click', e => { const b = e.target.closest('[data-add]'); if (b) { adDurum = b.dataset.add; adLoad(); } });
+  ['#adBolge', '#adPuan'].forEach(x => $(x).addEventListener('change', () => adLoad()));
+  $('#adQ').addEventListener('input', () => { clearTimeout(adQt); adQt = setTimeout(() => adLoad(), 350); });
+  $('#adMore').addEventListener('click', () => { adBas = ad.adaylar.length; adLoad(true); });
+  $('#adRows').addEventListener('click', e => { const tr = e.target.closest('tr[data-aday]'); if (tr) adOpen(tr.dataset.aday); });
+  $('#adRows').addEventListener('keydown', e => { const tr = e.target.closest('tr[data-aday]'); if (tr && e.key === 'Enter') adOpen(tr.dataset.aday); });
+  function trWa(tel, metin) {  // Türkiye numarası → wa.me (mesaj taslağı hazır gelir, gönderen sahiptir)
+    let d = String(tel || '').replace(/\D/g, ''); if (!d) return '';
+    if (d.startsWith('00')) d = d.slice(2); else if (d.startsWith('0')) d = '90' + d.slice(1); else if (d.length === 10) d = '90' + d;
+    return 'https://wa.me/' + d + (metin ? '?text=' + encodeURIComponent(metin) : '');
+  }
+  function adOpen(id) {
+    const x = ad.adaylar.find(a => a.ID === id); if (!x) return; adCur = id; current = null; igCur = null;
+    const notes = String(x.Notlar || '').split('\n').filter(Boolean).map(n => { const p = n.split(' · '); return `<li><small>${esc(p[0])} · ${esc(p[1] || '')}</small>${esc(p.slice(2).join(' · '))}</li>`; }).reverse().join('');
+    const wa = trWa(x.WhatsApp || x.Telefon, x['WhatsApp mesajı']), web = String(x.Web || ''), insta = String(x.Instagram || '').replace(/^@/, '');
+    const mail = x['E-posta'] ? `mailto:${encodeURIComponent(x['E-posta'])}?subject=${encodeURIComponent(x['E-posta konusu'] || 'PURIX X1')}&body=${encodeURIComponent(x['E-posta metni'] || '')}` : '';
+    const kutu = (baslik, alan) => x[alan] ? `<div class="box"><div class="box-h"><span>${baslik}</span><button class="btn btn-line btn-sm" data-adkopya="${esc(alan)}">Kopyala</button></div><pre>${esc(x[alan])}</pre></div>` : '';
+    $('#drawerIn').classList.add('wide');
+    $('#drawerIn').innerHTML = `
+      <div class="d-head"><div><h2 id="dTitle">${esc(x.Firma)}</h2><div class="muted">${esc(x.Segment || 'Segment yok')} · ${esc(x['İl'] || '')}${x['İlçe'] ? ' / ' + esc(x['İlçe']) : ''} · ${esc(x.ID)} · ${adPill(x.Durum || 'Yeni')}</div></div>
+        <button class="x" data-close aria-label="Kapat"><svg viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15"/></svg></button></div>
+      <div class="d-body">
+        <div class="acts">
+          ${wa ? `<a class="btn btn-ink btn-sm" href="${esc(wa)}" target="_blank" rel="noopener">WhatsApp${x['WhatsApp mesajı'] ? ' (mesaj hazır)' : ''}</a>` : ''}
+          ${x.Telefon ? `<a class="btn btn-line btn-sm" href="tel:${esc(String(x.Telefon).replace(/[^\d+]/g, ''))}">Ara</a>` : ''}
+          ${mail ? `<a class="btn btn-line btn-sm" href="${esc(mail)}">E-posta</a>` : ''}
+          ${web ? `<a class="btn btn-line btn-sm" href="${esc(/^https?:/.test(web) ? web : 'https://' + web)}" target="_blank" rel="noopener">Web</a>` : ''}
+          ${insta ? `<a class="btn btn-line btn-sm" href="https://www.instagram.com/${esc(encodeURIComponent(insta))}/" target="_blank" rel="noopener">Instagram</a>` : ''}
+        </div>
+        <form id="adForm" class="decide">
+          <div class="ad-row2"><div class="field"><label for="adSt">Durum</label><select class="inp" id="adSt">${ad.durumlar.map(d => `<option ${d === x.Durum ? 'selected' : ''}>${esc(d)}</option>`).join('')}</select></div>
+            <div class="field"><label for="adTarih">Sonraki tarih</label><input class="inp" id="adTarih" type="date" value="${esc(String(x['Sonraki tarih'] || '').slice(0, 10))}"></div></div>
+          <div class="field"><label for="adAdim">Sonraki adım</label><input class="inp" id="adAdim" type="text" value="${esc(x['Sonraki adım'] || '')}" placeholder="Örneğin: Perşembe demo için ara"></div>
+          <div class="field"><label for="adNot">Not</label><textarea class="inp" id="adNot" placeholder="Görüşmede ne konuşuldu? (isteğe bağlı)"></textarea></div>
+          <div class="acts"><button class="btn btn-ink btn-sm" type="submit">Kaydet</button></div>
+        </form>
+        <dl class="kv">
+          ${[['Karar verici', [x['Karar verici'], x['Görev']].filter(Boolean).join(' · ')], ['Telefon', x.Telefon], ['WhatsApp', x.WhatsApp], ['E-posta', x['E-posta']], ['Adres', x.Adres],
+             ['Web', web], ['Instagram', x.Instagram], ['Puan', x.Puan ? x.Puan + (x['Puan nedeni'] ? ' · ' + x['Puan nedeni'] : '') : ''], ['Bölge', x['Bölge']], ['Kaynak', x.Kaynak],
+             ['Son temas', x['Son temas'] ? fmtD(x['Son temas']) : ''], ['Bulan ajan', x.Ajan]].filter(([, v]) => v).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}
+        </dl>
+        ${kutu('WhatsApp mesajı taslağı', 'WhatsApp mesajı')}
+        ${kutu('E-posta konusu', 'E-posta konusu')}
+        ${kutu('E-posta metni', 'E-posta metni')}
+        <div><h3 style="font-size:14px;margin-bottom:8px">Geçmiş</h3><ul class="notes">${notes || '<li class="muted">Henüz not yok.</li>'}</ul></div>
+      </div>`;
+    cekmeceAc(); $('[data-close]').focus();
+  }
+  $('#drawer').addEventListener('click', e => {
+    if (!adCur) return;
+    const c = e.target.closest('[data-adkopya]');
+    if (c) { const x = ad.adaylar.find(a => a.ID === adCur); navigator.clipboard.writeText(String(x[c.dataset.adkopya] || '')).then(() => toast('Kopyalandı'), () => toast('Kopyalanamadı; metni seçip kopyalayın')); }
+  });
+  $('#drawer').addEventListener('submit', async e => {
+    if (e.target.id !== 'adForm') return; e.preventDefault();
+    const id = adCur, x = ad.adaylar.find(a => a.ID === id); if (!x) return;
+    const alanlar = {}, st = $('#adSt').value, tarih = $('#adTarih').value, adim = $('#adAdim').value.trim(), not = $('#adNot').value.trim();
+    if (st !== x.Durum) alanlar['Durum'] = st;
+    if (tarih !== String(x['Sonraki tarih'] || '').slice(0, 10)) alanlar['Sonraki tarih'] = tarih;
+    if (adim !== String(x['Sonraki adım'] || '')) alanlar['Sonraki adım'] = adim;
+    if (st !== x.Durum && ['İletişim kuruldu', 'Takipte', 'Cevap geldi', 'Sıcak', 'Demo', 'Teklif'].includes(st)) alanlar['Son temas'] = new Date().toISOString().slice(0, 10);
+    if (!Object.keys(alanlar).length && !not) { toast('Değişiklik yok'); return; }
+    const btn = $('#adForm button[type=submit]'); btn.disabled = true;
+    try {
+      const j = await api('aday_karar', { id, alanlar, not });
+      const i = ad.adaylar.findIndex(a => a.ID === id); if (i >= 0) ad.adaylar[i] = j.aday;
+      toast('Kaydedildi'); render(); adOpen(id); adLoad();
+    } catch (err) { toast(err.message); btn.disabled = false; }
+  });
+
   /* ---------- Ajanlar ---------- */
   const AJANLAR = [
     { ad: 'Türkiye İçerik Ajanı', kisa: 'TR', gorev: '@purixxrf.tr için haftalık plan, Türkçe metinler ve story planı.', takvim: 'Pazartesi 08.00' },
@@ -768,7 +906,14 @@ td .who small{color:var(--ink-3)}
     { ad: 'Marka Ajanı', kisa: 'M', gorev: 'Her taslağı kurallar dosyasına göre denetler; geçemeyeni panele göndermez.', takvim: 'Her üretimden ve düzeltmeden sonra' },
     { ad: 'Yayın Ajanı', kisa: 'Y', gorev: 'Düzeltme isteklerini uygulatır, onaylananları yayın paketine çevirir.', takvim: 'Her gün 18.00' },
     { ad: 'Talep Ajanı', kisa: 'T', gorev: 'DM ve yorumları sınıflar, gerçek talepleri Talepler’e ekler; yanıtı sahip verir.', takvim: 'Instagram bağlantısından sonra' },
-    { ad: 'Analiz Ajanı', kisa: 'A', gorev: 'Haftalık performans ve talep raporu, gelecek hafta için en çok 3 öneri.', takvim: 'Pazar 18.00' },
+    { ad: 'Analiz Ajanı', kisa: 'A', gorev: 'Haftalık performans ve talep raporu, gelecek hafta için en çok 3 öneri.', takvim: 'Pazartesi, üretimden önce' },
+    { ad: 'Kaşif', kisa: 'S1', gorev: 'Türkiye\'de il il yeni firma bulur (İstanbul öncelikli); aynı firmayı iki kez getirmez.', takvim: 'Satış hattı, birkaç saatte bir' },
+    { ad: 'Kimlik Ajanı', kisa: 'S2', gorev: 'Firmanın karar vericisini (sahip, ortak, müdür) açık kaynaklardan bulur.', takvim: 'Satış hattı' },
+    { ad: 'Veri Ajanı', kisa: 'S3', gorev: 'Telefon, e-posta, adres ve web bilgisini çıkarır, doğrular, tekrarları temizler.', takvim: 'Satış hattı' },
+    { ad: 'Analist', kisa: 'S4', gorev: 'Firmayı A/B/C puanlar ve nedenini yazar.', takvim: 'Satış hattı' },
+    { ad: 'Mesaj Yazarı', kisa: 'S5', gorev: 'A ve B firmalara özel WhatsApp ve e-posta taslağı yazar (kural kitabına uygun).', takvim: 'Satış hattı' },
+    { ad: 'Takip Ajanı', kisa: 'S6', gorev: 'Temas kurulan firmaların takip gününü izler, hatırlatma mesajı hazırlar.', takvim: 'Her gün' },
+    { ad: 'Satış Yöneticisi', kisa: 'S7', gorev: 'Cevapları sınıflar, sıcak müşteriyi sana getirir, günlük özet yazar.', takvim: 'Her gün' },
   ];
   const AJ_RENK = { 'Başarılı': 'var(--ok)', 'Uyarı': 'var(--s-yeni)', 'Hata': 'var(--warn)' };
   function renderAjan() {
@@ -836,6 +981,7 @@ td .who small{color:var(--ink-3)}
       if (islem === 'guncelle') { const t = demo.find(o => o.ID === x.id); if (x.sil) { demo = demo.filter(o => o !== t); return res({ ok: true, silindi: true }); }
         if (x.durum) t.Durum = x.durum; if (x.not) t.Notlar = (t.Notlar ? t.Notlar + '\n' : '') + new Date().toLocaleString('tr-TR').slice(0, 16) + ' · ' + x.not; return res({ ok: true, talep: { ...t } }); }
       if (islem === 'ayarlar') return res({ ok: true, bildirim: x.bildirim });
+      if (islem === 'aday_panel') return res({ ok: true, toplam: 0, adaylar: [], ozet: { toplam: 0, bugun: 0, puan: { A: 0, B: 0, C: 0 }, durum: {}, bolge: {} }, durumlar: Object.keys(AD_RENK) });
       if (islem === 'ig_baglanti') return res({ ok: true, hesaplar: [{ hesap: 'tr', ad: 'purixxrf.tr', bagli: false }, { hesap: 'global', ad: 'purixxrf', bagli: false }], otomatik: true, zamanlayici: false });
       if (islem === 'ig_liste') return res({ ok: true, hafta: '', haftalar: [], gonderiler: [], bekleyen: 0, gunluk: [], raporlar: [], durumlar: Object.keys(IG_RENK) });
       res({ ok: true });
