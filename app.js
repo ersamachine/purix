@@ -393,23 +393,27 @@
       const st = t < 4 ? 1 : t < 7 ? 2 : t < 11 ? 3 : 4;
       if (st !== lastStep) { lastStep = st; items.forEach(li => li.classList.toggle('on', +li.dataset.step === st)); }
     }
-    if (reduce) { items.forEach(li => li.classList.add('on')); render(14); items.forEach(li => li.classList.add('on')); playBtn.hidden = true; return; }
-    sec.classList.add('anim');
-    let t = 0, playing = true, visible = false, last = 0;
+    // "Hareketi azalt" açıksa (iPhone ve bazı Windows ayarları) sahne kendiliğinden oynamaz: son kare ve oynat düğmesi görünür,
+    // dokununca baştan oynar. Diğer cihazlarda görünür olunca kendiliğinden oynar.
+    let t = 0, playing = !reduce, basladi = !reduce, visible = false, last = 0, dongu = false;
     const loop = now => {
-      if (!visible) { last = 0; return; }
+      if (!visible || !basladi) { last = 0; dongu = false; return; }
       if (last && playing) t = (t + Math.min(.05, (now - last) / 1000)) % T;
       last = now; render(t); requestAnimationFrame(loop);
     };
-    new IntersectionObserver(([e]) => { const was = visible; visible = e.isIntersecting; if (visible && !was) requestAnimationFrame(loop); }, { threshold: .25 }).observe(view);
+    const surdur = () => { if (visible && basladi && !dongu) { dongu = true; requestAnimationFrame(loop); } };
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; surdur(); }, { threshold: .25 }).observe(view);
     const setPlay = on => {
+      if (on && !basladi) { basladi = true; t = 0; lastStep = 0; sec.classList.add('anim'); }
       playing = on;
       playIc.setAttribute('d', on ? 'M6 4h3v12H6zM11 4h3v12h-3z' : 'M6 4l10 6-10 6z');
       playBtn.dataset.tAria = on ? 'how.pause' : 'how.play'; playBtn.setAttribute('aria-label', tr(on ? 'how.pause' : 'how.play'));
+      surdur();
     };
     playBtn.addEventListener('click', () => setPlay(!playing));
-    items.forEach(li => li.addEventListener('click', () => { t = STEP_AT[+li.dataset.step - 1] + .01; lastStep = 0; setPlay(true); }));
-    render(0);
+    items.forEach(li => li.addEventListener('click', () => { if (!basladi) setPlay(true); t = STEP_AT[+li.dataset.step - 1] + .01; lastStep = 0; setPlay(true); }));
+    if (reduce) { render(14); items.forEach(li => li.classList.add('on')); setPlay(false); }
+    else { sec.classList.add('anim'); render(0); }
   })();
 
   /* ---------- Canlı analiz ---------- */

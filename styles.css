@@ -175,6 +175,7 @@ dl,dd{margin:0}
 /* NASIL ÖLÇER: gerçek cihaz üzerinde ölçüm sahnesi */
 .xstage{margin:0;position:relative;background:var(--surface);border-radius:var(--r-lg);box-shadow:0 1px 0 var(--line-2);padding:clamp(6px,1.5vw,16px);overflow:hidden}
 .xs-view{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden}
+@supports not (aspect-ratio:1/1){.xs-view::before{content:"";display:block;padding-top:100%}} /* eski iOS (15 öncesi) */
 .xs-inner{position:absolute;left:0;top:0;width:900px;height:900px;transform-origin:0 0}
 .xs-layer{position:absolute}
 .xs-layer img{display:block;width:100%;height:auto}
