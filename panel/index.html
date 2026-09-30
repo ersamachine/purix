@@ -156,6 +156,14 @@ td .who small{color:var(--ink-3)}
 .igc-b{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px}
 .igc-b b{font-size:14.5px;line-height:1.3}
 .igc-b small{color:var(--ink-3);font-size:12.5px}
+.pay{font-size:12.5px;color:var(--ink-2);display:inline-flex;align-items:baseline;gap:6px}
+.pay i{width:7px;height:7px;border-radius:50%;background:var(--c,var(--ink-3));flex:none;align-self:center}
+.payl{display:flex;flex-direction:column;gap:10px;background:var(--surface);border-radius:14px;padding:14px;box-shadow:0 1px 0 var(--line-2)}
+.payl .row{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.payl .inp{min-height:38px;width:auto;padding:6px 12px}
+.payl .uy{font-size:13px;color:var(--warn);margin:0}
+.igcon .h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line-2)}
+.igcon .h:last-child{border-bottom:0}
 .acct{font-size:12px;font-weight:650;color:var(--gold-text)}
 .igc-b .pill{align-self:flex-start;margin-top:4px}
 .drawer-in.wide{width:min(760px,100%)}
@@ -277,6 +285,7 @@ td .who small{color:var(--ink-3)}
         <div class="chips" id="igHesap" role="group" aria-label="Hesap"></div>
       </div>
       <div class="igbar"><div class="chips" id="igDurum" role="group" aria-label="Durum"></div></div>
+      <p class="hint" id="igUyari" hidden></p>
       <div class="iggrid" id="igGrid"></div>
       <p class="empty" id="igEmpty" hidden></p>
     </section>
@@ -300,6 +309,11 @@ td .who small{color:var(--ink-3)}
           <p class="err" id="setErr" role="alert"></p>
           <button class="btn btn-ink" type="submit">Kaydet</button>
         </form>
+      </div>
+      <div class="card" style="max-width:640px;margin-top:14px">
+        <h2>Instagram otomatik paylaşım</h2>
+        <p class="muted" style="margin:-6px 0 6px">Onayladığınız gönderiler, planlanan saatte ilgili hesaptan kendiliğinden paylaşılır. Çıkartmalı story'ler elle paylaşılır; zamanı gelince e-postayla hatırlatılır.</p>
+        <div class="igcon" id="igCon"><p class="muted">Yükleniyor…</p></div>
       </div>
       <div class="card" style="max-width:640px;margin-top:14px">
         <h2>Bağlantı</h2>
@@ -400,6 +414,7 @@ td .who small{color:var(--ink-3)}
     Object.keys(TITLES).forEach(k => $('#v-' + k).hidden = k !== v); $('#title').textContent = TITLES[v];
     $('#side').classList.remove('open'); render();
     if (v === 'instagram' || v === 'ajanlar') igLoad(true);
+    if (v === 'instagram' || v === 'ayarlar') igBagYukle();
   }
   $$('[data-view]').forEach(b => b.addEventListener('click', () => go(b.dataset.view)));
   document.addEventListener('click', e => { const g = e.target.closest('[data-go]'); if (g) go(g.dataset.go); });
@@ -543,6 +558,26 @@ td .who small{color:var(--ink-3)}
   const igPill = d => `<span class="pill" style="--c:${IG_RENK[d] || 'var(--ink-3)'}">${esc(d)}</span>`;
   const gunYaz = (g, s) => { const d = new Date(String(g) + 'T12:00:00'); return isNaN(d) ? esc(g || '') : `${d.getDate()} ${d.toLocaleDateString('tr-TR', { month: 'long' })} ${GUNLER[d.getDay()]}${s ? ' · ' + esc(s) : ''}`; };
   const kisaId = id => String(id).split('/').pop();
+  const zamanYaz = iso => { const d = new Date(iso); return !iso || isNaN(d) ? '' : `${d.getDate()} ${d.toLocaleDateString('tr-TR', { month: 'long' })} ${GUNLER[d.getDay()]} · ${d.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}`; };
+  const zamanKisa = iso => { const d = new Date(iso); return !iso || isNaN(d) ? '' : `${d.getDate()} ${d.toLocaleDateString('tr-TR', { month: 'short' })} ${d.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}`; };
+  let igBag = null; // Instagram bağlantı durumu (anahtarlar panele hiç gelmez)
+  const IG_BAG_YOK = { hesaplar: [{ hesap: 'tr', ad: 'purixxrf.tr', bagli: false }, { hesap: 'global', ad: 'purixxrf', bagli: false }], otomatik: true, zamanlayici: false, medya: false, eski: true };
+  const bagliMi = h => !!(igBag && !igBag.eski && igBag.medya && (igBag.hesaplar.find(x => x.hesap === h) || {}).bagli);
+  const otomatik = g => String(g['Paylaşım şekli'] || '').startsWith('Otomatik') && bagliMi(g.Hesap);
+  function payDurum(g, kisa) {
+    const k = g['Yayın kaydı'] || {}, z = g['Paylaşım zamanı'], zy = kisa ? zamanKisa : zamanYaz;
+    if (g.Instagram) return { c: 'var(--ok)', t: 'Instagram’da yayınlandı' };
+    if (!otomatik(g)) return { c: 'var(--ink-3)', t: (kisa ? 'Elle' : 'Elle paylaşılacak') + (z ? ' · ' + zy(z) : '') };
+    if (k.hata && k.deneme >= 3) return { c: 'var(--warn)', t: 'Paylaşılamadı, saati yeniden kaydedin' };
+    if (k.gecikti) return { c: 'var(--warn)', t: 'Saat geçti, yeni saat seçin' };
+    if (k.adim === 'isleniyor') return { c: 'var(--s-demo)', t: 'Instagram’a yükleniyor' };
+    if (g.Durum === 'Onaylandı' || g.Durum === 'Yayına hazır') return { c: 'var(--s-ilet)', t: 'Otomatik · ' + zy(z) };
+    return { c: 'var(--ink-3)', t: (kisa ? 'Otomatik · ' : 'Onaylanırsa otomatik · ') + zy(z) };
+  }
+  async function igBagYukle(degis) {
+    try { igBag = await api('ig_baglanti', degis || {}); } catch (err) { if (degis) toast(err.message); else if (!igBag || igBag.eski) igBag = IG_BAG_YOK; }
+    if (view === 'instagram' || view === 'ayarlar') render();
+  }
   function igAltBaslik() { return ig.gonderiler.length ? `${ig.gonderiler.length} gönderi · ${ig.gonderiler.filter(g => g.Durum === 'Onay bekliyor').length} onay bekliyor` : 'Ajanların hazırladığı taslaklar burada görünür'; }
 
   async function igLoad(silent, hafta) {
@@ -576,9 +611,14 @@ td .who small{color:var(--ink-3)}
       const tur = TUR[g['Tür']] || g['Tür'];
       return `<article class="igc" data-ig="${esc(g.ID)}" tabindex="0" role="button" aria-label="${esc(kisaId(g.ID) + ' ' + g['Başlık'])}">
         <div class="igc-img${g['Tür'] === 'story' ? ' st' : ''}">${g.kucuk ? `<img src="${esc(g.kucuk)}" alt="">` : ''}<span class="tg">${esc(tur)}${g['Tür'] === 'carousel' ? ' · ' + n : ''}</span>${g.Sabitle ? `<span class="pin">📌 ${esc(g.Sabitle)}</span>` : ''}</div>
-        <div class="igc-b"><span class="acct">${esc(HESAP[g.Hesap] || g.Hesap)} · ${esc(kisaId(g.ID))}</span><b>${esc(g['Başlık'])}</b><small>${gunYaz(g['Gün'], g.Saat)} · ${esc(g.Kategori || '')}</small>${igPill(g.Durum)}</div>
+        <div class="igc-b"><span class="acct">${esc(HESAP[g.Hesap] || g.Hesap)} · ${esc(kisaId(g.ID))}</span><b>${esc(g['Başlık'])}</b><small>${gunYaz(g['Gün'], g.Saat)} · ${esc(g.Kategori || '')}</small>${g.Durum === 'Reddedildi' ? '' : (p => `<span class="pay" style="--c:${p.c}"><i></i>${esc(p.t)}</span>`)(payDurum(g, true))}${igPill(g.Durum)}</div>
       </article>`;
     }).join('');
+    const eksik = igBag ? igBag.hesaplar.filter(h => !h.bagli).map(h => '@' + h.ad) : [];
+    const uy = !igBag ? '' : igBag.eski || eksik.length === 2 ? 'Otomatik paylaşım henüz kurulmadı: onayladığınız gönderiyi panelden indirip Instagram uygulamasında paylaşın.'
+      : !igBag.otomatik ? 'Otomatik paylaşım duraklatıldı: onaylanan gönderiler paylaşılmaz.' : !igBag.medya ? 'Medya sunucusu bağlı değil: onaylanan gönderiler otomatik paylaşılmaz.'
+      : eksik.length ? `Instagram bağlı değil: ${eksik.join(', ')}. Bu hesabın onaylanan gönderileri otomatik paylaşılmaz.` : '';
+    $('#igUyari').hidden = !uy; $('#igUyari').innerHTML = uy ? `${esc(uy)} <button class="btn btn-line btn-sm" data-go="ayarlar" style="margin-left:6px">Ayarlar</button>` : '';
     const bos = !liste.length;
     $('#igEmpty').hidden = !bos;
     $('#igEmpty').textContent = ig.gonderiler.length ? 'Bu filtreyle eşleşen gönderi yok.' : 'Henüz taslak yok. Ajanlar her pazartesi yeni haftanın taslaklarını buraya gönderir.';
@@ -608,6 +648,9 @@ td .who small{color:var(--ink-3)}
       <button class="btn btn-sm btn-ok" data-karar="Onaylandı">Onayla</button>
       <button class="btn btn-line btn-sm" data-fix>Düzeltme iste</button>
       <button class="btn btn-danger btn-sm" data-karar="Reddedildi">Reddet</button>`;
+    if ((d === 'Onaylandı' || d === 'Yayına hazır') && otomatik(g)) return `
+      <button class="btn btn-line btn-sm" data-karar="Onay bekliyor">Onayı geri al</button>
+      <button class="btn btn-line btn-sm" data-karar="Yayınlandı" title="Gönderiyi kendiniz paylaştıysanız otomatik paylaşımı durdurur">Elle paylaştım</button>`;
     if (d === 'Onaylandı' || d === 'Yayına hazır') return `
       <button class="btn btn-ink btn-sm" data-karar="Yayınlandı">Yayınlandı olarak işaretle</button>
       <button class="btn btn-line btn-sm" data-karar="Onay bekliyor">Onayı geri al</button>`;
@@ -615,20 +658,49 @@ td .who small{color:var(--ink-3)}
     return `<button class="btn btn-line btn-sm" data-karar="Onay bekliyor">Yayından önceki duruma al</button>`;
   }
   function kararIpucu(g) {
-    return { 'Onay bekliyor': 'Görselleri ve açıklamayı kontrol edip karar verin. Düzeltme isterseniz ne değişmesi gerektiğini yazın; Yayın Ajanı düzeltip yeniden onayınıza sunar.',
+    const oto = otomatik(g) && g['Paylaşım zamanı'], hesap = HESAP[g.Hesap] || g.Hesap;
+    const onayli = oto ? `Onaylandı. ${zamanYaz(g['Paylaşım zamanı'])} saatinde ${hesap} hesabından otomatik paylaşılacak. Saati aşağıdan değiştirebilirsiniz.`
+      : 'Onaylandı. Bu gönderi elle paylaşılacak: görselleri indirip Instagram uygulamasından paylaşın, ardından "Yayınlandı olarak işaretle"ye basın.';
+    return { 'Onay bekliyor': 'Görselleri ve açıklamayı kontrol edip karar verin. Düzeltme isterseniz ne değişmesi gerektiğini yazın; Yayın Ajanı düzeltip yeniden onayınıza sunar.' + (oto ? ` Onaylarsanız ${zamanYaz(g['Paylaşım zamanı'])} saatinde otomatik paylaşılır.` : ''),
       'Düzeltme istendi': 'Düzeltme ajanlara iletildi. Yeni sürüm yüklenince durum yeniden "Onay bekliyor" olur.',
-      'Onaylandı': 'Onaylandı. Yayın Ajanı paylaşım paketini hazırlayınca durum "Yayına hazır" olur. Paylaştıktan sonra "Yayınlandı" olarak işaretleyin.',
-      'Yayına hazır': 'Hazır. Görselleri indirip Meta Business Suite ile zamanlayın ya da Instagram uygulamasından paylaşın; ardından "Yayınlandı" olarak işaretleyin.',
+      'Onaylandı': onayli,
+      'Yayına hazır': onayli,
       'Yayınlandı': 'Yayınlandı. Analiz Ajanı haftalık raporda bu gönderinin sonuçlarını değerlendirir.',
       'Reddedildi': 'Reddedildi. Ajanlar bu konuyu gelecek haftalarda önermez.' }[g.Durum] || '';
+  }
+  function payBlok(g) {
+    if (g.Durum === 'Reddedildi') return '';
+    if (g.Instagram) return `<div class="payl"><div class="row"><b>Paylaşıldı</b><a class="btn btn-line btn-sm" href="${esc(g.Instagram)}" target="_blank" rel="noopener">Instagram’da aç ↗</a></div></div>`;
+    const p = payDurum(g), k = g['Yayın kaydı'] || {}, z = g['Paylaşım zamanı'] ? new Date(g['Paylaşım zamanı']) : null;
+    const yerel = z && !isNaN(z) ? new Date(z.getTime() - z.getTimezoneOffset() * 60000).toISOString().slice(0, 16) : '';
+    const cikartma = g['Tür'] === 'story' && g['Çıkartma'];
+    const bagli = bagliMi(g.Hesap), sekil = String(g['Paylaşım şekli'] || '');
+    const neden = otomatik(g) ? '' : !bagli ? 'Instagram hesabı henüz otomatik paylaşıma bağlı değil' : sekil.startsWith('Elle') ? sekil.replace(/^Elle:?\s*/, '') : '';
+    return `<div class="payl"><div class="row"><b>Paylaşım</b><span class="pay" style="--c:${p.c}"><i></i>${esc(p.t)}</span></div>
+      ${neden ? `<p class="muted" style="margin:0;font-size:13px">Elle paylaşım nedeni: ${esc(neden)}. Zamanı gelince e-postayla hatırlatılır.</p>` : ''}
+      ${k.hata ? `<p class="uy">Son deneme: ${esc(k.hata)}${k.deneme >= 3 ? '' : ' (yeniden denenecek)'}</p>` : ''}
+      ${igBag && igBag.eski ? '' : `<form id="igZamanForm" class="row"><input class="inp" type="datetime-local" id="igZaman" value="${yerel}" aria-label="Paylaşım zamanı">
+        <select class="inp" id="igSekli" aria-label="Paylaşım şekli"${cikartma || !bagli ? ` disabled title="${cikartma ? 'Çıkartmalı story otomatik paylaşılamaz' : 'Instagram hesabı bağlı değil'}"` : ''}><option value="Otomatik"${otomatik(g) ? ' selected' : ''}>Otomatik paylaş</option><option value="Elle"${otomatik(g) ? '' : ' selected'}>Elle paylaşacağım</option></select>
+        <button class="btn btn-ink btn-sm" type="submit">Saati kaydet</button></form>`}</div>`;
+  }
+  async function igZamanKaydet() {
+    const id = igCur; if (!id) return;
+    const v = $('#igZaman').value; if (!v) { $('#igZaman').focus(); return; }
+    const btn = $('#igZamanForm button'); btn.disabled = true;
+    try {
+      const j = await api('ig_zaman', { id, zaman: new Date(v).toISOString(), sekli: $('#igSekli').disabled ? 'Elle' : $('#igSekli').value });
+      const i = ig.gonderiler.findIndex(x => x.ID === id);
+      if (i >= 0) ig.gonderiler[i] = { ...ig.gonderiler[i], ...j.gonderi, kucuk: ig.gonderiler[i].kucuk };
+      toast('Paylaşım zamanı kaydedildi'); igSig = ''; render(); igOpen(id, true);
+    } catch (err) { toast(err.message); btn.disabled = false; }
   }
   async function igOpen(id, sessiz) {
     const g = ig.gonderiler.find(x => x.ID === id); if (!g) return;
     igCur = id; igCurSurum = g['Sürüm']; current = null;
     const notlar = String(g['Sahip notu'] || '').split('\n').filter(Boolean).map(n => { const p = n.split(' · '); return `<li><small>${esc(p[0])} · ${esc(p[1] || '')}</small>${esc(p.slice(2).join(' · '))}</li>`; }).reverse().join('');
     const kontrol = (g.Kontrol || []).map(k => `<li>${esc(k)}</li>`).join('');
-    const kv = [['Yayın', gunYaz(g['Gün'], g.Saat)], ['Biçim', TUR[g['Tür']] || g['Tür']], ['Kategori', g.Kategori], ['Sabitle', g.Sabitle ? g.Sabitle + '. sıra' : ''],
-      ['AI etiketi', g['AI etiketi'] === 'Açık' ? 'Açık: paylaşırken Instagram’ın “Yapay zekâ bilgisi” etiketini açın' : 'Gerekmez'], ['Çıkartma', g['Çıkartma']], ['Müzik', g['Müzik']], ['UTM', g.UTM]]
+    const kv = [['Yayın', g['Paylaşım zamanı'] ? esc(zamanYaz(g['Paylaşım zamanı'])) : gunYaz(g['Gün'], g.Saat)], ['Biçim', TUR[g['Tür']] || g['Tür']], ['Kategori', g.Kategori], ['Sabitle', g.Sabitle ? g.Sabitle + '. sıra' : ''],
+      ['AI etiketi', g['AI etiketi'] === 'Açık' ? (otomatik(g) ? 'Açık: otomatik paylaşımda eklenir' : 'Açık: paylaşırken Instagram’ın “Yapay zekâ bilgisi” etiketini açın') : 'Gerekmez'], ['Çıkartma', g['Çıkartma']], ['Müzik', g['Müzik']], ['UTM', g.UTM]]
       .filter(([, v]) => v).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${k === 'Yayın' ? v : esc(v)}</dd>`).join('');
     $('#drawerIn').classList.add('wide');
     $('#drawerIn').innerHTML = `
@@ -638,6 +710,7 @@ td .who small{color:var(--ink-3)}
         <div class="decide"><p class="hint" style="margin:0">${esc(kararIpucu(g))}</p><div class="acts">${kararButonlari(g)}</div>
           <form id="igFixForm" class="field" hidden><label for="igFixTxt">Neyin değişmesini istiyorsunuz?</label><textarea class="inp" id="igFixTxt" placeholder="Örneğin: 2. karedeki başlık daha büyük olsun; açıklamadaki ilk cümle kısalsın"></textarea>
             <div class="acts"><button class="btn btn-ink btn-sm" type="submit">Düzeltme iste</button><button class="btn btn-line btn-sm" type="button" data-fix-iptal>Vazgeç</button></div></form></div>
+        ${payBlok(g)}
         <div class="gal" id="igGal"><p class="loading">Görseller yükleniyor…</p></div>
         ${g['Açıklama'] ? `<div class="box"><div class="box-h"><span>Açıklama</span><button class="btn btn-line btn-sm" data-kopya="Açıklama">Kopyala</button></div><pre>${esc(g['Açıklama'])}</pre></div>` : ''}
         ${g['Alt metin'] ? `<div class="box"><div class="box-h"><span>Alt metin (Gelişmiş ayarlar)</span><button class="btn btn-line btn-sm" data-kopya="Alt metin">Kopyala</button></div><pre>${esc(g['Alt metin'])}</pre></div>` : ''}
@@ -664,7 +737,7 @@ td .who small{color:var(--ink-3)}
       const j = await api('ig_karar', { id, karar, not: not || '', surum: igCurSurum });
       const i = ig.gonderiler.findIndex(x => x.ID === id);
       if (i >= 0) ig.gonderiler[i] = { ...ig.gonderiler[i], ...j.gonderi, kucuk: ig.gonderiler[i].kucuk };
-      toast({ 'Onaylandı': 'Onaylandı', 'Düzeltme istendi': 'Düzeltme isteği ajanlara iletildi', 'Reddedildi': 'Reddedildi', 'Yayınlandı': 'Yayınlandı olarak işaretlendi', 'Onay bekliyor': 'Yeniden onay bekliyor' }[karar] || 'Kaydedildi');
+      toast(j.uyari || { 'Onaylandı': 'Onaylandı', 'Düzeltme istendi': 'Düzeltme isteği ajanlara iletildi', 'Reddedildi': 'Reddedildi', 'Yayınlandı': 'Yayınlandı olarak işaretlendi', 'Onay bekliyor': 'Yeniden onay bekliyor' }[karar] || 'Kaydedildi');
       igSig = ''; render(); igOpen(id, true); igLoad(true);
     } catch (err) {
       toast(err.message); $$('#drawerIn .decide button').forEach(x => x.disabled = false);
@@ -681,6 +754,7 @@ td .who small{color:var(--ink-3)}
     if (c) { const g = ig.gonderiler.find(x => x.ID === igCur); navigator.clipboard.writeText(String(g[c.dataset.kopya] || '')).then(() => toast('Kopyalandı'), () => toast('Kopyalanamadı; metni seçip kopyalayın')); }
   });
   $('#drawer').addEventListener('submit', e => {
+    if (e.target.id === 'igZamanForm') { e.preventDefault(); igZamanKaydet(); return; }
     if (e.target.id !== 'igFixForm') return; e.preventDefault();
     const t = $('#igFixTxt').value.trim(); if (!t) { $('#igFixTxt').focus(); return; }
     igKararVer('Düzeltme istendi', t);
@@ -721,7 +795,19 @@ td .who small{color:var(--ink-3)}
   });
 
   /* ---------- Ayarlar ---------- */
-  function renderAyar() { if (document.activeElement !== $('#notify')) $('#notify').value = bildirim; }
+  function renderAyar() { if (document.activeElement !== $('#notify')) $('#notify').value = bildirim; renderIgCon(); }
+  function renderIgCon() {
+    const el = $('#igCon');
+    if (!igBag) { el.innerHTML = '<p class="muted">Yükleniyor…</p>'; return; }
+    if (igBag.eski) { el.innerHTML = '<p class="muted" style="margin:0">Henüz kurulmadı. Meta (Facebook) geliştirici kurulumu yapılınca açılır; o zamana kadar onaylanan gönderiler elle paylaşılır.</p>'; return; }
+    el.innerHTML = igBag.hesaplar.map(h => `<div class="h"><div><b>@${esc(h.ad)}</b><div class="muted" style="font-size:12.5px">${h.bagli ? 'Otomatik paylaşıma bağlı' + (h.yenileme ? ' · erişim anahtarı ' + fmtD(h.yenileme) + ' tarihinde yenilendi' : '') : 'Bağlı değil: Apps Script’te instagramBagla ile bağlanır'}${h.hata ? ` · <span style="color:var(--warn)">${esc(h.hata)}</span>` : ''}</div></div><span class="pill" style="--c:${h.bagli ? 'var(--ok)' : 'var(--ink-3)'}">${h.bagli ? 'Bağlı' : 'Bağlı değil'}</span></div>`).join('')
+      + `<div class="h"><div><b>Otomatik paylaşım</b><div class="muted" style="font-size:12.5px">${igBag.otomatik ? (igBag.zamanlayici ? 'Açık: onaylanan gönderiler zamanında paylaşılır (10 dakikada bir kontrol)' : 'Zamanlayıcı henüz kurulmadı: ilk hesap bağlanınca kurulur') : 'Duraklatıldı: hiçbir gönderi paylaşılmaz'}</div></div><button class="btn btn-line btn-sm" id="igOtoBtn" type="button">${igBag.otomatik ? 'Duraklat' : 'Başlat'}</button></div>`;
+  }
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#igOtoBtn') || !igBag) return;
+    if (igBag.otomatik && !confirm('Otomatik paylaşım duraklatılsın mı? Onaylanan gönderiler siz başlatana kadar paylaşılmaz.')) return;
+    igBagYukle({ otomatik: !igBag.otomatik });
+  });
   $('#setForm').addEventListener('submit', async e => {
     e.preventDefault(); $('#setErr').textContent = '';
     try { const j = await api('ayarlar', { bildirim: $('#notify').value }); bildirim = j.bildirim; toast('Bildirim adresleri kaydedildi'); }
@@ -750,6 +836,7 @@ td .who small{color:var(--ink-3)}
       if (islem === 'guncelle') { const t = demo.find(o => o.ID === x.id); if (x.sil) { demo = demo.filter(o => o !== t); return res({ ok: true, silindi: true }); }
         if (x.durum) t.Durum = x.durum; if (x.not) t.Notlar = (t.Notlar ? t.Notlar + '\n' : '') + new Date().toLocaleString('tr-TR').slice(0, 16) + ' · ' + x.not; return res({ ok: true, talep: { ...t } }); }
       if (islem === 'ayarlar') return res({ ok: true, bildirim: x.bildirim });
+      if (islem === 'ig_baglanti') return res({ ok: true, hesaplar: [{ hesap: 'tr', ad: 'purixxrf.tr', bagli: false }, { hesap: 'global', ad: 'purixxrf', bagli: false }], otomatik: true, zamanlayici: false });
       if (islem === 'ig_liste') return res({ ok: true, hafta: '', haftalar: [], gonderiler: [], bekleyen: 0, gunluk: [], raporlar: [], durumlar: Object.keys(IG_RENK) });
       res({ ok: true });
     }, 150));
