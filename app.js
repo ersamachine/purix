@@ -24,7 +24,7 @@
     es: { name: 'Español', locale: 'es-MX' },
     pt: { name: 'Português', locale: 'pt-BR' }
   };
-  const SURUM = '202609300045'; // surum.py tarafından yazılır (önbellek kırıcı)
+  const SURUM = '202610012135'; // surum.py tarafından yazılır (önbellek kırıcı)
   const FONTS = { arab: 'fonts/arab.css', deva: 'fonts/deva.css', thai: 'fonts/thai.css' }; // sitenin kendi sunucusundan
   // Öncelik sırası kullanıcının satış planından. İlk dil = ülkenin varsayılanı.
   const COUNTRIES = [
@@ -120,6 +120,7 @@
     $('#locLang').textContent = L.name;
     $('#cCountry').textContent = cn;
     $('#cIg').href = igUrl; $('#cIg').textContent = '@' + ctry.ig; $('#fIg').href = igUrl;
+    const mail = ctry.c === 'TR' ? 'tr@purixxrf.com' : 'info@purixxrf.com'; $('#cMail').href = 'mailto:' + mail; $('#cMail').textContent = mail; // Türkiye'ye özel adres
     $('#footLoc').textContent = `${cn} · ${L.name}`;
     $('#fTel-h').textContent = t('f.phoneH').replace('{ex}', ctry.ex);
     const pct = s => lang === 'tr' ? s.replace(/(\d[\d.,]*)\s?%/g, '%$1') : s; // Türkçede yüzde işareti sayıdan önce (TDK)
