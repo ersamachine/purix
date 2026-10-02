@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>PURIX Panel</title>
-<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610021442">
-<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610021442" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../fonts/fonts.css?v=202610021442">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610022007">
+<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610022007" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fonts/fonts.css?v=202610022007">
 <style>
 :root{
   --bg:#F4F4F1;--surface:#fff;--ink:#1C1917;--ink-2:#57534E;--ink-3:#78716C;--line:#D6D3D1;--line-2:#E7E5E4;
@@ -231,7 +231,7 @@ td .who small{color:var(--ink-3)}
 <!-- GİRİŞ -->
 <section class="login" id="login" hidden>
   <form class="login-card" id="loginForm">
-    <img src="../assets/mark-128.webp?v=202610021442" alt="" width="40" height="51">
+    <img src="../assets/mark-128.webp?v=202610022007" alt="" width="40" height="51">
     <h1>PURIX Panel</h1>
     <p>Teklif taleplerini görmek için giriş yapın.</p>
     <div class="field"><label for="pw">Şifre</label><input class="inp" id="pw" type="password" autocomplete="current-password" required></div>
@@ -245,7 +245,7 @@ td .who small{color:var(--ink-3)}
 <!-- UYGULAMA -->
 <div class="app" id="app" hidden>
   <aside class="side" id="side">
-    <div class="brand"><img src="../assets/mark-128.webp?v=202610021442" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
+    <div class="brand"><img src="../assets/mark-128.webp?v=202610022007" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
     <button class="nav-btn" data-view="bugun" aria-current="page"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/><path d="M4 20h16"/></svg>Bugün<span class="badge" id="bgBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="genel"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"/></svg>Genel bakış</button>
     <button class="nav-btn" data-view="talepler"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Talepler<span class="badge" id="newBadge" hidden>0</span></button>
@@ -284,6 +284,7 @@ td .who small{color:var(--ink-3)}
         <div class="card"><h2>Ülkelere göre <small>tüm zamanlar</small></h2><div id="byCountry"></div></div>
         <div class="card"><h2>Modellere göre</h2><div id="byModel"></div><h2 style="margin-top:18px">Sektörlere göre</h2><div id="bySector"></div></div>
       </div>
+      <div class="card" id="segKart" style="margin-bottom:14px"><h2>Satış hunisi <small>aday → kazanıldı</small></h2><div id="huniIc"></div><h2 style="margin-top:18px">Segment ve kanal sonuçları <small>firma listesi</small></h2><div id="segIc"><p class="muted">Yükleniyor…</p></div></div>
       <div class="card"><h2>Son talepler <button class="btn btn-line btn-sm" data-go="talepler">Tümünü gör</button></h2><div class="table-wrap" style="box-shadow:none"><table><tbody id="recent"></tbody></table></div></div>
     </section>
 
@@ -363,9 +364,17 @@ td .who small{color:var(--ink-3)}
         <p class="muted" style="margin:-6px 0 6px">Onayladığınız gönderiler, planlanan saatte ilgili hesaptan kendiliğinden paylaşılır. Çıkartmalı story'ler elle paylaşılır; zamanı gelince e-postayla hatırlatılır.</p>
         <div class="igcon" id="igCon"><p class="muted">Yükleniyor…</p></div>
       </div>
+      <div class="card" style="max-width:640px;margin-top:14px" id="sagKart">
+        <h2>Sistem sağlığı <button class="btn btn-line btn-sm" id="ozetGonder" type="button">Haftalık özeti şimdi gönder</button></h2>
+        <div id="sagIc"><p class="muted">Yükleniyor…</p></div>
+      </div>
+      <div class="card" style="max-width:640px;margin-top:14px">
+        <h2>Güvenlik günlüğü <small>son 25 işlem</small></h2>
+        <div id="gunlukIc"><p class="muted">Yükleniyor…</p></div>
+      </div>
       <div class="card" style="max-width:640px;margin-top:14px">
         <h2>Bağlantı</h2>
-        <dl class="kv"><dt>Veri kaynağı</dt><dd id="apiInfo"></dd><dt>Şifre</dt><dd>Apps Script editöründe <b>sifreBelirle</b> fonksiyonu ile değiştirilir.</dd><dt>Oturum</dt><dd>6 saat sonra otomatik kapanır.</dd></dl>
+        <dl class="kv"><dt>Veri kaynağı</dt><dd id="apiInfo"></dd><dt>Giriş</dt><dd>Şifre ve telefondaki doğrulama kodu (2 adımlı).</dd><dt>Oturum</dt><dd>6 saat sonra otomatik kapanır.</dd></dl>
       </div>
     </section>
   </main>
@@ -377,7 +386,7 @@ td .who small{color:var(--ink-3)}
 </div>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="../config.js?v=202610021442"></script>
+<script src="../config.js?v=202610022007"></script>
 <script>
 (() => {
   if (window.top !== window.self) { document.documentElement.innerHTML = ''; try { window.top.location = window.self.location; } catch {} return; }  // çerçeve içine alınmaya (clickjacking) karşı
@@ -401,7 +410,7 @@ td .who small{color:var(--ink-3)}
   let view = 'bugun', fStatus = '', current = null;
 
   const ONBELLEK = ['liste', 'ig_liste', 'aday_panel'];   // son yanıt oturum boyunca saklanır: panel açılır açılmaz görünür, arkadan tazelenir
-  let talepYuklendi = false, igYuklendi = false, adYuklendi = false;
+  let talepYuklendi = false, igYuklendi = false, adYuklendi = false, ilkYanit = null;
   const SKEL_SATIR = n => `<tr class="skel">${'<td><i></i></td>'.repeat(n)}</tr>`;
   const SKEL_KART = '<article class="igc skel"><div class="igc-img"></div><div class="igc-b"><i></i><i></i><i></i></div></article>';
   /* ---------- API ---------- */
@@ -450,7 +459,7 @@ td .who small{color:var(--ink-3)}
       const sig = JSON.stringify(j.talepler || []) + (j.bildirim || '');
       if (silent && sig === talepSig) return; talepSig = sig;
       const onceki = new Set(data.map(x => x.ID));
-      data = j.talepler || []; durumlar = j.durumlar || durumlar; bildirim = j.bildirim || ''; talepYuklendi = true;
+      data = j.talepler || []; durumlar = j.durumlar || durumlar; bildirim = j.bildirim || ''; talepYuklendi = true; ilkYanit = j.ilk_yanit || null;
       if (current) current = data.find(x => x.ID === current.ID) || current;
       if (silent && onceki.size) { const yeni = data.filter(x => !onceki.has(x.ID)); if (yeni.length) toast(`${yeni.length} yeni talep geldi`); }
       $('#syncInfo').textContent = 'Güncellendi ' + new Date().toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
@@ -486,6 +495,8 @@ td .who small{color:var(--ink-3)}
     if (v === 'instagram' || v === 'ayarlar') igBagYukle();
     if (v === 'adaylar') adLoad();
     if (v === 'bugun') bgLoad();
+    if (v === 'genel') segLoad();
+    if (v === 'ayarlar') sagLoad();
   }
   $$('[data-view]').forEach(b => b.addEventListener('click', () => go(b.dataset.view)));
   document.addEventListener('click', e => { const g = e.target.closest('[data-go]'); if (g) go(g.dataset.go); });
@@ -507,7 +518,7 @@ td .who small{color:var(--ink-3)}
     const kaz = data.filter(x => x.Durum === 'Kazanıldı').length, kapanan = kaz + data.filter(x => x.Durum === 'Kaybedildi').length;
     const yeni = data.filter(x => x.Durum === 'Yeni').length;
     $('#kpis').innerHTML = `
-      <div class="kpi accent"><span>İşlem bekleyen</span><b class="num">${yeni}</b><small>durumu "Yeni" olan talepler</small></div>
+      <div class="kpi accent"><span>İşlem bekleyen</span><b class="num">${yeni}</b><small>durumu "Yeni" olan talepler${ilkYanit && ilkYanit.adet ? ' · ilk yanıt ort. ' + (ilkYanit.ortalama_dk < 90 ? ilkYanit.ortalama_dk + ' dk' : Math.round(ilkYanit.ortalama_dk / 60) + ' saat') : ''}</small></div>
       <div class="kpi"><span>Bu hafta</span><b class="num">${hafta}</b><small>son 7 gün</small></div>
       <div class="kpi"><span>Bu ay</span><b class="num">${ay}</b><small>toplam ${data.length} talep</small></div>
       <div class="kpi"><span>Kazanılan</span><b class="num">${kaz}</b><small>${kapanan ? 'kapanan taleplerin %' + Math.round(kaz / kapanan * 100) + "'i" : 'henüz kapanan yok'}</small></div>`;
@@ -913,6 +924,7 @@ td .who small{color:var(--ink-3)}
           <div class="field"><label for="adNot">Not</label><textarea class="inp" id="adNot" placeholder="Görüşmede ne konuşuldu? (isteğe bağlı)"></textarea></div>
           <div class="acts"><button class="btn btn-ink btn-sm" type="submit">Kaydet</button></div>
         </form>
+        ${temasHtml(x)}
         <dl class="kv">
           ${[['Karar verici', [x['Karar verici'], x['Görev']].filter(Boolean).join(' · ')], ['Telefon', x.Telefon], ['WhatsApp', x.WhatsApp], ['E-posta', x['E-posta']], ['Adres', x.Adres],
              ['Web', web], ['Instagram', x.Instagram], ['Puan', x.Puan ? x.Puan + (x['Puan nedeni'] ? ' · ' + x['Puan nedeni'] : '') : ''], ['Bölge', x['Bölge']], ['Kaynak', x.Kaynak],
@@ -924,7 +936,7 @@ td .who small{color:var(--ink-3)}
         ${kutu('E-posta metni', 'E-posta metni')}
         <div><h3 style="font-size:14px;margin-bottom:8px">Geçmiş</h3><ul class="notes">${notes || '<li class="muted">Henüz not yok.</li>'}</ul></div>
       </div>`;
-    cekmeceAc(); $('[data-close]').focus();
+    cekmeceAc(); $('[data-close]').focus(); temasYukle(x.ID);
   }
   $('#drawer').addEventListener('click', e => {
     if (!adCur) return;
@@ -947,6 +959,50 @@ td .who small{color:var(--ink-3)}
       toast('Kaydedildi'); render(); adOpen(id); adLoad();
     } catch (err) { toast(err.message); btn.disabled = false; }
   });
+
+  /* ---------- Temas defteri, segment raporu, sistem sağlığı ---------- */
+  const TEMAS_KANAL = ['Telefon', 'WhatsApp', 'E-posta', 'LinkedIn', 'Instagram', 'Yüz yüze'], TEMAS_SONUC = ['Mesaj gönderildi', 'Ulaşılamadı', 'Görüştük', 'Cevap geldi', 'Geri aranacak', 'İlgilenmiyor'];
+  function temasHtml(x) {
+    const v = (cepMi(x.WhatsApp) || cepMi(x.Telefon)) ? 'WhatsApp' : (x['E-posta'] ? 'E-posta' : 'Telefon');
+    return `<form id="temasForm" class="decide"><h3 style="font-size:14px;margin-bottom:8px">Temas kaydet</h3>
+      <div class="ad-row2"><div class="field"><label for="tmKanal">Kanal</label><select class="inp" id="tmKanal">${TEMAS_KANAL.map(k => `<option ${k === v ? 'selected' : ''}>${k}</option>`).join('')}</select></div>
+        <div class="field"><label for="tmSonuc">Sonuç</label><select class="inp" id="tmSonuc">${TEMAS_SONUC.map(k => `<option>${k}</option>`).join('')}</select></div></div>
+      <div class="field"><label for="tmNot">Not</label><input class="inp" id="tmNot" type="text" placeholder="İsteğe bağlı"></div>
+      <p class="muted" id="tmUyari" role="status"></p>
+      <div class="acts"><button class="btn btn-line btn-sm" type="submit">Temas ekle</button></div></form>
+      <div><h3 style="font-size:14px;margin-bottom:8px">Temas geçmişi</h3><ul class="notes" id="tmListe"><li class="muted">Yükleniyor…</li></ul></div>`;
+  }
+  function temasCiz(l) { const el = $('#tmListe'); if (el) el.innerHTML = l.length ? l.map(t => `<li><small>${esc(fmtD(t.zaman))} · ${esc(t.kanal)}</small>${esc(t.sonuc || '')}${t.notu ? ' · ' + esc(t.notu) : ''}</li>`).join('') : '<li class="muted">Henüz temas kaydı yok.</li>'; }
+  async function temasYukle(id) { try { const j = await api('temas_liste', { id }); if (adCur === id) temasCiz(j.temaslar); } catch (e) { const el = $('#tmListe'); if (el) el.innerHTML = '<li class="muted">Yüklenemedi.</li>'; } }
+  $('#drawer').addEventListener('submit', async e => {
+    if (e.target.id !== 'temasForm') return; e.preventDefault();
+    const id = adCur, btn = e.target.querySelector('button[type=submit]'); if (!id) return; btn.disabled = true;
+    try {
+      const j = await api('temas_ekle', { id, kanal: $('#tmKanal').value, sonuc: $('#tmSonuc').value, not: $('#tmNot').value.trim() });
+      const i = ad.adaylar.findIndex(a => a.ID === id); if (i >= 0) ad.adaylar[i] = j.aday;
+      temasCiz(j.temaslar); $('#tmNot').value = ''; $('#tmUyari').textContent = j.uyari || ''; if ($('#adSt')) $('#adSt').value = j.aday.Durum;
+      toast(j.uyari ? 'Kaydedildi. ' + j.uyari : 'Temas kaydedildi'); render(); adLoad();
+    } catch (err) { toast(err.message); } finally { btn.disabled = false; }
+  });
+  async function segLoad() {
+    try {
+      const j = await api('segment_rapor'), oran = o => o == null ? '—' : '%' + o;
+      const hn = j.huni || [], mx = Math.max(1, ...hn.map(h => h[1])); $('#huniIc').innerHTML = hn.map(([d, n]) => `<div class="hbar"><span>${esc(d)}</span><div class="t"><i style="width:${n ? Math.max(3, n / mx * 100) : 0}%"></i></div><span class="v num">${n}</span></div>`).join('') + (j.huni_disi ? `<p class="muted" style="margin-top:8px">Kaybedildi: ${j.huni_disi['Kaybedildi']} · İlgisiz: ${j.huni_disi['İlgisiz']}</p>` : '');
+      const tablo = (bas, satirlar) => `<div class="table-wrap" style="box-shadow:none;margin-bottom:14px"><table><thead><tr>${bas.map(b => `<th>${b}</th>`).join('')}</tr></thead><tbody>${satirlar.map(s => `<tr>${s.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('') || `<tr><td colspan="${bas.length}" class="muted">Henüz veri yok.</td></tr>`}</tbody></table></div>`;
+      $('#segIc').innerHTML = tablo(['Segment', 'Firma', 'Ulaşılan', 'Yanıt', 'Sıcak', 'Yanıt oranı'], j.segmentler.map(s => [s.segment, s.firma, s.ulasilan, s.yanit, s.sicak, oran(s.yanit_orani)]))
+        + tablo(['Kanal', 'Temas', 'Yanıt', 'Yanıt oranı'], j.kanallar.map(k => [k.kanal, k.temas, k.yanit, oran(k.yanit_orani)]));
+    } catch (e) { const el = $('#segIc'); if (el) el.innerHTML = `<p class="empty">${esc(e.message)}</p>`; }
+  }
+  async function sagLoad() {
+    try {
+      const j = await api('saglik');
+      const hs = j.hesaplar.filter(h => h.aktif).map(h => `<dt>@${esc(h.hesap)}</dt><dd>${h.bagli ? (h.kalan_gun === null ? 'bağlı' : 'anahtar ' + h.kalan_gun + ' gün daha geçerli') : 'bağlı değil'}${h.hata ? ' · ' + esc(h.hata) : ''}</dd>`).join('');
+      const sorun = j.ajan_sorunlar.length ? `<p class="muted" style="margin-top:10px">Son uyarı ve hatalar:</p><ul class="notes">${j.ajan_sorunlar.map(a => `<li><small>${esc(fmtD(a.zaman))} · ${esc(a.ajan)} · ${esc(a.durum)}</small>${esc(a.ozet)}</li>`).join('')}</ul>` : '';
+      $('#sagIc').innerHTML = `<dl class="kv"><dt>Son yedek</dt><dd>${j.yedek ? esc(j.yedek.gun) + ' (' + j.yedek.yas_gun + ' gün önce)' : 'YOK'}</dd><dt>Ajanlar (7 gün)</dt><dd>${j.ajan_7gun.basarili} başarılı · ${j.ajan_7gun.uyari} uyarı · ${j.ajan_7gun.hata} hata</dd>${hs}<dt>Son e-posta</dt><dd>${j.mail.son_hata ? esc(j.mail.son_hata.slice(0, 120)) : (j.mail.son_basari ? 'gönderildi ' + esc(fmtD(j.mail.son_basari)) : '—')}</dd></dl>${sorun}`;
+      $('#gunlukIc').innerHTML = `<ul class="notes">${j.guvenlik_gunlugu.map(g => `<li><small>${esc(fmtD(g.zaman))} · ${esc(g.kim || '')}</small>${esc(g.islem)}${g.hedef ? ' · ' + esc(g.hedef) : ''}${g.ozet ? ' · ' + esc(g.ozet) : ''}</li>`).join('') || '<li class="muted">Kayıt yok.</li>'}</ul>`;
+    } catch (e) { const el = $('#sagIc'); if (el) el.innerHTML = `<p class="empty">${esc(e.message)}</p>`; }
+  }
+  $('#ozetGonder').addEventListener('click', async e => { const b = e.currentTarget; b.disabled = true; try { const j = await api('ozet_gonder'); toast(j.gitti ? 'Özet e-postası gönderildi' : 'E-posta gönderilemedi'); } catch (err) { toast(err.message); } finally { b.disabled = false; } });
 
   /* ---------- Bugün ---------- */
   let bg = null;
@@ -1079,6 +1135,9 @@ td .who small{color:var(--ink-3)}
         if (x.durum) t.Durum = x.durum; if (x.not) t.Notlar = (t.Notlar ? t.Notlar + '\n' : '') + new Date().toLocaleString('tr-TR').slice(0, 16) + ' · ' + x.not; return res({ ok: true, talep: { ...t } }); }
       if (islem === 'ayarlar') return res({ ok: true, bildirim: x.bildirim });
       if (islem === 'aday_panel') return res({ ok: true, toplam: 0, adaylar: [], ozet: { toplam: 0, bugun: 0, puan: { A: 0, B: 0, C: 0 }, durum: {}, bolge: {} }, durumlar: Object.keys(AD_RENK) });
+      if (islem === 'segment_rapor') return res({ ok: true, huni: [], segmentler: [], kanallar: [] });
+      if (islem === 'saglik') return res({ ok: true, yedek: null, hesaplar: [], ajan_7gun: { basarili: 0, uyari: 0, hata: 0 }, ajan_sorunlar: [], mail: { son_basari: '', son_hata: '' }, guvenlik_gunlugu: [] });
+      if (islem === 'temas_liste') return res({ ok: true, temaslar: [] });
       if (islem === 'bugun') return res({ ok: true, duraklat: true, hazir_toplam: 0, cevap: [], takip: [], hazir: [], talepler: { yeni: 0, liste: [] }, instagram: { bekleyen: 0, liste: [] } });
       if (islem === 'ig_baglanti') return res({ ok: true, hesaplar: [{ hesap: 'tr', ad: 'purixxrf.tr', bagli: false }, { hesap: 'global', ad: 'purixxrf', bagli: false }], otomatik: true, zamanlayici: false });
       if (islem === 'ig_liste') return res({ ok: true, hafta: '', haftalar: [], gonderiler: [], bekleyen: 0, gunluk: [], raporlar: [], durumlar: Object.keys(IG_RENK) });
