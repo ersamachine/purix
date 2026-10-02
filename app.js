@@ -24,7 +24,7 @@
     es: { name: 'Español', locale: 'es-MX' },
     pt: { name: 'Português', locale: 'pt-BR' }
   };
-  const SURUM = '202610022151'; // surum.py tarafından yazılır (önbellek kırıcı)
+  const SURUM = '202610022204'; // surum.py tarafından yazılır (önbellek kırıcı)
   const FONTS = { arab: 'fonts/arab.css', deva: 'fonts/deva.css', thai: 'fonts/thai.css' }; // sitenin kendi sunucusundan
   // Öncelik sırası kullanıcının satış planından. İlk dil = ülkenin varsayılanı.
   const COUNTRIES = [
@@ -55,13 +55,12 @@
   // Yalnızca Türkiye + Türkçe için geçerli yerel metinler
   const OVERRIDES = {
     TR: { tr: {
-      'meta.desc': 'PURIX X1 XRF altın analiz cihazı: kuyumcu, rafineri ve ayar evleri için 30–60 saniyede, parçaya zarar vermeden ayar ve element ölçümü. Türkiye\'de kurulum, eğitim ve NDK lisans desteği.',
-      'craft.sP': 'Kapak açıldığı anda tüp kapanır. NDK lisans başvurusu için gereken teknik dosyanın ve doz hızı ölçüm raporunun hazırlanmasında destek oluyoruz.',
+      'meta.desc': 'PURIX X1 XRF altın analiz cihazı: kuyumcu, rafineri ve ayar evleri için 30–60 saniyede, parçaya zarar vermeden ayar ve element ölçümü. Türkiye\'de kurulum ve eğitim desteği.',
+      'craft.sP': 'Kapak açıldığı anda tüp kapanır. Doz hızı ölçüm raporu talep üzerine sağlanır.',
       'a3p': 'Gram altın, cumhuriyet altını ve yatırımlık sikkelerin yüzey bileşimini saniyeler içinde, zarar vermeden kontrol edin.',
       'svc.lede': 'Kurulumdan kalibrasyona kadar her adımda karşınızda Türkçe konuşan bir mühendis var.',
       'v1p': 'Kurulum, personel eğitimi ve ilk kalibrasyon desteği; kapsam teklifte belirtilir.',
-      'v2': 'NDK lisans desteği', 'v2p': 'NDK lisans başvurusu için gereken teknik belgelerin hazırlanmasında ve başvuru takibinde destek.',
-      'q3a': 'Tüp yalnızca kapak kapalıyken çalışır. Türkiye\'de X-ışını cihazları için NDK lisansı gerekir; başvuru dosyasının hazırlanmasında destek oluyoruz.',
+      'q3a': 'Tüp yalnızca kapak kapalıyken çalışır ve kapak açıldığı anda kapanır.',
       'q4a': 'Stoktaki modeller İstanbul içinde 2 iş günü, diğer illerde 5 iş günü içinde kurulur. Personel eğitimi yaklaşık 2 saat sürer.',
       'q5': 'Taksit veya kiralama seçeneği var mı?', 'q5a': 'Peşin ödeme, kredi kartına taksit ve 12–36 ay operasyonel kiralama seçenekleri var. Tercihinizi teklif formunda belirtin.',
       'c.show': 'Showroom', 'c.showV': 'İstanbul', 'c.hoursV': 'Hafta içi 09.00–18.30',
