@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>PURIX Panel</title>
-<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610021358">
-<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610021358" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../fonts/fonts.css?v=202610021358">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610021442">
+<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610021442" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fonts/fonts.css?v=202610021442">
 <style>
 :root{
   --bg:#F4F4F1;--surface:#fff;--ink:#1C1917;--ink-2:#57534E;--ink-3:#78716C;--line:#D6D3D1;--line-2:#E7E5E4;
@@ -218,6 +218,12 @@ td .who small{color:var(--ink-3)}
 .skel .igc-img{background:var(--line-2);animation:skel2 1.2s ease-in-out infinite}
 @keyframes skel{to{background-position:-200% 0}}@keyframes skel2{50%{opacity:.55}}
 .remember{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink-3);margin:2px 0 14px}
+.bg-bant{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 18px;border-radius:var(--r);margin-bottom:18px;background:#FEF3C7;color:#78350F}
+.bg-bant.acik{background:var(--surface);color:var(--ink-2);box-shadow:0 1px 0 var(--line-2)}
+.bg-satir{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line-2);cursor:pointer;min-height:48px}
+.bg-satir:last-child{border-bottom:0}.bg-satir:hover .bg-ad{text-decoration:underline}
+.bg-ad{font-weight:500}.bg-alt{font-size:12.5px;color:var(--ink-3)}
+.bg-kanal{font-size:12px;font-weight:500;padding:3px 10px;border-radius:999px;background:var(--bg);color:var(--ink-2);white-space:nowrap}
 </style>
 </head>
 <body>
@@ -225,7 +231,7 @@ td .who small{color:var(--ink-3)}
 <!-- GİRİŞ -->
 <section class="login" id="login" hidden>
   <form class="login-card" id="loginForm">
-    <img src="../assets/mark-128.webp?v=202610021358" alt="" width="40" height="51">
+    <img src="../assets/mark-128.webp?v=202610021442" alt="" width="40" height="51">
     <h1>PURIX Panel</h1>
     <p>Teklif taleplerini görmek için giriş yapın.</p>
     <div class="field"><label for="pw">Şifre</label><input class="inp" id="pw" type="password" autocomplete="current-password" required></div>
@@ -239,8 +245,9 @@ td .who small{color:var(--ink-3)}
 <!-- UYGULAMA -->
 <div class="app" id="app" hidden>
   <aside class="side" id="side">
-    <div class="brand"><img src="../assets/mark-128.webp?v=202610021358" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
-    <button class="nav-btn" data-view="genel" aria-current="page"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"/></svg>Genel bakış</button>
+    <div class="brand"><img src="../assets/mark-128.webp?v=202610021442" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
+    <button class="nav-btn" data-view="bugun" aria-current="page"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/><path d="M4 20h16"/></svg>Bugün<span class="badge" id="bgBadge" hidden>0</span></button>
+    <button class="nav-btn" data-view="genel"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"/></svg>Genel bakış</button>
     <button class="nav-btn" data-view="talepler"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Talepler<span class="badge" id="newBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="adaylar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".8"/></svg>Adaylar<span class="badge" id="adBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r=".6"/></svg>Instagram<span class="badge" id="igBadge" hidden>0</span></button>
@@ -253,15 +260,21 @@ td .who small{color:var(--ink-3)}
   <main class="main">
     <div class="top">
       <button class="btn btn-line btn-sm burger" id="burger" aria-label="Menü"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-      <div><h1 id="title">Genel bakış</h1><div class="sub" id="subtitle"></div></div>
+      <div><h1 id="title">Bugün</h1><div class="sub" id="subtitle"></div></div>
       <div class="top-end">
         <button class="btn btn-line btn-sm" id="refresh"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 11-2.3-5.7M20 4v5h-5"/></svg>Yenile</button>
       </div>
     </div>
     <div class="demo-bar" id="demoBar" hidden>Demo modu: aşağıdaki talepler örnek veridir. Google Apps Script bağlantısı yapıldığında gerçek talepler görünür.</div>
 
+    <!-- BUGÜN -->
+    <section id="v-bugun">
+      <div id="bgBant"></div>
+      <div class="grid2" id="bgIc"></div>
+    </section>
+
     <!-- GENEL -->
-    <section id="v-genel">
+    <section id="v-genel" hidden>
       <div class="kpis" id="kpis"></div>
       <div class="grid2">
         <div class="card"><h2>Son 30 gün <small>günlük talep sayısı</small></h2><svg class="chart" id="trend" role="img" aria-label="Son 30 günün günlük talep grafiği"></svg></div>
@@ -364,7 +377,7 @@ td .who small{color:var(--ink-3)}
 </div>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="../config.js?v=202610021358"></script>
+<script src="../config.js?v=202610021442"></script>
 <script>
 (() => {
   if (window.top !== window.self) { document.documentElement.innerHTML = ''; try { window.top.location = window.self.location; } catch {} return; }  // çerçeve içine alınmaya (clickjacking) karşı
@@ -385,7 +398,7 @@ td .who small{color:var(--ink-3)}
   const toast = m => { const t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('on'), 2600); };
 
   let token = ss.get('purix_token'), data = [], durumlar = Object.keys(DURUM_RENK), bildirim = '';
-  let view = 'genel', fStatus = '', current = null;
+  let view = 'bugun', fStatus = '', current = null;
 
   const ONBELLEK = ['liste', 'ig_liste', 'aday_panel'];   // son yanıt oturum boyunca saklanır: panel açılır açılmaz görünür, arkadan tazelenir
   let talepYuklendi = false, igYuklendi = false, adYuklendi = false;
@@ -458,13 +471,13 @@ td .who small{color:var(--ink-3)}
   function start() {
     $('#login').hidden = true; $('#app').hidden = false; $('#demoBar').hidden = !DEMO;
     $('#apiInfo').textContent = DEMO ? 'Bağlı değil (demo verisi)' : (/script\.google\.com/.test(API) ? 'Google Apps Script (eski)' : 'PURIX platform · ' + new URL(API).hostname);
-    hizliAcilis(); load(); igLoad(true); clearInterval(timer); let tik = 0;
+    hizliAcilis(); load(); igLoad(true); go('bugun'); clearInterval(timer); let tik = 0;
     timer = setInterval(() => { load(true); if (!igUcus && (++tik % 5 === 0 || view === 'instagram' || view === 'ajanlar')) igLoad(true); }, 60000);
   }
   $('#refresh').addEventListener('click', () => { load(); igLoad(); });
 
   /* ---------- Görünümler ---------- */
-  const TITLES = { genel: 'Genel bakış', talepler: 'Talepler', adaylar: 'Adaylar', instagram: 'Instagram', ajanlar: 'Ajanlar', ayarlar: 'Ayarlar' };
+  const TITLES = { bugun: 'Bugün', genel: 'Genel bakış', talepler: 'Talepler', adaylar: 'Adaylar', instagram: 'Instagram', ajanlar: 'Ajanlar', ayarlar: 'Ayarlar' };
   function go(v) {
     view = v; $$('.nav-btn[data-view]').forEach(b => b.dataset.view === v ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current'));
     Object.keys(TITLES).forEach(k => $('#v-' + k).hidden = k !== v); $('#title').textContent = TITLES[v];
@@ -472,6 +485,7 @@ td .who small{color:var(--ink-3)}
     if (v === 'instagram' || v === 'ajanlar') igLoad(true);
     if (v === 'instagram' || v === 'ayarlar') igBagYukle();
     if (v === 'adaylar') adLoad();
+    if (v === 'bugun') bgLoad();
   }
   $$('[data-view]').forEach(b => b.addEventListener('click', () => go(b.dataset.view)));
   document.addEventListener('click', e => { const g = e.target.closest('[data-go]'); if (g) go(g.dataset.go); });
@@ -481,7 +495,7 @@ td .who small{color:var(--ink-3)}
     const yeni = data.filter(x => x.Durum === 'Yeni').length;
     $('#newBadge').hidden = !yeni; $('#newBadge').textContent = yeni;
     $('#subtitle').textContent = view === 'adaylar' ? (ad.ozet ? `${ad.ozet.toplam} firma · bugün ${ad.ozet.bugun} yeni` : 'Satış ajanlarının bulduğu firmalar') : view === 'instagram' ? igAltBaslik() : view === 'ajanlar' ? '7 ajan · taslakları hazırlar, sahibin onayını bekler' : data.length ? `${data.length} talep · ${yeni} yeni` : 'Henüz talep yok';
-    if (view === 'genel') renderGenel(); else if (view === 'talepler') renderList(); else if (view === 'adaylar') renderAd(); else if (view === 'instagram') renderIg(); else if (view === 'ajanlar') renderAjan(); else renderAyar();
+    if (view === 'bugun') renderBugun(); else if (view === 'genel') renderGenel(); else if (view === 'talepler') renderList(); else if (view === 'adaylar') renderAd(); else if (view === 'instagram') renderIg(); else if (view === 'ajanlar') renderAjan(); else renderAyar();
   }
 
   const bars = (pairs, total, colorOf) => pairs.length ? pairs.map(([k, v]) => `<div class="hbar"${colorOf ? ` style="--c:${colorOf(k)}"` : ''}><span>${esc(k)}</span><div class="t"><i style="width:${v ? Math.max(3, v / total * 100) : 0}%"></i></div><span class="v num">${v}</span></div>`).join('') : '<p class="empty">Veri yok</p>';
@@ -934,6 +948,41 @@ td .who small{color:var(--ink-3)}
     } catch (err) { toast(err.message); btn.disabled = false; }
   });
 
+  /* ---------- Bugün ---------- */
+  let bg = null;
+  async function bgLoad() {
+    try { bg = await api('bugun'); const n = (bg.cevap || []).length + (bg.talepler ? bg.talepler.yeni : 0) + (bg.instagram ? bg.instagram.bekleyen : 0); $('#bgBadge').hidden = !n; $('#bgBadge').textContent = n; if (view === 'bugun') renderBugun(); }
+    catch (err) { if (view === 'bugun') $('#bgBant').innerHTML = `<p class="empty">${esc(err.message)}</p>`; }
+  }
+  function bgKanal(x) { const cep = cepMi(x.WhatsApp) || cepMi(x.Telefon); return cep ? 'WhatsApp' : (x['E-posta'] ? 'E-posta' : 'Ara'); }
+  function bgSatir(x, ek) { return `<div class="bg-satir" data-bgaday="${esc(x.ID)}" tabindex="0" role="button"><div><div class="bg-ad">${esc(x.Firma)}</div><div class="bg-alt">${esc(x.Segment || '')}${x['İl'] ? ' · ' + esc(x['İl']) : ''}${x['Sonraki adım'] ? ' · ' + esc(x['Sonraki adım']) : ''}</div></div>${ek}</div>`; }
+  function renderBugun() {
+    if (!bg) { $('#bgBant').innerHTML = '<p class="empty">Yükleniyor…</p>'; return; }
+    $('#subtitle').textContent = new Date().toLocaleDateString('tr-TR', { weekday: 'long', day: 'numeric', month: 'long' });
+    $('#bgBant').innerHTML = bg.duraklat
+      ? `<div class="bg-bant"><div><b>Dış iletişim duraklatıldı.</b> Firmalara mesaj, arama notu ve takip hazırlanmıyor; ${bg.hazir_toplam} hazır mesaj bekliyor. Ürünler hazır olunca yeniden başlatın.</div><button class="btn btn-ink btn-sm" data-bgduraklat="0">Yeniden başlat</button></div>`
+      : `<div class="bg-bant acik"><div>Dış iletişim açık. Gönderme ve arama kararı her zaman sizde.</div><button class="btn btn-line btn-sm" data-bgduraklat="1">Duraklat</button></div>`;
+    const bos = t => `<p class="empty">${t}</p>`;
+    const bolum = (baslik, alt, ic) => `<div class="card"><h2>${baslik} <small>${alt}</small></h2>${ic}</div>`;
+    const t = bg.talepler || { yeni: 0, liste: [] }, ig = bg.instagram || { bekleyen: 0, liste: [] };
+    const bloklar = [
+      bolum('Yeni talepler', t.yeni + ' bekliyor', t.liste.length ? t.liste.map(x => `<div class="bg-satir" data-go="talepler" tabindex="0" role="button"><div><div class="bg-ad">${esc(x.ad)}</div><div class="bg-alt">${esc(x.firma || 'Firma belirtilmedi')} · ${esc(x.ulke || '')} · ${esc(fmtD(x.zaman))}</div></div></div>`).join('') : bos('Yeni talep yok.')),
+      bolum('Cevap gelen firmalar', (bg.cevap || []).length + ' firma', (bg.cevap || []).length ? bg.cevap.map(x => bgSatir(x, adPill(x.Durum))).join('') : bos('Cevap bekleyen firma yok.')),
+      bolum('Onay bekleyen Instagram', ig.bekleyen + ' gönderi', ig.liste.length ? ig.liste.map(x => `<div class="bg-satir" data-go="instagram" tabindex="0" role="button"><div><div class="bg-ad">${esc(x.baslik || x.id)}</div><div class="bg-alt">${esc(x.hesap)} · ${esc(x.gun || '')} ${esc(x.saat || '')}</div></div></div>`).join('') : bos('Onay bekleyen gönderi yok.')),
+    ];
+    if (!bg.duraklat) {
+      bloklar.push(bolum('Takip günü gelenler', (bg.takip || []).length + ' firma', (bg.takip || []).length ? bg.takip.map(x => bgSatir(x, `<span class="bg-kanal">${esc(x['Sonraki tarih'] ? String(x['Sonraki tarih']).slice(0, 10) : '')}</span>`)).join('') : bos('Bugün takip günü gelen firma yok.')));
+      bloklar.push(bolum('Bugün gönderilecek / aranacak', 'A puanlı, ' + bg.hazir_toplam + ' hazır mesajdan', (bg.hazir || []).length ? bg.hazir.map(x => bgSatir(x, `<span class="bg-kanal">${bgKanal(x)}</span>`)).join('') : bos('Hazır A puanlı mesaj yok.')));
+    }
+    $('#bgIc').innerHTML = bloklar.join('');
+  }
+  document.addEventListener('click', async e => {
+    const d = e.target.closest('[data-bgduraklat]');
+    if (d) { d.disabled = true; try { await api('iletisim_duraklat', { duraklat: d.dataset.bgduraklat === '1' }); toast(d.dataset.bgduraklat === '1' ? 'Dış iletişim duraklatıldı' : 'Dış iletişim yeniden açıldı'); await bgLoad(); } catch (err) { toast(err.message); d.disabled = false; } return; }
+    const s = e.target.closest('[data-bgaday]');
+    if (s && bg) { const x = [...(bg.cevap || []), ...(bg.takip || []), ...(bg.hazir || [])].find(a => a.ID === s.dataset.bgaday); if (x) { if (!ad.adaylar.some(a => a.ID === x.ID)) ad.adaylar = ad.adaylar.concat([x]); adOpen(x.ID); } }
+  });
+
   /* ---------- Ajanlar ---------- */
   const AJANLAR = [
     { ad: 'Türkiye İçerik Ajanı', kisa: 'TR', gorev: '@purixxrf.tr için haftalık plan, Türkçe metinler ve story planı.', takvim: 'Pazartesi 08.00' },
@@ -1030,6 +1079,7 @@ td .who small{color:var(--ink-3)}
         if (x.durum) t.Durum = x.durum; if (x.not) t.Notlar = (t.Notlar ? t.Notlar + '\n' : '') + new Date().toLocaleString('tr-TR').slice(0, 16) + ' · ' + x.not; return res({ ok: true, talep: { ...t } }); }
       if (islem === 'ayarlar') return res({ ok: true, bildirim: x.bildirim });
       if (islem === 'aday_panel') return res({ ok: true, toplam: 0, adaylar: [], ozet: { toplam: 0, bugun: 0, puan: { A: 0, B: 0, C: 0 }, durum: {}, bolge: {} }, durumlar: Object.keys(AD_RENK) });
+      if (islem === 'bugun') return res({ ok: true, duraklat: true, hazir_toplam: 0, cevap: [], takip: [], hazir: [], talepler: { yeni: 0, liste: [] }, instagram: { bekleyen: 0, liste: [] } });
       if (islem === 'ig_baglanti') return res({ ok: true, hesaplar: [{ hesap: 'tr', ad: 'purixxrf.tr', bagli: false }, { hesap: 'global', ad: 'purixxrf', bagli: false }], otomatik: true, zamanlayici: false });
       if (islem === 'ig_liste') return res({ ok: true, hafta: '', haftalar: [], gonderiler: [], bekleyen: 0, gunluk: [], raporlar: [], durumlar: Object.keys(IG_RENK) });
       res({ ok: true });
