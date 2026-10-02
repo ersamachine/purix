@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>PURIX Panel</title>
-<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610012135">
-<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610012135" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../fonts/fonts.css?v=202610012135">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610021044">
+<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610021044" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fonts/fonts.css?v=202610021044">
 <style>
 :root{
   --bg:#F4F4F1;--surface:#fff;--ink:#1C1917;--ink-2:#57534E;--ink-3:#78716C;--line:#D6D3D1;--line-2:#E7E5E4;
@@ -211,6 +211,11 @@ td .who small{color:var(--ink-3)}
   th.hide-s,td.hide-s{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.skel i{display:block;height:12px;border-radius:6px;background:linear-gradient(90deg,var(--line-2) 25%,var(--line) 50%,var(--line-2) 75%);background-size:200% 100%;animation:skel 1.2s linear infinite;margin:6px 0}
+.skel .igc-img{background:var(--line-2);animation:skel2 1.2s ease-in-out infinite}
+@keyframes skel{to{background-position:-200% 0}}@keyframes skel2{50%{opacity:.55}}
+.remember{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink-3);margin:2px 0 14px}
 </style>
 </head>
 <body>
@@ -218,10 +223,12 @@ td .who small{color:var(--ink-3)}
 <!-- GİRİŞ -->
 <section class="login" id="login" hidden>
   <form class="login-card" id="loginForm">
-    <img src="../assets/mark-128.webp?v=202610012135" alt="" width="40" height="51">
+    <img src="../assets/mark-128.webp?v=202610021044" alt="" width="40" height="51">
     <h1>PURIX Panel</h1>
     <p>Teklif taleplerini görmek için giriş yapın.</p>
     <div class="field"><label for="pw">Şifre</label><input class="inp" id="pw" type="password" autocomplete="current-password" required></div>
+    <div class="field" id="kodAlan" hidden><label for="kod">Doğrulama kodu</label><input class="inp" id="kod" inputmode="numeric" autocomplete="one-time-code" maxlength="14" placeholder="6 haneli kod ya da kurtarma kodu"></div>
+    <label class="remember"><input type="checkbox" id="hatirla"> Bu cihazı 30 gün hatırla</label>
     <p class="err" id="loginErr" role="alert"></p>
     <button class="btn btn-ink" style="width:100%" type="submit" id="loginBtn">Giriş yap</button>
   </form>
@@ -230,7 +237,7 @@ td .who small{color:var(--ink-3)}
 <!-- UYGULAMA -->
 <div class="app" id="app" hidden>
   <aside class="side" id="side">
-    <div class="brand"><img src="../assets/mark-128.webp?v=202610012135" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
+    <div class="brand"><img src="../assets/mark-128.webp?v=202610021044" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
     <button class="nav-btn" data-view="genel" aria-current="page"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"/></svg>Genel bakış</button>
     <button class="nav-btn" data-view="talepler"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Talepler<span class="badge" id="newBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="adaylar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".8"/></svg>Adaylar<span class="badge" id="adBadge" hidden>0</span></button>
@@ -355,7 +362,7 @@ td .who small{color:var(--ink-3)}
 </div>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="../config.js?v=202610012135"></script>
+<script src="../config.js?v=202610021044"></script>
 <script>
 (() => {
   // Yerel geliştirme: yalnızca localhost'ta ?api= ile sahte sunucuya bağlanılabilir (canlı sitede etkisizdir)
@@ -377,6 +384,10 @@ td .who small{color:var(--ink-3)}
   let token = ss.get('purix_token'), data = [], durumlar = Object.keys(DURUM_RENK), bildirim = '';
   let view = 'genel', fStatus = '', current = null;
 
+  const ONBELLEK = ['liste', 'ig_liste', 'aday_panel'];   // son yanıt oturum boyunca saklanır: panel açılır açılmaz görünür, arkadan tazelenir
+  let talepYuklendi = false, igYuklendi = false, adYuklendi = false;
+  const SKEL_SATIR = n => `<tr class="skel">${'<td><i></i></td>'.repeat(n)}</tr>`;
+  const SKEL_KART = '<article class="igc skel"><div class="igc-img"></div><div class="igc-b"><i></i><i></i><i></i></div></article>';
   /* ---------- API ---------- */
   async function api(islem, extra = {}) {
     if (DEMO) return demoApi(islem, extra);
@@ -389,23 +400,28 @@ td .who small{color:var(--ink-3)}
       } catch (e) { if (deneme < 2) await new Promise(res => setTimeout(res, 800)); }
     }
     if (!j) throw new Error('Sunucuya ulaşılamadı. Bağlantınızı kontrol edip Yenile düğmesine basın.');
-    if (!j.ok) { if (j.yetki) { logout(true); } throw new Error(j.hata || 'Hata'); }
+    if (!j.ok) { if (j.gerekli) return j; if (j.yetki) { logout(true); } throw new Error(j.hata || 'Hata'); }
+    if (ONBELLEK.includes(islem)) { try { ss.set('purix_c_' + islem, JSON.stringify(j)); } catch {} }
     return j;
   }
 
   /* ---------- Giriş ---------- */
   $('#loginForm').addEventListener('submit', async e => {
     e.preventDefault(); const b = $('#loginBtn'); b.disabled = true; $('#loginErr').textContent = '';
-    try { const j = await api('giris', { sifre: $('#pw').value, cihaz: ls.get('purix_cihaz') || '' }); token = j.token; ss.set('purix_token', token); if (j.cihaz) ls.set('purix_cihaz', j.cihaz); $('#pw').value = ''; start(); }
-    catch (err) { $('#loginErr').textContent = err.message; $('#pw').focus(); }
+    try {
+      const j = await api('giris', { sifre: $('#pw').value, kod: $('#kod').value.trim(), hatirla: $('#hatirla').checked, cihaz: ls.get('purix_cihaz') || '' });
+      if (j.gerekli === 'kod') { $('#kodAlan').hidden = false; $('#kod').focus(); $('#loginErr').textContent = 'Telefondaki doğrulama uygulamasından 6 haneli kodu girin.'; return; }
+      token = j.token; ss.set('purix_token', token); if (j.cihaz) ls.set('purix_cihaz', j.cihaz);
+      $('#pw').value = ''; $('#kod').value = ''; $('#kodAlan').hidden = true; start();
+    } catch (err) { $('#loginErr').textContent = err.message; ($('#kodAlan').hidden ? $('#pw') : $('#kod')).focus(); }
     finally { b.disabled = false; }
   });
   function logout(expired) {
     if (!expired && token && !DEMO) api('cikis').catch(() => {});
     closeDetail(); $('#drawerIn').innerHTML = '';
     data = []; ig = { ...ig, gonderiler: [], gunluk: [], raporlar: [], bekleyen: 0 }; igHaftaElle = false; igSig = ''; talepSig = '';
-    medyaOnbellek.forEach(p => p.then(l => l.forEach(x => x.url && URL.revokeObjectURL(x.url)), () => {})); medyaOnbellek.clear();
-    token = null; ss.del('purix_token'); clearInterval(timer);
+    medyaOnbellek.forEach(p => p.then(l => l.forEach(x => x.url && x.url.startsWith('blob:') && URL.revokeObjectURL(x.url)), () => {})); medyaOnbellek.clear();
+    token = null; ss.del('purix_token'); ONBELLEK.forEach(k => ss.del('purix_c_' + k)); talepYuklendi = igYuklendi = adYuklendi = false; clearInterval(timer);
     $('#app').hidden = true; $('#login').hidden = false; $('#loginErr').textContent = expired ? 'Oturum süresi doldu, yeniden giriş yapın.' : ''; $('#pw').focus();
   }
   $('#logout').addEventListener('click', () => logout(false));
@@ -418,17 +434,28 @@ td .who small{color:var(--ink-3)}
       const sig = JSON.stringify(j.talepler || []) + (j.bildirim || '');
       if (silent && sig === talepSig) return; talepSig = sig;
       const onceki = new Set(data.map(x => x.ID));
-      data = j.talepler || []; durumlar = j.durumlar || durumlar; bildirim = j.bildirim || '';
+      data = j.talepler || []; durumlar = j.durumlar || durumlar; bildirim = j.bildirim || ''; talepYuklendi = true;
       if (current) current = data.find(x => x.ID === current.ID) || current;
       if (silent && onceki.size) { const yeni = data.filter(x => !onceki.has(x.ID)); if (yeni.length) toast(`${yeni.length} yeni talep geldi`); }
       $('#syncInfo').textContent = 'Güncellendi ' + new Date().toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
       render();
     } catch (err) { if (!silent) toast(err.message); }
   }
+  function hizliAcilis() {
+    try {
+      const l = JSON.parse(ss.get('purix_c_liste') || 'null');
+      if (l && l.talepler) { data = l.talepler; durumlar = l.durumlar || durumlar; bildirim = l.bildirim || ''; talepYuklendi = true; }
+      const g = JSON.parse(ss.get('purix_c_ig_liste') || 'null');
+      if (g && g.gonderiler) { ig = { ...ig, ...g }; (g.hesaplar || []).forEach(h => { HESAP[h.code] = '@' + h.handle; }); igYuklendi = true; $('#igBadge').hidden = !ig.bekleyen; $('#igBadge').textContent = ig.bekleyen; }
+      const a = JSON.parse(ss.get('purix_c_aday_panel') || 'null');
+      if (a && a.adaylar) { ad = { ...a }; adYuklendi = true; }
+      render();
+    } catch {}
+  }
   function start() {
     $('#login').hidden = true; $('#app').hidden = false; $('#demoBar').hidden = !DEMO;
-    $('#apiInfo').textContent = DEMO ? 'Bağlı değil (demo verisi)' : 'Google Apps Script · ' + API.replace(/^https:\/\/script\.google\.com\/macros\/s\//, '').slice(0, 14) + '…';
-    load(); igLoad(true); clearInterval(timer); let tik = 0;
+    $('#apiInfo').textContent = DEMO ? 'Bağlı değil (demo verisi)' : (/script\.google\.com/.test(API) ? 'Google Apps Script (eski)' : 'PURIX platform · ' + new URL(API).hostname);
+    hizliAcilis(); load(); igLoad(true); clearInterval(timer); let tik = 0;
     timer = setInterval(() => { load(true); if (!igUcus && (++tik % 5 === 0 || view === 'instagram' || view === 'ajanlar')) igLoad(true); }, 60000);
   }
   $('#refresh').addEventListener('click', () => { load(); igLoad(); });
@@ -501,6 +528,7 @@ td .who small{color:var(--ink-3)}
       (!q || [x['Ad soyad'], x.Firma, x.Telefon, x['E-posta'], x.ID].join(' ').toLocaleLowerCase('tr').includes(q)));
   }
   function renderList() {
+    if (!talepYuklendi) { $('#rows').innerHTML = SKEL_SATIR(7).repeat(8); $('#count').textContent = 'Yükleniyor…'; return; }
     $('#statusChips').innerHTML = [['', 'Tümü', data.length], ...durumlar.map(d => [d, d, data.filter(x => x.Durum === d).length])]
       .map(([v, l, n]) => `<button class="chip" data-st="${esc(v)}" aria-pressed="${fStatus === v}">${esc(l)} <em>${n}</em></button>`).join('');
     const sel = $('#fCountry'), cur = sel.value, codes = [...new Set(data.map(x => x['Ülke']).filter(Boolean))].sort((a, b) => regionName(a).localeCompare(regionName(b), 'tr'));
@@ -614,7 +642,7 @@ td .who small{color:var(--ink-3)}
       if (seq !== igSeq) return;           // daha yeni bir istek başladı; bu yanıt eskidir
       const sig = JSON.stringify(j); if (silent && sig === igSig) return; igSig = sig;
       const once = igCur ? ig.gonderiler.find(x => x.ID === igCur) : null;
-      ig = { ...ig, ...j };
+      ig = { ...ig, ...j }; igYuklendi = true; (j.hesaplar || []).forEach(h => { HESAP[h.code] = '@' + h.handle; });
       $('#igBadge').hidden = !ig.bekleyen; $('#igBadge').textContent = ig.bekleyen;
       if (view === 'instagram' || view === 'ajanlar') render();
       // açık gönderi yalnızca durumu ya da sürümü değiştiyse yeniden çizilir (yazılan düzeltme notu kaybolmaz)
@@ -624,10 +652,11 @@ td .who small{color:var(--ink-3)}
   }
 
   function renderIg() {
+    if (!igYuklendi) { $('#igGrid').innerHTML = SKEL_KART.repeat(8); $('#igEmpty').hidden = true; return; }
     const sel = $('#igHafta');
     sel.innerHTML = ig.haftalar.length ? ig.haftalar.map(h => `<option value="${esc(h)}" ${h === ig.hafta ? 'selected' : ''}>${esc(h.replace('-w', ' · hafta '))}</option>`).join('') : '<option value="">Henüz hafta yok</option>';
     const say = f => ig.gonderiler.filter(f).length;
-    $('#igHesap').innerHTML = [['', 'Tüm hesaplar'], ['tr', HESAP.tr], ['global', HESAP.global]]
+    $('#igHesap').innerHTML = [['', 'Tüm hesaplar'], ...((ig.hesaplar && ig.hesaplar.length) ? ig.hesaplar.map(h => [h.code, '@' + h.handle]) : [['tr', HESAP.tr], ['global', HESAP.global]])]
       .map(([v, l]) => `<button class="chip" data-igh="${v}" aria-pressed="${igHesap === v}">${esc(l)} <em>${say(g => !v || g.Hesap === v)}</em></button>`).join('');
     $('#igDurum').innerHTML = [['', 'Tümü'], ...ig.durumlar.map(d => [d, d])]
       .map(([v, l]) => `<button class="chip" data-igd="${esc(v)}" aria-pressed="${igDurum === v}">${esc(l)} <em>${say(g => (!igHesap || g.Hesap === igHesap) && (!v || g.Durum === v))}</em></button>`).join('');
@@ -641,8 +670,8 @@ td .who small{color:var(--ink-3)}
         <div class="igc-b"><span class="acct">${esc(HESAP[g.Hesap] || g.Hesap)} · ${esc(kisaId(g.ID))}</span><b>${esc(g['Başlık'])}</b><small>${gunYaz(g['Gün'], g.Saat)} · ${esc(g.Kategori || '')}</small>${g.Durum === 'Reddedildi' ? '' : (p => `<span class="pay" style="--c:${p.c}"><i></i>${esc(p.t)}</span>`)(payDurum(g, true))}${igPill(g.Durum)}</div>
       </article>`;
     }).join('');
-    const eksik = igBag ? igBag.hesaplar.filter(h => !h.bagli).map(h => '@' + h.ad) : [];
-    const uy = !igBag ? '' : igBag.eski || eksik.length === 2 ? 'Otomatik paylaşım henüz kurulmadı: onayladığınız gönderiyi panelden indirip Instagram uygulamasında paylaşın.'
+    const eksik = igBag ? igBag.hesaplar.filter(h => h.aktif !== false && !h.bagli).map(h => '@' + h.ad) : [];
+    const uy = !igBag ? '' : igBag.eski || (igBag.hesaplar.length && eksik.length === igBag.hesaplar.filter(h => h.aktif !== false).length) ? 'Otomatik paylaşım henüz kurulmadı: onayladığınız gönderiyi panelden indirip Instagram uygulamasında paylaşın.'
       : !igBag.otomatik ? 'Otomatik paylaşım duraklatıldı: onaylanan gönderiler paylaşılmaz.' : !igBag.medya ? 'Medya sunucusu bağlı değil: onaylanan gönderiler otomatik paylaşılmaz.'
       : eksik.length ? `Instagram bağlı değil: ${eksik.join(', ')}. Bu hesabın onaylanan gönderileri otomatik paylaşılmaz.` : '';
     $('#igUyari').hidden = !uy; $('#igUyari').innerHTML = uy ? `${esc(uy)} <button class="btn btn-line btn-sm" data-go="ayarlar" style="margin-left:6px">Ayarlar</button>` : '';
@@ -664,8 +693,8 @@ td .who small{color:var(--ink-3)}
   function igMedyaGetir(g) {
     const k = g.ID + '#' + g['Sürüm'];
     if (medyaOnbellek.has(k)) return medyaOnbellek.get(k);
-    for (const [ek, pr] of [...medyaOnbellek]) if (ek.startsWith(g.ID + '#')) { medyaOnbellek.delete(ek); pr.then(l => l.forEach(x => x.url && URL.revokeObjectURL(x.url)), () => {}); }
-    const pr = api('ig_medya', { id: g.ID }).then(j => (j.medya || []).map(m => ({ ad: m.ad, mime: m.mime, url: m.veri ? b64Url(m.veri, m.mime) : '', hata: m.hata })));
+    for (const [ek, pr] of [...medyaOnbellek]) if (ek.startsWith(g.ID + '#')) { medyaOnbellek.delete(ek); pr.then(l => l.forEach(x => x.url && x.url.startsWith('blob:') && URL.revokeObjectURL(x.url)), () => {}); }
+    const pr = api('ig_medya', { id: g.ID }).then(j => (j.medya || []).map(m => ({ ad: m.ad, mime: m.mime, url: m.url || (m.veri ? b64Url(m.veri, m.mime) : ''), hata: m.hata })));
     medyaOnbellek.set(k, pr); pr.catch(() => medyaOnbellek.delete(k));
     return pr;
   }
@@ -800,13 +829,14 @@ td .who small{color:var(--ink-3)}
     try {
       const j = await api('aday_panel', { durum: adDurum, bolge: $('#adBolge').value, puan: $('#adPuan').value, q: $('#adQ').value.trim(), limit: 200, bas: adBas });
       if (seq !== adSeq) return;
-      ad = { ...j, adaylar: ekle ? ad.adaylar.concat(j.adaylar) : j.adaylar };
+      ad = { ...j, adaylar: ekle ? ad.adaylar.concat(j.adaylar) : j.adaylar }; adYuklendi = true;
       const sicak = j.ozet ? (j.ozet.durum['Sıcak'] || 0) + (j.ozet.durum['Cevap geldi'] || 0) : 0;
       $('#adBadge').hidden = !sicak; $('#adBadge').textContent = sicak;
       if (view === 'adaylar') render();
     } catch (err) { if (seq === adSeq) toast(err.message); }
   }
   function renderAd() {
+    if (!adYuklendi) { $('#adRows').innerHTML = SKEL_SATIR(6).repeat(8); $('#adCount').textContent = 'Yükleniyor…'; return; }
     const o = ad.ozet || { toplam: 0, bugun: 0, puan: { A: 0, B: 0, C: 0 }, durum: {}, bolge: {} }, d = o.durum || {};
     $('#adKpis').innerHTML = `
       <div class="kpi accent"><span>Sıcak müşteri</span><b class="num">${(d['Sıcak'] || 0) + (d['Cevap geldi'] || 0)}</b><small>cevap veren ve ilgilenen firmalar</small></div>
@@ -944,10 +974,22 @@ td .who small{color:var(--ink-3)}
   function renderIgCon() {
     const el = $('#igCon');
     if (!igBag) { el.innerHTML = '<p class="muted">Yükleniyor…</p>'; return; }
-    if (igBag.eski) { el.innerHTML = '<p class="muted" style="margin:0">Henüz kurulmadı. Meta (Facebook) geliştirici kurulumu yapılınca açılır; o zamana kadar onaylanan gönderiler elle paylaşılır.</p>'; return; }
-    el.innerHTML = igBag.hesaplar.map(h => `<div class="h"><div><b>@${esc(h.ad)}</b><div class="muted" style="font-size:12.5px">${h.bagli ? 'Otomatik paylaşıma bağlı' + (h.yenileme ? ' · erişim anahtarı ' + fmtD(h.yenileme) + ' tarihinde yenilendi' : '') : 'Bağlı değil: Apps Script’te instagramBagla ile bağlanır'}${h.hata ? ` · <span style="color:var(--warn)">${esc(h.hata)}</span>` : ''}</div></div><span class="pill" style="--c:${h.bagli ? 'var(--ok)' : 'var(--ink-3)'}">${h.bagli ? 'Bağlı' : 'Bağlı değil'}</span></div>`).join('')
-      + `<div class="h"><div><b>Otomatik paylaşım</b><div class="muted" style="font-size:12.5px">${igBag.otomatik ? (igBag.zamanlayici ? 'Açık: onaylanan gönderiler zamanında paylaşılır (10 dakikada bir kontrol)' : 'Zamanlayıcı henüz kurulmadı: ilk hesap bağlanınca kurulur') : 'Duraklatıldı: hiçbir gönderi paylaşılmaz'}</div></div><button class="btn btn-line btn-sm" id="igOtoBtn" type="button">${igBag.otomatik ? 'Duraklat' : 'Başlat'}</button></div>`;
+    const hesapSatir = igBag.hesaplar.map(h => `<div class="h"><div><b>@${esc(h.ad)}</b>${h.aktif === false ? ' <span class="muted">(pasif)</span>' : ''}<div class="muted" style="font-size:12.5px">${h.bagli ? 'Otomatik paylaşıma bağlı' + (h.yenileme ? ' · erişim anahtarı ' + fmtD(h.yenileme) + ' tarihinde yenilendi' : '') : 'Bağlı değil'}${h.hata ? ' · ' + esc(h.hata) : ''}</div></div><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn btn-line btn-sm" type="button" data-bagla="${esc(h.hesap)}">${h.bagli ? 'Anahtarı yenile' : 'Hesabı bağla'}</button>${h.aktif === false ? `<button class="btn btn-line btn-sm" type="button" data-aktif="${esc(h.hesap)}">Etkinleştir</button>` : ''}</div></div>`).join('');
+    el.innerHTML = hesapSatir
+      + `<div class="h"><div><b>Otomatik paylaşım</b><div class="muted" style="font-size:12.5px">${igBag.otomatik ? 'Açık: onaylanan gönderiler zamanında paylaşılır (dakikada bir kontrol)' : 'Duraklatıldı: hiçbir gönderi paylaşılmaz'}</div></div><button class="btn btn-line btn-sm" id="igOtoBtn" type="button">${igBag.otomatik ? 'Duraklat' : 'Başlat'}</button></div>`;
   }
+  document.addEventListener('click', async e => {
+    const bg = e.target.closest('[data-bagla]'), ak = e.target.closest('[data-aktif]');
+    if (bg && igBag) {
+      const h = igBag.hesaplar.find(x => x.hesap === bg.dataset.bagla); if (!h) return;
+      const t = prompt('@' + h.ad + ' için Instagram erişim anahtarını (access token) yapıştırın.\nAnahtar şifreli saklanır ve bir daha gösterilmez.'); if (!t) return;
+      try { await api('hesap_bagla', { hesap: h.hesap, erisim: t.trim() }); toast('@' + h.ad + ' bağlandı'); igBagYukle(); } catch (err) { toast(err.message); }
+    }
+    if (ak && igBag) {
+      const h = igBag.hesaplar.find(x => x.hesap === ak.dataset.aktif); if (!h) return;
+      try { await api('hesap_kaydet', { kod: h.hesap, ad: h.ad, ulke: h.ulke, dil: h.dil, aktif: true }); toast('@' + h.ad + ' etkinleştirildi'); igBagYukle(); igLoad(true); } catch (err) { toast(err.message); }
+    }
+  });
   document.addEventListener('click', e => {
     if (!e.target.closest('#igOtoBtn') || !igBag) return;
     if (igBag.otomatik && !confirm('Otomatik paylaşım duraklatılsın mı? Onaylanan gönderiler siz başlatana kadar paylaşılmaz.')) return;

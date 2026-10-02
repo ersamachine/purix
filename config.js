@@ -1,4 +1,3 @@
-/* PURIX — Google Apps Script web uygulaması adresi.
-   Apps Script'te "Dağıt → Yeni dağıtım → Web uygulaması" sonrası çıkan URL'yi tırnak içine yapıştırın.
+/* PURIX — platform API adresi (Cloudflare Worker, 2 Ekim 2026 itibarıyla). Önceki Apps Script adresi arsiv/ yedeklerinde.
    Boş kalırsa site formu gönderim yapmaz, panel demo verisiyle açılır. */
-window.PURIX_API = 'https://script.google.com/macros/s/AKfycbwkjxHa0k6dxotxszD1_TTLTGRzYMQ-DyIBr8qmjQ7LpByNGf-qIPABD82Wo14zGiot5w/exec';
+window.PURIX_API = 'https://api.purixxrf.com';
