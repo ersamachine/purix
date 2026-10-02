@@ -24,7 +24,7 @@
     es: { name: 'Español', locale: 'es-MX' },
     pt: { name: 'Português', locale: 'pt-BR' }
   };
-  const SURUM = '202610022251'; // surum.py tarafından yazılır (önbellek kırıcı)
+  const SURUM = '202610030015'; // surum.py tarafından yazılır (önbellek kırıcı)
   const FONTS = { arab: 'fonts/arab.css', deva: 'fonts/deva.css', thai: 'fonts/thai.css' }; // sitenin kendi sunucusundan
   // Öncelik sırası kullanıcının satış planından. İlk dil = ülkenin varsayılanı.
   const COUNTRIES = [
@@ -618,10 +618,32 @@
         btn.disabled = false; btn.innerHTML = label; err.textContent = t('e.send'); return;
       }
     }
+    olcum('form', '', true);
     form.hidden = true;
     const done = $('#done'); done.hidden = false; done.focus();
   }
   errList.addEventListener('click', e => { const a = e.target.closest('a'); if (!a) return; e.preventDefault(); $(a.getAttribute('href')).focus(); });
+
+  /* ---------- Ziyaret ölçümü (çerezsiz, anonim; IP ve kişisel veri saklanmaz; panel → Trafik) ---------- */
+  const olcumApi = (window.PURIX_API || '').trim();
+  const olcumKapali = !olcumApi || /^(localhost|127\.0\.0\.1)$/.test(location.hostname) || navigator.doNotTrack === '1' || navigator.globalPrivacyControl === true;
+  const olcumQ = new URLSearchParams(location.search), olcumOnce = {};
+  function olcum(tur, ayrinti, tek) {
+    if (olcumKapali || (tek && olcumOnce[tur])) return;
+    olcumOnce[tur] = true;
+    let ref = ''; try { ref = document.referrer ? new URL(document.referrer).hostname : ''; } catch {}
+    const govde = JSON.stringify({ islem: 'ziyaret', tur, ayrinti: ayrinti || '', dil: lang, hedef: (country && country.c) || '', ref,
+      utm: { s: olcumQ.get('utm_source') || '', m: olcumQ.get('utm_medium') || '', c: olcumQ.get('utm_campaign') || '', k: olcumQ.get('utm_content') || '' } });
+    try {
+      if (navigator.sendBeacon) navigator.sendBeacon(olcumApi, new Blob([govde], { type: 'text/plain;charset=utf-8' }));
+      else fetch(olcumApi, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: govde, keepalive: true }).catch(() => {});
+    } catch {}
+  }
+  runBtn.addEventListener('click', () => olcum('demo', '', true));   // yalnızca kullanıcının başlattığı analiz (otomatik gösterim sayılmaz)
+  const olcumTablo = $('.m-specs');
+  if (olcumTablo && 'IntersectionObserver' in window) new IntersectionObserver(([e], o) => { if (e.isIntersecting) { o.disconnect(); olcum('tablo', '', true); } }, { threshold: .3 }).observe(olcumTablo);
+  form.addEventListener('focusin', () => olcum('form_ac', '', true));
+  document.addEventListener('click', e => { const a = e.target.closest('[data-t="foot.bro"]'); if (a) olcum('brosur', lang); });
 
   /* ---------- Başlat ---------- */
   const boot = window.PURIX_BOOT || { c: 'TR', l: 'tr' };
@@ -629,6 +651,7 @@
   select('bilezik');
   setLocale(boot.c, boot.l, { save: fromUrl }).finally(() => {
     html.classList.remove('i18n-wait'); html.classList.add('ready');
+    olcum('g', '', true);
     heroSpectrum();
     new IntersectionObserver(([e], o) => { if (e.isIntersecting) { o.disconnect(); setTimeout(run, reduce ? 0 : 350); } }, { threshold: .4 }).observe($('.console'));
   });

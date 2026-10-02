@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>PURIX Panel</title>
-<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610022251">
-<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610022251" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../fonts/fonts.css?v=202610022251">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610030015">
+<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610030015" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fonts/fonts.css?v=202610030015">
 <style>
 :root{
   --bg:#F4F4F1;--surface:#fff;--ink:#1C1917;--ink-2:#57534E;--ink-3:#78716C;--line:#D6D3D1;--line-2:#E7E5E4;
@@ -224,6 +224,82 @@ td .who small{color:var(--ink-3)}
 .bg-satir:last-child{border-bottom:0}.bg-satir:hover .bg-ad{text-decoration:underline}
 .bg-ad{font-weight:500}.bg-alt{font-size:12.5px;color:var(--ink-3)}
 .bg-kanal{font-size:12px;font-weight:500;padding:3px 10px;border-radius:999px;background:var(--bg);color:var(--ink-2);white-space:nowrap}
+
+/* ===== TRAFİK ===== */
+.tf-top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:16px}
+.tf-seg{display:inline-flex;background:#fff;border:1px solid var(--line-2);border-radius:999px;padding:3px}
+.tf-seg button{border:0;background:transparent;padding:7px 14px;border-radius:999px;font-size:13px;color:var(--ink-2)}
+.tf-seg button[aria-pressed=true]{background:var(--stone);color:#fff}
+.tf-live{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2);background:#fff;border:1px solid var(--line-2);border-radius:999px;padding:7px 14px}
+.tf-live i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(47,125,74,.5);animation:tfp 1.8s infinite}
+@keyframes tfp{70%{box-shadow:0 0 0 8px rgba(47,125,74,0)}100%{box-shadow:0 0 0 0 rgba(47,125,74,0)}}
+.tf-kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:14px}
+.tf-kpi .k{background:#fff;border:1px solid var(--line-2);border-radius:var(--r);padding:16px 18px}
+.tf-kpi small{display:block;color:var(--ink-3);font-size:12.5px}
+.tf-kpi b{display:block;font-size:30px;font-stretch:78%;letter-spacing:-.01em;margin:4px 0 2px}
+.tf-kpi .d{font-size:12.5px;color:var(--ok)} .tf-kpi .d.dn{color:var(--warn)}
+.tf-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:14px;margin-bottom:14px}
+.tf-top5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:14px}
+.tf-top5 button{text-align:left;border:1px solid var(--line-2);background:#fff;border-radius:12px;padding:10px 12px}
+.tf-top5 button[aria-pressed=true]{background:#FBF6EA;border-color:var(--gold)}
+.tf-top5 small{display:block;color:var(--ink-3);font-size:12px}
+.tf-top5 b{font-size:20px;font-stretch:78%}
+.tf-top5 span{display:block;font-size:11.5px;color:var(--ink-3)}
+.tf-card{background:#fff;border:1px solid var(--line-2);border-radius:var(--r);padding:18px}
+.tf-card h2{font-size:15.5px;display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px}
+.tf-card h2 small{font-weight:400;color:var(--ink-3);font-size:12.5px}
+.tf-chips{display:flex;gap:6px;flex-wrap:wrap}
+.tf-chips button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 11px;font-size:12.5px;color:var(--ink-2)}
+.tf-chips button[aria-pressed=true]{background:#F3EBDA;border-color:var(--gold);color:#6E4B22}
+.tf-map{position:relative;background:linear-gradient(180deg,#FBFAF7,#F4F1EA);border-radius:12px;overflow:hidden}
+.tf-map svg{display:block;width:100%;height:auto}
+.tf-map path{fill:#E4E1DB;stroke:#fff;stroke-width:.45;transition:fill .15s}
+.tf-map path.h{stroke:var(--gold);stroke-width:.9}
+.tf-map path.sel{stroke:var(--stone);stroke-width:1.3}
+.tf-map path:hover{filter:brightness(.93)}
+.tf-tip{position:absolute;pointer-events:none;background:var(--stone);color:#fff;border-radius:10px;padding:9px 12px;font-size:12.5px;line-height:1.45;box-shadow:0 8px 24px rgba(0,0,0,.22);min-width:170px}
+.tf-tip b{display:block;font-size:14px;margin-bottom:3px}
+.tf-tip span{color:#E4CB93}
+.tf-leg{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--ink-3)}
+.tf-leg i{display:inline-block;width:26px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.tf-leg .ho{margin-left:auto;display:inline-flex;align-items:center;gap:6px}
+.tf-leg .ho u{display:inline-block;width:14px;height:10px;border:1.5px solid var(--gold);border-radius:3px;background:#fff}
+.tf-src{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.tf-src li{display:grid;grid-template-columns:auto 1fr auto;gap:4px 12px;align-items:center}
+.tf-src .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:700}
+.tf-src .nm{font-size:14px;font-weight:500}.tf-src .nm small{display:block;color:var(--ink-3);font-weight:400;font-size:12px}
+.tf-src .ct{font-stretch:78%;font-size:17px;font-weight:600;text-align:right}.tf-src .ct small{display:block;color:var(--ink-3);font-weight:400;font-size:12px;font-stretch:100%}
+.tf-src .br{grid-column:2/4;height:6px;background:var(--line-2);border-radius:99px;overflow:hidden}.tf-src .br i{display:block;height:100%;border-radius:99px}
+.tf-sub{grid-column:2/4;display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
+.tf-sub span{background:#F6F2EA;border:1px solid var(--line-2);border-radius:8px;padding:3px 9px;font-size:12px;color:var(--ink-2)}
+.tf-sub b{font-weight:600;color:var(--ink)}
+.tf-det{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:14px}
+.tf-mini{display:grid;gap:9px}
+.tf-mini div.r{display:grid;grid-template-columns:90px 1fr 48px;gap:10px;align-items:center;font-size:13px}
+.tf-mini .t{height:8px;background:var(--line-2);border-radius:99px;overflow:hidden}.tf-mini .t i{display:block;height:100%;background:var(--metal);border-radius:99px}
+.tf-mini .n{text-align:right;font-stretch:78%;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+.tf-stack{display:flex;height:12px;border-radius:99px;overflow:hidden;margin:6px 0 10px}
+.tf-stack i{display:block;height:100%}
+.tf-ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:13px}
+.tf-ul li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line-2);padding-bottom:8px}
+.tf-ul li:last-child{border:0;padding-bottom:0}.tf-ul time{color:var(--ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tf-tbl{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
+.tf-tbl th:nth-child(1),.tf-tbl td:nth-child(1){width:34%}.tf-tbl th:nth-child(3),.tf-tbl td:nth-child(3){width:24%}.tf-tbl th:nth-child(4),.tf-tbl td:nth-child(4){width:14%}
+.tf-tbl td{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tf-tbl th{text-align:left;color:var(--ink-3);font-weight:500;font-size:12px;padding:6px 8px;border-bottom:1px solid var(--line)}
+.tf-tbl td{padding:9px 8px;border-bottom:1px solid var(--line-2)}
+.tf-tbl .num{text-align:right}
+.tf-tbl .bar{display:inline-block;height:6px;border-radius:99px;background:var(--metal);vertical-align:middle;margin-right:8px}
+.tf-tbl tr.sel td{background:#FBF6EA}
+.tf-chart{display:block;width:100%;height:auto}
+.tf-note{display:flex;gap:12px;align-items:flex-start;background:#FFF6E3;border:1px solid #EBD39C;color:#6E4B22;border-radius:12px;padding:12px 16px;font-size:13px;line-height:1.55}
+@media(max-width:700px){.tf-top5{grid-auto-flow:column;grid-auto-columns:42%;grid-template-columns:none;overflow-x:auto;padding-bottom:4px}.tf-tip{min-width:0;max-width:64%}}
+@media(max-width:980px){.tf-kpi{grid-template-columns:repeat(2,minmax(0,1fr))}.tf-grid{grid-template-columns:1fr}.tf-det{grid-template-columns:1fr}}
+
+.tf-bos{color:var(--ink-3);font-size:13.5px;padding:10px 2px}
+.tf-map .tf-tip{display:none;z-index:3}
+.tf-map path{cursor:pointer}
+.tf-sub i{font-style:normal}
 </style>
 </head>
 <body>
@@ -231,7 +307,7 @@ td .who small{color:var(--ink-3)}
 <!-- GİRİŞ -->
 <section class="login" id="login" hidden>
   <form class="login-card" id="loginForm">
-    <img src="../assets/mark-128.webp?v=202610022251" alt="" width="40" height="51">
+    <img src="../assets/mark-128.webp?v=202610030015" alt="" width="40" height="51">
     <h1>PURIX Panel</h1>
     <p>Teklif taleplerini görmek için giriş yapın.</p>
     <div class="field"><label for="pw">Şifre</label><input class="inp" id="pw" type="password" autocomplete="current-password" required></div>
@@ -245,13 +321,14 @@ td .who small{color:var(--ink-3)}
 <!-- UYGULAMA -->
 <div class="app" id="app" hidden>
   <aside class="side" id="side">
-    <div class="brand"><img src="../assets/mark-128.webp?v=202610022251" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
+    <div class="brand"><img src="../assets/mark-128.webp?v=202610030015" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
     <button class="nav-btn" data-view="bugun" aria-current="page"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/><path d="M4 20h16"/></svg>Bugün<span class="badge" id="bgBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="genel"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"/></svg>Genel bakış</button>
     <button class="nav-btn" data-view="talepler"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Talepler<span class="badge" id="newBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="adaylar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".8"/></svg>Adaylar<span class="badge" id="adBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r=".6"/></svg>Instagram<span class="badge" id="igBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="ajanlar"><svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16.5h5"/></svg>Ajanlar</button>
+    <button class="nav-btn" data-view="trafik"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.6 5.2 3.6 8.5s-1.2 6.1-3.6 8.5c-2.4-2.4-3.6-5.2-3.6-8.5S9.6 5.9 12 3.5z"/></svg>Trafik</button>
     <button class="nav-btn" data-view="ayarlar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>Ayarlar</button>
     <button class="nav-btn" onclick="window.open('../','_blank')"><svg viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg>Siteyi aç</button>
     <div class="side-foot"><span id="syncInfo">—</span><button class="btn btn-line btn-sm" id="logout" style="background:transparent;color:#D8D2C8;border-color:#3A3431">Çıkış yap</button></div>
@@ -349,6 +426,46 @@ td .who small{color:var(--ink-3)}
     </section>
 
     <!-- AYARLAR -->
+    <section id="v-trafik" hidden>
+      <div class="tf-top">
+        <div class="tf-seg" id="tfDonem" role="group" aria-label="Dönem"><button type="button" data-d="bugun" aria-pressed="false">Bugün</button><button type="button" data-d="7" aria-pressed="false">7 gün</button><button type="button" data-d="30" aria-pressed="true">30 gün</button><button type="button" data-d="tum" aria-pressed="false">Tümü</button></div>
+        <span class="tf-live" id="tfCanli"><i></i><b>0</b> kişi şu an sitede · son 5 dakika</span>
+      </div>
+      <div class="tf-kpi" id="tfKpi"></div>
+      <div class="tf-grid">
+        <div class="tf-card">
+          <h2>Dünya haritası <span class="tf-chips" id="tfOlcut" role="group" aria-label="Ölçüt"><button type="button" data-o="z" aria-pressed="true">Ziyaretçi</button><button type="button" data-o="g" aria-pressed="false">Sayfa görüntüleme</button><button type="button" data-o="f" aria-pressed="false">Teklif formu</button></span></h2>
+          <div class="tf-map" id="tfMap"></div>
+          <div class="tf-leg" id="tfLeg"></div>
+          <div class="tf-top5" id="tfTop5"></div>
+        </div>
+        <div class="tf-card">
+          <h2>Hangi uygulamadan geldi <small id="tfDonemAd">30 gün</small></h2>
+          <ul class="tf-src" id="tfSrc"></ul>
+        </div>
+      </div>
+      <div class="tf-grid">
+        <div class="tf-card">
+          <h2>Günlük ziyaretçi <small><b style="color:#C2410C">■</b> Instagram &nbsp;<b style="color:#3B6EA8">■</b> Arama ve doğrudan &nbsp;<b style="color:#B9B2A5">■</b> Diğer</small></h2>
+          <svg class="tf-chart" id="tfChart" viewBox="0 0 760 300" role="img" aria-label="Günlük ziyaretçi grafiği"></svg>
+        </div>
+        <div class="tf-card">
+          <h2>Ülkeler <small>ilk 8</small></h2>
+          <table class="tf-tbl" id="tfTbl"></table>
+        </div>
+      </div>
+      <div class="tf-card" style="margin-bottom:14px">
+        <h2><span id="tfUlkeBas">Ülke seçin</span> <small>seçili ülke · haritadan ya da tablodan değiştirilir</small></h2>
+        <div class="tf-det" style="margin-bottom:0" id="tfUlke"><p class="tf-bos">Haritada bir ülkeye tıklayın.</p></div>
+      </div>
+      <div class="tf-det">
+        <div class="tf-card"><h2>Diller <small>sitenin 14 dili</small></h2><div class="tf-mini" id="tfDiller"></div></div>
+        <div class="tf-card"><h2>Cihaz ve uygulama içi tarayıcı</h2><div class="tf-mini" id="tfCihaz"></div></div>
+        <div class="tf-card"><h2>Broşür PDF indirmeleri <small>dil bazında</small></h2><div class="tf-mini" id="tfBrosur"></div></div>
+      </div>
+      <div class="tf-note"><b style="white-space:nowrap">Veri nasıl toplanıyor?</b><span>Sitedeki küçük bir ölçüm kodu her ziyarette yalnızca ülke, kaynak (bağlantıdaki etiket ya da yönlendiren site), dil, cihaz türü ve yapılan eylemi kaydeder. <b>Çerez kullanılmaz, IP adresi ve kişisel veri saklanmaz</b>; ziyaretçi sayısı günlük değişen anonim bir özetle hesaplanır ve kayıtlar en çok 13 ay tutulur. Tarayıcısında "İzlenmek istemiyorum" açık olanlar sayılmaz. Bu sayfayı yalnızca siz görürsünüz.</span></div>
+    </section>
+
     <section id="v-ayarlar" hidden>
       <div class="card" style="max-width:640px">
         <h2>E-posta bildirimi</h2>
@@ -386,7 +503,8 @@ td .who small{color:var(--ink-3)}
 </div>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="../config.js?v=202610022251"></script>
+<script src="harita.js?v=202610030015"></script>
+<script src="../config.js?v=202610030015"></script>
 <script>
 (() => {
   if (window.top !== window.self) { document.documentElement.innerHTML = ''; try { window.top.location = window.self.location; } catch {} return; }  // çerçeve içine alınmaya (clickjacking) karşı
@@ -481,12 +599,12 @@ td .who small{color:var(--ink-3)}
     $('#login').hidden = true; $('#app').hidden = false; $('#demoBar').hidden = !DEMO;
     $('#apiInfo').textContent = DEMO ? 'Bağlı değil (demo verisi)' : (/script\.google\.com/.test(API) ? 'Google Apps Script (eski)' : 'PURIX platform · ' + new URL(API).hostname);
     hizliAcilis(); load(); igLoad(true); go('bugun'); clearInterval(timer); let tik = 0;
-    timer = setInterval(() => { load(true); if (!igUcus && (++tik % 5 === 0 || view === 'instagram' || view === 'ajanlar')) igLoad(true); }, 60000);
+    timer = setInterval(() => { load(true); if (!igUcus && (++tik % 5 === 0 || view === 'instagram' || view === 'ajanlar')) igLoad(true); if (view === 'trafik') tfLoad(true); }, 60000);
   }
   $('#refresh').addEventListener('click', () => { load(); igLoad(); });
 
   /* ---------- Görünümler ---------- */
-  const TITLES = { bugun: 'Bugün', genel: 'Genel bakış', talepler: 'Talepler', adaylar: 'Adaylar', instagram: 'Instagram', ajanlar: 'Ajanlar', ayarlar: 'Ayarlar' };
+  const TITLES = { bugun: 'Bugün', genel: 'Genel bakış', talepler: 'Talepler', adaylar: 'Adaylar', instagram: 'Instagram', ajanlar: 'Ajanlar', trafik: 'Trafik', ayarlar: 'Ayarlar' };
   function go(v) {
     view = v; $$('.nav-btn[data-view]').forEach(b => b.dataset.view === v ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current'));
     Object.keys(TITLES).forEach(k => $('#v-' + k).hidden = k !== v); $('#title').textContent = TITLES[v];
@@ -497,6 +615,7 @@ td .who small{color:var(--ink-3)}
     if (v === 'bugun') bgLoad();
     if (v === 'genel') segLoad();
     if (v === 'ayarlar') sagLoad();
+    if (v === 'trafik') tfLoad();
   }
   $$('[data-view]').forEach(b => b.addEventListener('click', () => go(b.dataset.view)));
   document.addEventListener('click', e => { const g = e.target.closest('[data-go]'); if (g) go(g.dataset.go); });
@@ -1030,6 +1149,7 @@ td .who small{color:var(--ink-3)}
       bloklar.push(bolum('Takip günü gelenler', (bg.takip || []).length + ' firma', (bg.takip || []).length ? bg.takip.map(x => bgSatir(x, `<span class="bg-kanal">${esc(x['Sonraki tarih'] ? String(x['Sonraki tarih']).slice(0, 10) : '')}</span>`)).join('') : bos('Bugün takip günü gelen firma yok.')));
       bloklar.push(bolum('Bugün gönderilecek / aranacak', 'A puanlı, ' + bg.hazir_toplam + ' hazır mesajdan', (bg.hazir || []).length ? bg.hazir.map(x => bgSatir(x, `<span class="bg-kanal">${bgKanal(x)}</span>`)).join('') : bos('Hazır A puanlı mesaj yok.')));
     }
+    if ((bg.sistem_uyarilari || []).length) bloklar.unshift(bolum('Sistem uyarıları', bg.sistem_uyarilari.length + ' konu', '<ul class="notes">' + bg.sistem_uyarilari.map(x => `<li>${esc(x)}</li>`).join('') + '</ul>'));
     $('#bgIc').innerHTML = bloklar.join('');
   }
   document.addEventListener('click', async e => {
@@ -1129,6 +1249,8 @@ td .who small{color:var(--ink-3)}
       });
     }
     return new Promise(res => setTimeout(() => {
+      if (islem === 'trafik') { const hr = { TR: [1204, 3100, 14, 'instagram', 531], IN: [512, 1330, 9, 'instagram', 266], DE: [288, 760, 6, 'arama', 118], AE: [241, 640, 4, 'arama', 92], SA: [163, 410, 2, 'dogrudan', 57], US: [96, 220, 1, 'arama', 40], GB: [88, 190, 0, 'instagram', 33], CN: [75, 160, 1, 'arama', 30], EG: [49, 120, 0, 'instagram', 20], PK: [44, 100, 0, 'dogrudan', 18] }; const harita = {}; Object.entries(hr).forEach(([k, a]) => { harita[k] = { z: a[0], g: a[1], f: a[2], kaynak: a[3], kaynak_z: a[4] }; }); return res({ ok: true, donem: x.donem, bas: '2026-09-03', bit: '2026-10-02', canli: 6, kpi: { ziyaretci: 3482, goruntuleme: 9214, ulke: 41, form: 37 }, onceki: { ziyaretci: 2950, goruntuleme: 8225, ulke: 35, form: 38 }, harita, kaynaklar: [{ kaynak: 'instagram', z: 1264, alt: [{ ad: '@purixxrf.tr', n: 640 }, { ad: '@purixxrf', n: 312 }, { ad: '@purixxrf.in', n: 190 }], not: 'en çok: tr-02 · 212 ziyaret' }, { kaynak: 'arama', z: 702, alt: [{ ad: 'Google', n: 640 }], not: 'Google 640 · Bing 40' }, { kaynak: 'dogrudan', z: 598, alt: [], not: '' }, { kaynak: 'whatsapp', z: 311, alt: [], not: '' }, { kaynak: 'brosur', z: 224, alt: [{ ad: 'TR', n: 96 }, { ad: 'EN', n: 61 }], not: '' }, { kaynak: 'linkedin', z: 142, alt: [], not: '' }, { kaynak: 'facebook', z: 96, alt: [], not: '' }], gunluk: [...Array(30)].map((_, i) => { const d = new Date(Date.UTC(2026, 8, 3 + i)); const t = 70 + Math.sin(i / 3) * 18 + i * 1.6; return { gun: d.toISOString().slice(0, 10), ig: Math.round(t * .38), ad: Math.round(t * .4), diger: Math.round(t * .22) }; }), diller: [{ dil: 'tr', n: 1381 }, { dil: 'en', n: 662 }, { dil: 'hi', n: 418 }, { dil: 'ar', n: 345 }, { dil: 'de', n: 231 }], cihaz: [{ cihaz: 'mobil', n: 2400 }, { cihaz: 'masaustu', n: 1010 }, { cihaz: 'tablet', n: 72 }], tarayici: [{ tarayici: 'Instagram içi', n: 1250 }, { tarayici: 'Safari', n: 900 }, { tarayici: 'Chrome', n: 980 }], brosur: [{ dil: 'TR', n: 86 }, { dil: 'EN', n: 53 }, { dil: 'HI', n: 29 }] }); }
+      if (islem === 'trafik_ulke') return res({ ok: true, ulke: x.ulke, z: 1204, g: 3100, kaynaklar: [{ kaynak: 'instagram', n: 531 }, { kaynak: 'arama', n: 289 }, { kaynak: 'dogrudan', n: 169 }, { kaynak: 'whatsapp', n: 120 }], cihaz: [{ cihaz: 'mobil', n: 880 }, { cihaz: 'masaustu', n: 290 }, { cihaz: 'tablet', n: 34 }], diller: [{ dil: 'tr', n: 975 }, { dil: 'en', n: 180 }, { dil: 'ar', n: 49 }], yolculuk: { geldi: 1204, demo: 494, tablo: 397, form_ac: 72, form: 14 }, son: [{ zaman: new Date().toISOString(), kaynak: 'instagram', alt: '@purixxrf.tr', dil: 'tr', cihaz: 'mobil' }, { zaman: new Date(Date.now() - 600e3).toISOString(), kaynak: 'arama', alt: 'Google', dil: 'tr', cihaz: 'masaustu' }] });
       if (islem === 'giris') return res({ ok: true, token: 'demo' });
       if (islem === 'liste') return res({ ok: true, talepler: demo.map(o => ({ ...o })), durumlar: Object.keys(DURUM_RENK), bildirim: 'ornek@purixxrf.com' });
       if (islem === 'guncelle') { const t = demo.find(o => o.ID === x.id); if (x.sil) { demo = demo.filter(o => o !== t); return res({ ok: true, silindi: true }); }
@@ -1144,6 +1266,117 @@ td .who small{color:var(--ink-3)}
       res({ ok: true });
     }, 150));
   }
+
+
+  /* ---------- Trafik ---------- */
+  const TF = { donem: '30', olcut: 'z', ulke: '', veri: null, ulkeVeri: null, haritaHazir: false };
+  const TF_KAYNAK = { instagram: ['Instagram', '#C2410C', 'IG'], arama: ['Arama motorları', '#3B6EA8', 'G'], dogrudan: ['Doğrudan', '#57534E', '↗'], whatsapp: ['WhatsApp', '#2F7D4A', 'WA'],
+    brosur: ['Broşür QR', '#8B5E14', 'QR'], linkedin: ['LinkedIn', '#0A66C2', 'in'], facebook: ['Facebook', '#4267B2', 'f'], eposta: ['E-posta', '#6D5BB8', '@'], diger: ['Diğer', '#9A938A', '…'] };
+  const TF_NOT = { dogrudan: 'adres çubuğu / kayıtlı bağlantı', whatsapp: 'paylaşılan bağlantılar', brosur: 'broşürdeki QR kod' };
+  const TF_DIL = { tr: 'Türkçe', en: 'İngilizce', ar: 'Arapça', de: 'Almanca', es: 'İspanyolca', fa: 'Farsça', hi: 'Hintçe', id: 'Endonezce', it: 'İtalyanca', ms: 'Malayca', pt: 'Portekizce', th: 'Tayca', vi: 'Vietnamca', zh: 'Çince' };
+  const TF_CIHAZ = { mobil: 'Mobil', masaustu: 'Masaüstü', tablet: 'Tablet' };
+  const TF_DONEM = { bugun: 'bugün', 7: 'son 7 gün', 30: 'son 30 gün', tum: 'tüm zamanlar' };
+  const TF_HEDEF = ['TR', 'IN', 'DE', 'AE', 'SA', 'GB', 'CN', 'US', 'EG', 'PK', 'ID', 'IR', 'KW', 'IT', 'MY', 'SG', 'TH', 'VN', 'MX', 'BR'];
+  const TF_RENK = ['#EFE3C8', '#E4CB93', '#D2AE6A', '#B48C50', '#8A6331', '#5E421E'];
+  const tfAd = {}; ((window.PURIX_HARITA || {}).ulkeler || []).forEach(u => { tfAd[u.k] = u.ad; });
+  const sayi = n => Number(n || 0).toLocaleString('tr-TR');
+  const yuz = (n, t) => t ? '%' + (n / t * 100).toFixed(1).replace('.', ',') : '%0';
+  const tfSaat = iso => { const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }); };
+  const tfKay = (k, alt) => (TF_KAYNAK[k] ? TF_KAYNAK[k][0] : k) + (alt ? ' · ' + alt : '');
+  const tfBar = (liste, ad, deger, topla, yuzde) => { const mx = Math.max(1, ...liste.map(x => deger(x))); return liste.length ? liste.map(x => `<div class="r"><span>${esc(ad(x))}</span><div class="t"><i style="width:${deger(x) / mx * 100}%"></i></div><span class="n">${yuzde ? yuz(deger(x), topla) : sayi(deger(x))}</span></div>`).join('') : '<p class="tf-bos">Henüz veri yok.</p>'; };
+
+  function tfHaritaKur() {
+    const M = window.PURIX_HARITA; if (!M || TF.haritaHazir) return;
+    $('#tfMap').innerHTML = `<svg viewBox="0 0 ${M.W} ${M.H}" role="img" aria-label="Ziyaretçilerin ülkelere göre dağılımı">` + M.ulkeler.map(u => `<path d="${u.d}" data-k="${esc(u.k)}"${TF_HEDEF.includes(u.k) ? ' class="h"' : ''}></path>`).join('') + '</svg><div class="tf-tip" id="tfTip"></div>';
+    TF.haritaHazir = true;
+    const map = $('#tfMap'), tip = $('#tfTip');
+    map.addEventListener('mousemove', e => {
+      const p = e.target.closest('path[data-k]'); if (!p || !TF.veri) { tip.style.display = 'none'; return; }
+      const k = p.dataset.k, h = TF.veri.harita[k] || { z: 0, g: 0, f: 0, kaynak: '' }, top = TF.veri.kpi.ziyaretci, r = map.getBoundingClientRect();
+      tip.innerHTML = `<b>${esc(tfAd[k] || k)}</b>${sayi(h.z)} ziyaretçi · ${yuz(h.z, top)}${h.kaynak ? `<br><span>${esc(tfKay(h.kaynak))} ${yuz(h.kaynak_z, h.z)}</span>` : ''}${h.f ? `<br>${sayi(h.f)} teklif formu` : ''}`;
+      tip.style.display = 'block'; tip.style.left = Math.min(e.clientX - r.left + 14, r.width - 200) + 'px'; tip.style.top = Math.max(4, e.clientY - r.top - 10) + 'px';
+    });
+    map.addEventListener('mouseleave', () => { tip.style.display = 'none'; });
+    map.addEventListener('click', e => { const p = e.target.closest('path[data-k]'); if (p) tfUlkeSec(p.dataset.k); });
+  }
+  function tfHaritaBoya() {
+    const v = TF.veri, o = TF.olcut, deger = k => (v.harita[k] ? v.harita[k][o] : 0), tum = Object.keys(v.harita), mx = Math.max(0, ...tum.map(deger));
+    const e = [1, Math.max(2, Math.ceil(mx * .03)), Math.max(3, Math.ceil(mx * .1)), Math.max(4, Math.ceil(mx * .3)), Math.max(5, Math.ceil(mx * .65))].map((x, i, a) => i && x <= a[i - 1] ? a[i - 1] + 1 : x);
+    const seviye = n => !n ? -1 : e.filter(x => n >= x).length - 1;
+    $$('#tfMap path[data-k]').forEach(p => { const k = p.dataset.k, l = seviye(deger(k)); p.style.fill = l >= 0 ? TF_RENK[Math.min(l + 1, 5)] : ''; p.classList.toggle('sel', k === TF.ulke); });
+    const aralik = [`0`, ...e.map((x, i) => i < e.length - 1 ? (e[i + 1] - 1 > x ? `${sayi(x)}–${sayi(e[i + 1] - 1)}` : `${sayi(x)}`) : `${sayi(x)}+`)];
+    const ad = { z: 'Ziyaretçi', g: 'Sayfa görüntüleme', f: 'Teklif formu' }[o];
+    $('#tfLeg').innerHTML = `<span>${ad}</span>` + aralik.map((t, i) => `<span><i style="background:${i ? TF_RENK[i] : '#E4E1DB'}"></i>${t}</span>`).join('') + '<span class="ho"><u></u>PURIX hedef ülkesi</span>';
+  }
+  function tfRender() {
+    const v = TF.veri; if (!v) return;
+    const k = v.kpi, ok = v.onceki;
+    const fark = (a, b) => { if (!ok) return '<span class="d" style="color:var(--ink-3)">tüm zamanlar</span>'; if (!b) return a ? '<span class="d">▲ yeni</span>' : '<span class="d" style="color:var(--ink-3)">—</span>'; const y = Math.round((a - b) / b * 100); return `<span class="d${y < 0 ? ' dn' : ''}">${y < 0 ? '▼' : '▲'} %${Math.abs(y)} · önceki döneme göre</span>`; };
+    const kutu = (ad, a, b, ek) => `<div class="k"><small>${ad}</small><b>${sayi(a)}</b>${ek || fark(a, b)}</div>`;
+    $('#tfKpi').innerHTML = kutu('Ziyaretçi', k.ziyaretci, ok && ok.ziyaretci) + kutu('Sayfa görüntüleme', k.goruntuleme, ok && ok.goruntuleme) + kutu('Ülke', k.ulke, ok && ok.ulke)
+      + kutu('Teklif formu', k.form, ok && ok.form, `<span class="d" style="color:var(--ink-3)">dönüşüm ${k.ziyaretci ? yuz(k.form, k.ziyaretci) : '%0'}</span>`);
+    $('#tfCanli').innerHTML = `<i></i><b>${sayi(v.canli)}</b> kişi şu an sitede · son 5 dakika`;
+    $('#tfDonemAd').textContent = TF_DONEM[TF.donem];
+    // harita + ilk 5 ülke kutuları
+    tfHaritaKur(); tfHaritaBoya();
+    const sirali = Object.entries(v.harita).map(([kk, h]) => ({ k: kk, ...h })).sort((a, b) => b[TF.olcut] - a[TF.olcut]);
+    $('#tfTop5').innerHTML = sirali.slice(0, 5).map(x => `<button type="button" data-u="${esc(x.k)}" aria-pressed="${x.k === TF.ulke}"><small>${esc(tfAd[x.k] || x.k)}</small><b>${sayi(x[TF.olcut])}</b><span>${x.kaynak ? esc(tfKay(x.kaynak)) + ' ' + yuz(x.kaynak_z, x.z) + ' · ' : ''}${sayi(x.f)} form</span></button>`).join('') || '<p class="tf-bos" style="grid-column:1/-1">Henüz ziyaret kaydı yok. Ölçüm, ölçüm kodunu içeren site sürümü yüklendikten sonra başlar.</p>';
+    // kaynaklar (5 ana + "Diğer uygulamalar")
+    const ana = ['instagram', 'arama', 'dogrudan', 'whatsapp', 'brosur'], kay = v.kaynaklar, toplam = kay.reduce((a, x) => a + x.z, 0);
+    const bul = n => kay.find(x => x.kaynak === n) || { kaynak: n, z: 0, alt: [], not: '' };
+    const satirlar = ana.map(n => bul(n)).concat([{ kaynak: 'grup', z: 0, alt: [], not: '' }]);
+    const digerler = kay.filter(x => !ana.includes(x.kaynak)); satirlar[5] = { kaynak: 'grup', z: digerler.reduce((a, x) => a + x.z, 0), alt: digerler.map(x => ({ ad: (TF_KAYNAK[x.kaynak] || [x.kaynak])[0], n: x.z })), not: 'sosyal ağlar, e-posta ve diğerleri' };
+    const mx = Math.max(1, ...satirlar.map(x => x.z));
+    $('#tfSrc').innerHTML = satirlar.map(x => { const t = x.kaynak === 'grup' ? ['Diğer uygulamalar', '#6D5BB8', '+'] : TF_KAYNAK[x.kaynak];
+      return `<li><span class="ic" style="background:${t[1]}">${t[2]}</span><span class="nm">${t[0]}<small>${esc(x.not || TF_NOT[x.kaynak] || '') || '&nbsp;'}</small></span><span class="ct">${sayi(x.z)}<small>${yuz(x.z, toplam)}</small></span><span class="br"><i style="width:${x.z / mx * 100}%;background:${t[1]}"></i></span>${x.alt.length ? `<span class="tf-sub">${x.alt.map(a => `<span>${esc(a.ad)} <b>${sayi(a.n)}</b></span>`).join('')}</span>` : ''}</li>`; }).join('');
+    // günlük grafik
+    const gun = {}; v.gunluk.forEach(g => { gun[g.gun] = g; });
+    const gunler = []; { const bas = new Date(v.bas === '2000-01-01' ? (v.gunluk[0] ? v.gunluk[0].gun : v.bit) : v.bas + 'T00:00:00Z'), bit = new Date(v.bit + 'T00:00:00Z'); for (let d = bas; d <= bit && gunler.length < 400; d = new Date(d.getTime() + 864e5)) gunler.push(d.toISOString().slice(0, 10)); }
+    const dizi = gunler.map(g => { const x = gun[g] || {}; return [g, x.ig || 0, x.ad || 0, x.diger || 0]; }), mxg = Math.max(1, ...dizi.map(x => x[1] + x[2] + x[3])), bw = 760 / Math.max(1, dizi.length);
+    const etiket = [0, .25, .5, .75, 1].map(f => dizi[Math.min(dizi.length - 1, Math.round((dizi.length - 1) * f))]).filter(Boolean);
+    $('#tfChart').innerHTML = [0, 1, 2, 3].map(i => `<line x1="0" x2="760" y1="${270 - i * 80}" y2="${270 - i * 80}" stroke="#E7E5E4" stroke-width="1"/>`).join('')
+      + dizi.map((x, i) => { let y = 270; return [1, 2, 3].map(j => { const h = x[j] / mxg * 255; y -= h; return h ? `<rect x="${i * bw + Math.min(3, bw * .15)}" y="${y}" width="${Math.max(1, bw - Math.min(6, bw * .3))}" height="${h}" rx="2" fill="${['#C2410C', '#3B6EA8', '#B9B2A5'][j - 1]}"><title>${x[0]}: ${x[j]}</title></rect>` : ''; }).join(''); }).join('')
+      + etiket.map((x, i) => `<text x="${Math.min(745, Math.max(15, dizi.indexOf(x) * bw + bw / 2))}" y="292" font-size="11" text-anchor="middle" fill="#78716C">${x[0].slice(8)}.${x[0].slice(5, 7)}</text>`).join('');
+    // ülke tablosu
+    $('#tfTbl').innerHTML = '<thead><tr><th>Ülke</th><th class="num">Ziyaretçi</th><th>İlk kaynak</th><th class="num">Form</th></tr></thead><tbody>'
+      + (sirali.slice(0, 8).map(x => `<tr data-u="${esc(x.k)}"${x.k === TF.ulke ? ' class="sel"' : ''} style="cursor:pointer"><td>${esc(tfAd[x.k] || x.k)}</td><td class="num"><span class="bar" style="width:${x.z / Math.max(1, sirali[0].z) * 34}px"></span>${sayi(x.z)}</td><td>${esc(x.kaynak ? (TF_KAYNAK[x.kaynak] || [x.kaynak])[0] : '—')}</td><td class="num">${sayi(x.f)}</td></tr>`).join('') || '<tr><td colspan="4" class="tf-bos">Henüz veri yok.</td></tr>') + '</tbody>';
+    // alt kartlar
+    const dl = v.diller.map(x => ({ ...x, ad: TF_DIL[x.dil] || x.dil })).slice(0, 7), dt = v.diller.reduce((a, x) => a + x.n, 0), ct = v.cihaz.reduce((a, x) => a + x.n, 0);
+    $('#tfDiller').innerHTML = tfBar(dl, x => x.ad, x => x.n, dt, false);
+    $('#tfCihaz').innerHTML = tfBar(v.cihaz.map(x => ({ ad: TF_CIHAZ[x.cihaz] || x.cihaz, n: x.n })), x => x.ad, x => x.n, ct, true)
+      + tfBar(v.tarayici.filter(x => /içi$/.test(x.tarayici) || ['Safari', 'Chrome', 'Edge', 'Firefox'].includes(x.tarayici)).map(x => ({ ad: x.tarayici, n: x.n })).slice(0, 5), x => x.ad, x => x.n, ct, true);
+    $('#tfBrosur').innerHTML = tfBar(v.brosur.map(x => ({ ad: TF_DIL[String(x.dil).toLowerCase()] || x.dil, n: x.n })).slice(0, 7), x => x.ad, x => x.n, 0, false);
+    // seçili ülke yoksa en çok ziyaretçi geleni seç
+    if (!TF.ulke && sirali.length) tfUlkeSec(sirali[0].k, true);
+    else if (TF.ulke) tfUlkeYukle();
+  }
+  async function tfUlkeYukle() {
+    if (!TF.ulke) return;
+    try { TF.ulkeVeri = await api('trafik_ulke', { ulke: TF.ulke, donem: TF.donem }); tfUlkeRender(); } catch (e) { $('#tfUlke').innerHTML = `<p class="tf-bos">${esc(e.message)}</p>`; }
+  }
+  function tfUlkeSec(k, sessiz) { TF.ulke = k; $('#tfUlkeBas').textContent = tfAd[k] || k; $$('#tfMap path.sel').forEach(p => p.classList.remove('sel')); const p = $(`#tfMap path[data-k="${k}"]`); if (p) p.classList.add('sel'); $$('#tfTop5 button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.u === k))); $$('#tfTbl tr[data-u]').forEach(t => t.classList.toggle('sel', t.dataset.u === k)); tfUlkeYukle(); }
+  function tfUlkeRender() {
+    const u = TF.ulkeVeri; if (!u || !u.ok) return; $('#tfUlkeBas').textContent = (tfAd[u.ulke] || u.ulke) + ' · ' + sayi(u.z) + ' ziyaretçi';
+    const topla = u.kaynaklar.reduce((a, x) => a + x.n, 0), ct = u.cihaz.reduce((a, x) => a + x.n, 0), dt = u.diller.reduce((a, x) => a + x.n, 0), y = u.yolculuk, mx = Math.max(1, y.geldi);
+    const yol = [['Siteye geldi', y.geldi], ['Canlı analizi denedi', y.demo], ['Teknik tabloya indi', y.tablo], ['Formu açtı', y.form_ac], ['Teklif gönderdi', y.form]];
+    $('#tfUlke').innerHTML = `<div><div style="font-size:12.5px;color:var(--ink-3)">Kaynak dağılımı</div>
+      <div class="tf-stack">${u.kaynaklar.map(x => `<i style="width:${x.n / Math.max(1, topla) * 100}%;background:${(TF_KAYNAK[x.kaynak] || [0, '#9A938A'])[1]}"></i>`).join('')}</div>
+      <div class="tf-mini" style="margin-bottom:16px">${tfBar(u.kaynaklar.slice(0, 5).map(x => ({ ad: (TF_KAYNAK[x.kaynak] || [x.kaynak])[0], n: x.n })), x => x.ad, x => x.n, 0, false)}</div>
+      <div style="font-size:12.5px;color:var(--ink-3);margin-bottom:6px">Cihaz</div><div class="tf-mini">${tfBar(u.cihaz.map(x => ({ ad: TF_CIHAZ[x.cihaz] || x.cihaz, n: x.n })), x => x.ad, x => x.n, ct, true)}</div></div>
+      <div><div style="font-size:12.5px;color:var(--ink-3);margin-bottom:8px">Ziyaretçi yolculuğu</div>
+      <div class="tf-mini" style="margin-bottom:16px">${yol.map(([ad, n]) => `<div class="r" style="grid-template-columns:130px 1fr 48px"><span>${ad}</span><div class="t"><i style="width:${n / mx * 100}%"></i></div><span class="n">${sayi(n)}</span></div>`).join('')}</div>
+      <div style="font-size:12.5px;color:var(--ink-3);margin-bottom:8px">Dil</div><div class="tf-mini">${tfBar(u.diller.slice(0, 4).map(x => ({ ad: TF_DIL[x.dil] || x.dil, n: x.n })), x => x.ad, x => x.n, dt, true)}</div></div>
+      <div><div style="font-size:12.5px;color:var(--ink-3);margin-bottom:8px">Son ziyaretler <span>(anonim: IP ve kişi bilgisi yok)</span></div>
+      <ul class="tf-ul">${u.son.length ? u.son.map(x => `<li><span>${esc(tfKay(x.kaynak, x.alt))}<br><small style="color:var(--ink-3)">${esc(TF_DIL[x.dil] || x.dil || '—')} · ${esc((TF_CIHAZ[x.cihaz] || x.cihaz || '').toLowerCase())}</small></span><time>${tfSaat(x.zaman)}</time></li>`).join('') : '<li><span class="tf-bos">Henüz ziyaret yok.</span></li>'}</ul></div>`;
+  }
+  async function tfLoad(sessiz) {
+    try { TF.veri = await api('trafik', { donem: TF.donem }); tfRender(); } catch (e) { if (!sessiz) { const el = $('#tfKpi'); if (el) el.innerHTML = `<p class="tf-bos">${esc(e.message)}</p>`; } }
+  }
+  document.addEventListener('click', e => {
+    const d = e.target.closest('#tfDonem [data-d]'); if (d) { TF.donem = d.dataset.d; $$('#tfDonem button').forEach(b => b.setAttribute('aria-pressed', String(b === d))); tfLoad(); return; }
+    const o = e.target.closest('#tfOlcut [data-o]'); if (o) { TF.olcut = o.dataset.o; $$('#tfOlcut button').forEach(b => b.setAttribute('aria-pressed', String(b === o))); if (TF.veri) tfRender(); return; }
+    const u = e.target.closest('#tfTop5 [data-u], #tfTbl [data-u]'); if (u) tfUlkeSec(u.dataset.u);
+  });
 
   /* ---------- Başlat ---------- */
   if (token || DEMO && ss.get('purix_demo')) start(); else { $('#login').hidden = false; $('#pw').focus(); }
