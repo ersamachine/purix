@@ -2,12 +2,14 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://api.purixxrf.com; media-src 'self' blob: https://api.purixxrf.com; connect-src https://api.purixxrf.com; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>PURIX Panel</title>
-<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610021044">
-<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610021044" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../fonts/fonts.css?v=202610021044">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610021156">
+<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610021156" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fonts/fonts.css?v=202610021156">
 <style>
 :root{
   --bg:#F4F4F1;--surface:#fff;--ink:#1C1917;--ink-2:#57534E;--ink-3:#78716C;--line:#D6D3D1;--line-2:#E7E5E4;
@@ -223,7 +225,7 @@ td .who small{color:var(--ink-3)}
 <!-- GİRİŞ -->
 <section class="login" id="login" hidden>
   <form class="login-card" id="loginForm">
-    <img src="../assets/mark-128.webp?v=202610021044" alt="" width="40" height="51">
+    <img src="../assets/mark-128.webp?v=202610021156" alt="" width="40" height="51">
     <h1>PURIX Panel</h1>
     <p>Teklif taleplerini görmek için giriş yapın.</p>
     <div class="field"><label for="pw">Şifre</label><input class="inp" id="pw" type="password" autocomplete="current-password" required></div>
@@ -237,7 +239,7 @@ td .who small{color:var(--ink-3)}
 <!-- UYGULAMA -->
 <div class="app" id="app" hidden>
   <aside class="side" id="side">
-    <div class="brand"><img src="../assets/mark-128.webp?v=202610021044" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
+    <div class="brand"><img src="../assets/mark-128.webp?v=202610021156" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
     <button class="nav-btn" data-view="genel" aria-current="page"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"/></svg>Genel bakış</button>
     <button class="nav-btn" data-view="talepler"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Talepler<span class="badge" id="newBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="adaylar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".8"/></svg>Adaylar<span class="badge" id="adBadge" hidden>0</span></button>
@@ -362,9 +364,10 @@ td .who small{color:var(--ink-3)}
 </div>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="../config.js?v=202610021044"></script>
+<script src="../config.js?v=202610021156"></script>
 <script>
 (() => {
+  if (window.top !== window.self) { document.documentElement.innerHTML = ''; try { window.top.location = window.self.location; } catch {} return; }  // çerçeve içine alınmaya (clickjacking) karşı
   // Yerel geliştirme: yalnızca localhost'ta ?api= ile sahte sunucuya bağlanılabilir (canlı sitede etkisizdir)
   const DEV_API = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? new URLSearchParams(location.search).get('api') : '';
   const API = (DEV_API || window.PURIX_API || '').trim();
