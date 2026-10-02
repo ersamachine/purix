@@ -24,14 +24,14 @@
     es: { name: 'Español', locale: 'es-MX' },
     pt: { name: 'Português', locale: 'pt-BR' }
   };
-  const SURUM = '202610022055'; // surum.py tarafından yazılır (önbellek kırıcı)
+  const SURUM = '202610022151'; // surum.py tarafından yazılır (önbellek kırıcı)
   const FONTS = { arab: 'fonts/arab.css', deva: 'fonts/deva.css', thai: 'fonts/thai.css' }; // sitenin kendi sunucusundan
   // Öncelik sırası kullanıcının satış planından. İlk dil = ülkenin varsayılanı.
   const COUNTRIES = [
-    { c: 'IN', r: 'asia', langs: ['en', 'hi'], ig: 'purixxrf', ex: '+91 98765 43210' },
+    { c: 'IN', r: 'asia', langs: ['en', 'hi'], ig: 'purixxrf.in', ex: '+91 98765 43210' },
     { c: 'TR', r: 'eu', langs: ['tr', 'en'], ig: 'purixxrf.tr', ex: '+90 532 123 45 67' },
-    { c: 'AE', r: 'me', langs: ['en', 'ar'], ig: 'purixxrf', ex: '+971 50 123 4567' },
-    { c: 'SA', r: 'me', langs: ['ar', 'en'], ig: 'purixxrf', ex: '+966 50 123 4567' },
+    { c: 'AE', r: 'me', langs: ['en', 'ar'], ig: 'purixxrf.ae', ex: '+971 50 123 4567' },
+    { c: 'SA', r: 'me', langs: ['ar', 'en'], ig: 'purixxrf.sa', ex: '+966 50 123 4567' },
     { c: 'CN', r: 'asia', langs: ['zh', 'en'], ig: 'purixxrf', ex: '+86 131 2345 6789' },
     { c: 'US', r: 'am', langs: ['en'], ig: 'purixxrf', ex: '+1 212 555 0123' },
     { c: 'EG', r: 'me', langs: ['ar', 'en'], ig: 'purixxrf', ex: '+20 100 123 4567' },
@@ -41,7 +41,7 @@
     { c: 'KW', r: 'me', langs: ['ar', 'en'], ig: 'purixxrf', ex: '+965 5000 1234' },
     { c: 'IT', r: 'eu', langs: ['it', 'en'], ig: 'purixxrf', ex: '+39 312 345 6789' },
     { c: 'GB', r: 'eu', langs: ['en'], ig: 'purixxrf', ex: '+44 7700 900123' },
-    { c: 'DE', r: 'eu', langs: ['de', 'en'], ig: 'purixxrf', ex: '+49 151 23456789' },
+    { c: 'DE', r: 'eu', langs: ['de', 'en'], ig: 'purixxrf.de', ex: '+49 151 23456789' },
     { c: 'MY', r: 'asia', langs: ['ms', 'en'], ig: 'purixxrf', ex: '+60 12 345 6789' },
     { c: 'SG', r: 'asia', langs: ['en', 'zh'], ig: 'purixxrf', ex: '+65 8123 4567' },
     { c: 'TH', r: 'asia', langs: ['th', 'en'], ig: 'purixxrf', ex: '+66 81 234 5678' },
@@ -64,11 +64,11 @@
       'q3a': 'Tüp yalnızca kapak kapalıyken çalışır. Türkiye\'de X-ışını cihazları için NDK lisansı gerekir; başvuru dosyasının hazırlanmasında destek oluyoruz.',
       'q4a': 'Stoktaki modeller İstanbul içinde 2 iş günü, diğer illerde 5 iş günü içinde kurulur. Personel eğitimi yaklaşık 2 saat sürer.',
       'q5': 'Taksit veya kiralama seçeneği var mı?', 'q5a': 'Peşin ödeme, kredi kartına taksit ve 12–36 ay operasyonel kiralama seçenekleri var. Tercihinizi teklif formunda belirtin.',
-      'c.show': 'Showroom', 'c.showV': 'Kapalıçarşı yakını, Fatih / İstanbul', 'c.hoursV': 'Hafta içi 09.00–18.30',
+      'c.show': 'Showroom', 'c.showV': 'İstanbul', 'c.hoursV': 'Hafta içi 09.00–18.30',
       'f.kvkk': '<a href="#">KVKK aydınlatma metnini</a> okudum; bilgilerimin bu talep için kullanılmasını onaylıyorum.',
       'e.kvkk': 'Devam etmek için KVKK onay kutusunu işaretleyin.', 'foot.kvkk': 'KVKK',
       'f.doneP': 'En kısa sürede sizinle iletişime geçeceğiz.'
-    } }
+    }, en: { 'c.show': 'Showroom', 'c.showV': 'Istanbul' } }  // Türkiye + İngilizce: yalnızca konum etiketi (sahip kararı 2 Ekim 2026)
   };
 
   let lang = 'tr', country = byCode.TR, dict = {};
