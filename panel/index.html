@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>PURIX Panel</title>
-<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610021251">
-<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610021251" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../fonts/fonts.css?v=202610021251">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610021358">
+<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610021358" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fonts/fonts.css?v=202610021358">
 <style>
 :root{
   --bg:#F4F4F1;--surface:#fff;--ink:#1C1917;--ink-2:#57534E;--ink-3:#78716C;--line:#D6D3D1;--line-2:#E7E5E4;
@@ -225,7 +225,7 @@ td .who small{color:var(--ink-3)}
 <!-- GİRİŞ -->
 <section class="login" id="login" hidden>
   <form class="login-card" id="loginForm">
-    <img src="../assets/mark-128.webp?v=202610021251" alt="" width="40" height="51">
+    <img src="../assets/mark-128.webp?v=202610021358" alt="" width="40" height="51">
     <h1>PURIX Panel</h1>
     <p>Teklif taleplerini görmek için giriş yapın.</p>
     <div class="field"><label for="pw">Şifre</label><input class="inp" id="pw" type="password" autocomplete="current-password" required></div>
@@ -239,7 +239,7 @@ td .who small{color:var(--ink-3)}
 <!-- UYGULAMA -->
 <div class="app" id="app" hidden>
   <aside class="side" id="side">
-    <div class="brand"><img src="../assets/mark-128.webp?v=202610021251" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
+    <div class="brand"><img src="../assets/mark-128.webp?v=202610021358" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
     <button class="nav-btn" data-view="genel" aria-current="page"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"/></svg>Genel bakış</button>
     <button class="nav-btn" data-view="talepler"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Talepler<span class="badge" id="newBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="adaylar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".8"/></svg>Adaylar<span class="badge" id="adBadge" hidden>0</span></button>
@@ -364,7 +364,7 @@ td .who small{color:var(--ink-3)}
 </div>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="../config.js?v=202610021251"></script>
+<script src="../config.js?v=202610021358"></script>
 <script>
 (() => {
   if (window.top !== window.self) { document.documentElement.innerHTML = ''; try { window.top.location = window.self.location; } catch {} return; }  // çerçeve içine alınmaya (clickjacking) karşı
@@ -872,10 +872,11 @@ td .who small{color:var(--ink-3)}
     if (d.startsWith('00')) d = d.slice(2); else if (d.startsWith('0')) d = '90' + d.slice(1); else if (d.length === 10) d = '90' + d;
     return 'https://wa.me/' + d + (metin ? '?text=' + encodeURIComponent(metin) : '');
   }
+  function cepMi(t) { let d = String(t || '').replace(/\D/g, ''); if (d.startsWith('90')) d = d.slice(2); else if (d.startsWith('0')) d = d.slice(1); return /^5\d{9}$/.test(d); }
   function adOpen(id) {
     const x = ad.adaylar.find(a => a.ID === id); if (!x) return; adCur = id; current = null; igCur = null;
     const notes = String(x.Notlar || '').split('\n').filter(Boolean).map(n => { const p = n.split(' · '); return `<li><small>${esc(p[0])} · ${esc(p[1] || '')}</small>${esc(p.slice(2).join(' · '))}</li>`; }).reverse().join('');
-    const wa = trWa(x.WhatsApp || x.Telefon, x['WhatsApp mesajı']), web = String(x.Web || ''), insta = String(x.Instagram || '').replace(/^@/, '');
+    const wa = trWa(x.WhatsApp || (cepMi(x.Telefon) ? x.Telefon : ''), x['WhatsApp mesajı']), web = String(x.Web || ''), insta = String(x.Instagram || '').replace(/^@/, '');
     const mail = x['E-posta'] ? `mailto:${encodeURIComponent(x['E-posta'])}?subject=${encodeURIComponent(x['E-posta konusu'] || 'PURIX X1')}&body=${encodeURIComponent(x['E-posta metni'] || '')}` : '';
     const kutu = (baslik, alan) => x[alan] ? `<div class="box"><div class="box-h"><span>${baslik}</span><button class="btn btn-line btn-sm" data-adkopya="${esc(alan)}">Kopyala</button></div><pre>${esc(x[alan])}</pre></div>` : '';
     $('#drawerIn').classList.add('wide');
@@ -888,6 +889,7 @@ td .who small{color:var(--ink-3)}
           ${x.Telefon ? `<a class="btn btn-line btn-sm" href="tel:${esc(String(x.Telefon).replace(/[^\d+]/g, ''))}">Ara</a>` : ''}
           ${mail ? `<a class="btn btn-line btn-sm" href="${esc(mail)}">E-posta</a>` : ''}
           ${web ? `<a class="btn btn-line btn-sm" href="${esc(/^https?:/.test(web) ? web : 'https://' + web)}" target="_blank" rel="noopener">Web</a>` : ''}
+          ${/^https:\/\/([a-z]{2,3}\.)?linkedin\.com\/company\//i.test(x.LinkedIn || '') ? `<a class="btn btn-line btn-sm" href="${esc(x.LinkedIn)}" target="_blank" rel="noopener">LinkedIn</a>` : ''}
           ${insta ? `<a class="btn btn-line btn-sm" href="https://www.instagram.com/${esc(encodeURIComponent(insta))}/" target="_blank" rel="noopener">Instagram</a>` : ''}
         </div>
         <form id="adForm" class="decide">
@@ -902,6 +904,7 @@ td .who small{color:var(--ink-3)}
              ['Web', web], ['Instagram', x.Instagram], ['Puan', x.Puan ? x.Puan + (x['Puan nedeni'] ? ' · ' + x['Puan nedeni'] : '') : ''], ['Bölge', x['Bölge']], ['Kaynak', x.Kaynak],
              ['Son temas', x['Son temas'] ? fmtD(x['Son temas']) : ''], ['Bulan ajan', x.Ajan]].filter(([, v]) => v).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}
         </dl>
+        ${kutu('Telefon görüşme notu', 'Arama notu')}
         ${kutu('WhatsApp mesajı taslağı', 'WhatsApp mesajı')}
         ${kutu('E-posta konusu', 'E-posta konusu')}
         ${kutu('E-posta metni', 'E-posta metni')}
