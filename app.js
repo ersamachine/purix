@@ -24,7 +24,7 @@
     es: { name: 'Español', locale: 'es-MX' },
     pt: { name: 'Português', locale: 'pt-BR' }
   };
-  const SURUM = '202610021156'; // surum.py tarafından yazılır (önbellek kırıcı)
+  const SURUM = '202610021251'; // surum.py tarafından yazılır (önbellek kırıcı)
   const FONTS = { arab: 'fonts/arab.css', deva: 'fonts/deva.css', thai: 'fonts/thai.css' }; // sitenin kendi sunucusundan
   // Öncelik sırası kullanıcının satış planından. İlk dil = ülkenin varsayılanı.
   const COUNTRIES = [
@@ -604,7 +604,9 @@
         ulke: country.c, dil: lang,
         sektor: $('#fSektor').selectedOptions[0].dataset.t ? TR0[$('#fSektor').selectedOptions[0].dataset.t] : f.get('sektor'),
         model: 'X1', istek: f.getAll('istek').join(', '), mesaj: f.get('mesaj'),
-        kaynak, sayfa: location.pathname + location.search, ua: navigator.userAgent.slice(0, 200), web: f.get('web')
+        kaynak, sayfa: location.pathname + location.search, ua: navigator.userAgent.slice(0, 200), web: f.get('web'),
+        // Onay kaydı (Faz 0.10): hangi metni gösterdik, işaretlendi mi. Metin değişirse sürüm numarası artırılır.
+        kvkk: $('#fKvkk').checked === true, kvkk_surum: 'kvkk-1', kvkk_metin: ($('label[for="fKvkk"]') || $('#fKvkk').parentElement).innerText.replace(/\s+/g, ' ').trim().slice(0, 500)
       };
       btn.disabled = true; btn.textContent = t('f.sending');
       try {
