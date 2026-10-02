@@ -24,7 +24,8 @@
     es: { name: 'Español', locale: 'es-MX' },
     pt: { name: 'Português', locale: 'pt-BR' }
   };
-  const SURUM = '202610030015'; // surum.py tarafından yazılır (önbellek kırıcı)
+  const SURUM = '202610030050'; // surum.py tarafından yazılır (önbellek kırıcı)
+  const BRO_MB = { ar: 1.4, de: 1.2, en: 1.1, es: 1.2, fa: 1.4, hi: 1.5, id: 1.1, it: 1.1, ms: 1.1, pt: 1.2, th: 1.3, tr: 1.2, vi: 1.5, zh: 1.1 }; // broşür PDF boyutları (MB), broşürler yenilenince güncelleyin
   const FONTS = { arab: 'fonts/arab.css', deva: 'fonts/deva.css', thai: 'fonts/thai.css' }; // sitenin kendi sunucusundan
   // Öncelik sırası kullanıcının satış planından. İlk dil = ülkenin varsayılanı.
   const COUNTRIES = [
@@ -116,9 +117,10 @@
     $('#locCode').textContent = ctry.c === 'INTL' ? 'INT' : ctry.c;
     $('#locLang').textContent = L.name;
     $('#cCountry').textContent = cn;
-    $('#cIg').href = igUrl; $('#cIg').textContent = '@' + ctry.ig; $('#fIg').href = igUrl;
+    $('#cIg').href = igUrl; $('#cIg').textContent = '@' + ctry.ig; $('#fIg').href = igUrl; $('#fIg').textContent = '@' + ctry.ig;
     const mail = ctry.c === 'TR' ? 'tr@purixxrf.com' : 'info@purixxrf.com'; $('#cMail').href = 'mailto:' + mail; $('#cMail').textContent = mail; // Türkiye'ye özel adres
-    $('#footLoc').textContent = `${cn} · ${L.name}`;
+    $('#footLocCode').textContent = ctry.c === 'INTL' ? 'INT' : ctry.c; $('#footLocLang').textContent = L.name;
+    $('#fMailL').href = 'mailto:' + mail; $('#fMailL').textContent = mail;
     $('#fTel-h').textContent = t('f.phoneH').replace('{ex}', ctry.ex);
     const pct = s => lang === 'tr' ? s.replace(/(\d[\d.,]*)\s?%/g, '%$1') : s; // Türkçede yüzde işareti sayıdan önce (TDK)
     $$('[data-fmt]').forEach(el => { el.innerHTML = iso(pct(el.dataset.fmt.replace(/\{([\d.]+)\}/g, (_, n) => num(+n, (n.split('.')[1] || '').length)))); });
@@ -126,7 +128,9 @@
     const gizlilik = lang === 'tr' ? 'kvkk.html' : 'privacy.html';
     $$('[data-t="f.kvkk"] a, [data-t="foot.kvkk"]').forEach(a => { a.href = gizlilik; a.target = '_blank'; a.rel = 'noopener'; });
     // Broşür: her dilin kendi PDF'i (14 dil)
-    $$('[data-t="foot.bro"]').forEach(a => { a.href = `assets/purix-x1-brosur-${lang}.pdf${SURUM ? '?v=' + SURUM : ''}`; a.target = '_blank'; a.rel = 'noopener'; });
+    $$('[data-t="foot.bro"], [data-bro]').forEach(a => { a.href = `assets/purix-x1-brosur-${lang}.pdf${SURUM ? '?v=' + SURUM : ''}`; a.target = '_blank'; a.rel = 'noopener'; });
+    $$('[data-bro] img').forEach(im => { im.src = `assets/brosur-kapak-${lang}.webp${SURUM ? '?v=' + SURUM : ''}`; });
+    $$('[data-t="f2.pdfM"]').forEach(el => { el.innerHTML = t('f2.pdfM').replace('{mb} MB', `<bdi dir="ltr">${num(BRO_MB[lang] || 1.2, 1)} MB</bdi>`); });
 
     if (save) {
       store.set('purix-c', ctry.c); store.set('purix-l', lang);
@@ -643,7 +647,7 @@
   const olcumTablo = $('.m-specs');
   if (olcumTablo && 'IntersectionObserver' in window) new IntersectionObserver(([e], o) => { if (e.isIntersecting) { o.disconnect(); olcum('tablo', '', true); } }, { threshold: .3 }).observe(olcumTablo);
   form.addEventListener('focusin', () => olcum('form_ac', '', true));
-  document.addEventListener('click', e => { const a = e.target.closest('[data-t="foot.bro"]'); if (a) olcum('brosur', lang); });
+  document.addEventListener('click', e => { const a = e.target.closest('[data-t="foot.bro"], [data-bro]'); if (a) olcum('brosur', lang); });
 
   /* ---------- Başlat ---------- */
   const boot = window.PURIX_BOOT || { c: 'TR', l: 'tr' };
