@@ -24,7 +24,7 @@
     es: { name: 'Español', locale: 'es-MX' },
     pt: { name: 'Português', locale: 'pt-BR' }
   };
-  const SURUM = '202610022007'; // surum.py tarafından yazılır (önbellek kırıcı)
+  const SURUM = '202610022055'; // surum.py tarafından yazılır (önbellek kırıcı)
   const FONTS = { arab: 'fonts/arab.css', deva: 'fonts/deva.css', thai: 'fonts/thai.css' }; // sitenin kendi sunucusundan
   // Öncelik sırası kullanıcının satış planından. İlk dil = ülkenin varsayılanı.
   const COUNTRIES = [
@@ -67,7 +67,7 @@
       'c.show': 'Showroom', 'c.showV': 'Kapalıçarşı yakını, Fatih / İstanbul', 'c.hoursV': 'Hafta içi 09.00–18.30',
       'f.kvkk': '<a href="#">KVKK aydınlatma metnini</a> okudum; bilgilerimin bu talep için kullanılmasını onaylıyorum.',
       'e.kvkk': 'Devam etmek için KVKK onay kutusunu işaretleyin.', 'foot.kvkk': 'KVKK',
-      'f.doneP': 'Bir iş günü içinde sizi arayacağız. Acil durumlar için +90 212 000 00 00.'
+      'f.doneP': 'En kısa sürede sizinle iletişime geçeceğiz.'
     } }
   };
 
