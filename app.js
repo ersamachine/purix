@@ -24,7 +24,7 @@
     es: { name: 'Español', locale: 'es-MX' },
     pt: { name: 'Português', locale: 'pt-BR' }
   };
-  const SURUM = '202610030050'; // surum.py tarafından yazılır (önbellek kırıcı)
+  const SURUM = '202610032027'; // surum.py tarafından yazılır (önbellek kırıcı)
   const BRO_MB = { ar: 1.4, de: 1.2, en: 1.1, es: 1.2, fa: 1.4, hi: 1.5, id: 1.1, it: 1.1, ms: 1.1, pt: 1.2, th: 1.3, tr: 1.2, vi: 1.5, zh: 1.1 }; // broşür PDF boyutları (MB), broşürler yenilenince güncelleyin
   const FONTS = { arab: 'fonts/arab.css', deva: 'fonts/deva.css', thai: 'fonts/thai.css' }; // sitenin kendi sunucusundan
   // Öncelik sırası kullanıcının satış planından. İlk dil = ülkenin varsayılanı.
@@ -131,6 +131,7 @@
     $$('[data-t="foot.bro"], [data-bro]').forEach(a => { a.href = `assets/purix-x1-brosur-${lang}.pdf${SURUM ? '?v=' + SURUM : ''}`; a.target = '_blank'; a.rel = 'noopener'; });
     $$('[data-bro] img').forEach(im => { im.src = `assets/brosur-kapak-${lang}.webp${SURUM ? '?v=' + SURUM : ''}`; });
     $$('[data-t="f2.pdfM"]').forEach(el => { el.innerHTML = t('f2.pdfM').replace('{mb} MB', `<bdi dir="ltr">${num(BRO_MB[lang] || 1.2, 1)} MB</bdi>`); });
+    window.PURIX_LOC = { lang, country: ctry.c, t, gizlilik }; document.dispatchEvent(new CustomEvent('purix-locale', { detail: window.PURIX_LOC })); // site asistanı (asistan.js) dil ve ülkeyi buradan alır
 
     if (save) {
       store.set('purix-c', ctry.c); store.set('purix-l', lang);
