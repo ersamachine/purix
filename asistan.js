@@ -174,7 +174,9 @@
       if (!posta && !tel) { err.textContent = T('as.e2'); f.iletisim.focus(); return; }
       if (!f.onay.checked) { err.textContent = T('as.e3'); return; }
       const btn = $('.as-sb', f); btn.disabled = true; btn.textContent = T('as.sending');
-      const ozet = ('Site asistanı sohbeti: ' + msgs.filter(m => m.rol === 'k').map(m => m.metin).join(' | ')).slice(0, 1900);
+      let ozet = '';
+      try { const o = await api({ islem: 'asistan_ozet', mesajlar: msgs.slice(-14), dil: LANG, ulke: CTRY }); if (o && o.ok && o.ozet) ozet = ['Asistan özeti:', o.ozet, '', ''].join(String.fromCharCode(10)); } catch { /* özet alınamazsa düz soru listesi gider */ }
+      ozet = (ozet + 'Site asistanı sohbeti, ziyaretçi soruları: ' + msgs.filter(m => m.rol === 'k').map(m => m.metin).join(' | ')).slice(0, 1900);
       const veri = { ad, tel: tel ? il : '', mail: posta ? il : '', firma: '', ulke: CTRY, dil: LANG, sektor: '', model: 'X1', istek: 'Site asistanı', mesaj: ozet, kaynak: 'Site asistanı',
         sayfa: location.pathname + location.search, ua: navigator.userAgent.slice(0, 200), web: f.web.value,
         kvkk: true, kvkk_surum: 'asistan-1', kvkk_metin: T('as.ck').slice(0, 500) };
