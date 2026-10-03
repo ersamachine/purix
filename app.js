@@ -24,7 +24,7 @@
     es: { name: 'Español', locale: 'es-MX' },
     pt: { name: 'Português', locale: 'pt-BR' }
   };
-  const SURUM = '202610032240'; // surum.py tarafından yazılır (önbellek kırıcı)
+  const SURUM = '202610032319'; // surum.py tarafından yazılır (önbellek kırıcı)
   const BRO_MB = { ar: 1.4, de: 1.2, en: 1.1, es: 1.2, fa: 1.4, hi: 1.5, id: 1.1, it: 1.1, ms: 1.1, pt: 1.2, th: 1.3, tr: 1.2, vi: 1.5, zh: 1.1 }; // broşür PDF boyutları (MB), broşürler yenilenince güncelleyin
   const FONTS = { arab: 'fonts/arab.css', deva: 'fonts/deva.css', thai: 'fonts/thai.css' }; // sitenin kendi sunucusundan
   // Öncelik sırası kullanıcının satış planından. İlk dil = ülkenin varsayılanı.
