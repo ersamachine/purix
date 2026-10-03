@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>PURIX Panel</title>
-<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610032319">
-<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610032319" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../fonts/fonts.css?v=202610032319">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610032330">
+<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610032330" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fonts/fonts.css?v=202610032330">
 <style>
 :root{
   --bg:#F4F4F1;--surface:#fff;--ink:#1C1917;--ink-2:#57534E;--ink-3:#78716C;--line:#D6D3D1;--line-2:#E7E5E4;
@@ -354,7 +354,7 @@ td .who small{color:var(--ink-3)}
 <!-- GİRİŞ -->
 <section class="login" id="login" hidden>
   <form class="login-card" id="loginForm">
-    <img src="../assets/mark-128.webp?v=202610032319" alt="" width="40" height="51">
+    <img src="../assets/mark-128.webp?v=202610032330" alt="" width="40" height="51">
     <h1>PURIX Panel</h1>
     <p>Teklif taleplerini görmek için giriş yapın.</p>
     <div class="field"><label for="pw">Şifre</label><input class="inp" id="pw" type="password" autocomplete="current-password" required></div>
@@ -368,7 +368,7 @@ td .who small{color:var(--ink-3)}
 <!-- UYGULAMA -->
 <div class="app" id="app" hidden>
   <aside class="side" id="side">
-    <div class="brand"><img src="../assets/mark-128.webp?v=202610032319" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
+    <div class="brand"><img src="../assets/mark-128.webp?v=202610032330" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
     <button class="nav-btn" data-view="bugun" aria-current="page"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/><path d="M4 20h16"/></svg>Bugün<span class="badge" id="bgBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="genel"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"/></svg>Genel bakış</button>
     <button class="nav-btn" data-view="talepler"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Talepler<span class="badge" id="newBadge" hidden>0</span></button>
@@ -483,7 +483,7 @@ td .who small{color:var(--ink-3)}
       <div class="of-grid">
         <div class="card of-kart">
           <div class="of-wrap" id="ofWrap"><canvas id="ofCv" width="240" height="150" aria-label="Ajanların ofisi"></canvas></div>
-          <div class="of-lej"><span><i style="background:#3B82F6"></i>Şu an çalışıyor</span><span><i style="background:#2F7D4A"></i>Son çalışma başarılı</span><span><i style="background:#C27C0E"></i>Dikkat / karar bekliyor</span><span><i style="background:#B4452A"></i>Hata</span><span><i style="background:#A8A29E"></i>Sırada / duraklatıldı</span></div>
+          <div class="of-lej"><span><i style="background:#3B82F6"></i>Şu an çalışıyor</span><span><i style="background:#2F7D4A"></i>Son çalışma başarılı</span><span><i style="background:#C27C0E"></i>Uyarı ya da kararını bekliyor</span><span><i style="background:#B4452A"></i>Hata</span><span><i style="background:#A8A29E"></i>Sırada / duraklatıldı</span></div>
         </div>
         <aside class="card of-det" id="ofDet"><p class="tf-bos">Yükleniyor…</p></aside>
       </div>
@@ -576,8 +576,8 @@ td .who small{color:var(--ink-3)}
 </div>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="harita.js?v=202610032319"></script>
-<script src="../config.js?v=202610032319"></script>
+<script src="harita.js?v=202610032330"></script>
+<script src="../config.js?v=202610032330"></script>
 <script>
 (() => {
   if (window.top !== window.self) { document.documentElement.innerHTML = ''; try { window.top.location = window.self.location; } catch {} return; }  // çerçeve içine alınmaya (clickjacking) karşı
@@ -1474,7 +1474,7 @@ td .who small{color:var(--ink-3)}
   /* ---------- Ofis (ajanların canlı görünümü; veri: ofis işlemi, çizim: piksel sahne) ---------- */
   const OF = { veri: null, kur: false, t: 0, secili: 'kasif', zamanlayici: null };
   const OF_RENK = { ok: '#2F7D4A', uy: '#C27C0E', gri: '#A8A29E', calis: '#3B82F6', err: '#B4452A' };
-  const OF_DURUM = { ok: ['Son çalışma başarılı', '#E8F3EC', '#2F7D4A'], uy: ['Dikkat / karar bekliyor', '#FDF3E1', '#9A5B05'], gri: ['Sırada / duraklatıldı', '#F0EFEC', '#57534E'], calis: ['Şu an çalışıyor', '#E6F0FE', '#1D4ED8'], err: ['Hata', '#FBEAE5', '#B4452A'] };
+  const OF_DURUM = { ok: ['Son çalışma başarılı', '#E8F3EC', '#2F7D4A'], uy: ['Uyarı', '#FDF3E1', '#9A5B05'], gri: ['Sırada / duraklatıldı', '#F0EFEC', '#57534E'], calis: ['Şu an çalışıyor', '#E6F0FE', '#1D4ED8'], err: ['Hata', '#FBEAE5', '#B4452A'] };
   let ofG, ofBg, ofA = [];
   function ofR(c, x, y, w, h, col) { c.fillStyle = col; c.fillRect(Math.round(x), Math.round(y), w, h); }
   function ofSahne() {
@@ -1569,14 +1569,15 @@ td .who small{color:var(--ink-3)}
       else if (a.bal) { a.bal.remove(); a.bal = null; }
     });
     const n = s => v.ajanlar.filter(a => a.durum === s).length;
-    $('#ofCip').innerHTML = `<span class="chip"><i style="background:${OF_RENK.calis}"></i>${n('calis')} çalışıyor</span><span class="chip"><i style="background:${OF_RENK.ok}"></i>${n('ok')} tamam</span><span class="chip"><i style="background:${OF_RENK.uy}"></i>${n('uy')} dikkat</span>${n('err') ? `<span class="chip"><i style="background:${OF_RENK.err}"></i>${n('err')} hata</span>` : ''}<span class="chip"><i style="background:${OF_RENK.gri}"></i>${n('gri')} sırada / duraklatıldı</span>`;
+    $('#ofCip').innerHTML = `<span class="chip"><i style="background:${OF_RENK.calis}"></i>${n('calis')} çalışıyor</span><span class="chip"><i style="background:${OF_RENK.ok}"></i>${n('ok')} tamam</span><span class="chip"><i style="background:${OF_RENK.uy}"></i>${n('uy')} uyarı</span>${n('err') ? `<span class="chip"><i style="background:${OF_RENK.err}"></i>${n('err')} hata</span>` : ''}<span class="chip"><i style="background:${OF_RENK.gri}"></i>${n('gri')} sırada / duraklatıldı</span>`;
     $('#ofZaman').textContent = 'son güncelleme ' + new Date(v.zaman).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
     ofDetay();
   }
   function ofDetay() {
     const a = ofA.find(x => x.id === OF.secili), d = a && a.veri; if (!d) return;
     ofA.forEach(x => x.el.classList.toggle('sel', x === a));
-    const st = OF_DURUM[d.durum] || OF_DURUM.gri, zz = iso => iso ? fmtD(iso) : '—';
+    const NEDEN = { kayit: d.durum === 'uy' ? 'Son çalışmada uyarı verdi' : d.durum === 'err' ? 'Son çalışmada hata verdi' : null, onay: 'Kararını bekliyor', plan: 'Planlı saatte çalışmadı', duraklat: 'Duraklatıldı (dış iletişim kapalı)' };
+    const st0 = OF_DURUM[d.durum] || OF_DURUM.gri, st = [NEDEN[d.neden] || st0[0], st0[1], st0[2]], zz = iso => iso ? fmtD(iso) : '—';
     $('#ofDet').innerHTML = `<div class="of-who"><div class="of-av"><canvas width="12" height="14" id="ofAv"></canvas></div><div><b>${esc(d.ad)}</b><small>${esc(d.ekip)} · ${esc(d.is)}</small></div></div>
       <span class="of-st" style="background:${st[1]};color:${st[2]}"><i style="background:${OF_RENK[d.durum] || OF_RENK.gri}"></i>${st[0]}</span>
       <div class="of-kv"><div><small>Son çalışma</small><b>${d.id === 'asistan' ? 'sürekli açık' : zz(d.son)}</b></div><div><small>Sonraki</small><b>${d.id === 'asistan' ? '7/24' : zz(d.sonraki)}</b></div></div>
