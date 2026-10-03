@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>PURIX Panel</title>
-<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610032027">
-<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610032027" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../fonts/fonts.css?v=202610032027">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610032110">
+<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610032110" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fonts/fonts.css?v=202610032110">
 <style>
 :root{
   --bg:#F4F4F1;--surface:#fff;--ink:#1C1917;--ink-2:#57534E;--ink-3:#78716C;--line:#D6D3D1;--line-2:#E7E5E4;
@@ -225,6 +225,24 @@ td .who small{color:var(--ink-3)}
 .bg-ad{font-weight:500}.bg-alt{font-size:12.5px;color:var(--ink-3)}
 .bg-kanal{font-size:12px;font-weight:500;padding:3px 10px;border-radius:999px;background:var(--bg);color:var(--ink-2);white-space:nowrap}
 
+/* ===== SOHBETLER ===== */
+.sh-top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:16px}
+.sh-durum{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;background:#fff;border:1px solid var(--line-2);border-radius:var(--r);padding:10px 16px;font-size:13.5px;color:var(--ink-2)}
+.sh-durum .nokta{width:9px;height:9px;border-radius:50%;background:var(--ok);flex:none}.sh-durum.kapali .nokta{background:var(--ink-3)}
+.sh-durum b{color:var(--ink)}
+.sh-k{border-bottom:1px solid var(--line-2)}.sh-k:last-child{border-bottom:0}
+.sh-k>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;padding:12px 4px}
+.sh-k>summary::-webkit-details-marker{display:none}
+.sh-k>summary:hover .sh-q{text-decoration:underline}
+.sh-z{font-size:12.5px;color:var(--ink-3);white-space:nowrap}
+.sh-q{flex:1;min-width:220px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sh-et{font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--bg);color:var(--ink-2);white-space:nowrap}
+.sh-et.form{background:#FBF6EA;color:var(--gold-text,#8B5E14)}.sh-et.sorun{background:#FBEAE5;color:var(--warn)}
+.sh-th{padding:4px 4px 16px;display:flex;flex-direction:column;gap:8px}
+.sh-m{max-width:min(720px,92%);padding:9px 13px;border-radius:14px;font-size:14px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+.sh-m.k{align-self:flex-end;background:var(--stone);color:#fff}
+.sh-m.a{align-self:flex-start;background:var(--bg);border:1px solid var(--line-2)}
+.sh-m small{display:block;opacity:.6;font-size:11px;margin-top:3px}
 /* ===== TRAFİK ===== */
 .tf-top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:16px}
 .tf-seg{display:inline-flex;background:#fff;border:1px solid var(--line-2);border-radius:999px;padding:3px}
@@ -307,7 +325,7 @@ td .who small{color:var(--ink-3)}
 <!-- GİRİŞ -->
 <section class="login" id="login" hidden>
   <form class="login-card" id="loginForm">
-    <img src="../assets/mark-128.webp?v=202610032027" alt="" width="40" height="51">
+    <img src="../assets/mark-128.webp?v=202610032110" alt="" width="40" height="51">
     <h1>PURIX Panel</h1>
     <p>Teklif taleplerini görmek için giriş yapın.</p>
     <div class="field"><label for="pw">Şifre</label><input class="inp" id="pw" type="password" autocomplete="current-password" required></div>
@@ -321,7 +339,7 @@ td .who small{color:var(--ink-3)}
 <!-- UYGULAMA -->
 <div class="app" id="app" hidden>
   <aside class="side" id="side">
-    <div class="brand"><img src="../assets/mark-128.webp?v=202610032027" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
+    <div class="brand"><img src="../assets/mark-128.webp?v=202610032110" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
     <button class="nav-btn" data-view="bugun" aria-current="page"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/><path d="M4 20h16"/></svg>Bugün<span class="badge" id="bgBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="genel"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"/></svg>Genel bakış</button>
     <button class="nav-btn" data-view="talepler"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Talepler<span class="badge" id="newBadge" hidden>0</span></button>
@@ -329,6 +347,7 @@ td .who small{color:var(--ink-3)}
     <button class="nav-btn" data-view="instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r=".6"/></svg>Instagram<span class="badge" id="igBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="ajanlar"><svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16.5h5"/></svg>Ajanlar</button>
     <button class="nav-btn" data-view="trafik"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.6 5.2 3.6 8.5s-1.2 6.1-3.6 8.5c-2.4-2.4-3.6-5.2-3.6-8.5S9.6 5.9 12 3.5z"/></svg>Trafik</button>
+    <button class="nav-btn" data-view="sohbetler"><svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 011 1v10a1 1 0 01-1 1h-9.5L6 20.5V17H4a1 1 0 01-1-1V6a1 1 0 011-1z"/><path d="M8 10h8M8 13h5"/></svg>Sohbetler</button>
     <button class="nav-btn" data-view="ayarlar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>Ayarlar</button>
     <button class="nav-btn" onclick="window.open('../','_blank')"><svg viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg>Siteyi aç</button>
     <div class="side-foot"><span id="syncInfo">—</span><button class="btn btn-line btn-sm" id="logout" style="background:transparent;color:#D8D2C8;border-color:#3A3431">Çıkış yap</button></div>
@@ -466,6 +485,15 @@ td .who small{color:var(--ink-3)}
       <div class="tf-note"><b style="white-space:nowrap">Veri nasıl toplanıyor?</b><span>Sitedeki küçük bir ölçüm kodu her ziyarette yalnızca ülke, kaynak (bağlantıdaki etiket ya da yönlendiren site), dil, cihaz türü ve yapılan eylemi kaydeder. <b>Çerez kullanılmaz, IP adresi ve kişisel veri saklanmaz</b>; ziyaretçi sayısı günlük değişen anonim bir özetle hesaplanır ve kayıtlar en çok 13 ay tutulur. Tarayıcısında "İzlenmek istemiyorum" açık olanlar sayılmaz. Bu sayfayı yalnızca siz görürsünüz.</span></div>
     </section>
 
+    <section id="v-sohbetler" hidden>
+      <div class="sh-top">
+        <div class="sh-durum" id="shDurum">Yükleniyor…</div>
+        <div class="tf-seg" id="shSuz" role="group" aria-label="Süzgeç"><button type="button" data-s="hepsi" aria-pressed="true">Tümü</button><button type="button" data-s="form" aria-pressed="false">İletişim kartı açılanlar</button><button type="button" data-s="sorun" aria-pressed="false">Süzgeç / hata</button></div>
+      </div>
+      <div class="tf-kpi" id="shKpi"></div>
+      <div class="card"><div id="shListe"></div></div>
+    </section>
+
     <section id="v-ayarlar" hidden>
       <div class="card" style="max-width:640px">
         <h2>E-posta bildirimi</h2>
@@ -503,8 +531,8 @@ td .who small{color:var(--ink-3)}
 </div>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="harita.js?v=202610032027"></script>
-<script src="../config.js?v=202610032027"></script>
+<script src="harita.js?v=202610032110"></script>
+<script src="../config.js?v=202610032110"></script>
 <script>
 (() => {
   if (window.top !== window.self) { document.documentElement.innerHTML = ''; try { window.top.location = window.self.location; } catch {} return; }  // çerçeve içine alınmaya (clickjacking) karşı
@@ -599,12 +627,12 @@ td .who small{color:var(--ink-3)}
     $('#login').hidden = true; $('#app').hidden = false; $('#demoBar').hidden = !DEMO;
     $('#apiInfo').textContent = DEMO ? 'Bağlı değil (demo verisi)' : (/script\.google\.com/.test(API) ? 'Google Apps Script (eski)' : 'PURIX platform · ' + new URL(API).hostname);
     hizliAcilis(); load(); igLoad(true); go('bugun'); clearInterval(timer); let tik = 0;
-    timer = setInterval(() => { load(true); if (!igUcus && (++tik % 5 === 0 || view === 'instagram' || view === 'ajanlar')) igLoad(true); if (view === 'trafik') tfLoad(true); }, 60000);
+    timer = setInterval(() => { load(true); if (!igUcus && (++tik % 5 === 0 || view === 'instagram' || view === 'ajanlar')) igLoad(true); if (view === 'trafik') tfLoad(true); if (view === 'sohbetler') shLoad(true); }, 60000);
   }
   $('#refresh').addEventListener('click', () => { load(); igLoad(); });
 
   /* ---------- Görünümler ---------- */
-  const TITLES = { bugun: 'Bugün', genel: 'Genel bakış', talepler: 'Talepler', adaylar: 'Adaylar', instagram: 'Instagram', ajanlar: 'Ajanlar', trafik: 'Trafik', ayarlar: 'Ayarlar' };
+  const TITLES = { bugun: 'Bugün', genel: 'Genel bakış', talepler: 'Talepler', adaylar: 'Adaylar', instagram: 'Instagram', ajanlar: 'Ajanlar', trafik: 'Trafik', sohbetler: 'Sohbetler', ayarlar: 'Ayarlar' };
   function go(v) {
     view = v; $$('.nav-btn[data-view]').forEach(b => b.dataset.view === v ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current'));
     Object.keys(TITLES).forEach(k => $('#v-' + k).hidden = k !== v); $('#title').textContent = TITLES[v];
@@ -616,6 +644,7 @@ td .who small{color:var(--ink-3)}
     if (v === 'genel') segLoad();
     if (v === 'ayarlar') sagLoad();
     if (v === 'trafik') tfLoad();
+    if (v === 'sohbetler') shLoad();
   }
   $$('[data-view]').forEach(b => b.addEventListener('click', () => go(b.dataset.view)));
   document.addEventListener('click', e => { const g = e.target.closest('[data-go]'); if (g) go(g.dataset.go); });
@@ -1249,6 +1278,12 @@ td .who small{color:var(--ink-3)}
       });
     }
     return new Promise(res => setTimeout(() => {
+      if (islem === 'sohbet_liste') { const t = m => new Date(Date.now() - m * 6e4).toISOString(); return res({ ok: true, ayar: { acik: true, gunluk: 300, model: 'claude-haiku-4-5-20251001', anahtar_var: true }, son7gun: { mesaj: 41, oturum: 17, form: 9, talep: 4, giren: 52000, cikan: 6100 }, sohbetler: [
+        { id: 9, zaman: t(5), oturum: 'a3', ulke: 'AE', dil: 'ar', soru: 'كم السعر؟', cevap: 'سيزودك فريق PURIX بمعلومات دقيقة عن الأسعار. اترك بياناتك وسيتواصل معك الفريق في أقرب وقت.', form: 1, durum: 'ok' },
+        { id: 8, zaman: t(7), oturum: 'a3', ulke: 'AE', dil: 'ar', soru: 'هل يتلف القطعة؟', cevap: 'لا، القياس لا يتلف القطعة: بلا قطع أو كشط أو أحماض.', form: 0, durum: 'ok' },
+        { id: 7, zaman: t(95), oturum: 'b2', ulke: 'TR', dil: 'tr', soru: 'Lisans gerekir mi?', cevap: '[süzgeç]', form: 1, durum: 'filtre' },
+        { id: 6, zaman: t(130), oturum: 'c1', ulke: 'IN', dil: 'en', soru: 'How long does a measurement take?', cevap: 'PURIX X1 measures in 30-60 seconds per piece without damaging it.', form: 0, durum: 'ok' }] }); }
+      if (islem === 'asistan_ayar') return res({ ok: true });
       if (islem === 'trafik') { const hr = { TR: [1204, 3100, 14, 'instagram', 531], IN: [512, 1330, 9, 'instagram', 266], DE: [288, 760, 6, 'arama', 118], AE: [241, 640, 4, 'arama', 92], SA: [163, 410, 2, 'dogrudan', 57], US: [96, 220, 1, 'arama', 40], GB: [88, 190, 0, 'instagram', 33], CN: [75, 160, 1, 'arama', 30], EG: [49, 120, 0, 'instagram', 20], PK: [44, 100, 0, 'dogrudan', 18] }; const harita = {}; Object.entries(hr).forEach(([k, a]) => { harita[k] = { z: a[0], g: a[1], f: a[2], kaynak: a[3], kaynak_z: a[4] }; }); return res({ ok: true, donem: x.donem, bas: '2026-09-03', bit: '2026-10-02', canli: 6, kpi: { ziyaretci: 3482, goruntuleme: 9214, ulke: 41, form: 37 }, onceki: { ziyaretci: 2950, goruntuleme: 8225, ulke: 35, form: 38 }, harita, kaynaklar: [{ kaynak: 'instagram', z: 1264, alt: [{ ad: '@purixxrf.tr', n: 640 }, { ad: '@purixxrf', n: 312 }, { ad: '@purixxrf.in', n: 190 }], not: 'en çok: tr-02 · 212 ziyaret' }, { kaynak: 'arama', z: 702, alt: [{ ad: 'Google', n: 640 }], not: 'Google 640 · Bing 40' }, { kaynak: 'dogrudan', z: 598, alt: [], not: '' }, { kaynak: 'whatsapp', z: 311, alt: [], not: '' }, { kaynak: 'brosur', z: 224, alt: [{ ad: 'TR', n: 96 }, { ad: 'EN', n: 61 }], not: '' }, { kaynak: 'linkedin', z: 142, alt: [], not: '' }, { kaynak: 'facebook', z: 96, alt: [], not: '' }], gunluk: [...Array(30)].map((_, i) => { const d = new Date(Date.UTC(2026, 8, 3 + i)); const t = 70 + Math.sin(i / 3) * 18 + i * 1.6; return { gun: d.toISOString().slice(0, 10), ig: Math.round(t * .38), ad: Math.round(t * .4), diger: Math.round(t * .22) }; }), diller: [{ dil: 'tr', n: 1381 }, { dil: 'en', n: 662 }, { dil: 'hi', n: 418 }, { dil: 'ar', n: 345 }, { dil: 'de', n: 231 }], cihaz: [{ cihaz: 'mobil', n: 2400 }, { cihaz: 'masaustu', n: 1010 }, { cihaz: 'tablet', n: 72 }], tarayici: [{ tarayici: 'Instagram içi', n: 1250 }, { tarayici: 'Safari', n: 900 }, { tarayici: 'Chrome', n: 980 }], brosur: [{ dil: 'TR', n: 86 }, { dil: 'EN', n: 53 }, { dil: 'HI', n: 29 }] }); }
       if (islem === 'trafik_ulke') return res({ ok: true, ulke: x.ulke, z: 1204, g: 3100, kaynaklar: [{ kaynak: 'instagram', n: 531 }, { kaynak: 'arama', n: 289 }, { kaynak: 'dogrudan', n: 169 }, { kaynak: 'whatsapp', n: 120 }], cihaz: [{ cihaz: 'mobil', n: 880 }, { cihaz: 'masaustu', n: 290 }, { cihaz: 'tablet', n: 34 }], diller: [{ dil: 'tr', n: 975 }, { dil: 'en', n: 180 }, { dil: 'ar', n: 49 }], yolculuk: { geldi: 1204, demo: 494, tablo: 397, form_ac: 72, form: 14 }, son: [{ zaman: new Date().toISOString(), kaynak: 'instagram', alt: '@purixxrf.tr', dil: 'tr', cihaz: 'mobil' }, { zaman: new Date(Date.now() - 600e3).toISOString(), kaynak: 'arama', alt: 'Google', dil: 'tr', cihaz: 'masaustu' }] });
       if (islem === 'giris') return res({ ok: true, token: 'demo' });
@@ -1369,6 +1404,39 @@ td .who small{color:var(--ink-3)}
       <div><div style="font-size:12.5px;color:var(--ink-3);margin-bottom:8px">Son ziyaretler <span>(anonim: IP ve kişi bilgisi yok)</span></div>
       <ul class="tf-ul">${u.son.length ? u.son.map(x => `<li><span>${esc(tfKay(x.kaynak, x.alt))}<br><small style="color:var(--ink-3)">${esc(TF_DIL[x.dil] || x.dil || '—')} · ${esc((TF_CIHAZ[x.cihaz] || x.cihaz || '').toLowerCase())}</small></span><time>${tfSaat(x.zaman)}</time></li>`).join('') : '<li><span class="tf-bos">Henüz ziyaret yok.</span></li>'}</ul></div>`;
   }
+  /* ---------- Sohbetler (site asistanı) ---------- */
+  const SH = { veri: null, suz: 'hepsi' };
+  async function shLoad(sessiz) {
+    try { SH.veri = await api('sohbet_liste', { limit: 600 }); shRender(); }
+    catch (e) { if (!sessiz) $('#shListe').innerHTML = `<p class="tf-bos">${esc(e.message)}</p>`; }
+  }
+  function shRender() {
+    const v = SH.veri; if (!v) return;
+    const a = v.ayar || {}, o = v.son7gun || {};
+    const maliyet = ((o.giren || 0) * 1 + (o.cikan || 0) * 5) / 1e6;  // Haiku fiyatı (1 $ / 5 $ milyon belirteç); model değişirse yaklaşık değer
+    $('#shDurum').className = 'sh-durum' + (a.acik ? '' : ' kapali');
+    $('#shDurum').innerHTML = `<i class="nokta"></i><b>Asistan ${a.acik ? 'açık' : 'kapalı'}</b><span>günlük sınır ${esc(a.gunluk)} cevap</span><span>${esc(a.model)}</span><span>son 7 gün tahmini maliyet ≈ $${maliyet.toFixed(2)}</span>${a.anahtar_var ? '' : '<b style="color:var(--warn)">Claude API anahtarı yok</b>'}<button class="btn btn-line btn-sm" id="shTog" type="button">${a.acik ? 'Kapat' : 'Aç'}</button>`;
+    $('#shKpi').innerHTML = [['Konuşma', o.oturum || 0, 'son 7 gün'], ['Mesaj', o.mesaj || 0, 'ziyaretçi sorusu'], ['İletişim kartı açıldı', o.form || 0, 'asistan yönlendirdi'], ['Bırakılan talep', o.talep || 0, 'Talepler listesinde']]
+      .map(([t, n, d]) => `<div class="k"><small>${t}</small><b>${n}</b><span class="d" style="color:var(--ink-3)">${d}</span></div>`).join('');
+    const g = new Map();
+    for (const r of v.sohbetler || []) { const k = r.oturum || ('x' + r.id); if (!g.has(k)) g.set(k, []); g.get(k).push(r); }
+    let liste = [...g.values()].map(rows => rows.sort((x, y) => x.id - y.id)).sort((x, y) => y[y.length - 1].id - x[x.length - 1].id);
+    if (SH.suz === 'form') liste = liste.filter(r => r.some(x => x.form));
+    if (SH.suz === 'sorun') liste = liste.filter(r => r.some(x => x.durum !== 'ok'));
+    $('#shListe').innerHTML = liste.length ? liste.map(rows => {
+      const ilk = rows[0], son = rows[rows.length - 1], kart = rows.some(x => x.form), sorun = rows.filter(x => x.durum !== 'ok').length;
+      return `<details class="sh-k"><summary><span class="sh-z">${fmtD(son.zaman)}</span><span class="sh-q">${esc(ilk.soru)}</span>${kart ? '<span class="sh-et form">kart açıldı</span>' : ''}${sorun ? '<span class="sh-et sorun">' + sorun + ' süzgeç/hata</span>' : ''}<span class="sh-et">${esc(ilk.ulke || '—')} · ${esc(ilk.dil || '—')} · ${rows.length} soru</span></summary>`
+        + `<div class="sh-th">${rows.map(r => `<div class="sh-m k">${esc(r.soru)}<small>${fmtD(r.zaman)}</small></div><div class="sh-m a">${esc(r.cevap)}${r.durum !== 'ok' ? '<small>' + (r.durum === 'filtre' ? 'süzgeç: cevap ziyaretçiye gösterilmedi, "ekibimiz dönecek" mesajı gitti' : 'hata: ziyaretçiye iletişim kartı gösterildi') + '</small>' : ''}</div>`).join('')}</div></details>`;
+    }).join('') : '<p class="tf-bos">Henüz sohbet yok. Asistan açıkken ziyaretçilerin sorduğu sorular ve cevaplar burada görünür.</p>';
+  }
+  $('#shSuz').addEventListener('click', e => { const b = e.target.closest('button[data-s]'); if (!b) return; SH.suz = b.dataset.s; $$('#shSuz button').forEach(x => x.setAttribute('aria-pressed', String(x === b))); shRender(); });
+  $('#shDurum').addEventListener('click', async e => {
+    if (!e.target.closest('#shTog')) return;
+    const acik = !!(SH.veri && SH.veri.ayar && SH.veri.ayar.acik);
+    if (!confirm(acik ? 'Site asistanı kapatılsın mı? Ziyaretçiler alt çubuğu görmez.' : 'Site asistanı açılsın mı? Ziyaretçiler soru sorabilir.')) return;
+    try { await api('asistan_ayar', { acik: !acik }); await shLoad(); } catch (err) { alert(err.message); }
+  });
+
   async function tfLoad(sessiz) {
     try { TF.veri = await api('trafik', { donem: TF.donem }); tfRender(); } catch (e) { if (!sessiz) { const el = $('#tfKpi'); if (el) el.innerHTML = `<p class="tf-bos">${esc(e.message)}</p>`; } }
   }
