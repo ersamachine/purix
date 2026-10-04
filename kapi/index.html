@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B0A09">
+<title>Kapı tableti · PURIX Mağaza</title>
+<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610041235">
+<link rel="stylesheet" href="../fonts/fonts.css?v=202610041235">
+<style>
+/* PURIX Mağaza kapı tableti: 1280×800 tasarım, ekrana orantılı sığar. USB QR okuyucu klavye gibi yazar + Enter. */
+:root{
+  --gold:#B48C50;--gold-l:#E4CB93;--ink:#1C1917;
+  --metal:linear-gradient(100deg,#6E4B22 0%,#B48C50 24%,#ECD49E 46%,#C9A465 60%,#8A6331 82%,#B48C50 100%);
+  --ok:#4FB477;--warn:#E0A84A;--err:#DE6E52;
+  --f:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;--ease:cubic-bezier(.22,.7,.12,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#000}
+body{color:#F5F2EC;font:400 16px/1.5 var(--f);-webkit-font-smoothing:antialiased;overflow:hidden;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+button{font:inherit;color:inherit;cursor:pointer}
+[hidden]{display:none!important}
+.tablet{position:absolute;top:0;left:0;width:1280px;height:800px;transform-origin:0 0}
+
+.scr{position:relative;width:100%;height:100%;overflow:hidden;background:radial-gradient(70% 90% at 72% 28%,#2b2521 0%,#161412 58%,#0f0e0d 100%);display:grid;grid-template-rows:auto 1fr auto;transition:filter .6s}
+.scr::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 60% at 50% 50%,var(--glow,transparent),transparent 70%);opacity:.18;transition:background .4s}
+.scr.dim{filter:brightness(.6)}
+.sh{display:flex;align-items:center;justify-content:space-between;padding:30px 44px 0}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{width:30px}
+.brand b{font-stretch:125%;font-weight:700;letter-spacing:.08em;font-size:24px;color:#fff;line-height:1}
+.brand small{display:block;font-size:15px;color:#A8A29E;margin-top:4px;letter-spacing:.01em}
+.clock{text-align:end}
+.clock b{display:block;font-stretch:78%;font-weight:520;font-size:40px;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.clock small{font-size:15px;color:#A8A29E}
+.sm{position:relative;z-index:1;display:grid;align-items:center;padding:0 72px;min-height:0}
+.sf{position:relative;z-index:1;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;padding:0 44px 28px}
+.cam{text-align:center;font-size:14.5px;line-height:1.4;color:#8f877e}
+.cam b{color:#B5ADA3;font-weight:600}
+.call{display:inline-flex;align-items:center;gap:12px;min-height:64px;padding:0 28px;border-radius:999px;border:1.5px solid rgba(228,203,147,.45);background:rgba(255,255,255,.03);color:var(--gold-l);font-size:20px;font-weight:600}
+.call svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.call:disabled{opacity:.35;cursor:not-allowed}
+.call.gizli{visibility:hidden}
+.lang{display:flex;border-radius:999px;border:1px solid #3a3532;padding:4px}
+.lang button{min-width:64px;height:48px;border:0;border-radius:999px;background:transparent;color:#A8A29E;font-weight:650;font-size:16px}
+.lang button[aria-pressed="true"]{background:#2e2925;color:#fff}
+
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:20px;font-weight:600;color:var(--gold-l)}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--gold)}
+h1{margin:18px 0 0;font-weight:580;font-stretch:118%;font-size:84px;line-height:1;letter-spacing:-.03em;color:#fff;text-wrap:balance}
+h1.md{font-size:64px}
+.lead{margin:22px 0 0;font-size:28px;line-height:1.4;color:#D8D2C8;max-width:24ch}
+.small{margin:18px 0 0;font-size:19px;color:#A8A29E;max-width:40ch}
+.tel{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:10px 20px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid #3a3532;font-size:21px;color:#E7E1D7}
+.tel svg{width:22px;height:22px;fill:none;stroke:var(--gold-l);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tel b{font-variant-numeric:tabular-nums;letter-spacing:.02em}
+
+.idle{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.phone{position:relative;justify-self:center;width:210px;height:400px;border-radius:38px;background:#0b0a09;border:2px solid #3a3532;box-shadow:0 30px 60px -20px #000;display:grid;place-items:center;animation:inmek 2.8s var(--ease) infinite}
+.phone .q{background:#fff;border-radius:14px;padding:8px;line-height:0}
+@keyframes inmek{0%{transform:translateY(-14px)}55%{transform:translateY(26px)}100%{transform:translateY(-14px)}}
+.down{position:absolute;left:50%;bottom:112px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--gold-l);font-size:17px;font-weight:600;z-index:1}
+.down svg{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;animation:ok 1.4s ease-in-out infinite}
+.down svg:nth-child(3){animation-delay:.18s;margin-top:-20px;opacity:.6}
+@keyframes ok{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+.nobook{display:inline-flex;align-items:center;gap:16px;margin-top:34px;padding:12px 18px 12px 12px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid #2e2925;font-size:17px;color:#CFC8BE}
+.nobook .q,.closed-card .q{background:#fff;border-radius:10px;padding:4px;line-height:0}
+.nobook b{display:block;color:#fff;font-size:18px}
+
+.pin{display:grid;grid-template-columns:1fr auto;gap:64px;align-items:center}
+.found{display:inline-flex;align-items:center;gap:12px;padding:8px 16px 8px 10px;border-radius:999px;background:rgba(79,180,119,.14);color:#9BE0B4;font-size:19px;font-weight:600}
+.found i{width:28px;height:28px;border-radius:50%;background:var(--ok);color:#0f0e0d;display:grid;place-items:center;font-style:normal;font-weight:800}
+.firm{margin-top:18px;font-size:44px;font-stretch:112%;font-weight:600;color:#fff;line-height:1.1;max-width:15em;overflow-wrap:anywhere}
+.firm small{display:block;font-size:22px;font-stretch:100%;font-weight:400;color:#A8A29E;margin-top:8px}
+.boxes{display:flex;gap:14px;margin-top:30px}
+.boxes span{width:84px;height:96px;border-radius:20px;border:2px solid #3a3532;background:#1a1715;display:grid;place-items:center;font-stretch:78%;font-size:52px;font-weight:540;color:#fff;transition:border-color .2s}
+.boxes span.on{border-color:var(--gold-l)}
+.boxes.shake{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+.tries{margin-top:16px;font-size:18px;color:#A8A29E}
+.tries.bad{color:var(--err)}
+.pad{display:grid;grid-template-columns:repeat(3,112px);gap:14px}
+.pad button{height:92px;border-radius:24px;border:1px solid #3a3532;background:#221e1b;font-stretch:78%;font-size:40px;font-weight:520;color:#fff;transition:background .12s,transform .1s}
+.pad button:active{transform:scale(.96);background:#2e2925}
+.pad .fn{font-stretch:100%;font-size:19px;font-weight:600;color:#CFC8BE}
+.pad .go{background:var(--metal);background-size:200% 100%;color:#1F1406;border-color:transparent;font-stretch:100%;font-size:21px;font-weight:700}
+.pad .go:disabled{filter:saturate(.3) brightness(.6);cursor:not-allowed}
+.back{margin-top:22px;border:0;background:none;color:#A8A29E;font-size:18px;text-decoration:underline;text-underline-offset:4px;padding:0}
+.wait{opacity:.5;pointer-events:none}
+
+.res{display:grid;position:relative;height:100%;align-content:center;text-align:center;justify-items:center}
+.res .lead,.res .small{margin-inline:auto;max-width:34ch}
+.badge{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;position:relative;margin-bottom:6px}
+.badge svg.ic{width:66px;height:66px;fill:none;stroke:var(--c);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.badge svg.ring{position:absolute;inset:0;transform:rotate(-90deg)}
+.badge svg.ring circle{fill:none;stroke-width:6}
+.badge .tr{stroke:rgba(255,255,255,.08)}
+.badge .pr{stroke:var(--c);stroke-linecap:round;stroke-dasharray:440;stroke-dashoffset:0}
+.badge.count .pr{animation:say var(--sure,8s) linear forwards}
+@keyframes say{to{stroke-dashoffset:440}}
+.big-num{margin-top:22px;font-stretch:78%;font-weight:520;font-size:96px;line-height:1;color:var(--c);font-variant-numeric:tabular-nums}
+.big-num small{font-size:32px;color:#A8A29E;margin-inline-start:10px;font-stretch:100%}
+.auto{position:absolute;left:0;right:0;bottom:-6px;text-align:center;font-size:15px;color:#6f6862}
+
+.pair-code{margin-top:28px;display:flex;gap:12px;justify-content:center}
+.pair-code span{width:92px;height:116px;border-radius:22px;background:#1a1715;border:2px solid rgba(228,203,147,.35);display:grid;place-items:center;font-stretch:78%;font-size:66px;font-weight:540;color:var(--gold-l)}
+.pair-code .gap{width:18px;border:0;background:none}
+.closed-card{display:inline-flex;align-items:center;gap:18px;margin-top:34px;padding:14px 22px 14px 14px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid #2e2925;font-size:19px;color:#CFC8BE;text-align:start}
+.closed-card b{display:block;color:#fff}
+.hours{color:#fff;font-weight:600}
+</style>
+</head>
+<body>
+<div class="tablet" id="tablet">
+  <div class="scr" id="scr">
+    <header class="sh">
+      <div class="brand"><img src="../assets/mark-128.webp?v=202610041235" alt=""><div><b>PURIX</b><small id="tSube">Mağaza</small></div></div>
+      <div class="clock"><b id="saat">--:--</b><small id="tarih"></small></div>
+    </header>
+    <main class="sm" id="main" aria-live="polite"></main>
+    <footer class="sf" id="foot">
+      <button class="call" type="button" id="callBtn"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0"/></svg><span id="tCall"></span></button>
+      <div class="cam" id="cam"></div>
+      <div class="lang" role="group" aria-label="Dil / Language"><button type="button" data-l="tr" aria-pressed="true">TR</button><button type="button" data-l="en" aria-pressed="false">EN</button></div>
+    </footer>
+  </div>
+</div>
+
+<script src="../config.js?v=202610041235"></script>
+<script src="../assets/qrcode.js?v=202610041235"></script>
+<script>
+(function () {
+  'use strict';
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const DEV_API = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? new URLSearchParams(location.search).get('api') : '';
+  const API = (DEV_API || window.PURIX_API || '').trim();
+  const DEPO = 'purix-kapi-cihaz', DEPO_SUBE = 'purix-kapi-sube';
+  const depo = { al(k) { try { return localStorage.getItem(k); } catch { return null; } }, yaz(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch { /* yok */ } } };
+  const pad2 = n => String(n).padStart(2, '0'), hhmm = t => pad2(Math.floor(t / 60)) + ':' + pad2(((t % 60) + 60) % 60);
+  // Türkçe bulunma eki saate göre: 11:54’te, 10:30’da, 12:00’de (son okunan sayı sözcüğüne göre)
+  const ekDe = s => { const [h, m] = s.split(':').map(Number), n = m || h, b = n % 10, o = n % 100;
+    const ek = b ? ['', 'de', 'de', 'te', 'te', 'te', 'da', 'de', 'de', 'da'][b] : o === 0 ? 'da' : ['', 'da', 'de', 'da', 'ta', 'de', 'da', 'de', 'de', 'da'][o / 10];
+    return s + '’' + ek; };
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  let lang = 'tr', durum = 'acilis', pin = '', hak = 3, cihaz = depo.al(DEPO) || '', fark = 0, hataSay = 0, mesgul = false;
+  let sube = JSON.parse(depo.al(DEPO_SUBE) || 'null'), bugun = null, kilitVar = false;
+  let ctx = {}, geriSayac = null, eslesme = null, eslesmeT = null;
+
+  const T = {
+    tr: {
+      call: 'Görevliyi çağır', sube: 'Mağaza', days: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'], gk: ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'],
+      mon: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+      cam: '<b>Mağazada kamera kaydı yapılır.</b> Aydınlatma metni: purixxrf.com/kvkk',
+      idleEy: 'Randevulu giriş', idleH: 'Hoş geldiniz.', idleP: 'Randevu QR kodunuzu ekranın altındaki okuyucuya gösterin.',
+      down: 'Okuyucu aşağıda', noBook: 'Randevunuz yok mu?', noBookS: 'purixxrf.com/magaza',
+      found: 'Randevunuz bulundu', bugunS: (s, k) => 'Bugün ' + s + ' · ' + k + ' kişi', pinP: 'Doğrulamak için telefonunuzun son 4 hanesini girin.',
+      tries: n => n + ' deneme hakkınız var', wrong: n => 'Numara eşleşmedi. ' + n + ' deneme hakkınız kaldı.', sil: 'Sil', ok: 'Tamam', back: 'Vazgeç',
+      okH: a => 'Hoş geldiniz, ' + a + '.', okP: 'Kapı açıldı, itip girebilirsiniz.', okS: 'Kapı birkaç saniye açık kalır. İçerideki görevli sizi karşılayacak.',
+      okP0: 'Girişiniz onaylandı.', okS0: 'Görevli kapıyı açıp sizi içeri alacak. Lütfen birkaç saniye bekleyin.',
+      erH: 'Biraz erken geldiniz.', erP: s => 'Girişiniz ' + ekDe(s) + ' açılır.', erS: 'Burada bekleyebilirsiniz. Saat gelince kodunuzu yeniden okutun.', kaldi: 'dk kaldı',
+      gcH: 'Giriş süreniz doldu.', gcP: s => 'Bu kodun giriş penceresi ' + ekDe(s) + ' kapandı.', gcP0: 'Bu kodun giriş penceresi kapandı.', gcS: 'Yeni saat için Randevum sayfasını kullanın ya da görevliyi çağırın.',
+      kuH: 'Bu kod zaten kullanıldı.', kuP: 'Giriş kodları tek kullanımlıktır.', kuS: 'Bir sorun olduğunu düşünüyorsanız görevliyi çağırın.',
+      gzH: 'Kod tanınmadı.', gzP: 'Bu bir PURIX randevu kodu değil ya da randevu iptal edilmiş.', gzS: 'Randevum sayfasındaki QR kodunu gösterdiğinizden emin olun.',
+      klH: 'Çok fazla hatalı deneme.', klP: 'Güvenliğiniz için bu kod kilitlendi ve görevliye haber verildi.', klS: 'Lütfen burada bekleyin.',
+      cgH: 'Görevliye haber verdik.', cgP: 'Lütfen burada bekleyin.',
+      cdH: 'Şu an bağlantı yok.', cdP: 'Kodları doğrulayamıyoruz.', cdS: 'Lütfen kapıyı çalın.',
+      kpH: 'Mağaza şu an kapalı.', kpP: 'Çalışma saatleri:', kpBugun: 'Bugün kapalıyız.', kpPasif: 'Mağaza yakında açılıyor.', kpQ: 'Randevu almak için', kpQs: 'purixxrf.com/magaza',
+      esH: 'Bu tablet henüz eşleşmedi.', esP: 'Panelde Randevular → Şube ayarları → Kapı tableti bölümüne bu kodu girin.', esS: n => 'Kod ' + n + ' dakika daha geçerli.', esY: 'Kod alınıyor…',
+      tel: 'Görevli', auto: 'Bu ekran birazdan başa döner', yuk: 'Kontrol ediliyor…'
+    },
+    en: {
+      call: 'Call staff', sube: 'Store', days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], gk: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      mon: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      cam: '<b>CCTV recording in operation.</b> Privacy notice: purixxrf.com/privacy',
+      idleEy: 'Entry by appointment', idleH: 'Welcome.', idleP: 'Show your appointment QR code to the reader below the screen.',
+      down: 'Reader below', noBook: 'No appointment?', noBookS: 'purixxrf.com/magaza',
+      found: 'Appointment found', bugunS: (s, k) => 'Today ' + s + ' · ' + k + (k > 1 ? ' people' : ' person'), pinP: 'Enter the last 4 digits of your phone number to confirm.',
+      tries: n => n + ' attempts left', wrong: n => 'Number does not match. ' + n + ' attempts left.', sil: 'Delete', ok: 'OK', back: 'Cancel',
+      okH: a => 'Welcome, ' + a + '.', okP: 'The door is open, please push to enter.', okS: 'The door stays open for a few seconds. Staff inside will greet you.',
+      okP0: 'Your entry is confirmed.', okS0: 'Staff will open the door for you. Please wait a few seconds.',
+      erH: 'You are a little early.', erP: s => 'Your entry opens at ' + s + '.', erS: 'You can wait here. Scan your code again when it is time.', kaldi: 'min left',
+      gcH: 'Your entry window has closed.', gcP: s => 'The entry window for this code closed at ' + s + '.', gcP0: 'The entry window for this code has closed.', gcS: 'Use the My booking page to pick a new time, or call staff.',
+      kuH: 'This code has already been used.', kuP: 'Entry codes can be used only once.', kuS: 'If you think something is wrong, call staff.',
+      gzH: 'Code not recognised.', gzP: 'This is not a PURIX appointment code, or the appointment was cancelled.', gzS: 'Make sure you show the QR code on your My booking page.',
+      klH: 'Too many wrong attempts.', klP: 'For your security this code has been locked and staff has been notified.', klS: 'Please wait here.',
+      cgH: 'We have notified staff.', cgP: 'Please wait here.',
+      cdH: 'No connection right now.', cdP: 'We cannot check codes at the moment.', cdS: 'Please knock on the door.',
+      kpH: 'The store is closed now.', kpP: 'Opening hours:', kpBugun: 'We are closed today.', kpPasif: 'The store is opening soon.', kpQ: 'To book an appointment', kpQs: 'purixxrf.com/magaza',
+      esH: 'This tablet is not paired yet.', esP: 'In the panel, go to Appointments → Branch settings → Door tablet and enter this code.', esS: n => 'The code is valid for ' + n + ' more minutes.', esY: 'Getting a code…',
+      tel: 'Staff', auto: 'This screen will reset shortly', yuk: 'Checking…'
+    }
+  };
+  const t = k => T[lang][k];
+
+  // ---- sunucu ----
+  async function api(islem, veri) {
+    if (!API) throw new Error('ag');
+    const ctl = new AbortController(), zt = setTimeout(() => ctl.abort(), 12000);
+    try {
+      const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ islem, ...veri }), signal: ctl.signal });
+      const j = await r.json();
+      if (j && j.yetki) { cihazUnut(); throw new Error('yetki'); }
+      if (!j || !j.ok) throw new Error((j && j.hata) || 'sunucu');
+      return j;
+    } catch (e) { if (e.message === 'yetki') throw e; if (e.name === 'AbortError' || e instanceof TypeError) throw new Error('ag'); throw e; }
+    finally { clearTimeout(zt); }
+  }
+  function cihazUnut() { cihaz = ''; depo.yaz(DEPO, null); git('eslestir'); }
+
+  // ---- saat (Türkiye, sunucu saatine göre) ----
+  const simdiMs = () => Date.now() + fark;
+  function trZaman() { const d = new Date(simdiMs() + 3 * 3600e3); return { dk: d.getUTCHours() * 60 + d.getUTCMinutes(), gun: d.getUTCDay(), ay: d.getUTCMonth(), g: d.getUTCDate() }; }
+  function saatCiz() { const z = trZaman(); $('#saat').textContent = hhmm(z.dk); $('#tarih').textContent = t('days')[z.gun] + ', ' + z.g + ' ' + t('mon')[z.ay]; }
+  const dkSay = s => { const [h, m] = String(s).split(':').map(Number); return h * 60 + (m || 0); };
+  function acikMi() {
+    if (!sube) return true;
+    if (!sube.aktif || (bugun && bugun.kapali)) return false;
+    const z = trZaman();
+    if (!sube.gunler.includes(z.gun)) return false;
+    return z.dk >= dkSay(sube.acilis) - (sube.qr_once || 0) - 10 && z.dk <= dkSay(sube.kapanis) + (sube.qr_sonra || 0);
+  }
+  function saatlerMetni() {
+    if (!sube) return '';
+    const g = [1, 2, 3, 4, 5, 6, 0].filter(x => sube.gunler.includes(x)), ad = t('gk');
+    let parca = [], i = 0;
+    while (i < g.length) { let j = i; while (j + 1 < g.length && [1, 2, 3, 4, 5, 6, 0].indexOf(g[j + 1]) === [1, 2, 3, 4, 5, 6, 0].indexOf(g[j]) + 1) j++; parca.push(j > i ? ad[g[i]] + '–' + ad[g[j]] : ad[g[i]]); i = j + 1; }
+    return parca.join(', ') + ' · ' + sube.acilis + '–' + sube.kapanis;
+  }
+
+  // ---- çizim ----
+  const IC = {
+    ok: '<path d="M6.5 12.5l3.6 3.6 7.4-8.2"/>', clock: '<circle cx="12" cy="12" r="8"/><path d="M12 7.5V12l3 2"/>', x: '<path d="M8 8l8 8M16 8l-8 8"/>',
+    lock: '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/>', bell: '<path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0"/>',
+    wifi: '<path d="M2 8.5a15 15 0 0120 0M5 12a10 10 0 0114 0M8.5 15.5a5 5 0 017 0M12 19h.01M3 3l18 18"/>', moon: '<path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/>'
+  };
+  const TEL_IC = '<svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg>';
+  function qrSvg(metin, px) {
+    if (!window.qrcode) return '';
+    const qr = window.qrcode(0, 'M'); qr.addData(metin); qr.make();
+    const n = qr.getModuleCount(), V = n + 8; let d = '';
+    for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) if (qr.isDark(y, x)) d += 'M' + (x + 4) + ' ' + (y + 4) + 'h1v1h-1z';
+    return '<svg viewBox="0 0 ' + V + ' ' + V + '" width="' + px + '" height="' + px + '" aria-hidden="true" shape-rendering="crispEdges"><rect width="' + V + '" height="' + V + '" fill="#fff"/><path d="' + d + '" fill="#1C1917"/></svg>';
+  }
+  const QR_SITE = () => qrSvg('https://www.purixxrf.com/magaza/', 64);
+  const telSatir = () => sube && sube.telefon ? '<div class="tel">' + TEL_IC + t('tel') + ': <b dir="ltr">' + esc(sube.telefon) + '</b></div>' : '';
+  const rozet = (c, ic, sure) => '<div class="badge' + (sure ? ' count' : '') + '" style="--c:' + c + (sure ? ';--sure:' + sure + 's' : '') + '"><svg class="ring" viewBox="0 0 150 150"><circle class="tr" cx="75" cy="75" r="70"/>' + (sure ? '<circle class="pr" cx="75" cy="75" r="70"/>' : '') + '</svg><svg class="ic" viewBox="0 0 24 24">' + IC[ic] + '</svg></div>';
+  const sonuc = (c, ic, h, p, s, opt = {}) => {
+    $('#scr').style.setProperty('--glow', c);
+    return '<div class="res">' + rozet(c, ic, opt.sure) + '<h1 class="md">' + h + '</h1><p class="lead">' + p + '</p>' + (opt.num || '') + (s ? '<p class="small">' + s + '</p>' : '') + (opt.ek || '') +
+      (opt.auto ? '<div class="auto">' + t('auto') + '</div>' : '') + '</div>';
+  };
+
+  // Her durumun kendiliğinden başa dönme süresi (sn)
+  const DONUS = { kabul: 8, gec: 14, kullanildi: 14, gecersiz: 10, kilit: 40, cagir: 20, erken: 25, son4: 45 };
+  let donusT = null;
+  function zamanla() { clearTimeout(donusT); if (DONUS[durum]) donusT = setTimeout(() => git('bekle'), DONUS[durum] * 1000); }
+
+  function ciz() {
+    const m = $('#main'), scr = $('#scr');
+    document.documentElement.lang = lang;
+    scr.classList.toggle('dim', durum === 'kapali');
+    scr.style.setProperty('--glow', 'transparent');
+    saatCiz();
+    $('#tSube').textContent = sube ? (lang === 'en' ? 'Store · ' : 'Mağaza · ') + sube.ad : t('sube');
+    $('#tCall').textContent = t('call'); $('#cam').innerHTML = t('cam');
+    $('#foot').hidden = ['eslestir', 'kabul', 'acilis'].includes(durum);
+    $('#callBtn').disabled = durum === 'cevrimdisi';
+    $('#callBtn').classList.toggle('gizli', ['cagir', 'kilit'].includes(durum));
+    $$('.lang button').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.l === lang)));
+    const old = $('.down'); if (old) old.remove();
+
+    if (durum === 'acilis') m.innerHTML = '';
+    if (durum === 'bekle') {
+      m.innerHTML = '<div class="idle"><div><span class="eyebrow">' + t('idleEy') + '</span><h1>' + t('idleH') + '</h1><p class="lead">' + t('idleP') + '</p>' +
+        '<div class="nobook"><span class="q">' + QR_SITE() + '</span><span><b>' + t('noBook') + '</b>' + t('noBookS') + '</span></div></div>' +
+        '<div class="phone"><span class="q">' + qrSvg('PURIX', 150) + '</span></div></div>';
+      scr.insertAdjacentHTML('beforeend', '<div class="down"><span>' + t('down') + '</span><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>');
+    }
+    if (durum === 'son4') {
+      m.innerHTML = '<div class="pin' + (mesgul ? ' wait' : '') + '"><div><span class="found"><i>✓</i>' + t('found') + '</span><div class="firm">' + esc(ctx.firma) + '<small>' + t('bugunS')(hhmm(ctx.saat), ctx.kisi) + '</small></div>' +
+        '<p class="lead" style="max-width:22ch">' + t('pinP') + '</p><div class="boxes" id="boxes">' + [0, 1, 2, 3].map(i => '<span class="' + (i === pin.length ? 'on' : '') + '">' + (pin[i] ? '•' : '') + '</span>').join('') + '</div>' +
+        '<p class="tries' + (hak < 3 ? ' bad' : '') + '">' + (mesgul ? t('yuk') : hak < 3 ? t('wrong')(hak) : t('tries')(hak)) + '</p><button class="back" type="button" data-k="vazgec">' + t('back') + '</button></div>' +
+        '<div class="pad">' + [1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => '<button type="button" data-k="' + n + '">' + n + '</button>').join('') +
+        '<button type="button" class="fn" data-k="sil">' + t('sil') + '</button><button type="button" data-k="0">0</button><button type="button" class="go" data-k="ok"' + (pin.length < 4 || mesgul ? ' disabled' : '') + '>' + t('ok') + '</button></div></div>';
+    }
+    if (durum === 'yukleniyor') m.innerHTML = sonuc('var(--gold-l)', 'clock', t('yuk'), '', '');
+    if (durum === 'kabul') m.innerHTML = kilitVar
+      ? sonuc('var(--ok)', 'ok', t('okH')(esc(ctx.ad)), t('okP'), t('okS'), { sure: DONUS.kabul })
+      : sonuc('var(--ok)', 'ok', t('okH')(esc(ctx.ad)), t('okP0'), t('okS0'), { sure: DONUS.kabul });
+    if (durum === 'erken') {
+      const kalan = Math.max(1, Math.ceil((ctx.acilis - simdiMs()) / 60e3)), acS = hhmm(Math.floor(((ctx.acilis + 3 * 3600e3) % 86400e3) / 60e3));
+      m.innerHTML = sonuc('var(--warn)', 'clock', t('erH'), t('erP')(acS), t('erS'), { num: kalan <= 120 ? '<div class="big-num" style="--c:var(--warn)">' + kalan + '<small>' + t('kaldi') + '</small></div>' : '' });
+    }
+    if (durum === 'gec') m.innerHTML = sonuc('var(--err)', 'x', t('gcH'), ctx.kapanis != null ? t('gcP')(hhmm(ctx.kapanis)) : t('gcP0'), t('gcS'), { auto: true, ek: telSatir() });
+    if (durum === 'kullanildi') m.innerHTML = sonuc('var(--err)', 'x', t('kuH'), t('kuP'), t('kuS'), { auto: true });
+    if (durum === 'gecersiz') m.innerHTML = sonuc('var(--err)', 'x', t('gzH'), t('gzP'), t('gzS'), { auto: true });
+    if (durum === 'kilit') m.innerHTML = sonuc('var(--err)', 'lock', t('klH'), t('klP'), t('klS'), { ek: telSatir() });
+    if (durum === 'cagir') m.innerHTML = sonuc('var(--gold-l)', 'bell', t('cgH'), t('cgP'), '', { auto: true, ek: telSatir() });
+    if (durum === 'cevrimdisi') m.innerHTML = sonuc('var(--warn)', 'wifi', t('cdH'), t('cdP'), t('cdS'), { ek: telSatir() });
+    if (durum === 'kapali') {
+      const p = !sube || !sube.aktif ? t('kpPasif') : bugun && bugun.kapali ? t('kpBugun') + ' ' + t('kpP') + ' <span class="hours">' + saatlerMetni() + '</span>' : t('kpP') + ' <span class="hours">' + saatlerMetni() + '</span>';
+      m.innerHTML = sonuc('#8C857B', 'moon', t('kpH'), p, '', { ek: '<div class="closed-card"><span class="q">' + qrSvg('https://www.purixxrf.com/magaza/', 72) + '</span><span><b>' + t('kpQ') + '</b>' + t('kpQs') + '</span></div>' });
+    }
+    if (durum === 'eslestir') {
+      const k = eslesme ? eslesme.kod : '';
+      const kalanDk = eslesme ? Math.max(1, Math.ceil((eslesme.bitis - simdiMs()) / 60e3)) : 0;
+      m.innerHTML = '<div class="res">' + rozet('var(--gold-l)', 'lock') + '<h1 class="md">' + t('esH') + '</h1>' +
+        (k ? '<div class="pair-code" dir="ltr">' + k.slice(0, 3).split('').map(c => '<span>' + c + '</span>').join('') + '<span class="gap"></span>' + k.slice(3).split('').map(c => '<span>' + c + '</span>').join('') + '</div>' : '') +
+        '<p class="lead">' + (k ? t('esP') : t('esY')) + '</p>' + (k ? '<p class="small">' + t('esS')(kalanDk) + '</p>' : '') + '</div>';
+    }
+  }
+  function git(s) {
+    if (s === 'bekle') { ctx = {}; pin = ''; hak = 3; if (durum !== 'bekle') lang = 'tr'; if (!acikMi()) s = 'kapali'; if (!cihaz) s = 'eslestir'; }
+    durum = s; ciz(); zamanla();
+    if (s === 'eslestir') eslestirBasla();
+  }
+
+  // ---- QR ve 4 hane ----
+  async function isle(metin) {
+    metin = metin.trim();
+    if (!cihaz || durum === 'eslestir' || mesgul) return;
+    if (!/^PXR:PX-[A-Z0-9]{4}:[a-f0-9]{8,40}$/i.test(metin)) { git('gecersiz'); return; }
+    mesgul = true; git('yukleniyor');
+    try { const j = await api('kapi_kontrol', { cihaz, metin }); mesgul = false; hataSay = 0; sonucIsle(j, metin); }
+    catch (e) { mesgul = false; if (e.message !== 'yetki') git(e.message === 'ag' ? 'cevrimdisi' : 'gecersiz'); }
+  }
+  function sonucIsle(j, metin) {
+    if (j.sonuc === 'gecerli' || j.sonuc === 'pin') {
+      ctx = { metin, firma: j.firma, saat: j.saat, kisi: j.kisi }; hak = j.kalan ?? 3; pin = '';
+      git('son4');
+      if (j.sonuc === 'pin') { const bx = $('#boxes'); if (bx) bx.classList.add('shake'); }
+      return;
+    }
+    if (j.sonuc === 'kabul') { ctx.ad = j.ad || ''; kilitVar = !!j.kilit; git('kabul'); return; }
+    if (j.sonuc === 'erken') { ctx = { acilis: j.acilis }; git('erken'); return; }
+    if (j.sonuc === 'gec') { ctx = { kapanis: j.kapanis }; git('gec'); return; }
+    git(['kullanildi', 'kilit'].includes(j.sonuc) ? j.sonuc : 'gecersiz');
+  }
+  async function pinGonder() {
+    if (pin.length < 4 || mesgul) return;
+    mesgul = true; ciz();
+    try { const j = await api('kapi_kontrol', { cihaz, metin: ctx.metin, son4: pin }); mesgul = false; const m = ctx.metin; sonucIsle(j, m); }
+    catch (e) { mesgul = false; if (e.message !== 'yetki') git(e.message === 'ag' ? 'cevrimdisi' : 'gecersiz'); }
+  }
+  $('#main').addEventListener('click', e => {
+    const b = e.target.closest('[data-k]'); if (!b || mesgul) return;
+    const k = b.dataset.k;
+    if (k === 'vazgec') return git('bekle');
+    if (k === 'sil') pin = pin.slice(0, -1);
+    else if (k === 'ok') return pinGonder();
+    else if (pin.length < 4) pin += k;
+    ciz(); zamanla();
+  });
+
+  // USB QR okuyucu klavye gibi yazar ve Enter'a basar. Tuşlar arası 80 ms'den uzun boşluk varsa tampon sıfırlanır (elle yazmaya karşı).
+  let tampon = '', sonTus = 0;
+  document.addEventListener('keydown', e => {
+    const z = performance.now();
+    if (durum === 'son4' && /^\d$/.test(e.key) && z - sonTus > 80 && !tampon) { if (pin.length < 4 && !mesgul) { pin += e.key; ciz(); zamanla(); } sonTus = z; return; }
+    if (durum === 'son4' && e.key === 'Enter' && !tampon) { pinGonder(); return; }
+    const bosluk = z - sonTus; sonTus = z;
+    if (e.key === 'Enter') { const m = tampon; tampon = ''; if (m.length > 10 && bosluk < 1500) isle(m); return; }
+    if (e.key.length === 1) { if (bosluk > 300) tampon = ''; tampon += e.key; }
+  });
+
+  $('#callBtn').addEventListener('click', async () => {
+    if (!cihaz) return;
+    git('cagir');
+    try { await api('kapi_cagir', { cihaz }); } catch (e) { if (e.message === 'ag') git('cevrimdisi'); }
+  });
+  $$('.lang button').forEach(b => b.addEventListener('click', () => { lang = b.dataset.l; ciz(); zamanla(); }));
+
+  // ---- eşleştirme ----
+  async function eslestirBasla() {
+    clearTimeout(eslesmeT);
+    if (cihaz) return;
+    if (!eslesme || eslesme.bitis - simdiMs() < 30e3) {
+      eslesme = null; ciz();
+      try { eslesme = await api('kapi_eslestir_baslat', {}); if (eslesme.simdi) fark = eslesme.simdi - Date.now(); } catch { eslesmeT = setTimeout(eslestirBasla, 15000); return; }
+      if (durum === 'eslestir') ciz();
+    }
+    eslesmeT = setTimeout(eslestirSor, 3000);
+  }
+  async function eslestirSor() {
+    if (cihaz || !eslesme) return;
+    try {
+      const j = await api('kapi_eslestir_durum', { kod: eslesme.kod, gizli: eslesme.gizli });
+      if (j.durum === 'tamam') { cihaz = j.cihaz; depo.yaz(DEPO, cihaz); eslesme = null; await durumYenile(); git('bekle'); return; }
+      if (j.durum !== 'bekle') eslesme = null;
+    } catch { /* ağ: yeniden dene */ }
+    if (durum === 'eslestir') ciz();
+    eslesme ? (eslesmeT = setTimeout(eslestirSor, 3000)) : eslestirBasla();
+  }
+
+  // ---- dakikalık durum ----
+  async function durumYenile() {
+    if (!cihaz) return;
+    try {
+      const j = await api('kapi_durum', { cihaz });
+      fark = j.simdi - Date.now(); sube = j.sube; bugun = j.bugun; kilitVar = !!j.kilit; hataSay = 0;
+      depo.yaz(DEPO_SUBE, JSON.stringify(sube));
+      if (durum === 'cevrimdisi' || durum === 'acilis') git('bekle');
+      else if (durum === 'bekle' && !acikMi()) git('kapali');
+      else if (durum === 'kapali' && acikMi()) git('bekle');
+      else ciz();
+    } catch (e) {
+      if (e.message === 'yetki') return;
+      hataSay++;
+      if (hataSay >= 2 && ['bekle', 'kapali', 'acilis'].includes(durum)) git('cevrimdisi');
+    }
+  }
+  setInterval(durumYenile, 60e3);
+  setInterval(() => {
+    saatCiz();
+    if (durum === 'eslestir' || durum === 'erken') ciz();
+    if (durum === 'bekle' && sube && !acikMi()) git('kapali');
+    if (durum === 'kapali' && acikMi()) git('bekle');
+  }, 15e3);
+  addEventListener('online', durumYenile);
+  addEventListener('offline', () => { if (['bekle', 'kapali'].includes(durum)) git('cevrimdisi'); });
+
+  // Ekranı açık tut (destekleyen tarayıcılarda)
+  async function uyanik() { try { if (navigator.wakeLock && document.visibilityState === 'visible') await navigator.wakeLock.request('screen'); } catch { /* yok */ } }
+  document.addEventListener('visibilitychange', uyanik); uyanik();
+
+  // 1280×800 tasarımı ekrana sığdır (ortala)
+  function sigdir() {
+    const s = Math.min(innerWidth / 1280, innerHeight / 800), el = $('#tablet');
+    el.style.transform = 'translate(' + (innerWidth - 1280 * s) / 2 + 'px,' + (innerHeight - 800 * s) / 2 + 'px) scale(' + s + ')';
+  }
+  addEventListener('resize', sigdir); sigdir();
+
+  ciz();
+  if (!cihaz) git('eslestir'); else durumYenile().then(() => { if (durum === 'acilis') git(hataSay ? 'cevrimdisi' : 'bekle'); });
+})();
+</script>
+</body>
+</html>

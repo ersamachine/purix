@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /panel/
+Disallow: /kapi/
 Sitemap: https://www.purixxrf.com/sitemap.xml
