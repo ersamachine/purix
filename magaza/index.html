@@ -7,15 +7,15 @@
 <title>PURIX Mağaza</title>
 <meta name="description" content="PURIX X1 XRF altın analiz cihazını mağazamızda kendi altınınızla deneyin. Firmalar için randevulu ziyaret.">
 <meta name="theme-color" content="#F4F4F1">
-<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610041235">
-<link rel="stylesheet" href="../fonts/fonts.css?v=202610041235">
-<link rel="stylesheet" href="../styles.css?v=202610041235">
-<link rel="stylesheet" href="../magaza.css?v=202610041235">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610041249">
+<link rel="stylesheet" href="../fonts/fonts.css?v=202610041249">
+<link rel="stylesheet" href="../styles.css?v=202610041249">
+<link rel="stylesheet" href="../magaza.css?v=202610041249">
 </head>
 <body>
 <header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="../" aria-label="PURIX"><img src="../assets/mark-128.webp?v=202610041235" alt="" width="26" height="33"><span class="brand-word">PURIX</span></a>
+    <a class="brand" href="../" aria-label="PURIX"><img src="../assets/mark-128.webp?v=202610041249" alt="" width="26" height="33"><span class="brand-word">PURIX</span></a>
     <nav class="menu" aria-label="Ana menü">
       <a href="../#nasil" data-m="nav.how">Nasıl ölçer</a>
       <a href="../#demo" data-m="nav.demo">Canlı analiz</a>
@@ -40,7 +40,7 @@
         </div>
       </div>
       <figure class="s-fig">
-        <img src="../assets/x1.webp?v=202610041235" alt="PURIX X1" width="560" height="560">
+        <img src="../assets/x1.webp?v=202610041249" alt="PURIX X1" width="560" height="560">
         <div class="pass" aria-hidden="true">
           <div class="qr" id="heroQr"></div>
           <div><span class="live" data-m="m.passLive">Giriş açık</span><b>10:30 – 11:00</b><small data-m="m.passSample">Örnek giriş kartı</small></div>
@@ -99,15 +99,15 @@
 
 <footer class="s-foot">
   <div class="wrap">
-    <a class="brand" href="../"><img src="../assets/mark-128.webp?v=202610041235" alt="" width="22" height="28"><span class="brand-word">PURIX</span></a>
+    <a class="brand" href="../"><img src="../assets/mark-128.webp?v=202610041249" alt="" width="22" height="28"><span class="brand-word">PURIX</span></a>
     <span>© 2026 PURIX</span>
     <span><a href="../kvkk.html" data-m="m.kvkk" id="footKvkk">KVKK aydınlatma metni</a></span>
   </div>
 </footer>
 
-<script src="../config.js?v=202610041235"></script>
-<script src="../assets/qrcode.js?v=202610041235"></script>
-<script src="../magaza.js?v=202610041235"></script>
+<script src="../config.js?v=202610041249"></script>
+<script src="../assets/qrcode.js?v=202610041249"></script>
+<script src="../magaza.js?v=202610041249"></script>
 <script>
 (function () {
   PX.ekle({
@@ -147,7 +147,7 @@
     const kutu = document.getElementById('branches');
     kutu.innerHTML = j.subeler.map((s, i) => {
       const acik = s.aktif, url = '../randevu/?sube=' + encodeURIComponent(s.kod) + (PX.dil === 'en' ? '&l=en' : '');
-      return '<article class="branch"><div class="branch-fig"><span class="tag">' + PX.esc(acik ? (i === 0 ? PX.M('m.firstStore') : s.ad) : PX.M('m.soonTag')) + '</span><img src="../assets/x1-kapali.webp?v=202610041235" alt="" width="560" height="560"></div><div class="branch-body"><h3>' + PX.esc(s.ad) + '</h3>' +
+      return '<article class="branch"><div class="branch-fig"><span class="tag">' + PX.esc(acik ? (i === 0 ? PX.M('m.firstStore') : s.ad) : PX.M('m.soonTag')) + '</span><img src="../assets/x1-kapali.webp?v=202610041249" alt="" width="560" height="560"></div><div class="branch-body"><h3>' + PX.esc(s.ad) + '</h3>' +
         (acik ? '' : '<div class="m-alert">' + PX.esc(PX.M('g.soon')) + '</div>') +
         '<dl class="b-dl">' + (s.adres ? '<dt>' + PX.M('m.addr') + '</dt><dd>' + PX.esc(s.adres) + '</dd>' : '') +
         (acik ? '<dt>' + PX.M('m.hours') + '</dt><dd>' + gunAraligi(s.gunler) + ' · ' + s.acilis + '–' + s.kapanis + '</dd>' : '') +

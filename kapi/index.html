@@ -6,8 +6,8 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0B0A09">
 <title>Kapı tableti · PURIX Mağaza</title>
-<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610041235">
-<link rel="stylesheet" href="../fonts/fonts.css?v=202610041235">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610041249">
+<link rel="stylesheet" href="../fonts/fonts.css?v=202610041249">
 <style>
 /* PURIX Mağaza kapı tableti: 1280×800 tasarım, ekrana orantılı sığar. USB QR okuyucu klavye gibi yazar + Enter. */
 :root{
@@ -109,26 +109,33 @@ h1.md{font-size:64px}
 .closed-card{display:inline-flex;align-items:center;gap:18px;margin-top:34px;padding:14px 22px 14px 14px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid #2e2925;font-size:19px;color:#CFC8BE;text-align:start}
 .closed-card b{display:block;color:#fff}
 .hours{color:#fff;font-weight:600}
+/* Deneme: kamerayla okuma (?kamera=1) */
+.sol{display:flex;gap:12px}
+.kam{position:absolute;inset:0;z-index:5;background:rgba(11,10,9,.94);display:grid;place-items:center;align-content:center;gap:22px}
+.kam video{width:640px;height:480px;object-fit:cover;border-radius:24px;border:2px solid rgba(228,203,147,.5);background:#000}
+.kam p{margin:0;font-size:22px;color:#D8D2C8}
 </style>
 </head>
 <body>
 <div class="tablet" id="tablet">
   <div class="scr" id="scr">
     <header class="sh">
-      <div class="brand"><img src="../assets/mark-128.webp?v=202610041235" alt=""><div><b>PURIX</b><small id="tSube">Mağaza</small></div></div>
+      <div class="brand"><img src="../assets/mark-128.webp?v=202610041249" alt=""><div><b>PURIX</b><small id="tSube">Mağaza</small></div></div>
       <div class="clock"><b id="saat">--:--</b><small id="tarih"></small></div>
     </header>
     <main class="sm" id="main" aria-live="polite"></main>
+    <div class="kam" id="kam" hidden><video id="kamVid" playsinline muted autoplay></video><p id="kamP"></p><button class="call" type="button" id="kamKapat"></button></div>
     <footer class="sf" id="foot">
-      <button class="call" type="button" id="callBtn"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0"/></svg><span id="tCall"></span></button>
+      <div class="sol"><button class="call" type="button" id="callBtn"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0"/></svg><span id="tCall"></span></button>
+      <button class="call" type="button" id="kamBtn" hidden><svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4zM12 17a4 4 0 100-8 4 4 0 000 8"/></svg><span id="tKam"></span></button></div>
       <div class="cam" id="cam"></div>
       <div class="lang" role="group" aria-label="Dil / Language"><button type="button" data-l="tr" aria-pressed="true">TR</button><button type="button" data-l="en" aria-pressed="false">EN</button></div>
     </footer>
   </div>
 </div>
 
-<script src="../config.js?v=202610041235"></script>
-<script src="../assets/qrcode.js?v=202610041235"></script>
+<script src="../config.js?v=202610041249"></script>
+<script src="../assets/qrcode.js?v=202610041249"></script>
 <script>
 (function () {
   'use strict';
@@ -264,7 +271,8 @@ h1.md{font-size:64px}
     scr.style.setProperty('--glow', 'transparent');
     saatCiz();
     $('#tSube').textContent = sube ? (lang === 'en' ? 'Store · ' : 'Mağaza · ') + sube.ad : t('sube');
-    $('#tCall').textContent = t('call'); $('#cam').innerHTML = t('cam');
+    $('#tCall').textContent = t('call'); $('#cam').innerHTML = t('cam'); $('#tKam').textContent = lang === 'en' ? 'Scan with camera' : 'Kamerayla okut';
+    $('#kamBtn').disabled = !cihaz || durum === 'cevrimdisi' || durum === 'son4';
     $('#foot').hidden = ['eslestir', 'kabul', 'acilis'].includes(durum);
     $('#callBtn').disabled = durum === 'cevrimdisi';
     $('#callBtn').classList.toggle('gizli', ['cagir', 'kilit'].includes(durum));
@@ -371,6 +379,42 @@ h1.md{font-size:64px}
     try { await api('kapi_cagir', { cihaz }); } catch (e) { if (e.message === 'ag') git('cevrimdisi'); }
   });
   $$('.lang button').forEach(b => b.addEventListener('click', () => { lang = b.dataset.l; ciz(); zamanla(); }));
+
+  // ---- deneme: kamerayla okuma (yalnız ?kamera=1; gerçek kapıda USB okuyucu kullanılır). iPhone dahil çalışır (jsQR). ----
+  const KAMERA = new URLSearchParams(location.search).get('kamera') === '1';
+  let kamAkis = null, kamT = null;
+  function kamYukle() { return window.jsQR ? Promise.resolve() : new Promise((ok, red) => { const s = document.createElement('script'); s.src = '../assets/jsqr.js'; s.onload = ok; s.onerror = red; document.head.appendChild(s); }); }
+  function kamKapat() { clearTimeout(kamT); if (kamAkis) kamAkis.getTracks().forEach(x => x.stop()); kamAkis = null; $('#kam').hidden = true; }
+  async function kamAc() {
+    if (!cihaz || mesgul) return;
+    const v = $('#kamVid');
+    $('#kamP').textContent = lang === 'en' ? 'Hold the QR code in front of the camera' : 'QR kodu kameraya gösterin';
+    $('#kamKapat').textContent = t('back');
+    $('#kam').hidden = false;
+    try {
+      await kamYukle();
+      kamAkis = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
+      v.srcObject = kamAkis; await v.play();
+    } catch (e) { $('#kamP').textContent = (lang === 'en' ? 'Camera could not be opened: ' : 'Kamera açılamadı: ') + (e && e.message || e); return; }
+    const c = document.createElement('canvas'), g = c.getContext('2d', { willReadFrequently: true }), bitis = Date.now() + 60e3;
+    const tara = () => {
+      if (!kamAkis) return;
+      if (Date.now() > bitis) { kamKapat(); return; }
+      if (v.videoWidth) {
+        const w = 480, h = Math.round(v.videoHeight * w / v.videoWidth);
+        c.width = w; c.height = h; g.drawImage(v, 0, 0, w, h);
+        const k = window.jsQR(g.getImageData(0, 0, w, h).data, w, h, { inversionAttempts: 'dontInvert' });
+        if (k && k.data) { kamKapat(); isle(k.data); return; }
+      }
+      kamT = setTimeout(tara, 150);
+    };
+    tara();
+  }
+  if (KAMERA) {
+    $('#kamBtn').hidden = false;
+    $('#kamBtn').addEventListener('click', kamAc);
+    $('#kamKapat').addEventListener('click', kamKapat);
+  }
 
   // ---- eşleştirme ----
   async function eslestirBasla() {
