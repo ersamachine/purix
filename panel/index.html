@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>PURIX Panel</title>
-<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610041249">
-<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610041249" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../fonts/fonts.css?v=202610041249">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610041410">
+<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610041410" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fonts/fonts.css?v=202610041410">
 <style>
 :root{
   --bg:#F4F4F1;--surface:#fff;--ink:#1C1917;--ink-2:#57534E;--ink-3:#78716C;--line:#D6D3D1;--line-2:#E7E5E4;
@@ -425,7 +425,7 @@ td .who small{color:var(--ink-3)}
 <!-- GİRİŞ -->
 <section class="login" id="login" hidden>
   <form class="login-card" id="loginForm">
-    <img src="../assets/mark-128.webp?v=202610041249" alt="" width="40" height="51">
+    <img src="../assets/mark-128.webp?v=202610041410" alt="" width="40" height="51">
     <h1>PURIX Panel</h1>
     <p>Teklif taleplerini görmek için giriş yapın.</p>
     <div class="field"><label for="pw">Şifre</label><input class="inp" id="pw" type="password" autocomplete="current-password" required></div>
@@ -439,7 +439,7 @@ td .who small{color:var(--ink-3)}
 <!-- UYGULAMA -->
 <div class="app" id="app" hidden>
   <aside class="side" id="side">
-    <div class="brand"><img src="../assets/mark-128.webp?v=202610041249" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
+    <div class="brand"><img src="../assets/mark-128.webp?v=202610041410" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
     <button class="nav-btn" data-view="bugun" aria-current="page"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/><path d="M4 20h16"/></svg>Bugün<span class="badge" id="bgBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="genel"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"/></svg>Genel bakış</button>
     <button class="nav-btn" data-view="talepler"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Talepler<span class="badge" id="newBadge" hidden>0</span></button>
@@ -537,6 +537,10 @@ td .who small{color:var(--ink-3)}
             <div class="rv-res" id="rvRes"><p>Müşterinin Randevum sayfasındaki QR kodunu telefon kamerasıyla okutun ya da randevu kodunu (PX-…) yazın. Kod geçerliyse telefonunun son 4 hanesini sorun.</p></div>
           </div>
           <div style="display:grid;gap:16px">
+            <div class="card" id="rvRehber"><h2>Rehber ekranı <small id="rvRhDur">—</small></h2>
+              <p class="muted" style="font-size:13.5px;margin:0 0 10px" id="rvRhBilgi">Rehber ekranı eşleşince burada adımı görür, uzaktan yönetirsiniz.</p>
+              <div class="acts"><button class="btn btn-line btn-sm" type="button" data-rh="geri">◀ Geri</button><button class="btn btn-ink btn-sm" type="button" data-rh="ileri">Sonraki adım ▶</button><button class="btn btn-line btn-sm" type="button" data-rh="tekrar">Tekrar anlat</button><button class="btn btn-line btn-sm" type="button" data-rh="basla">Baştan</button><button class="btn btn-line btn-sm" type="button" data-rh="bitir">Ziyareti bitir</button><button class="btn btn-gold btn-sm" type="button" data-rh="deneme">Deneme başlat</button></div>
+            </div>
             <div class="card"><h2>Bugünkü randevular</h2><ul class="rv-log" id="rvBugun"></ul></div>
             <div class="card"><h2>Giriş kayıtları <small>son okutmalar</small></h2><ul class="rv-log" id="rvGlog"></ul></div>
             <div class="warnline">Kapı tableti eşleştiyse müşteri QR’ını kapıda kendisi okutur; bu ekran yedek ve görevli onayı içindir. Görevli bu ekranı telefonda açar. Kamerayla okuma Android Chrome’da çalışır. iPhone’da müşterinin ekranındaki randevu kodunu (PX-…) yazın; ardından telefonunun son 4 hanesini sorun.</div>
@@ -573,8 +577,8 @@ td .who small{color:var(--ink-3)}
           <ul class="rv-log" id="rvKap"></ul>
           <div class="acts" style="margin-top:12px"><input class="inp" type="date" id="rvKapT" style="width:auto"><input class="inp" id="rvKapN" placeholder="Neden (isteğe bağlı)" style="flex:1;min-width:160px"><button class="btn btn-line btn-sm" type="button" id="rvKapEkle">Kapanış ekle</button></div>
         </div>
-        <div class="card" style="margin-top:16px"><h2>Kapı tableti <small>girişte QR okutma ekranı</small></h2>
-          <p class="muted" style="font-size:13.5px;margin:0 0 12px">Tablette <b>purixxrf.com/kapi/</b> adresini açın; ekranda 6 haneli kod çıkar. O kodu buraya yazın. Tablet yalnız kapı işlemlerini yapabilir; kaybolursa buradan silin.</p>
+        <div class="card" style="margin-top:16px"><h2>Kapı tableti ve rehber ekranı <small>eşleşmiş cihazlar</small></h2>
+          <p class="muted" style="font-size:13.5px;margin:0 0 12px">Kapı tabletinde <b>purixxrf.com/kapi/</b>, rehber ekranında <b>purixxrf.com/rehber/</b> adresini açın; ekranda 6 haneli kod çıkar. O kodu buraya yazın. Her cihaz yalnız kendi işini yapabilir; kaybolursa buradan silin.</p>
           <ul class="rv-log" id="rvCihaz"></ul>
           <div class="acts" style="margin-top:12px"><input class="inp" id="rvEsKod" inputmode="numeric" maxlength="7" placeholder="Tabletteki 6 haneli kod" style="width:200px"><input class="inp" id="rvEsAd" maxlength="40" placeholder="Ad (ör. Ön kapı)" style="flex:1;min-width:140px"><button class="btn btn-ink btn-sm" type="button" id="rvEsBtn">Tableti eşleştir</button></div>
           <div class="rv-frow" style="margin-top:14px"><div class="rv-fld"><label>Kapı ekranında görünecek görevli telefonu</label><input class="inp" id="rvKapiTel" form="rvAyarF" name="telefon" inputmode="tel" maxlength="30" placeholder="05xx xxx xx xx (boş kalırsa gösterilmez)"></div></div>
@@ -730,9 +734,9 @@ td .who small{color:var(--ink-3)}
 </div>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="../assets/qrcode.js?v=202610041249"></script>
-<script src="harita.js?v=202610041249"></script>
-<script src="../config.js?v=202610041249"></script>
+<script src="../assets/qrcode.js?v=202610041410"></script>
+<script src="harita.js?v=202610041410"></script>
+<script src="../config.js?v=202610041410"></script>
 <script>
 (() => {
   if (window.top !== window.self) { document.documentElement.innerHTML = ''; try { window.top.location = window.self.location; } catch {} return; }  // çerçeve içine alınmaya (clickjacking) karşı
@@ -1677,7 +1681,7 @@ td .who small{color:var(--ink-3)}
     $('#rvKapali').hidden = !s || s.aktif;
     if (RV.alt === 'takvim') { rvKpi(); rvTakvim(); }
     if (RV.alt === 'liste') rvListe();
-    if (RV.alt === 'giris') rvGirisCiz();
+    if (RV.alt === 'giris') { rvGirisCiz(); rvRehberYukle(); }
     if (RV.alt === 'ayar') rvAyarCiz();
   }
   function rvKpi() {
@@ -1840,6 +1844,23 @@ td .who small{color:var(--ink-3)}
     try { const j = await api('sube_ayar', { kod: s.kod, alanlar }); Object.assign(s, j.sube); RV.veri.kapanislar = j.kapanislar; f.dataset.guncel = ''; rvCiz(); toast('Şube ayarları kaydedildi' + (j.sube.aktif ? ' · sitede randevu açık' : ' · sitede randevu kapalı')); }
     catch (err) { toast(err.message); }
   }
+  // ---- rehber ekranı (uzaktan kumanda) ----
+  let rvRhT = null;
+  function rvRehberCiz(j) {
+    const o = j.oturum || {}, canli = o.son_gorulme && Date.now() - new Date(o.son_gorulme).getTime() < 60e3;
+    $('#rvRhDur').textContent = !j.cihaz ? 'eşleşmemiş' : canli ? 'çevrimiçi · ' + (o.mod === 'kamera' ? 'kamera ile' : 'elle') : 'bağlı değil';
+    const z = j.ziyaret;
+    $('#rvRhBilgi').innerHTML = !j.cihaz ? 'Rehber ekranını eşleştirmek için Şube ayarları → Kapı tableti ve rehber ekranı bölümüne ekrandaki kodu yazın.'
+      : o.durum && o.durum !== 'bekleme' ? '<b style="color:var(--ink)">Adım ' + o.adim + ' · ' + esc(o.durum) + '</b>' + (o.kod ? ' · ' + esc(o.kod === 'DENEME' ? 'deneme' : (z && z.firma) || o.kod) : '') + (j.kalibrasyon ? '' : ' · <span style="color:var(--warn)">kamera kurulmadı</span>')
+      : 'Bekliyor · misafir kapıdan girince başlar' + (j.kalibrasyon ? ' · kamera kurulu' : ' · kamera kurulmadı (elle ilerler)');
+  }
+  async function rvRehberYukle() { const s = rvSube(); if (!s) return; try { rvRehberCiz(await api('rehber_oturum', { sube: s.kod })); } catch { /* demo / bağlantı */ } }
+  setInterval(() => { if (RV.alt === 'giris' && !document.hidden && !$('#v-randevular').hidden) rvRehberYukle(); }, 5000);
+  $('#rvRehber').addEventListener('click', async e => {
+    const b = e.target.closest('[data-rh]'); if (!b) return;
+    if (b.dataset.rh === 'bitir' && !confirm('Rehberdeki ziyaret bitirilsin mi? Ekran teşekkür edip bekleme ekranına döner.')) return;
+    try { rvRehberCiz(await api('rehber_komut', { sube: rvSube().kod, tip: b.dataset.rh })); toast('Rehbere gönderildi'); } catch (err) { toast(err.message); }
+  });
   // ---- kapı tableti ----
   function rvCihazCiz(l) {
     $('#rvCihaz').innerHTML = l.length ? l.map(c => { const son = c.son_gorulme ? Date.now() - new Date(c.son_gorulme).getTime() : 1e12, canli = son < 3 * 60e3;
@@ -1849,7 +1870,7 @@ td .who small{color:var(--ink-3)}
   async function rvCihazYukle() { const s = rvSube(); if (!s) return; try { rvCihazCiz((await api('kapi_cihazlar', { sube: s.kod })).cihazlar || []); } catch { rvCihazCiz([]); } }
   async function rvEslestir() {
     const kod = $('#rvEsKod').value.replace(/\D/g, ''); if (kod.length !== 6) { toast('Tabletteki 6 haneli kodu yazın'); return; }
-    try { await api('kapi_eslestir', { kod, sube: rvSube().kod, ad: $('#rvEsAd').value.trim() }); $('#rvEsKod').value = ''; $('#rvEsAd').value = ''; toast('Eşleştirildi · tablet birkaç saniye içinde açılır'); setTimeout(rvCihazYukle, 5000); }
+    try { await api('kapi_eslestir', { kod, sube: rvSube().kod, ad: $('#rvEsAd').value.trim() }); $('#rvEsKod').value = ''; $('#rvEsAd').value = ''; toast('Eşleştirildi · cihaz birkaç saniye içinde açılır'); setTimeout(rvCihazYukle, 5000); }
     catch (e) { toast(e.message); }
   }
   async function rvKapanis(ek) { try { const j = await api('sube_ayar', { kod: rvSube().kod, ...ek }); RV.veri.kapanislar = j.kapanislar; rvKapanisCiz(); toast('Kaydedildi'); } catch (e) { toast(e.message); } }

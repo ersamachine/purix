@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B0A09">
+<title>Rehber · PURIX Mağaza</title>
+<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610041410">
+<link rel="stylesheet" href="../fonts/fonts.css?v=202610041410">
+<style>
+/* PURIX Mağaza AI rehber ekranı: 1920×1080 tasarım, ekrana orantılı sığar. Onaylı mokap: magaza-taslak/rehber.html */
+:root{
+  --gold:#B48C50;--gold-l:#E4CB93;--ink:#1C1917;
+  --metal:linear-gradient(100deg,#6E4B22 0%,#B48C50 24%,#ECD49E 46%,#C9A465 60%,#8A6331 82%,#B48C50 100%);
+  --ok:#4FB477;--warn:#E0A84A;--err:#DE6E52;
+  --f:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;--ease:cubic-bezier(.22,.7,.12,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#000}
+body{color:#F5F2EC;font:400 16px/1.5 var(--f);-webkit-font-smoothing:antialiased;overflow:hidden;cursor:default}
+button,select{font:inherit;color:inherit;cursor:pointer}
+[hidden]{display:none!important}
+.tv{position:absolute;top:0;left:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden}
+
+.scr{position:relative;width:100%;height:100%;background:radial-gradient(60% 80% at 22% 45%,#2c2622 0%,#171513 55%,#0f0e0d 100%);display:grid;grid-template-rows:118px 1fr 132px}
+.top{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:40px;padding:0 56px;position:relative}
+.brand{display:flex;align-items:center;gap:16px}
+.brand img{width:36px}
+.brand b{font-stretch:125%;font-weight:700;letter-spacing:.08em;font-size:28px;color:#fff}
+.who{text-align:center;font-size:24px;color:#CFC8BE}
+.who b{color:#fff;font-weight:600}
+.tr{text-align:end;display:flex;gap:28px;align-items:center}
+.tr .left{font-size:20px;color:#A8A29E;text-align:end;line-height:1.3}
+.tr .left b{display:block;color:var(--gold-l);font-stretch:78%;font-size:30px;font-weight:540;font-variant-numeric:tabular-nums}
+.tr .left.warn b{color:var(--warn)}.tr .left.err b{color:var(--err)}
+.tr .clk{font-stretch:78%;font-size:46px;font-weight:520;color:#fff;font-variant-numeric:tabular-nums}
+.prog{position:absolute;left:56px;right:56px;bottom:6px;display:grid;grid-template-columns:repeat(10,1fr);gap:8px}
+.prog i{height:6px;border-radius:3px;background:#2e2925;transition:background .4s}
+.prog i.done{background:var(--gold)}
+.prog i.now{background:var(--gold-l);box-shadow:0 0 12px rgba(228,203,147,.6)}
+
+.mid{display:grid;grid-template-columns:700px 1fr;gap:40px;padding:26px 56px 0;min-height:0}
+.avcol{display:flex;flex-direction:column;align-items:center;min-height:0}
+.av{width:400px;height:428px;overflow:visible}
+.av .bob{animation:bob 4.5s ease-in-out infinite;transform-origin:200px 200px}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.av .eyes{transform-box:fill-box;transform-origin:center;animation:blink 5s infinite}
+@keyframes blink{0%,46%,50%,100%{transform:scaleY(1)}48%{transform:scaleY(.08)}}
+.av .el,.av .er{transition:transform .35s var(--ease),height .3s}
+.av .mouth{transform-box:fill-box;transform-origin:center;transition:transform .2s}
+.av .halo{opacity:0;transform-box:fill-box;transform-origin:center}
+.av .brows rect{opacity:0;transition:opacity .3s,transform .3s;transform-box:fill-box;transform-origin:center}
+.av .happy{opacity:0;transition:opacity .3s}
+.av .dots circle{opacity:0}
+.av .ledl,.av .ledr{opacity:.25;transition:opacity .3s}
+.av.talk .mouth{animation:talk .32s ease-in-out infinite alternate}
+@keyframes talk{0%{transform:scaleY(1) scaleX(1)}35%{transform:scaleY(3.6) scaleX(.82)}70%{transform:scaleY(1.8) scaleX(.95)}100%{transform:scaleY(4.4) scaleX(.78)}}
+.av.talk .ledl,.av.talk .ledr{opacity:.9}
+.av.listen .halo{animation:halo 1.6s ease-out infinite}
+@keyframes halo{0%{opacity:.7;transform:scale(.92)}100%{opacity:0;transform:scale(1.12)}}
+.av.listen .el,.av.listen .er{transform:translateY(-10px)}
+.av.think .el,.av.think .er{transform:scaleY(.45)}
+.av.think .dots circle{animation:dot 1s infinite}
+.av.think .dots circle:nth-child(2){animation-delay:.15s}.av.think .dots circle:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,100%{opacity:.2}50%{opacity:1}}
+.av.sad .brows .bl{opacity:1;transform:translateY(-4px) rotate(14deg)}
+.av.sad .brows .br{opacity:1;transform:translateY(-4px) rotate(-14deg)}
+.av.happy .eyes{opacity:0}
+.av.happy .happy{opacity:1}
+.av.happy .mouth{transform:scaleX(1.25)}
+.avname{margin-top:-10px;display:inline-flex;align-items:center;gap:10px;padding:8px 18px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid #2e2925;font-size:19px;color:#CFC8BE}
+.avname i{width:10px;height:10px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(79,180,119,.18)}
+.avname.off i{background:#8C857B;box-shadow:none}
+.cap{margin-top:26px;width:100%;min-height:150px;padding:26px 30px;border-radius:28px;background:rgba(255,255,255,.05);border:1px solid #2e2925;font-size:34px;line-height:1.35;color:#fff;position:relative}
+.cap::before{content:"";position:absolute;top:-12px;left:50%;width:24px;height:24px;background:#221f1c;border-left:1px solid #2e2925;border-top:1px solid #2e2925;transform:translateX(-50%) rotate(45deg)}
+.cap .w{opacity:.28;transition:opacity .2s}
+.cap .w.on{opacity:1}
+.qa{margin-top:16px;width:100%;display:grid;gap:8px}
+.qa p{margin:0;font-size:21px;color:#A8A29E}
+.qa p b{color:#E7E1D8;font-weight:600}
+.tag{display:inline-flex;align-items:center;gap:6px;margin-inline-start:10px;padding:2px 10px;border-radius:999px;font-size:15px;font-weight:600;background:color-mix(in srgb,var(--c) 18%,transparent);color:var(--c);vertical-align:2px}
+
+.right{display:grid;grid-template-rows:auto 1fr;gap:22px;min-height:0}
+.step{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:26px 32px;border-radius:28px;background:rgba(255,255,255,.04);border:1px solid #2e2925;transition:border-color .3s,background .3s}
+.step.err{border-color:color-mix(in srgb,var(--err) 60%,transparent);background:color-mix(in srgb,var(--err) 8%,transparent)}
+.step.okk{border-color:color-mix(in srgb,var(--ok) 55%,transparent)}
+.step small{display:block;font-size:20px;font-weight:600;color:var(--gold-l);letter-spacing:.01em}
+.step h2{margin:6px 0 0;font-size:62px;line-height:1.02;font-weight:580;font-stretch:118%;letter-spacing:-.025em;color:#fff}
+.step p{margin:12px 0 0;font-size:26px;color:#CFC8BE}
+.olc{display:grid;justify-items:end;gap:6px;min-width:230px}
+.olc b{font-stretch:78%;font-size:58px;font-weight:540;color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+.olc small{font-size:19px;color:#A8A29E}
+.olc .bar{position:relative;width:230px;height:10px;border-radius:5px;background:#2e2925;overflow:hidden;margin-top:6px}
+.olc .bar i{position:absolute;top:0;bottom:0;width:40%;border-radius:5px;background:var(--gold-l);animation:olc 1.6s ease-in-out infinite}
+@keyframes olc{0%{left:-40%}100%{left:100%}}
+.choice{display:flex;gap:14px}
+.choice button{min-height:84px;padding:0 34px;border-radius:999px;border:1.5px solid rgba(228,203,147,.45);background:rgba(255,255,255,.03);color:var(--gold-l);font-size:26px;font-weight:600}
+.choice button.g{background:var(--metal);color:#1F1406;border:0}
+
+.cam{position:relative;border-radius:28px;overflow:hidden;background:radial-gradient(70% 90% at 45% 30%,#ece9e3 0%,#d6d1c9 100%);min-height:0}
+.cam.foto::before{content:"";position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(180deg,#c9c3ba,#b8b1a7)}
+.cam::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 50%,transparent 60%,rgba(0,0,0,.35));z-index:1}
+.cam.canli{background:#0b0a09}
+.cam .lbl{position:absolute;top:20px;left:22px;z-index:3;display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:rgba(0,0,0,.55);font-size:18px;color:#E7E1D8}
+.cam .lbl i{width:10px;height:10px;border-radius:50%;background:#ff4d3a;box-shadow:0 0 0 4px rgba(255,77,58,.2)}
+.ckutu{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);aspect-ratio:16/9;max-width:100%}
+.ckutu video,.ckutu canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.dev{position:absolute;left:12%;bottom:6%;height:86%;aspect-ratio:900/894}
+.dev.kapali{aspect-ratio:900/713;height:72%}
+.dev img{width:100%;height:100%;display:block;mix-blend-mode:multiply}
+.printer{position:absolute;right:7%;bottom:12%;width:17%;height:30%;border-radius:16px;background:linear-gradient(180deg,#f4f2ee,#d9d4cc);border:1px solid #bdb6ac;box-shadow:0 24px 30px -18px rgba(0,0,0,.6)}
+.printer::before{content:"";position:absolute;left:14%;right:14%;top:-6%;height:16%;border-radius:4px;background:#fff;box-shadow:0 2px 0 #bbb}
+.printer::after{content:attr(data-ad);position:absolute;left:0;right:0;bottom:12%;text-align:center;font-size:18px;font-weight:600;color:#57534E}
+.printer.paper::before{height:42%;top:-36%;transition:all .6s}
+.hl{position:absolute;z-index:2;border-radius:16px;border:4px solid var(--c,var(--ok));box-shadow:0 0 0 6px color-mix(in srgb,var(--c,var(--ok)) 22%,transparent),0 0 40px color-mix(in srgb,var(--c,var(--ok)) 50%,transparent);transition:all .5s var(--ease);animation:hl 1.6s ease-in-out infinite}
+@keyframes hl{50%{box-shadow:0 0 0 14px color-mix(in srgb,var(--c,var(--ok)) 10%,transparent),0 0 60px color-mix(in srgb,var(--c,var(--ok)) 35%,transparent)}}
+.hl span{position:absolute;left:-4px;top:-46px;white-space:nowrap;padding:4px 12px;border-radius:10px;background:var(--c,var(--ok));color:#0f0e0d;font-size:18px;font-weight:700}
+.det{position:absolute;left:22px;bottom:20px;z-index:3;display:inline-flex;align-items:center;gap:12px;padding:10px 18px;border-radius:999px;background:rgba(0,0,0,.6);font-size:20px;color:#E7E1D8}
+.det i{width:24px;height:24px;border-radius:50%;border:3px solid #6f6862;border-top-color:var(--gold-l);animation:spin 1s linear infinite}
+.det.ok i{animation:none;border:0;background:var(--ok);display:grid;place-items:center}
+.det.ok i::after{content:"✓";color:#0f0e0d;font-size:15px;font-weight:800;font-style:normal}
+@keyframes spin{to{transform:rotate(360deg)}}
+.elle{position:absolute;right:22px;bottom:20px;z-index:3;min-height:64px;padding:0 28px;border-radius:999px;border:0;background:var(--metal);color:#1F1406;font-size:22px;font-weight:700}
+
+.bot{display:flex;align-items:center;gap:24px;padding:0 56px}
+.mic{display:flex;align-items:center;gap:18px;padding:16px 26px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid #2e2925;font-size:22px;color:#CFC8BE}
+.mic .bars{display:flex;gap:4px;align-items:center;height:30px}
+.mic .bars i{width:5px;height:30%;border-radius:3px;background:var(--gold-l);opacity:.5}
+.mic.on .bars i{animation:bar .7s ease-in-out infinite alternate;opacity:1}
+.mic.on .bars i:nth-child(2){animation-delay:.1s}.mic.on .bars i:nth-child(3){animation-delay:.2s}.mic.on .bars i:nth-child(4){animation-delay:.3s}.mic.on .bars i:nth-child(5){animation-delay:.15s}
+@keyframes bar{from{height:20%}to{height:100%}}
+.mic small{display:block;font-size:16px;color:#8C857B}
+.bbtn{display:inline-flex;align-items:center;gap:12px;min-height:76px;padding:0 32px;border-radius:999px;border:1.5px solid rgba(228,203,147,.4);background:rgba(255,255,255,.03);color:var(--gold-l);font-size:23px;font-weight:600}
+.bbtn svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.bot .sp{flex:1}
+.lang{display:flex;border-radius:999px;border:1px solid #3a3532;padding:5px}
+.lang button{min-width:76px;height:60px;border:0;border-radius:999px;background:transparent;color:#A8A29E;font-weight:650;font-size:19px}
+.lang button[aria-pressed="true"]{background:#2e2925;color:#fff}
+.confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+.confetti i{position:absolute;top:-20px;width:12px;height:18px;border-radius:3px;animation:fall 2.6s ease-in forwards}
+@keyframes fall{to{transform:translateY(1150px) rotate(540deg)}}
+
+/* Katmanlar: başlat, eşleştirme, bekleme, kurulum */
+.kat{position:absolute;inset:0;z-index:20;display:grid;place-items:center;align-content:center;text-align:center;background:radial-gradient(60% 80% at 50% 40%,#2c2622 0%,#141210 70%)}
+.kat h1{margin:22px 0 0;font-weight:580;font-stretch:118%;font-size:80px;line-height:1;letter-spacing:-.03em;color:#fff}
+.kat p{margin:22px auto 0;font-size:30px;color:#CFC8BE;max-width:36ch}
+.kat small{display:block;margin-top:18px;font-size:20px;color:#8C857B}
+.kat .av{width:300px;height:320px}
+.kat .bbtn{margin-top:40px}
+.pair-code{margin-top:34px;display:flex;gap:14px;justify-content:center}
+.pair-code span{width:110px;height:140px;border-radius:24px;background:#1a1715;border:2px solid rgba(228,203,147,.35);display:grid;place-items:center;font-stretch:78%;font-size:80px;font-weight:540;color:var(--gold-l)}
+.pair-code .gap{width:22px;border:0;background:none}
+.ayar{position:absolute;right:40px;bottom:36px;border:0;background:none;color:#5f5852;font-size:18px;text-decoration:underline;text-underline-offset:4px}
+
+.kur{position:absolute;inset:0;z-index:30;background:#0f0e0d;display:grid;grid-template-columns:1280px 1fr;gap:28px;padding:32px;text-align:start}
+.kur .vid{position:relative;width:1280px;height:720px;border-radius:18px;overflow:hidden;background:#000;align-self:start}
+.kur .vid video,.kur .vid canvas{position:absolute;inset:0;width:100%;height:100%}
+.kur .vid canvas{cursor:crosshair}
+.kur h2{margin:0;font-size:34px;font-weight:600;color:#fff}
+.kur .yan{display:flex;flex-direction:column;gap:14px;min-height:0;overflow:auto;padding-inline-end:6px}
+.kur .bilgi{font-size:18px;color:#A8A29E;line-height:1.45}
+.kur .blg{padding:16px 18px;border-radius:16px;background:#1a1715;border:1px solid #2e2925}
+.kur .blg.sec{border-color:var(--gold-l)}
+.kur .blg h3{margin:0 0 10px;font-size:22px;color:#fff;display:flex;justify-content:space-between;gap:10px}
+.kur .blg h3 span{font-size:17px;font-weight:500;color:#A8A29E}
+.kur .blg h3 span.ok{color:var(--ok)}
+.kur .btns{display:flex;flex-wrap:wrap;gap:8px}
+.kur .btns button,.kur .alt button,.kur select{min-height:44px;padding:0 16px;border-radius:12px;border:1px solid #3a3532;background:#221e1b;color:#E7E1D8;font-size:17px}
+.kur .btns button.c{border-color:var(--gold);color:var(--gold-l)}
+.kur .alt{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:auto;padding-top:10px}
+.kur .alt .g{background:var(--metal);color:#1F1406;border:0;font-weight:700}
+.kur .not{font-size:16px;color:#8C857B}
+.kur .alt-vid{grid-column:1;font-size:18px;color:#A8A29E;margin-top:-10px}
+</style>
+</head>
+<body>
+<div class="tv" id="tv">
+  <div class="scr" id="scr">
+    <header class="top">
+      <div class="brand"><img src="../assets/mark-128.webp?v=202610041410" alt=""><b>PURIX</b></div>
+      <div class="who" id="who"></div>
+      <div class="tr"><div class="left" id="kalanKut"><span id="tKalan"></span><b id="kalan">—</b></div><div class="clk" id="saat">--:--</div></div>
+      <div class="prog" id="prog"></div>
+    </header>
+
+    <div class="mid">
+      <div class="avcol">
+        <svg class="av" id="av" viewBox="0 0 400 430" aria-hidden="true">
+          <defs>
+            <linearGradient id="gm" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#6E4B22"/><stop offset=".28" stop-color="#B48C50"/><stop offset=".5" stop-color="#ECD49E"/><stop offset=".68" stop-color="#C9A465"/><stop offset="1" stop-color="#8A6331"/></linearGradient>
+            <radialGradient id="face" cx=".5" cy=".38" r=".75"><stop offset="0" stop-color="#2d2824"/><stop offset="1" stop-color="#0c0b0a"/></radialGradient>
+          </defs>
+          <ellipse cx="200" cy="415" rx="120" ry="13" fill="#000" opacity=".5"/>
+          <g class="bob">
+            <circle class="halo" cx="200" cy="190" r="190" fill="none" stroke="#E4CB93" stroke-width="3"/>
+            <path d="M200 14 L352 102 L352 278 L200 366 L48 278 L48 102 Z" fill="url(#gm)"/>
+            <path d="M200 34 L334 112 L334 268 L200 346 L66 268 L66 112 Z" fill="url(#face)"/>
+            <path d="M200 34 L334 112 L334 150 Q200 120 66 150 L66 112 Z" fill="#fff" opacity=".04"/>
+            <g class="brows"><rect class="bl" x="116" y="120" width="54" height="8" rx="4" fill="#E4CB93"/><rect class="br" x="230" y="120" width="54" height="8" rx="4" fill="#E4CB93"/></g>
+            <g class="eyes"><rect class="el" x="126" y="142" width="38" height="62" rx="19" fill="#E4CB93"/><rect class="er" x="236" y="142" width="38" height="62" rx="19" fill="#E4CB93"/></g>
+            <g class="happy" fill="none" stroke="#E4CB93" stroke-width="10" stroke-linecap="round"><path d="M124 184 q21 -30 42 0"/><path d="M234 184 q21 -30 42 0"/></g>
+            <g class="dots" fill="#E4CB93"><circle cx="300" cy="96" r="7"/><circle cx="322" cy="78" r="9"/><circle cx="348" cy="56" r="11"/></g>
+            <rect class="mouth" x="168" y="252" width="64" height="9" rx="4.5" fill="#E4CB93"/>
+            <circle class="ledl" cx="104" cy="236" r="9" fill="#E4CB93"/><circle class="ledr" cx="296" cy="236" r="9" fill="#E4CB93"/>
+          </g>
+        </svg>
+        <div class="avname" id="avname"><i></i>PURIX Rehber</div>
+        <div class="cap" id="cap" aria-live="polite"></div>
+        <div class="qa" id="qa"></div>
+      </div>
+
+      <div class="right">
+        <div class="step" id="step">
+          <div><small id="sNo"></small><h2 id="sH"></h2><p id="sP"></p></div>
+          <div id="sSide"></div>
+        </div>
+        <div class="cam foto" id="cam">
+          <span class="lbl"><i></i><span id="tCam"></span></span>
+          <div class="ckutu" id="ckutu" hidden><video id="vid" playsinline muted></video><canvas id="ov" width="1280" height="720"></canvas></div>
+          <div class="dev kapali" id="dev"><img id="devImg" src="../assets/x1-kapali.webp?v=202610041410" alt=""></div>
+          <div class="printer" id="printer" hidden></div>
+          <div class="hl" id="hl" hidden><span id="hlT"></span></div>
+          <div class="det" id="det"><i></i><span id="detT"></span></div>
+          <button class="elle" type="button" id="elleBtn" hidden></button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bot">
+      <div class="mic" id="mic"><span class="bars"><i></i><i></i><i></i><i></i><i></i></span><span><span id="tMic"></span><small id="tMicS"></small></span></div>
+      <span class="sp"></span>
+      <button class="bbtn" type="button" id="tekrar"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0114-5.3L20 9M20 4v5h-5M20 12a8 8 0 01-14 5.3L4 15M4 20v-5h5"/></svg><span id="tTekrar"></span></button>
+      <button class="bbtn" type="button" id="cagir"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0"/></svg><span id="tCagir"></span></button>
+      <div class="lang" role="group" aria-label="Dil / Language"><button type="button" data-l="tr" aria-pressed="true">TR</button><button type="button" data-l="en" aria-pressed="false">EN</button></div>
+    </footer>
+
+    <!-- Başlat (ses ve mikrofon için bir dokunuş gerekir; kiosk modunda ?oto=1 ile atlanır) -->
+    <div class="kat" id="katBasla"><svg class="av" viewBox="0 0 400 430" aria-hidden="true"><use href="#av"/></svg><h1>PURIX Rehber</h1><p>Ekranı başlatmak için dokunun ya da bir tuşa basın.</p><small>Ses ve mikrofon izni bir kez istenir.</small></div>
+    <!-- Eşleştirme -->
+    <div class="kat" id="katEs" hidden><h1>Bu ekran henüz eşleşmedi.</h1><div class="pair-code" id="esKod" dir="ltr"></div><p id="esP">Kod alınıyor…</p><small id="esS"></small></div>
+    <!-- Bekleme: mağazada ziyaret yok -->
+    <div class="kat" id="katBekle" hidden><h1 id="bkH">PURIX Rehber hazır.</h1><p id="bkP">Randevulu misafirimiz kapıdan girince ölçümü birlikte yapacağız.</p><small id="bkS"></small><button class="ayar" type="button" id="kurAc">Kamera kurulumu</button></div>
+    <!-- Kurulum (görevli): kamera bölgeleri ve örnekler -->
+    <div class="kur" id="kur" hidden>
+      <div class="vid" id="kurVid"><video id="kvid" playsinline muted></video><canvas id="kcv" width="1280" height="720"></canvas></div>
+      <div class="yan">
+        <h2>Kamera kurulumu</h2>
+        <div class="bilgi">1) Bölgeyi seçip <b>Çiz</b>'e basın, görüntüde fareyle çerçeve çizin. 2) Her durumu gerçekten oluşturun (ör. kapağı açın) ve o durumun düğmesine basın; her durum için 2–3 kez farklı anlarda örnek alın. 3) Sağdaki "şu an" doğru gösterince <b>Kaydet</b>. Kamera ya da ışık değişirse kurulumu yenileyin.</div>
+        <div id="kurListe"></div>
+        <div class="alt"><select id="kamSec" aria-label="Kamera"></select><button type="button" class="g" id="kurKaydet">Kaydet</button><button type="button" id="kurKapat">Kapat</button></div>
+        <div class="not" id="kurNot"></div>
+      </div>
+      <div class="alt-vid" id="kurIpucu"></div>
+    </div>
+  </div>
+</div>
+
+<script src="../config.js?v=202610041410"></script>
+<script src="gorus.js?v=202610041410"></script>
+<script src="rehber.js?v=202610041410"></script>
+</body>
+</html>
