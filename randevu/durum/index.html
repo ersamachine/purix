@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Randevum · PURIX Mağaza</title>
+<meta name="theme-color" content="#F4F4F1">
+<link rel="icon" type="image/png" href="../../assets/favicon-64.png?v=202610040302">
+<link rel="stylesheet" href="../../fonts/fonts.css?v=202610040302">
+<link rel="stylesheet" href="../../styles.css?v=202610040302">
+<link rel="stylesheet" href="../../magaza.css?v=202610040302">
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="../../" aria-label="PURIX"><img src="../../assets/mark-128.webp?v=202610040302" alt="" width="26" height="33"><span class="brand-word">PURIX</span></a>
+    <nav class="menu" aria-label="Ana menü">
+      <a href="../../#nasil" data-m="nav.how">Nasıl ölçer</a>
+      <a href="../../#demo" data-m="nav.demo">Canlı analiz</a>
+      <a href="../../#seri" data-m="nav.model">PURIX X1</a>
+      <a href="../../magaza/" aria-current="page" data-m="nav.store">Mağaza</a>
+      <a href="../../#teklif" data-m="nav.contact">İletişim</a>
+    </nav>
+    <div class="nav-end"><span class="lang-sw"><a data-l="tr">TR</a><a data-l="en">EN</a></span><a class="btn btn-ink btn-sm" href="../" data-m="d.newB">Yeni randevu</a></div>
+  </div>
+</header>
+
+<main class="r-page">
+  <div class="wrap my" id="kok"><div class="m-skel"></div></div>
+</main>
+
+<footer class="s-foot">
+  <div class="wrap">
+    <a class="brand" href="../../"><img src="../../assets/mark-128.webp?v=202610040302" alt="" width="22" height="28"><span class="brand-word">PURIX</span></a>
+    <span>© 2026 PURIX</span>
+    <span><a href="../../kvkk.html" data-m="d.kvkkF" id="footKvkk">KVKK aydınlatma metni</a></span>
+  </div>
+</footer>
+
+<script src="../../config.js?v=202610040302"></script>
+<script src="../../assets/qrcode.js?v=202610040302"></script>
+<script src="../../magaza.js?v=202610040302"></script>
+<script>
+(function () {
+  PX.ekle({
+    tr: { 'd.newB': 'Yeni randevu', 'd.kvkkF': 'KVKK aydınlatma metni', 'd.h1': 'Randevum', 'd.branch': 'Şube', 'd.addr': 'Adres', 'd.date': 'Tarih', 'd.time': 'Saat', 'd.window': 'Giriş penceresi', 'd.firm': 'Firma',
+      'st.talep': 'Onay bekliyor', 'st.oneri': 'Yeni saat önerildi', 'st.onay': 'Onaylandı', 'st.acik': 'Giriş açık', 'st.geldi': 'Tamamlandı', 'st.gelmedi': 'Kullanılmadı', 'st.red': 'Reddedildi', 'st.iptal': 'İptal edildi', 'st.dustu': 'Süresi doldu',
+      'l.talep': 'Talebiniz bize ulaştı. Saatiniz, talebiniz yanıtlanana kadar sizin için tutuluyor. Onaylanınca size WhatsApp’tan haber veririz ve QR kodunuz bu sayfada görünür.',
+      'l.oneri': 'İstediğiniz saat uygun değildi; size yukarıdaki yeni saati önerdik. Kabul ederseniz randevunuz hemen onaylanır.',
+      'l.onay': 'Randevunuz onaylandı. Kapıda bu QR kodunu okutun, ardından telefonunuzun son 4 hanesini girin. Kod yalnız giriş penceresinde ve bir kez geçerlidir.',
+      'l.acik': 'Giriş pencereniz açık. Ekran parlaklığını artırıp kodu kapıdaki görevliye gösterin.',
+      'l.geldi': 'Ziyaretiniz için teşekkürler. QR kodunuz kullanıldı ve kapandı.', 'l.gelmedi': 'Giriş penceresi kapandı ve kod kullanılmadı. Yeni bir randevu alabilirsiniz.',
+      'l.red': 'Bu saat için randevu veremiyoruz. Gerekçe: {n}. Başka bir saat seçebilirsiniz.', 'l.iptal': 'Randevunuz iptal edildi ve QR kodunuz kapatıldı.', 'l.dustu': 'Talebiniz randevu saatinden önce onaylanamadığı için düştü. Başka bir saat seçebilirsiniz.',
+      'a.cal': 'Takvime ekle', 'a.map': 'Haritada aç', 'a.chg': 'Saati değiştir', 'a.cancel': 'Randevuyu iptal et', 'a.accept': 'Yeni saati kabul et', 'a.reject': 'Kabul etmiyorum', 'a.new': 'Yeni randevu al', 'a.other': 'Başka saat seç',
+      'q.cancel': 'Randevunuz iptal edilsin mi? QR kodunuz kapanır.', 'q.reject': 'Önerilen saati kabul etmiyorsunuz; talep kapanacak. Emin misiniz?',
+      's.qrWait': 'QR kodu onaydan sonra burada görünecek.', 's.your': 'Giriş kodunuz', 's.once': 'Bir kez okutulabilir', 's.left': 'Giriş açık · {m} dk kaldı', 's.opens': 'Giriş {t}’te açılır', 's.used': 'Kod kullanıldı.', 's.closed': 'Kod kapatıldı.',
+      'n.find': 'Randevu bağlantınızı açın', 'n.findP': 'Randevu aldıktan sonra size verilen bağlantıyla bu sayfa açılır. Bu cihazda alınan randevular:', 'n.none': 'Bu cihazda kayıtlı randevu yok.', 'n.err': 'Randevu bulunamadı. Bağlantıyı eksiksiz açtığınızdan emin olun.',
+      'g.received': 'Talep alındı', 'calTitle': 'PURIX Mağaza ziyareti' },
+    en: { 'd.newB': 'New booking', 'd.kvkkF': 'Privacy notice', 'd.h1': 'My booking', 'd.branch': 'Store', 'd.addr': 'Address', 'd.date': 'Date', 'd.time': 'Time', 'd.window': 'Entry window', 'd.firm': 'Company',
+      'st.talep': 'Awaiting approval', 'st.oneri': 'New time proposed', 'st.onay': 'Approved', 'st.acik': 'Entry open', 'st.geldi': 'Completed', 'st.gelmedi': 'Not used', 'st.red': 'Declined', 'st.iptal': 'Cancelled', 'st.dustu': 'Expired',
+      'l.talep': 'Your request reached us. Your time is held for you until we reply. Once approved, we let you know on WhatsApp and your QR code appears on this page.',
+      'l.oneri': 'The time you asked for was not available, so we proposed the new time above. If you accept, your booking is approved at once.',
+      'l.onay': 'Your booking is approved. Scan this QR code at the door, then enter the last 4 digits of your phone. The code works only in the entry window and only once.',
+      'l.acik': 'Your entry window is open. Turn up the screen brightness and show the code at the door.',
+      'l.geldi': 'Thank you for your visit. Your QR code has been used and closed.', 'l.gelmedi': 'The entry window closed and the code was not used. You can book a new visit.',
+      'l.red': 'We cannot offer this time. Reason: {n}. You can choose another time.', 'l.iptal': 'Your booking was cancelled and your QR code closed.', 'l.dustu': 'Your request lapsed because it could not be approved before the visit time. You can choose another time.',
+      'a.cal': 'Add to calendar', 'a.map': 'Open in maps', 'a.chg': 'Change time', 'a.cancel': 'Cancel booking', 'a.accept': 'Accept the new time', 'a.reject': 'I do not accept', 'a.new': 'Book a new visit', 'a.other': 'Choose another time',
+      'q.cancel': 'Cancel your booking? Your QR code will close.', 'q.reject': 'You do not accept the proposed time; the request will close. Are you sure?',
+      's.qrWait': 'The QR code appears here after approval.', 's.your': 'Your entry code', 's.once': 'Can be scanned once', 's.left': 'Entry open · {m} min left', 's.opens': 'Entry opens at {t}', 's.used': 'Code used.', 's.closed': 'Code closed.',
+      'n.find': 'Open your booking link', 'n.findP': 'This page opens with the link you received after booking. Bookings made on this device:', 'n.none': 'No bookings saved on this device.', 'n.err': 'Booking not found. Make sure you opened the full link.',
+      'g.received': 'Request received', 'calTitle': 'PURIX Store visit' }
+  });
+  PX.hazirla();
+  const $ = s => document.querySelector(s), M = PX.M, H = PX.hhmm, kok = $('#kok');
+  if (PX.dil === 'en') $('#footKvkk').href = '../../privacy.html';
+  const token = PX.q.get('t');
+  const RENK = { talep: 'var(--gold-text)', oneri: '#3B6EA8', onay: 'var(--ok)', acik: 'var(--ok)', geldi: 'var(--ink-2)', gelmedi: 'var(--warn)', red: 'var(--warn)', iptal: 'var(--ink-3)', dustu: 'var(--ink-3)' };
+  const ICO = {
+    wait: '<div class="wait"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div>',
+    no: '<div class="wait" style="border-color:var(--warn);color:var(--warn)"><svg viewBox="0 0 24 24"><path d="M8 8l8 8M16 8l-8 8"/></svg></div>',
+    ok: '<div class="wait" style="border-style:solid;border-color:var(--ok);color:var(--ok)"><svg viewBox="0 0 24 24"><path d="M6.5 12.5l3.5 3.5 7.5-8"/></svg></div>'
+  };
+  function listeGoster(mesaj) {
+    const l = PX.kayitlar();
+    kok.innerHTML = (mesaj ? '<div class="m-alert err">' + PX.esc(mesaj) + '</div>' : '') + '<div class="r-head" style="text-align:center"><h1>' + M('n.find') + '</h1><p style="margin-inline:auto">' + M('n.findP') + '</p></div>' +
+      '<div class="my-list">' + (l.length ? l.map(x => '<a href="?t=' + x.token + (PX.dil === 'en' ? '&l=en' : '') + '"><b>' + PX.esc(x.kod) + '</b><span>' + (x.tarih ? PX.tarihKisa(x.tarih) + ' · ' + H(x.saat) : '') + '</span></a>').join('') : '<p class="f-help" style="text-align:center">' + M('n.none') + '</p>') + '</div>';
+  }
+  let R = null, sayac = null;
+  async function yukle() {
+    if (!/^[a-f0-9]{32}$/.test(token || '')) { listeGoster(); return; }
+    let j; try { j = await PX.api('randevu_durum', { token }); } catch (e) { listeGoster(e.message); return; }
+    if (!j.ok) { listeGoster(M('n.err')); return; }
+    R = j.randevu; R.fark = R.simdi - Date.now();
+    PX.kayitEkle({ kod: R.kod, token, tarih: R.tarih, saat: R.saat });
+    ciz();
+  }
+  function an() { return Date.now() + (R ? R.fark : 0); }
+  function ciz() {
+    const r = R, s = r.sube, gAc = H(r.pencere[0]), gKap = H(r.pencere[1]);
+    let durum = r.durum;
+    const acik = durum === 'onay' && an() >= r.baslangic - s.qr_once * 60e3 && an() <= r.baslangic + s.qr_sonra * 60e3;
+    if (acik) durum = 'acik';
+    const btn = (t, cls, a, href) => '<a class="btn ' + (cls || 'btn-line') + '" ' + (href ? 'href="' + href + '"' + (href.startsWith('http') ? ' target="_blank" rel="noopener"' : '') : 'href="#" data-a="' + a + '"') + '>' + t + '</a>';
+    const yeni = '../' + (PX.dil === 'en' ? '?l=en' : ''), degis = '../?degistir=' + token + (PX.dil === 'en' ? '&l=en' : '');
+    const harita = s.harita ? btn(M('a.map'), '', '', s.harita) : '';
+    let acts = '', side = '', lead = M('l.' + durum, { n: r.red_neden || '' });
+    if (durum === 'talep') { acts = btn(M('a.chg'), '', '', degis) + btn(M('a.cancel'), '', 'iptal'); side = ICO.wait + '<p style="color:var(--ink-3);font-size:14px">' + M('s.qrWait') + '</p>'; }
+    if (durum === 'oneri') { acts = btn(M('a.accept'), 'btn-ink', 'kabul') + btn(M('a.reject'), '', 'red'); side = ICO.wait; }
+    if (durum === 'onay' || durum === 'acik') {
+      const ust = durum === 'acik' ? '<span style="color:#79C98A">●</span> ' + M('s.left', { m: Math.max(0, Math.ceil((r.baslangic + s.qr_sonra * 60e3 - an()) / 60e3)) }) : M('s.your');
+      const alt = durum === 'acik' ? M('s.once') : M('s.opens', { t: gAc }) + ' · ' + PX.tarihKisa(r.tarih);
+      side = '<div class="ticket"><small>' + ust + '</small><div class="qr">' + PX.qrSvg(r.qr, 196) + '</div><b>' + gAc + ' – ' + gKap + '</b><small>' + PX.esc(s.ad) + ' · ' + alt + '</small></div>';
+      acts = btn(M('a.cal'), 'btn-ink', 'takvim') + harita + (durum === 'onay' ? btn(M('a.chg'), '', '', degis) + btn(M('a.cancel'), '', 'iptal') : '');
+    }
+    if (durum === 'geldi') { side = ICO.ok + '<p style="color:var(--ink-3);font-size:14px">' + M('s.used') + '</p>'; acts = btn(M('a.new'), 'btn-ink', '', yeni); }
+    if (durum === 'red' || durum === 'dustu') { side = ICO.no + '<p style="color:var(--ink-3);font-size:14px">' + M('s.closed') + '</p>'; acts = btn(M('a.other'), 'btn-ink', '', degis); }
+    if (durum === 'iptal' || durum === 'gelmedi') { side = ICO.no + '<p style="color:var(--ink-3);font-size:14px">' + M('s.closed') + '</p>'; acts = btn(M('a.new'), 'btn-ink', '', yeni); }
+    const tl = r.gecmis.slice(-6).map(([z, o], i, a) => '<li class="' + (i === a.length - 1 ? 'now' : 'ok') + '"><div>' + PX.esc(PX.dil === 'en' ? olayEn(o) : o) + '<span>' + PX.zamanYaz(z) + '</span></div></li>').join('');
+    kok.innerHTML = '<article class="my-card"><div class="my-top"><div><h1>' + M('d.h1') + '</h1><span class="code-s">' + PX.esc(r.kod) + '</span></div><span class="st" style="--c:' + RENK[durum] + '">' + M('st.' + durum) + '</span></div>' +
+      '<div class="my-body"><div class="my-info"><p class="lead">' + PX.esc(lead) + '</p><dl class="sum-dl">' +
+      '<dt>' + M('d.branch') + '</dt><dd>' + PX.esc(s.ad) + '</dd>' + (s.adres ? '<dt>' + M('d.addr') + '</dt><dd>' + PX.esc(s.adres) + '</dd>' : '') +
+      '<dt>' + M('d.date') + '</dt><dd>' + PX.tarihUzun(r.tarih) + '</dd><dt>' + M('d.time') + '</dt><dd>' + H(r.saat) + ' – ' + H(r.bitis) + '</dd>' +
+      '<dt>' + M('d.window') + '</dt><dd>' + gAc + ' – ' + gKap + '</dd><dt>' + M('d.firm') + '</dt><dd>' + PX.esc(r.firma) + '</dd></dl>' +
+      '<ol class="timeline">' + tl + '</ol><div class="my-acts">' + acts + '</div><p class="f-err" id="aErr"></p></div><div class="my-side">' + side + '</div></div></article>';
+    clearTimeout(sayac);
+    if (r.durum === 'onay') sayac = setTimeout(ciz, 30e3);  // giriş penceresi açılınca/kapanınca ekran kendiliğinden değişir
+  }
+  // Geçmiş satırları sunucuda Türkçe yazılır; İngilizce sayfada kısa karşılıklar
+  function olayEn(o) {
+    const E = [[/^Talep alındı/, 'Request received'], [/^Onaylandı/, 'Approved · QR created'], [/^Başka saat önerildi/, 'A new time was proposed'], [/^Müşteri önerilen saati kabul etti/, 'You accepted the new time · approved'],
+      [/^Müşteri önerilen saati kabul etmedi/, 'You declined the new time'], [/^Müşteri iptal etti/, 'You cancelled'], [/^Müşteri saati değiştirdi/, 'You changed the time · awaiting approval'], [/^Reddedildi/, 'Declined'],
+      [/^Sahip iptal etti/, 'Cancelled by PURIX'], [/^Giriş yapıldı/, 'Checked in'], [/düştü/, 'Lapsed'], [/gelmedi/i, 'Not used'], [/^Durum geri alındı/, 'Awaiting approval again']];
+    const m = E.find(([rx]) => rx.test(o)); return m ? m[1] : '';
+  }
+  kok.addEventListener('click', async e => {
+    const a = e.target.closest('[data-a]'); if (!a) return;
+    e.preventDefault();
+    const eylem = a.dataset.a;
+    if (eylem === 'takvim') { PX.takvimDosyasi(R, M('calTitle') + ' · ' + R.sube.ad, R.sube.adres, location.href); return; }
+    if (eylem === 'iptal' && !confirm(M('q.cancel'))) return;
+    if (eylem === 'red' && !confirm(M('q.reject'))) return;
+    a.setAttribute('aria-disabled', 'true');
+    let j; try { j = await PX.api('randevu_islem', { token, eylem: { iptal: 'iptal', kabul: 'oneri_kabul', red: 'oneri_red' }[eylem] }); } catch (err) { j = { ok: false, hata: err.message }; }
+    if (!j.ok) { $('#aErr').textContent = j.hata || M('g.err'); a.removeAttribute('aria-disabled'); return; }
+    R = j.randevu; R.fark = R.simdi - Date.now(); ciz();
+  });
+  yukle();
+})();
+</script>
+</body>
+</html>

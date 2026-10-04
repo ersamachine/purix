@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>PURIX Panel</title>
-<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610032330">
-<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610032330" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../fonts/fonts.css?v=202610032330">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610040302">
+<link rel="preload" href="../fonts/archivo-latin.woff2?v=202610040302" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fonts/fonts.css?v=202610040302">
 <style>
 :root{
   --bg:#F4F4F1;--surface:#fff;--ink:#1C1917;--ink-2:#57534E;--ink-3:#78716C;--line:#D6D3D1;--line-2:#E7E5E4;
@@ -225,6 +225,77 @@ td .who small{color:var(--ink-3)}
 .bg-ad{font-weight:500}.bg-alt{font-size:12.5px;color:var(--ink-3)}
 .bg-kanal{font-size:12px;font-weight:500;padding:3px 10px;border-radius:999px;background:var(--bg);color:var(--ink-2);white-space:nowrap}
 
+/* ===== RANDEVULAR ===== */
+#v-randevular{--s-talep:#8B5E14;--s-oneri:#3B6EA8;--s-onay:#2F7D4A;--s-geldi:#57534E;--s-gelmedi:#B4452A;--s-iptal:#9A938A}
+.rv-top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:14px}
+.rv-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.rv-tab{min-height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:14px;font-weight:550}
+.rv-tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+#v-randevular .warnline,#rvDrawer .warnline{font-size:13px;color:#6E4B22;background:#FFF6E3;border:1px solid #EBD39C;border-radius:10px;padding:8px 12px;margin-bottom:14px}
+#rvDrawer .warnline{margin-bottom:0}
+.wk-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.wk-head h2{font-size:17px;margin:0}
+.wk-nav{display:flex;gap:6px}
+.wk-nav button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center}
+.wk-nav svg{width:15px;height:15px;fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.leg{display:flex;gap:14px;flex-wrap:wrap;margin-inline-start:auto;font-size:12.5px;color:var(--ink-3)}
+.leg span{display:inline-flex;align-items:center;gap:6px}.leg i{width:10px;height:10px;border-radius:3px;background:var(--c)}
+.cal-wrap{overflow-x:auto}
+.cal{display:grid;min-width:760px;border-top:1px solid var(--line-2)}
+.cal .ch{background:#FAFAF8;padding:10px;font-size:12.5px;font-weight:600;color:var(--ink-2);border-bottom:1px solid var(--line-2);border-inline-start:1px solid var(--line-2)}
+.cal .ch b{display:block;font-size:20px;font-stretch:78%;font-weight:540;color:var(--ink);line-height:1.1}
+.cal .ch.today b{color:var(--gold-text)}.cal .ch:first-child{border-inline-start:0}
+.cal .tm{padding:8px 8px 0;font-stretch:78%;font-size:13px;color:var(--ink-3);border-bottom:1px solid var(--line-2);font-variant-numeric:tabular-nums}
+.cal .cell{min-height:64px;padding:4px;border-bottom:1px solid var(--line-2);border-inline-start:1px solid var(--line-2)}
+.cal .cell.off{background:repeating-linear-gradient(135deg,transparent 0 6px,rgba(28,25,23,.03) 6px 12px)}
+.ap{display:flex;flex-direction:column;gap:1px;width:100%;height:100%;min-height:56px;text-align:start;border:0;border-radius:10px;padding:7px 9px;background:color-mix(in srgb,var(--c) 10%,#fff);border-inline-start:3px solid var(--c);font-size:12.5px;line-height:1.3;cursor:pointer}
+.ap b{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ap span{color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ap em{font-style:normal;font-weight:600;font-size:11.5px;color:var(--c)}
+.ap.talep{background:#FFFBF1;outline:1.5px dashed color-mix(in srgb,var(--c) 55%,transparent);outline-offset:-1.5px}
+.rv-code{font-stretch:78%;font-weight:600;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+#rvTbody tr{cursor:pointer}#rvTbody tr.is-new td:first-child{box-shadow:inset 3px 0 0 var(--gold)}
+#rvTbody .who b{display:block;font-weight:600}#rvTbody .who small{color:var(--ink-3)}
+.slotbox{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:var(--stone);color:#F5F2EC;border-radius:16px;padding:14px 16px}
+.slotbox .big{font-stretch:78%;font-size:30px;font-weight:540;color:var(--gold-l);line-height:1;font-variant-numeric:tabular-nums}
+.slotbox small{display:block;color:#A8A29E;font-size:12.5px}.slotbox .gw{text-align:end;font-size:13px;color:#CFC8BE}.slotbox .gw b{display:block;font-stretch:78%;font-size:17px;color:#fff}
+.btn-danger{color:var(--warn);border-color:#E9C9C0;background:#FFF8F6}
+.btn-wa{background:#1F7A4D;color:#fff}.btn-wa:hover{background:#17633e}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sub-panel{border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--surface);display:grid;gap:12px}
+.sub-panel h3{font-size:14.5px}
+.radios{display:grid;gap:8px;font-size:14px}.radios label{display:flex;gap:10px;align-items:center}.radios input{accent-color:var(--ink);width:18px;height:18px}
+.sugg{display:flex;flex-wrap:wrap;gap:6px}
+.sugg button{min-height:40px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);font-size:13.5px}
+.sugg button b{font-stretch:78%;font-size:15px;margin-inline-start:4px}.sugg button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.qrrow{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center}
+.qrrow .qr{background:#fff;border:1px solid var(--line-2);border-radius:12px;padding:4px;line-height:0}.qrrow .qr svg{width:100%;height:auto}
+.qrrow p{font-size:13.5px;color:var(--ink-2)}.qrrow .acts{margin-top:10px}
+.rv-gk{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:16px;align-items:start}
+.rv-phone{background:var(--stone);border-radius:28px;padding:18px;color:#F5F2EC}
+.rv-phone-top{display:flex;justify-content:space-between;font-size:12.5px;color:#A8A29E;margin-bottom:12px}
+.rv-phone video{width:100%;border-radius:18px;margin-bottom:10px;background:#000}
+.rv-kodf{display:flex;gap:8px}.rv-kodf .inp{flex:1;text-transform:uppercase;color:var(--ink);background:#fff}
+.rv-res{margin-top:14px;border-radius:18px;padding:16px;background:#fff;color:var(--ink);display:grid;gap:10px;font-size:14px}
+.rv-res h3{display:flex;align-items:center;gap:10px;font-size:17px}
+.rv-res h3 i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-style:normal;font-size:15px;flex-shrink:0}
+.rv-res p{color:var(--ink-2)}
+.rv-pin{display:flex;gap:8px}.rv-pin input{width:52px;height:56px;text-align:center;font-size:24px;font-stretch:78%;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.rv-log{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rv-log li{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--bg);font-size:14px}
+.rv-log li .num{font-size:15px;font-weight:540;min-width:48px}
+.rv-fs{border:0;margin:0 0 18px;padding:0 0 18px;border-bottom:1px solid var(--line-2);display:grid;gap:12px}
+.rv-fs legend{font-weight:600;font-size:15px;padding:0;margin-bottom:12px}
+.rv-frow{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.rv-fld{display:flex;flex-direction:column;gap:6px;font-size:13.5px}.rv-fld label{font-weight:550}
+.rv-days{display:flex;flex-wrap:wrap;gap:6px}
+.rv-days button{width:52px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--surface);font-weight:600;font-size:13px}
+.rv-days button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.rv-tog{display:flex;align-items:center;gap:10px;font-size:14px}
+.rv-tog input{width:40px;height:22px;appearance:none;border-radius:999px;background:var(--line);position:relative;cursor:pointer;transition:background .2s}
+.rv-tog input::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s}
+.rv-tog input:checked{background:var(--ok)}.rv-tog input:checked::after{transform:translateX(18px)}
+@media(max-width:1100px){.rv-gk{grid-template-columns:1fr}}
+@media(max-width:600px){.qrrow{grid-template-columns:1fr}.slotbox{grid-template-columns:1fr 1fr}.slotbox .gw{text-align:start}}
 /* ===== OFİS ===== */
 .of-cip{display:flex;gap:8px;flex-wrap:wrap}
 .of-cip .chip{cursor:default}.of-cip .chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
@@ -354,7 +425,7 @@ td .who small{color:var(--ink-3)}
 <!-- GİRİŞ -->
 <section class="login" id="login" hidden>
   <form class="login-card" id="loginForm">
-    <img src="../assets/mark-128.webp?v=202610032330" alt="" width="40" height="51">
+    <img src="../assets/mark-128.webp?v=202610040302" alt="" width="40" height="51">
     <h1>PURIX Panel</h1>
     <p>Teklif taleplerini görmek için giriş yapın.</p>
     <div class="field"><label for="pw">Şifre</label><input class="inp" id="pw" type="password" autocomplete="current-password" required></div>
@@ -368,10 +439,11 @@ td .who small{color:var(--ink-3)}
 <!-- UYGULAMA -->
 <div class="app" id="app" hidden>
   <aside class="side" id="side">
-    <div class="brand"><img src="../assets/mark-128.webp?v=202610032330" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
+    <div class="brand"><img src="../assets/mark-128.webp?v=202610040302" alt="" width="24" height="30"><div><b>PURIX</b><small>Satış paneli</small></div></div>
     <button class="nav-btn" data-view="bugun" aria-current="page"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/><path d="M4 20h16"/></svg>Bugün<span class="badge" id="bgBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="genel"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"/></svg>Genel bakış</button>
     <button class="nav-btn" data-view="talepler"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Talepler<span class="badge" id="newBadge" hidden>0</span></button>
+    <button class="nav-btn" data-view="randevular"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4M8.5 14.5l2 2 4-4"/></svg>Randevular<span class="badge" id="rvBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="adaylar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".8"/></svg>Adaylar<span class="badge" id="adBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r=".6"/></svg>Instagram<span class="badge" id="igBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="ajanlar"><svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16.5h5"/></svg>Ajanlar</button>
@@ -435,6 +507,81 @@ td .who small{color:var(--ink-3)}
     </section>
 
     <!-- ADAYLAR (satış ajanları) -->
+    <section id="v-randevular" hidden>
+      <div class="rv-top"><span class="muted" id="rvSubeAd"></span><div class="rv-tabs" role="tablist">
+        <button class="rv-tab" role="tab" data-v="takvim">Takvim</button><button class="rv-tab" role="tab" data-v="liste">Liste</button><button class="rv-tab" role="tab" data-v="giris">Giriş kontrol</button><button class="rv-tab" role="tab" data-v="ayar">Şube ayarları</button>
+      </div></div>
+      <div class="warnline" id="rvKapali" hidden>Şube sitede randevuya kapalı. Adresi ve saatleri girip “Şube ayarları”ndan aç; o zamana kadar sitedeki mağaza sayfası “yakında” der.</div>
+      <div data-rv="takvim">
+        <div class="kpis" id="rvKpi"></div>
+        <div class="card">
+          <div class="wk-head">
+            <div class="wk-nav"><button type="button" id="rvPrev" aria-label="Önceki hafta"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" id="rvNext" aria-label="Sonraki hafta"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div>
+            <h2 id="rvWk"></h2>
+            <div class="leg"><span style="--c:var(--s-talep)"><i></i>Onay bekliyor</span><span style="--c:var(--s-oneri)"><i></i>Saat önerildi</span><span style="--c:var(--s-onay)"><i></i>Onaylandı</span><span style="--c:var(--s-geldi)"><i></i>Geldi</span><span style="--c:var(--s-gelmedi)"><i></i>Gelmedi</span></div>
+          </div>
+          <div class="cal-wrap"><div class="cal" id="rvCal"></div></div>
+        </div>
+      </div>
+      <div data-rv="liste" hidden>
+        <div class="filters"><div style="display:flex;flex-wrap:wrap;gap:6px" id="rvChips"></div><input class="inp search" id="rvQ" placeholder="Firma, yetkili, telefon ya da kod ara"></div>
+        <div class="table-wrap"><table><thead><tr><th>Kod</th><th>Firma / yetkili</th><th>Tarih · saat</th><th>Numune</th><th>Kişi</th><th>Durum</th><th>Kaynak</th></tr></thead><tbody id="rvTbody"></tbody></table></div>
+      </div>
+      <div data-rv="giris" hidden>
+        <div class="rv-gk">
+          <div class="rv-phone">
+            <div class="rv-phone-top"><span>Kapı</span><span>Kodu okut ya da yaz</span></div>
+            <video id="rvVid" playsinline muted hidden></video>
+            <form id="rvKodF" class="rv-kodf"><input class="inp" id="rvKodIn" placeholder="PX-XXXX ya da QR içeriği" autocomplete="off" autocapitalize="characters"><button class="btn btn-gold" type="submit">Kontrol et</button></form>
+            <button class="btn btn-line btn-sm" type="button" id="rvKamBtn" hidden style="margin-top:10px;width:100%;background:transparent;color:#F5F2EC;border-color:#4A433F">Kamerayla okut</button>
+            <div class="rv-res" id="rvRes"><p>Müşterinin Randevum sayfasındaki QR kodunu telefon kamerasıyla okutun ya da randevu kodunu (PX-…) yazın. Kod geçerliyse telefonunun son 4 hanesini sorun.</p></div>
+          </div>
+          <div style="display:grid;gap:16px">
+            <div class="card"><h2>Bugünkü randevular</h2><ul class="rv-log" id="rvBugun"></ul></div>
+            <div class="card"><h2>Giriş kayıtları <small>son okutmalar</small></h2><ul class="rv-log" id="rvGlog"></ul></div>
+            <div class="warnline">Aşama 1: görevli bu ekranı telefonda açar. Kamerayla okuma Android Chrome’da çalışır. iPhone’da müşterinin ekranındaki randevu kodunu (PX-…) yazın; ardından telefonunun son 4 hanesini sorun.</div>
+          </div>
+        </div>
+      </div>
+      <div data-rv="ayar" hidden>
+        <form class="card rv-set" id="rvAyarF">
+          <fieldset class="rv-fs"><legend>Şube</legend>
+            <div class="rv-frow"><div class="rv-fld"><label>Şube adı</label><input class="inp" name="ad" maxlength="60"></div><div class="rv-fld"><label>Harita bağlantısı</label><input class="inp" name="harita" placeholder="https://maps.google.com/…"></div></div>
+            <div class="rv-fld"><label>Adres</label><input class="inp" name="adres" placeholder="Açık adres (sitede ve Randevum sayfasında görünür)" maxlength="300"></div>
+            <label class="rv-tog"><input type="checkbox" name="aktif"> Sitede görünsün ve randevu alsın</label>
+          </fieldset>
+          <fieldset class="rv-fs"><legend>Çalışma günleri ve saatleri</legend>
+            <div class="rv-days" id="rvGunler"></div>
+            <div class="rv-frow"><div class="rv-fld"><label>Açılış</label><input class="inp" type="time" name="acilis"></div><div class="rv-fld"><label>Kapanış</label><input class="inp" type="time" name="kapanis"></div></div>
+          </fieldset>
+          <fieldset class="rv-fs"><legend>Randevu kuralları</legend>
+            <div class="rv-frow">
+              <div class="rv-fld"><label>Randevu süresi (dk)</label><input class="inp" type="number" name="slot_dk" min="15" max="180" step="5"></div>
+              <div class="rv-fld"><label>En fazla kişi</label><input class="inp" type="number" name="kisi_max" min="1" max="5"></div>
+              <div class="rv-fld"><label>Kaç gün ileri</label><input class="inp" type="number" name="ileri_gun" min="1" max="60"></div>
+            </div>
+            <div class="rv-frow">
+              <div class="rv-fld"><label>QR kaç dk önce açılır</label><input class="inp" type="number" name="qr_once" min="0" max="60"></div>
+              <div class="rv-fld"><label>QR kaç dk sonra kapanır</label><input class="inp" type="number" name="qr_sonra" min="0" max="60"></div>
+              <div class="rv-fld"><label>Onaysız talep kaç saat kala düşer</label><input class="inp" type="number" name="dus_saat" min="0" max="24"></div>
+            </div>
+            <p class="muted" style="font-size:13px">Aynı saatte tek firma alınır. Saatleri ya da süreyi değiştirmek mevcut randevuları etkilemez.</p>
+          </fieldset>
+          <div class="acts"><button class="btn btn-ink" type="submit">Kaydet</button></div>
+        </form>
+        <div class="card" style="margin-top:16px"><h2>Kapanışlar <small>tatil, bakım</small></h2>
+          <ul class="rv-log" id="rvKap"></ul>
+          <div class="acts" style="margin-top:12px"><input class="inp" type="date" id="rvKapT" style="width:auto"><input class="inp" id="rvKapN" placeholder="Neden (isteğe bağlı)" style="flex:1;min-width:160px"><button class="btn btn-line btn-sm" type="button" id="rvKapEkle">Kapanış ekle</button></div>
+        </div>
+      </div>
+      <div class="drawer" id="rvDrawer" aria-hidden="true">
+        <div class="drawer-in" role="dialog" aria-modal="true" aria-labelledby="rvTitle">
+          <div class="d-head"><div><h2 id="rvTitle"></h2><div class="muted" id="rvSub"></div></div><button class="x" type="button" id="rvClose" aria-label="Kapat"><svg viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12"/></svg></button></div>
+          <div class="d-body" id="rvBody"></div>
+        </div>
+      </div>
+    </section>
+
     <section id="v-adaylar" hidden>
       <div class="kpis" id="adKpis"></div>
       <div class="filters"><div class="chips" id="adDurum" role="group" aria-label="Duruma göre filtre"></div></div>
@@ -576,8 +723,9 @@ td .who small{color:var(--ink-3)}
 </div>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="harita.js?v=202610032330"></script>
-<script src="../config.js?v=202610032330"></script>
+<script src="../assets/qrcode.js?v=202610040302"></script>
+<script src="harita.js?v=202610040302"></script>
+<script src="../config.js?v=202610040302"></script>
 <script>
 (() => {
   if (window.top !== window.self) { document.documentElement.innerHTML = ''; try { window.top.location = window.self.location; } catch {} return; }  // çerçeve içine alınmaya (clickjacking) karşı
@@ -671,13 +819,13 @@ td .who small{color:var(--ink-3)}
   function start() {
     $('#login').hidden = true; $('#app').hidden = false; $('#demoBar').hidden = !DEMO;
     $('#apiInfo').textContent = DEMO ? 'Bağlı değil (demo verisi)' : (/script\.google\.com/.test(API) ? 'Google Apps Script (eski)' : 'PURIX platform · ' + new URL(API).hostname);
-    hizliAcilis(); load(); igLoad(true); go('bugun'); clearInterval(timer); let tik = 0;
-    timer = setInterval(() => { load(true); if (!igUcus && (++tik % 5 === 0 || view === 'instagram' || view === 'ajanlar')) igLoad(true); if (view === 'trafik') tfLoad(true); if (view === 'sohbetler') shLoad(true); if (view === 'ofis') ofLoad(true); }, 60000);
+    hizliAcilis(); load(); igLoad(true); rvLoad(true); go('bugun'); clearInterval(timer); let tik = 0;
+    timer = setInterval(() => { load(true); if (!igUcus && (++tik % 5 === 0 || view === 'instagram' || view === 'ajanlar')) igLoad(true); if (view === 'trafik') tfLoad(true); if (view === 'sohbetler') shLoad(true); if (view === 'ofis') ofLoad(true); if (view === 'randevular' || tik % 5 === 1) rvLoad(true); }, 60000);
   }
   $('#refresh').addEventListener('click', () => { load(); igLoad(); });
 
   /* ---------- Görünümler ---------- */
-  const TITLES = { bugun: 'Bugün', genel: 'Genel bakış', talepler: 'Talepler', adaylar: 'Adaylar', instagram: 'Instagram', ajanlar: 'Ajanlar', ofis: 'Ofis', trafik: 'Trafik', sohbetler: 'Sohbetler', ayarlar: 'Ayarlar' };
+  const TITLES = { bugun: 'Bugün', genel: 'Genel bakış', talepler: 'Talepler', randevular: 'Randevular', adaylar: 'Adaylar', instagram: 'Instagram', ajanlar: 'Ajanlar', ofis: 'Ofis', trafik: 'Trafik', sohbetler: 'Sohbetler', ayarlar: 'Ayarlar' };
   function go(v) {
     view = v; $$('.nav-btn[data-view]').forEach(b => b.dataset.view === v ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current'));
     Object.keys(TITLES).forEach(k => $('#v-' + k).hidden = k !== v); $('#title').textContent = TITLES[v];
@@ -691,6 +839,7 @@ td .who small{color:var(--ink-3)}
     if (v === 'trafik') tfLoad();
     if (v === 'sohbetler') shLoad();
     if (v === 'ofis') ofLoad();
+    if (v === 'randevular') rvLoad();
   }
   $$('[data-view]').forEach(b => b.addEventListener('click', () => go(b.dataset.view)));
   document.addEventListener('click', e => { const g = e.target.closest('[data-go]'); if (g) go(g.dataset.go); });
@@ -1324,6 +1473,14 @@ td .who small{color:var(--ink-3)}
       });
     }
     return new Promise(res => setTimeout(() => {
+      if (islem === 'randevu_liste') { const b = new Date(Date.now() + 3 * 36e5).toISOString().slice(0, 10), g = n => { const d = new Date(b + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }, z = new Date(Date.now() - 5 * 36e5).toISOString();
+        const R = (kod, firma, ad, sektor, tarih, saat, durum, ek) => Object.assign({ kod, token: 'f'.repeat(32), sube: 'istanbul', firma, vd: 'Beyazıt', vno: '1234567890', vno_kontrol: false, sektor, ad, unvan: '', tel: '0532 000 00 00', eposta: 'ornek@example.com', kisi: 1, ikinci: '', numune: 'Takı', adet: '1–3', notlar: '', dil: 'tr', kaynak: 'Site · doğrudan', izin_duyuru: 0, kvkk_surum: 'magaza-1', oneri_tarih: '', oneri_saat: 0, red_neden: '', qr: durum === 'onay' ? 'abcdef0123456789abcd' : '', giris: '', tarih, saat, durum, olusturma: z, gecmis: [[z, 'Talep alındı (site formu)']] }, ek || {});
+        return res({ ok: true, bugun: b, simdi: Date.now(), bekleyen: 2, en_eski: z, kapanislar: [], girisler: [{ zaman: z, kod: 'PX-4N2C', sonuc: 'erken', aciklama: 'pencere 09:45' }],
+          subeler: [{ kod: 'istanbul', ad: 'İstanbul', adres: '', harita: '', gunler: [1, 2, 3, 4, 5, 6], acilis: '10:00', kapanis: '18:00', slot_dk: 45, kapasite: 1, kisi_max: 2, qr_once: 15, qr_sonra: 15, ileri_gun: 14, dus_saat: 2, aktif: false, guncelleme: '' }],
+          randevular: [R('PX-7K3Q', 'Örnek Kuyumculuk Ltd. Şti.', 'Ayşe Örnek', 'Kuyumcu', g(2), 645, 'talep'), R('PX-9T4A', 'Test Sarraflık', 'Kemal Test', 'Sarraf', g(1), 870, 'talep'), R('PX-4N2C', 'Deneme Rafineri A.Ş.', 'Mert Deneme', 'Rafineri', g(1), 600, 'onay', { kisi: 2, ikinci: 'Selin Deneme', numune: 'Külçe, Hurda' }), R('PX-5B1R', 'Mavi Atölye (örnek)', 'Zeynep Mavi', 'Atölye / imalat', g(3), 690, 'onay'), R('PX-2M8D', 'Örnek Sarraf Ltd.', 'Okan Örnek', 'Sarraf', g(4), 735, 'oneri', { oneri_tarih: g(4), oneri_saat: 645 }), R('PX-1A9Z', 'Örnek Rafineri A.Ş.', 'Deniz Örnek', 'Rafineri', g(-2), 690, 'geldi')] }); }
+      if (islem === 'randevu_karar') return res({ ok: false, hata: 'Demo modunda değişiklik kaydedilmez' });
+      if (islem === 'giris_kontrol') return res({ ok: true, sonuc: 'erken', acilis: Date.now() + 36e5, randevu: { kod: 'PX-4N2C', firma: 'Deneme Rafineri A.Ş.', ad: 'Mert Deneme', kisi: 2, ikinci: 'Selin Deneme', numune: 'Külçe', tarih: new Date().toISOString().slice(0, 10), saat: 600, pencere: [585, 615] } });
+      if (islem === 'sube_ayar') return res({ ok: false, hata: 'Demo modunda değişiklik kaydedilmez' });
       if (islem === 'ofis') { const s = m => new Date(Date.now() - m * 6e4).toISOString(), ileri = m => new Date(Date.now() + m * 6e4).toISOString();
         const A = (id, ad, ekip, is, durum, son, ozet, sonraki, balon) => ({ id, ad, ekip, is, durum, son: son == null ? null : s(son), ozet, sonraki: sonraki == null ? null : ileri(sonraki), balon: balon || '', kayitlar: son == null ? [] : [{ zaman: s(son), durum: durum === 'err' ? 'Hata' : durum === 'uy' ? 'Uyarı' : 'Başarılı', ozet }] });
         return res({ ok: true, zaman: new Date().toISOString(), son: [], ajanlar: [
@@ -1471,6 +1628,248 @@ td .who small{color:var(--ink-3)}
       <div><div style="font-size:12.5px;color:var(--ink-3);margin-bottom:8px">Son ziyaretler <span>(anonim: IP ve kişi bilgisi yok)</span></div>
       <ul class="tf-ul">${u.son.length ? u.son.map(x => `<li><span>${esc(tfKay(x.kaynak, x.alt))}<br><small style="color:var(--ink-3)">${esc(TF_DIL[x.dil] || x.dil || '—')} · ${esc((TF_CIHAZ[x.cihaz] || x.cihaz || '').toLowerCase())}</small></span><time>${tfSaat(x.zaman)}</time></li>`).join('') : '<li><span class="tf-bos">Henüz ziyaret yok.</span></li>'}</ul></div>`;
   }
+  /* ---------- Randevular (mağaza: onay, QR, giriş kontrol, şube ayarları) ---------- */
+  const RV = { veri: null, hafta: 0, fDur: 'hepsi', acik: null, mod: null, alt: 'takvim', gk: null };
+  const RV_DUR = { talep: ['Onay bekliyor', 'var(--s-talep)'], oneri: ['Saat önerildi', 'var(--s-oneri)'], onay: ['Onaylandı', 'var(--s-onay)'], geldi: ['Geldi', 'var(--s-geldi)'], gelmedi: ['Gelmedi', 'var(--s-gelmedi)'], red: ['Reddedildi', 'var(--s-red)'], iptal: ['İptal', 'var(--s-iptal)'], dustu: ['Düştü', 'var(--s-iptal)'] };
+  const RV_GUN = ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'], RV_GUNL = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'], RV_AY = ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'], RV_AYL = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+  const rvP = n => String(n).padStart(2, '0'), rvH = t => rvP(Math.floor(t / 60)) + ':' + rvP(t % 60);
+  const rvGun = s => { const [y, m, d] = s.split('-').map(Number); return new Date(Date.UTC(y, m - 1, d)); };
+  const rvEkle = (s, n) => { const d = rvGun(s); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
+  const rvKisa = s => { const d = rvGun(s); return d.getUTCDate() + ' ' + RV_AY[d.getUTCMonth()] + ' ' + RV_GUN[d.getUTCDay()]; };
+  const rvUzun = s => { const d = rvGun(s); return d.getUTCDate() + ' ' + RV_AYL[d.getUTCMonth()] + ' ' + d.getUTCFullYear() + ', ' + RV_GUNL[d.getUTCDay()]; };
+  const rvZ = iso => { const d = new Date(new Date(iso).getTime() + 3 * 36e5); return d.getUTCDate() + ' ' + RV_AY[d.getUTCMonth()] + ' ' + rvP(d.getUTCHours()) + ':' + rvP(d.getUTCMinutes()); };
+  const rvPill = k => '<span class="pill" style="--c:' + (RV_DUR[k] || RV_DUR.iptal)[1] + '">' + (RV_DUR[k] || [k])[0] + '</span>';
+  const rvSube = () => (RV.veri && RV.veri.subeler[0]) || null;
+  const rvSlotlar = s => { const out = [], dk = x => { const [h, m] = x.split(':').map(Number); return h * 60 + m; }; for (let t = dk(s.acilis); t + s.slot_dk <= dk(s.kapanis); t += s.slot_dk) out.push(t); return out; };
+  const rvPencere = r => { const s = rvSube() || { qr_once: 15, qr_sonra: 15 }; return rvH(r.saat - s.qr_once) + ' – ' + rvH(r.saat + s.qr_sonra); };
+  const rvBas = r => { const [y, m, d] = r.tarih.split('-').map(Number); return Date.UTC(y, m - 1, d) + r.saat * 6e4 - 3 * 36e5; };
+  const rvLink = r => 'https://www.purixxrf.com/randevu/durum/?t=' + r.token + (r.dil === 'en' ? '&l=en' : '');
+  const rvTelWa = t => { let d = String(t || '').replace(/\D/g, ''); if (d.length === 11 && d[0] === '0') d = '9' + d; else if (d.length === 10 && d[0] === '5') d = '90' + d; return d; };
+  function rvWaMetin(r) {
+    const s = rvSube() || { ad: '' }, en = r.dil === 'en';
+    if (r.durum === 'onay') return en ? `Hello ${r.ad}, your PURIX Store ${s.ad} visit is approved: ${rvUzun(r.tarih)} ${rvH(r.saat)}.\nYour entry code and details: ${rvLink(r)}\nThe code works once, between ${rvPencere(r)}. At the door you will be asked for the last 4 digits of your phone.`
+      : `Merhaba ${r.ad}, PURIX Mağaza ${s.ad} randevunuz onaylandı: ${rvUzun(r.tarih)} ${rvH(r.saat)}.\nGiriş kodunuz ve ayrıntılar: ${rvLink(r)}\nKod ${rvPencere(r)} arasında, bir kez geçerlidir. Kapıda telefonunuzun son 4 hanesi sorulacak.`;
+    if (r.durum === 'oneri') return en ? `Hello ${r.ad}, the time you asked for at PURIX Store is not available. We can offer ${rvUzun(r.tarih)} ${rvH(r.saat)}. To accept: ${rvLink(r)}`
+      : `Merhaba ${r.ad}, PURIX Mağaza için istediğiniz saat uygun değil. Size ${rvUzun(r.tarih)} ${rvH(r.saat)} saatini önerebiliriz. Kabul etmek için: ${rvLink(r)}`;
+    if (r.durum === 'red') return en ? `Hello ${r.ad}, we cannot offer the time you asked for at PURIX Store (${r.red_neden}). You can choose another time here: ${rvLink(r)}`
+      : `Merhaba ${r.ad}, PURIX Mağaza için istediğiniz saatte randevu veremiyoruz (${r.red_neden}). Başka bir saat seçmek için: ${rvLink(r)}`;
+    return en ? `Hello ${r.ad}, this is PURIX Store about your booking ${r.kod}: ${rvLink(r)}` : `Merhaba ${r.ad}, PURIX Mağaza'dan ${r.kod} randevunuz hakkında yazıyoruz: ${rvLink(r)}`;
+  }
+
+  async function rvLoad(sessiz) {
+    try { RV.veri = await api('randevu_liste', {}); rvRozet(); if (view === 'randevular') rvCiz(); }
+    catch (e) { if (!sessiz) toast(e.message); }
+  }
+  function rvRozet() { const n = RV.veri ? RV.veri.bekleyen : 0, b = $('#rvBadge'); if (b) { b.hidden = !n; b.textContent = n; } }
+  function rvCiz() {
+    if (!RV.veri) return;
+    $$('#v-randevular .rv-tab').forEach(t => t.setAttribute('aria-selected', String(t.dataset.v === RV.alt)));
+    $$('#v-randevular [data-rv]').forEach(s => s.hidden = s.dataset.rv !== RV.alt);
+    const s = rvSube();
+    $('#rvSubeAd').textContent = s ? s.ad + (s.aktif ? '' : ' · randevuya kapalı') : '';
+    $('#rvKapali').hidden = !s || s.aktif;
+    if (RV.alt === 'takvim') { rvKpi(); rvTakvim(); }
+    if (RV.alt === 'liste') rvListe();
+    if (RV.alt === 'giris') rvGirisCiz();
+    if (RV.alt === 'ayar') rvAyarCiz();
+  }
+  function rvKpi() {
+    const v = RV.veri, R = v.randevular, yarin = rvEkle(v.bugun, 1), haftaSon = rvEkle(v.bugun, 7), ay = rvEkle(v.bugun, -30);
+    const yR = R.filter(r => r.tarih === yarin && ['talep', 'onay', 'oneri'].includes(r.durum));
+    $('#rvKpi').innerHTML =
+      '<div class="kpi accent"><span>Onay bekliyor</span><b>' + v.bekleyen + '</b><small>' + (v.en_eski ? 'en eskisi ' + rvZ(v.en_eski) : 'bekleyen yok') + '</small></div>' +
+      '<div class="kpi"><span>Önümüzdeki 7 gün onaylı</span><b>' + R.filter(r => r.durum === 'onay' && r.tarih > v.bugun && r.tarih <= haftaSon).length + '</b><small>bugün hariç</small></div>' +
+      '<div class="kpi"><span>Yarın</span><b>' + yR.length + '</b><small>' + yR.filter(r => r.durum === 'onay').length + ' onaylı · ' + yR.filter(r => r.durum === 'talep').length + ' bekliyor</small></div>' +
+      '<div class="kpi"><span>Gelmedi (30 gün)</span><b>' + R.filter(r => r.durum === 'gelmedi' && r.tarih >= ay).length + '</b><small>giriş penceresinde kod kullanılmadı</small></div>';
+  }
+  function rvTakvim() {
+    const v = RV.veri, s = rvSube(); if (!s) { $('#rvCal').innerHTML = '<p class="empty">Şube yok.</p>'; return; }
+    const yarin = rvEkle(v.bugun, 1), pzt = rvEkle(yarin, -((rvGun(yarin).getUTCDay() + 6) % 7) + RV.hafta * 7);  // yarının haftası
+    const gunler = Array.from({ length: 7 }, (_, i) => rvEkle(pzt, i)).filter(g => s.gunler.includes(rvGun(g).getUTCDay()));
+    $('#rvWk').textContent = rvKisa(pzt).replace(/ \S+$/, '') + ' – ' + rvKisa(rvEkle(pzt, 6)).replace(/ \S+$/, '') + ' ' + rvGun(pzt).getUTCFullYear();
+    const kap = new Set(v.kapanislar.map(k => k.tarih));
+    let h = '<div class="ch"></div>' + gunler.map(g => '<div class="ch' + (g === v.bugun ? ' today' : '') + '">' + RV_GUNL[rvGun(g).getUTCDay()] + '<b>' + Number(g.slice(8)) + '</b>' + (kap.has(g) ? '<small class="muted">kapalı</small>' : '') + '</div>').join('');
+    rvSlotlar(s).forEach(t => {
+      h += '<div class="tm">' + rvH(t) + '</div>';
+      gunler.forEach(g => {
+        const r = v.randevular.find(x => x.tarih === g && x.saat === t && !['red', 'iptal', 'dustu'].includes(x.durum));
+        if (!r) { h += '<div class="cell' + (g < v.bugun || kap.has(g) ? ' off' : '') + '"></div>'; return; }
+        h += '<div class="cell"><button type="button" class="ap ' + r.durum + '" style="--c:' + RV_DUR[r.durum][1] + '" data-k="' + r.kod + '"><em>' + RV_DUR[r.durum][0] + '</em><b>' + esc(r.firma) + '</b><span>' + esc(r.ad) + ' · ' + r.kisi + ' kişi</span></button></div>';
+      });
+    });
+    const cal = $('#rvCal'); cal.style.gridTemplateColumns = '64px repeat(' + gunler.length + ',minmax(128px,1fr))'; cal.innerHTML = h;
+  }
+  function rvListe() {
+    const R = RV.veri.randevular, say = k => R.filter(r => k === 'hepsi' || r.durum === k).length;
+    $('#rvChips').innerHTML = [['hepsi', 'Hepsi'], ['talep', 'Onay bekliyor'], ['oneri', 'Saat önerildi'], ['onay', 'Onaylandı'], ['geldi', 'Geldi'], ['gelmedi', 'Gelmedi'], ['red', 'Reddedildi'], ['iptal', 'İptal'], ['dustu', 'Düştü']]
+      .map(([k, t]) => '<button class="chip" data-f="' + k + '" aria-pressed="' + (RV.fDur === k) + '">' + t + ' <em>' + say(k) + '</em></button>').join('');
+    const q = $('#rvQ').value.trim().toLocaleLowerCase('tr');
+    const rows = R.filter(r => (RV.fDur === 'hepsi' || r.durum === RV.fDur) && (!q || (r.firma + ' ' + r.ad + ' ' + r.kod + ' ' + r.tel).toLocaleLowerCase('tr').includes(q)))
+      .sort((a, b) => (a.durum !== 'talep') - (b.durum !== 'talep') || (a.tarih + rvP(a.saat)).localeCompare(b.tarih + rvP(b.saat)));
+    $('#rvTbody').innerHTML = rows.map(r => '<tr data-k="' + r.kod + '" class="' + (r.durum === 'talep' ? 'is-new' : '') + '"><td class="rv-code">' + r.kod + '</td><td><div class="who"><b>' + esc(r.firma) + '</b><small>' + esc(r.ad) + ' · ' + esc(r.sektor) + '</small></div></td><td class="num" style="font-size:15px">' + rvKisa(r.tarih) + ' · ' + rvH(r.saat) + '</td><td>' + esc(r.numune) + '</td><td>' + r.kisi + '</td><td>' + rvPill(r.durum) + '</td><td class="muted">' + esc(r.kaynak) + '</td></tr>').join('')
+      || '<tr><td colspan="7" class="muted" style="text-align:center;padding:24px">Kayıt yok.</td></tr>';
+  }
+  function rvAc(kod) { RV.acik = kod; RV.mod = null; rvCekmece(); $('#rvDrawer').classList.add('open'); $('#rvDrawer').setAttribute('aria-hidden', 'false'); }
+  function rvKapat() { $('#rvDrawer').classList.remove('open'); $('#rvDrawer').setAttribute('aria-hidden', 'true'); RV.acik = null; }
+  function rvBosSlotlar(r) {  // aynı gün ve sonraki iki açık günde boş saatler (öneri için)
+    const s = rvSube(), v = RV.veri, out = [], dolu = new Set(v.randevular.filter(x => ['talep', 'oneri', 'onay', 'geldi'].includes(x.durum) && x.kod !== r.kod).map(x => x.tarih + '|' + x.saat)), kap = new Set(v.kapanislar.map(k => k.tarih));
+    for (let i = 0, g = r.tarih, n = 0; i < 10 && n < 3; i++, g = rvEkle(r.tarih, i)) {
+      if (g <= v.bugun || !s.gunler.includes(rvGun(g).getUTCDay()) || kap.has(g)) continue;
+      n++; rvSlotlar(s).forEach(t => { if (!(g === r.tarih && t === r.saat) && !dolu.has(g + '|' + t) && rvBas({ tarih: g, saat: t }) - Date.now() > (s.dus_saat + 1) * 36e5) out.push([g, t]); });
+    }
+    return out.slice(0, 12);
+  }
+  function rvCekmece() {
+    const r = RV.veri.randevular.find(x => x.kod === RV.acik); if (!r) { rvKapat(); return; }
+    const s = rvSube();
+    $('#rvTitle').textContent = r.firma;
+    $('#rvSub').innerHTML = '<span class="rv-code">' + r.kod + '</span> · ' + esc(r.sektor) + ' · talep ' + rvZ(r.olusturma);
+    let h = '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">' + rvPill(r.durum) + (r.durum === 'oneri' ? '<span class="muted" style="font-size:13px">İlk istek: ' + rvKisa(r.oneri_tarih) + ' ' + rvH(r.oneri_saat) + ' · müşterinin yanıtı bekleniyor</span>' : '') + (r.red_neden ? '<span class="muted" style="font-size:13px">Gerekçe: ' + esc(r.red_neden) + '</span>' : '') + '</div>';
+    h += '<div class="slotbox"><div><small>' + RV_GUNL[rvGun(r.tarih).getUTCDay()] + '</small><span class="big">' + rvH(r.saat) + '</span></div><div><b>' + Number(r.tarih.slice(8)) + ' ' + RV_AYL[rvGun(r.tarih).getUTCMonth()] + '</b><small>' + esc(s ? s.ad : '') + ' · ' + (s ? s.slot_dk : 45) + ' dk · ' + r.kisi + ' kişi</small></div><div class="gw">Giriş<b>' + rvPencere(r) + '</b></div></div>';
+    const wa = '<a class="btn btn-wa btn-sm" target="_blank" rel="noopener" href="https://wa.me/' + rvTelWa(r.tel) + '?text=' + encodeURIComponent(rvWaMetin(r)) + '"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1z"/></svg>WhatsApp’ta gönder</a>';
+    if (r.durum === 'talep' || r.durum === 'dustu') {
+      if (!RV.mod) h += '<div class="acts"><button class="btn btn-ink" data-a="onayla"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Onayla</button><button class="btn btn-line" data-a="oner">Başka saat öner</button><button class="btn btn-danger" data-a="reddet">Reddet</button></div>' +
+        (r.durum === 'talep' ? '<div class="warnline">Karar verilmezse talep randevuya ' + (s ? s.dus_saat : 2) + ' saat kala kendiliğinden düşer ve saat boşalır.</div>' : '<div class="warnline">Bu talep zamanında onaylanmadığı için düştü. Yine de onaylayabilir ya da başka saat önerebilirsin.</div>');
+      if (RV.mod === 'reddet') h += '<div class="sub-panel"><h3>Reddetme gerekçesi <span class="muted" style="font-weight:400">(müşteri Randevum sayfasında görür)</span></h3><div class="radios">' +
+        ['Seçtiğiniz saat uygun değil', 'Kapasite dolu', 'Bilgiler eksik veya doğrulanamadı', 'Şu an yalnız belirli sektörlere randevu veriyoruz'].map((t, i) => '<label><input type="radio" name="rvRn" value="' + t + '"' + (i ? '' : ' checked') + '>' + t + '</label>').join('') +
+        '</div><div class="acts"><button class="btn btn-danger" data-a="redOk">Reddet</button><button class="btn btn-line" data-a="vazgec">Vazgeç</button></div></div>';
+      if (RV.mod === 'oner') {
+        const bos = rvBosSlotlar(r);
+        h += '<div class="sub-panel"><h3>Hangi saati önerelim?</h3>' + (bos.length ? '<div class="sugg" id="rvSugg">' + bos.map(([g, t], i) => '<button type="button" data-g="' + g + '" data-t="' + t + '" aria-pressed="' + (i === 0) + '">' + rvKisa(g) + '<b>' + rvH(t) + '</b></button>').join('') + '</div>' : '<p class="muted">Yakın günlerde boş saat yok.</p>') +
+          '<p class="muted" style="font-size:13px">Müşteri Randevum sayfasından kabul ederse randevu kendiliğinden onaylanır ve QR üretilir. Öneriyi ona WhatsApp’tan haber ver.</p>' +
+          '<div class="acts">' + (bos.length ? '<button class="btn btn-ink" data-a="onerOk">Öner</button>' : '') + '<button class="btn btn-line" data-a="vazgec">Vazgeç</button></div></div>';
+      }
+    }
+    if (r.durum === 'oneri') h += '<div class="acts">' + wa + '<button class="btn btn-line btn-sm" data-a="iptal">Randevuyu iptal et</button></div>';
+    if (r.durum === 'onay') {
+      const kapandi = Date.now() > rvBas(r) + (s ? s.qr_sonra : 15) * 6e4;
+      h += '<div class="card"><h2>Giriş QR’ı <small>tek kullanımlık · ' + rvPencere(r) + '</small></h2><div class="qrrow"><div class="qr" id="rvQr"></div><div><p>Müşteri bu kodu Randevum sayfasında görür. Onayı ona WhatsApp’tan bildir; mesajda Randevum bağlantısı var.</p><div class="acts">' + wa + '<button class="btn btn-line btn-sm" data-a="kopya">Randevum bağlantısını kopyala</button></div></div></div></div>' +
+        '<div class="acts"><button class="btn btn-line btn-sm" data-a="iptal">Randevuyu iptal et</button>' + (kapandi ? '<button class="btn btn-line btn-sm" data-a="gelmedi">Gelmedi işaretle</button>' : '') + '</div>';
+    }
+    if (r.durum === 'red') h += '<div class="acts">' + wa + '<button class="btn btn-line btn-sm" data-a="geri_al">Yeniden onaya al</button></div>';
+    if (['iptal', 'gelmedi'].includes(r.durum)) h += '<div class="acts"><button class="btn btn-line btn-sm" data-a="geri_al">Yeniden onaya al</button></div>';
+    h += '<div class="card"><h2>Firma ve yetkili</h2><dl class="kv"><dt>Unvan</dt><dd>' + esc(r.firma) + '</dd><dt>Vergi</dt><dd>' + esc(r.vd) + ' · ' + esc(r.vno) + (r.vno_kontrol ? ' <span class="muted">✓ kontrol hanesi tutuyor</span>' : ' <span style="color:var(--warn)">kontrol hanesi tutmuyor, kontrol et</span>') + '</dd><dt>Sektör</dt><dd>' + esc(r.sektor) + '</dd>' +
+      '<dt>Yetkili</dt><dd>' + esc(r.ad) + (r.unvan ? ' · ' + esc(r.unvan) : '') + '</dd><dt>Telefon</dt><dd><a href="tel:' + esc(r.tel) + '">' + esc(r.tel) + '</a> <span class="muted">(kapıda son 4 hane)</span></dd><dt>E-posta</dt><dd>' + esc(r.eposta) + '</dd>' +
+      '<dt>Kişi</dt><dd>' + (r.kisi > 1 ? r.kisi + ' kişi · ' + esc(r.ikinci) : 'Yalnız kendisi') + '</dd><dt>Numune</dt><dd>' + esc(r.numune) + (r.adet ? ' · ' + esc(r.adet) + ' parça' : '') + '</dd>' + (r.notlar ? '<dt>Not</dt><dd>' + esc(r.notlar) + '</dd>' : '') +
+      '<dt>Kaynak</dt><dd>' + esc(r.kaynak) + ' · ' + (r.dil === 'en' ? 'İngilizce' : 'Türkçe') + '</dd></dl></div>';
+    h += '<div class="card"><h2>Onaylar <small>metin ' + esc(r.kvkk_surum) + '</small></h2><dl class="kv"><dt>KVKK + kamera</dt><dd>✓ ' + rvZ(r.olusturma) + '</dd><dt>Mağaza kuralları</dt><dd>✓ ' + rvZ(r.olusturma) + '</dd><dt>Duyurular</dt><dd' + (r.izin_duyuru ? '>İzin verdi' : ' class="muted">İzin vermedi') + '</dd></dl></div>';
+    h += '<div class="card"><h2>Geçmiş</h2><ul class="notes">' + r.gecmis.slice().reverse().map(([z, o]) => '<li><small>' + rvZ(z) + '</small>' + esc(o) + '</li>').join('') + '</ul>' +
+      '<div class="acts" style="margin-top:10px"><input class="inp" id="rvNot" placeholder="Not ekle" style="flex:1"><button class="btn btn-line btn-sm" data-a="not">Ekle</button></div></div>';
+    $('#rvBody').innerHTML = h;
+    const q = $('#rvQr'); if (q && window.qrcode && r.qr) { const qr = window.qrcode(0, 'M'); qr.addData('PXR:' + r.kod + ':' + r.qr); qr.make(); q.innerHTML = qr.createSvgTag({ cellSize: 3, margin: 2 }); }
+  }
+  async function rvKarar(eylem, ek) {
+    try {
+      const j = await api('randevu_karar', { kod: RV.acik, eylem, ...(ek || {}) });
+      const i = RV.veri.randevular.findIndex(x => x.kod === RV.acik); if (i >= 0) RV.veri.randevular[i] = j.randevu;
+      RV.veri.bekleyen = RV.veri.randevular.filter(x => x.durum === 'talep').length; RV.mod = null; rvRozet(); rvCekmece(); rvCiz();
+      toast({ onayla: 'Onaylandı · QR üretildi. Müşteriye WhatsApp’tan bildir.', reddet: 'Reddedildi · saat boşaldı', oner: 'Öneri kaydedildi. Müşteriye WhatsApp’tan bildir.', iptal: 'İptal edildi · QR kapandı', gelmedi: 'Gelmedi olarak işaretlendi', geri_al: 'Yeniden onay bekliyor', not: 'Not eklendi' }[eylem] || 'Kaydedildi');
+    } catch (e) { toast(e.message); }
+  }
+  // ---- giriş kontrol ----
+  function rvGirisCiz() {
+    const v = RV.veri, bugunR = v.randevular.filter(r => r.tarih === v.bugun && !['red', 'iptal', 'dustu'].includes(r.durum)).sort((a, b) => a.saat - b.saat);
+    $('#rvBugun').innerHTML = bugunR.length ? bugunR.map(r => '<li><span class="num">' + rvH(r.saat) + '</span><span><b>' + esc(r.firma) + '</b><br><small class="muted">' + esc(r.ad) + ' · ' + r.kisi + ' kişi · giriş ' + rvPencere(r) + '</small></span>' + rvPill(r.durum) + '</li>').join('') : '<li class="muted" style="grid-template-columns:1fr">Bugün randevu yok.</li>';
+    const SON = { kabul: ['Kabul', 'var(--ok)'], gorevli: ['Görevli onayı', 'var(--ok)'], erken: ['Erken', 'var(--s-talep)'], gec: ['Süresi dolmuş', 'var(--warn)'], kullanildi: ['Kullanılmış', 'var(--warn)'], onaysiz: ['Onaysız', 'var(--warn)'], pin: ['Yanlış 4 hane', 'var(--warn)'], yok: ['Geçersiz', 'var(--warn)'], baska_sube: ['Başka şube', 'var(--warn)'] };
+    $('#rvGlog').innerHTML = v.girisler.length ? v.girisler.slice(0, 15).map(g => '<li><span class="num">' + rvZ(g.zaman).replace(/^\d+ \S+ /, '') + '</span><span>' + esc(g.kod || '—') + ' · <span class="muted">' + esc(g.aciklama) + '</span></span><span class="pill" style="--c:' + (SON[g.sonuc] || SON.yok)[1] + '">' + (SON[g.sonuc] || [g.sonuc])[0] + '</span></li>').join('') : '<li class="muted" style="grid-template-columns:1fr">Henüz okutma yok.</li>';
+    $('#rvKamBtn').hidden = !('BarcodeDetector' in window);
+  }
+  function rvSonuc(j) {
+    const r = j.randevu || {}, el = $('#rvRes'), kim = r.firma ? '<p><b style="color:var(--ink)">' + esc(r.firma) + '</b><br>' + esc(r.ad) + ' · ' + r.kisi + ' kişi' + (r.ikinci ? ' (' + esc(r.ikinci) + ')' : '') + ' · ' + esc(r.numune) + '<br>' + rvKisa(r.tarih) + ' ' + rvH(r.saat) + ' · giriş penceresi ' + rvH(r.pencere[0]) + '–' + rvH(r.pencere[1]) + '</p>' : '';
+    const pin = '<label style="font-size:13.5px;font-weight:600">Telefonun son 4 hanesi</label><div class="rv-pin" id="rvPin">' + [0, 1, 2, 3].map(() => '<input maxlength="1" inputmode="numeric" autocomplete="off">').join('') + '</div>';
+    const H3 = (c, i, t) => '<h3 style="--c:' + c + '"><i>' + i + '</i>' + t + '</h3>';
+    if (j.sonuc === 'gecerli') el.innerHTML = H3('var(--ok)', '✓', j.gec ? 'Geçerli kod · pencere kapanmış (görevli onayı)' : 'Geçerli kod') + kim + pin + '<button class="btn btn-ink" id="rvGirOk">Doğrula ve içeri al</button>';
+    else if (j.sonuc === 'kabul') el.innerHTML = H3('var(--ok)', '✓', 'Giriş kaydedildi · ' + rvZ(r.giris).replace(/^\d+ \S+ /, '')) + kim + '<p>Hoş geldiniz.</p>';
+    else if (j.sonuc === 'erken') el.innerHTML = H3('var(--s-talep)', '!', 'Erken geldi') + kim + '<p>Giriş penceresi <b>' + rvZ(new Date(j.acilis).toISOString()) + '</b>’te açılır. Misafiri bekleme alanına alın.</p>';
+    else if (j.sonuc === 'gec') el.innerHTML = H3('var(--warn)', '×', 'Süresi dolmuş') + kim + '<p>Giriş penceresi kapandı. Müşteri Randevum sayfasından yeni saat seçebilir. İstersen elle içeri alabilirsin (kayda “görevli onayı” düşer).</p><button class="btn btn-line btn-sm" id="rvZorla">Görevli onayıyla devam et</button>';
+    else if (j.sonuc === 'kullanildi') el.innerHTML = H3('var(--warn)', '×', 'Kod zaten kullanıldı') + kim + '<p>Bu kod ' + (r.giris ? rvZ(r.giris) : 'daha önce') + ' okutuldu. Ekran görüntüsüyle paylaşılmış olabilir: kişiyi ve kimliği kontrol edin.</p>';
+    else if (j.sonuc === 'onaysiz') el.innerHTML = H3('var(--warn)', '×', 'Onaylı randevu değil') + kim + '<p>Durum: ' + (RV_DUR[j.durum] || [j.durum])[0] + '.</p>';
+    else if (j.sonuc === 'pin') el.innerHTML = H3('var(--warn)', '×', 'Son 4 hane yanlış') + kim + '<p>' + j.kalan + ' deneme hakkı kaldı.</p>' + pin + '<button class="btn btn-ink" id="rvGirOk">Tekrar dene</button>';
+    else if (j.sonuc === 'kilit') el.innerHTML = H3('var(--warn)', '×', 'Çok fazla yanlış deneme') + kim + '<p>Bu kod kilitlendi. Kimliği kontrol edip panelden randevuyu inceleyin.</p>';
+    else if (j.sonuc === 'baska_sube') el.innerHTML = H3('var(--warn)', '×', 'Başka şubenin kodu') + kim;
+    else el.innerHTML = H3('var(--warn)', '×', 'Geçersiz kod') + '<p>Kod tanınmadı. Müşteriden Randevum sayfasını açmasını isteyin ya da randevu kodunu (PX-…) elle yazın.</p>';
+    const ilk = $('#rvPin input'); if (ilk) ilk.focus();
+  }
+  async function rvKontrol(ek) {
+    const metin = (RV.gk && RV.gk.metin) || $('#rvKodIn').value.trim(); if (!metin) return;
+    RV.gk = { metin, ...(RV.gk || {}), ...(ek || {}) };
+    try { const j = await api('giris_kontrol', { metin, sube: (rvSube() || {}).kod, son4: RV.gk.son4 || '', zorla: !!RV.gk.zorla }); rvSonuc(j); if (j.sonuc === 'kabul' || j.sonuc === 'pin') rvLoad(true); if (j.sonuc !== 'pin' && j.sonuc !== 'gecerli') RV.gk = null; else delete RV.gk.son4; }
+    catch (e) { toast(e.message); }
+  }
+  let rvAkis = null;
+  async function rvKamera() {
+    const v = $('#rvVid');
+    if (rvAkis) { rvAkis.getTracks().forEach(t => t.stop()); rvAkis = null; v.hidden = true; $('#rvKamBtn').textContent = 'Kamerayla okut'; return; }
+    try {
+      rvAkis = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+      v.srcObject = rvAkis; v.hidden = false; await v.play(); $('#rvKamBtn').textContent = 'Kamerayı kapat';
+      const det = new BarcodeDetector({ formats: ['qr_code'] });
+      const dongu = async () => {
+        if (!rvAkis) return;
+        try { const k = await det.detect(v); if (k.length) { $('#rvKodIn').value = k[0].rawValue; RV.gk = null; rvKamera(); rvKontrol(); return; } } catch { /* kare okunamadı */ }
+        requestAnimationFrame(dongu);
+      };
+      dongu();
+    } catch (e) { toast('Kamera açılamadı: ' + e.message); rvAkis = null; }
+  }
+  // ---- şube ayarları ----
+  function rvAyarCiz() {
+    const s = rvSube(); if (!s) return;
+    const f = $('#rvAyarF'); if (f.dataset.kod === s.kod && f.dataset.guncel === s.guncelleme) return;
+    f.dataset.kod = s.kod; f.dataset.guncel = s.guncelleme;
+    f.ad.value = s.ad; f.adres.value = s.adres; f.harita.value = s.harita; f.aktif.checked = s.aktif; f.acilis.value = s.acilis; f.kapanis.value = s.kapanis;
+    ['slot_dk', 'kisi_max', 'qr_once', 'qr_sonra', 'ileri_gun', 'dus_saat'].forEach(k => { f[k].value = s[k]; });
+    $('#rvGunler').innerHTML = [1, 2, 3, 4, 5, 6, 0].map(g => '<button type="button" data-g="' + g + '" aria-pressed="' + s.gunler.includes(g) + '">' + RV_GUN[g] + '</button>').join('');
+    rvKapanisCiz();
+  }
+  function rvKapanisCiz() { const k = RV.veri.kapanislar; $('#rvKap').innerHTML = k.length ? k.map(x => '<li><span class="num">' + rvKisa(x.tarih) + '</span><span>' + esc(x.neden || '') + '</span><button class="btn btn-line btn-sm" data-ks="' + x.id + '">Sil</button></li>').join('') : '<li class="muted" style="grid-template-columns:1fr">Kapanış yok.</li>'; }
+  async function rvAyarKaydet(e) {
+    e.preventDefault();
+    const f = $('#rvAyarF'), s = rvSube();
+    const alanlar = { ad: f.ad.value.trim(), adres: f.adres.value.trim(), harita: f.harita.value.trim(), aktif: f.aktif.checked, acilis: f.acilis.value, kapanis: f.kapanis.value, gunler: $$('#rvGunler [aria-pressed=true]').map(b => +b.dataset.g) };
+    ['slot_dk', 'kisi_max', 'qr_once', 'qr_sonra', 'ileri_gun', 'dus_saat'].forEach(k => { alanlar[k] = +f[k].value; });
+    try { const j = await api('sube_ayar', { kod: s.kod, alanlar }); Object.assign(s, j.sube); RV.veri.kapanislar = j.kapanislar; f.dataset.guncel = ''; rvCiz(); toast('Şube ayarları kaydedildi' + (j.sube.aktif ? ' · sitede randevu açık' : ' · sitede randevu kapalı')); }
+    catch (err) { toast(err.message); }
+  }
+  async function rvKapanis(ek) { try { const j = await api('sube_ayar', { kod: rvSube().kod, ...ek }); RV.veri.kapanislar = j.kapanislar; rvKapanisCiz(); toast('Kaydedildi'); } catch (e) { toast(e.message); } }
+  // ---- olaylar ----
+  $$('#v-randevular .rv-tab').forEach(t => t.addEventListener('click', () => { RV.alt = t.dataset.v; rvCiz(); }));
+  $('#rvPrev').addEventListener('click', () => { RV.hafta--; rvTakvim(); });
+  $('#rvNext').addEventListener('click', () => { RV.hafta++; rvTakvim(); });
+  $('#rvCal').addEventListener('click', e => { const b = e.target.closest('[data-k]'); if (b) rvAc(b.dataset.k); });
+  $('#rvChips').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if (b) { RV.fDur = b.dataset.f; rvListe(); } });
+  $('#rvQ').addEventListener('input', rvListe);
+  $('#rvTbody').addEventListener('click', e => { const tr = e.target.closest('[data-k]'); if (tr) rvAc(tr.dataset.k); });
+  $('#rvClose').addEventListener('click', rvKapat);
+  $('#rvDrawer').addEventListener('click', e => { if (e.target.id === 'rvDrawer') rvKapat(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && RV.acik) rvKapat(); });
+  $('#rvBody').addEventListener('click', e => {
+    const sg = e.target.closest('#rvSugg button'); if (sg) { $$('#rvSugg button').forEach(b => b.setAttribute('aria-pressed', String(b === sg))); return; }
+    const b = e.target.closest('[data-a]'); if (!b) return;
+    const a = b.dataset.a, r = RV.veri.randevular.find(x => x.kod === RV.acik);
+    if (a === 'reddet' || a === 'oner') { RV.mod = a; rvCekmece(); return; }
+    if (a === 'vazgec') { RV.mod = null; rvCekmece(); return; }
+    if (a === 'onayla') rvKarar('onayla');
+    if (a === 'redOk') rvKarar('reddet', { neden: $('input[name=rvRn]:checked').value });
+    if (a === 'onerOk') { const s = $('#rvSugg [aria-pressed=true]'); if (s) rvKarar('oner', { tarih: s.dataset.g, saat: +s.dataset.t }); }
+    if (a === 'iptal' && confirm('Randevu iptal edilsin mi? QR kapanır.')) rvKarar('iptal');
+    if (a === 'gelmedi') rvKarar('gelmedi');
+    if (a === 'geri_al') rvKarar('geri_al');
+    if (a === 'not') { const n = $('#rvNot').value.trim(); if (n) rvKarar('not', { neden: n }); }
+    if (a === 'kopya') { try { navigator.clipboard.writeText(rvLink(r)); toast('Randevum bağlantısı kopyalandı'); } catch { prompt('Bağlantı', rvLink(r)); } }
+  });
+  $('#rvKodF').addEventListener('submit', e => { e.preventDefault(); RV.gk = null; rvKontrol(); });
+  $('#rvKamBtn').addEventListener('click', rvKamera);
+  $('#rvRes').addEventListener('input', e => { const i = e.target; if (i.closest('#rvPin') && i.value) { const n = i.nextElementSibling; if (n) n.focus(); } });
+  $('#rvRes').addEventListener('click', e => {
+    if (e.target.id === 'rvGirOk') { const son4 = $$('#rvPin input').map(i => i.value).join(''); if (son4.length === 4) rvKontrol({ son4 }); else toast('4 haneyi girin'); }
+    if (e.target.id === 'rvZorla') rvKontrol({ zorla: true });
+  });
+  $('#rvAyarF').addEventListener('submit', rvAyarKaydet);
+  $('#rvGunler').addEventListener('click', e => { const b = e.target.closest('button'); if (b) b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); });
+  $('#rvKapEkle').addEventListener('click', () => { const t = $('#rvKapT').value, n = $('#rvKapN').value.trim(); if (!t) { toast('Tarih seçin'); return; } rvKapanis({ kapanis_ekle: { tarih: t, neden: n } }); });
+  $('#rvKap').addEventListener('click', e => { const b = e.target.closest('[data-ks]'); if (b && confirm('Kapanış silinsin mi?')) rvKapanis({ kapanis_sil: +b.dataset.ks }); });
+
   /* ---------- Ofis (ajanların canlı görünümü; veri: ofis işlemi, çizim: piksel sahne) ---------- */
   const OF = { veri: null, kur: false, t: 0, secili: 'kasif', zamanlayici: null };
   const OF_RENK = { ok: '#2F7D4A', uy: '#C27C0E', gri: '#A8A29E', calis: '#3B82F6', err: '#B4452A' };

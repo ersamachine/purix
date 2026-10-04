@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Randevu al · PURIX Mağaza</title>
+<meta name="theme-color" content="#F4F4F1">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png?v=202610040302">
+<link rel="stylesheet" href="../fonts/fonts.css?v=202610040302">
+<link rel="stylesheet" href="../styles.css?v=202610040302">
+<link rel="stylesheet" href="../magaza.css?v=202610040302">
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="../" aria-label="PURIX"><img src="../assets/mark-128.webp?v=202610040302" alt="" width="26" height="33"><span class="brand-word">PURIX</span></a>
+    <nav class="menu" aria-label="Ana menü">
+      <a href="../#nasil" data-m="nav.how">Nasıl ölçer</a>
+      <a href="../#demo" data-m="nav.demo">Canlı analiz</a>
+      <a href="../#seri" data-m="nav.model">PURIX X1</a>
+      <a href="../magaza/" aria-current="page" data-m="nav.store">Mağaza</a>
+      <a href="../#teklif" data-m="nav.contact">İletişim</a>
+    </nav>
+    <div class="nav-end"><span class="lang-sw"><a data-l="tr">TR</a><a data-l="en">EN</a></span><a class="btn btn-line btn-sm" href="durum/" data-m="nav.my" id="navMy">Randevum</a></div>
+  </div>
+</header>
+
+<main class="r-page">
+  <div class="wrap">
+    <div class="r-head">
+      <a class="eyebrow" href="../magaza/" id="eyebrow">PURIX Mağaza</a>
+      <h1 id="h1" data-m="r.h1">Randevu al</h1>
+      <p id="headP" data-m="r.headP">Formu doldurmak birkaç dakika sürer. Onaylandığında size WhatsApp’tan haber veririz; QR giriş kodunuz Randevum sayfanızda görünür.</p>
+    </div>
+    <div id="genelHata"></div>
+
+    <div class="r-grid" id="grid" hidden>
+      <div class="r-card" id="card">
+        <ol class="stepper" id="stepper">
+          <li data-s="1"><span><em>1</em><i data-m="r.st1">Şube ve saat</i></span></li>
+          <li data-s="2"><span><em>2</em><i data-m="r.st2">Firma bilgileri</i></span></li>
+          <li data-s="3"><span><em>3</em><i data-m="r.st3">Onaylar</i></span></li>
+          <li data-s="4"><span><em>4</em><i data-m="r.st4">Özet</i></span></li>
+        </ol>
+
+        <section class="r-step" data-step="1">
+          <h2 data-m="r.st1">Şube ve saat</h2>
+          <p class="sub" id="sub1"></p>
+          <h3 class="lbl" data-m="r.branch">Şube</h3>
+          <div class="sube-pick" id="subePick"></div>
+          <h3 class="lbl" data-m="r.day">Gün</h3>
+          <div class="days" id="days" role="group"></div>
+          <h3 class="lbl" id="slotsLbl" data-m="r.time">Saat</h3>
+          <div class="slots" id="slots" role="group" aria-labelledby="slotsLbl"></div>
+          <div class="legend"><span><i></i><b data-m="r.lFree" style="font-weight:400">Boş</b></span><span class="l-dolu"><i></i><b data-m="r.lFull" style="font-weight:400">Dolu</b></span><span class="l-sec"><i></i><b data-m="r.lSel" style="font-weight:400">Seçili</b></span></div>
+          <p class="f-err" id="e1"></p>
+        </section>
+
+        <section class="r-step" data-step="2" hidden>
+          <h2 data-m="r.st2">Firma bilgileri</h2>
+          <p class="sub" data-m="r.sub2">Randevular yalnız firmalara verilir.</p>
+          <div class="form">
+            <div class="field"><label for="firma" data-m="r.firma">Firma unvanı</label><input id="firma" autocomplete="organization" maxlength="160"><p class="f-err"></p></div>
+            <div class="f-row">
+              <div class="field"><label for="vd" data-m="r.vd">Vergi dairesi</label><input id="vd" maxlength="80"><p class="f-err"></p></div>
+              <div class="field"><label for="vno"><span data-m="r.vno">Vergi no</span> <small data-m="r.vnoH">(10 hane; şahıs şirketinde 11 haneli TC kimlik no)</small></label><input id="vno" inputmode="numeric" maxlength="11"><p class="f-err"></p></div>
+            </div>
+            <fieldset class="chips"><legend data-m="r.sektor">Sektör</legend>
+              <label><input type="radio" name="sektor" value="Kuyumcu"><span data-m="r.s1">Kuyumcu</span></label>
+              <label><input type="radio" name="sektor" value="Sarraf"><span data-m="r.s2">Sarraf</span></label>
+              <label><input type="radio" name="sektor" value="Rafineri"><span data-m="r.s3">Rafineri</span></label>
+              <label><input type="radio" name="sektor" value="Atölye / imalat"><span data-m="r.s4">Atölye / imalat</span></label>
+              <label><input type="radio" name="sektor" value="Toptancı"><span data-m="r.s5">Toptancı</span></label>
+              <label><input type="radio" name="sektor" value="Diğer"><span data-m="r.s6">Diğer</span></label>
+            </fieldset>
+            <p class="f-err" id="eSektor"></p>
+            <div class="f-row">
+              <div class="field"><label for="ad" data-m="r.ad">Yetkili ad soyad</label><input id="ad" autocomplete="name" maxlength="120"><p class="f-err"></p></div>
+              <div class="field"><label for="unvan"><span data-m="r.unvan">Unvanı</span> <small data-m="r.opt">(isteğe bağlı)</small></label><input id="unvan" autocomplete="organization-title" maxlength="80"></div>
+            </div>
+            <div class="f-row">
+              <div class="field"><label for="tel" data-m="r.tel">Cep telefonu</label><input id="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="05xx xxx xx xx" maxlength="30"><p class="f-help" data-m="r.telH">Onayı bu numaraya WhatsApp’tan bildiririz. Kapıda son 4 hanesi sorulur.</p><p class="f-err"></p></div>
+              <div class="field"><label for="mail" data-m="r.mail">E-posta</label><input id="mail" type="email" autocomplete="email" maxlength="160"><p class="f-err"></p></div>
+            </div>
+            <fieldset class="chips" id="kisiFs"><legend data-m="r.kisi">Kaç kişi geleceksiniz?</legend>
+              <label><input type="radio" name="kisi" value="1" checked><span data-m="r.k1">Yalnız ben</span></label>
+              <label><input type="radio" name="kisi" value="2"><span data-m="r.k2">2 kişi</span></label>
+            </fieldset>
+            <div class="field" id="ikinciW" hidden><label for="ikinci" data-m="r.ikinci">Yanınızdaki kişinin adı soyadı</label><input id="ikinci" maxlength="120"><p class="f-err"></p></div>
+            <fieldset class="chips"><legend><span data-m="r.numune">Ne getireceksiniz?</span> <small style="font-weight:400;color:var(--ink-3)" data-m="r.multi">(birden çok seçebilirsiniz)</small></legend>
+              <label><input type="checkbox" name="numune" value="Külçe"><span data-m="r.n1">Külçe</span></label>
+              <label><input type="checkbox" name="numune" value="Takı"><span data-m="r.n2">Takı</span></label>
+              <label><input type="checkbox" name="numune" value="Hurda"><span data-m="r.n3">Hurda</span></label>
+              <label><input type="checkbox" name="numune" value="Diğer"><span data-m="r.n4">Diğer</span></label>
+            </fieldset>
+            <p class="f-err" id="eNumune"></p>
+            <div class="f-row">
+              <div class="field"><label for="adet" data-m="r.adet">Yaklaşık parça sayısı</label><select id="adet"><option value="1–3">1–3</option><option value="4–10">4–10</option><option value="10’dan fazla" data-m="r.adet3">10’dan fazla</option></select></div>
+              <div></div>
+            </div>
+            <div class="field"><label for="not"><span data-m="r.not">Not</span> <small data-m="r.opt">(isteğe bağlı)</small></label><textarea id="not" rows="3" maxlength="500"></textarea></div>
+            <input class="m-hp" id="web" tabindex="-1" autocomplete="off" aria-hidden="true">
+          </div>
+        </section>
+
+        <section class="r-step" data-step="3" hidden>
+          <h2 data-m="r.st3">Onaylar</h2>
+          <p class="sub" data-m="r.sub3">Mağazada kamera sistemi var; bu yüzden aydınlatma metni randevu için ayrıca onaylanır.</p>
+          <div class="rules-box"><b data-m="r.rulesB">Mağaza kuralları özeti</b>
+            <ul id="kuralList"></ul>
+          </div>
+          <div class="form" style="margin-top:18px">
+            <div class="check"><input type="checkbox" id="c1"><label for="c1" id="c1L"></label><p class="f-err"></p></div>
+            <div class="check"><input type="checkbox" id="c2"><label for="c2" data-m="r.c2">Mağaza kurallarını kabul ediyorum.</label><p class="f-err"></p></div>
+            <div class="check"><input type="checkbox" id="c3"><label for="c3" data-m-html="r.c3"></label></div>
+          </div>
+        </section>
+
+        <section class="r-step" data-step="4" hidden>
+          <h2 data-m="r.st4">Özet</h2>
+          <p class="sub" data-m="r.sub4">Bilgilerinizi kontrol edin. Gönderdikten sonra talebiniz onaya düşer.</p>
+          <div id="sum"></div>
+          <p class="f-err" id="e4" style="margin-top:12px"></p>
+        </section>
+
+        <section class="done-card" id="done" hidden>
+          <div class="done-ico"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+          <h2 data-m="r.doneH">Talebiniz alındı</h2>
+          <p id="doneP"></p>
+          <div class="code"><span data-m="r.code">Randevu kodu</span> <b id="code"></b></div>
+          <p class="f-help" style="margin-top:18px" data-m="r.saveLink">Randevum bağlantınızı kaydedin; durumunuzu ve QR kodunuzu buradan görürsünüz.</p>
+          <div class="m-link"><input id="myLink" readonly aria-label="Randevum"><button class="btn btn-line btn-sm" type="button" id="copy" data-m="r.copy">Bağlantıyı kopyala</button></div>
+          <div class="acts">
+            <a class="btn btn-ink" id="goMy" href="durum/" data-m="r.goMy">Randevumu görüntüle</a>
+            <a class="btn btn-line" href="../magaza/" data-m="r.back">Mağaza sayfasına dön</a>
+          </div>
+        </section>
+
+        <div class="r-nav" id="rnav">
+          <button class="btn btn-line" type="button" id="back" hidden data-m="r.prev">Geri</button>
+          <button class="btn btn-ink" type="button" id="next" style="margin-inline-start:auto" data-m="r.nextB">Devam</button>
+        </div>
+      </div>
+
+      <aside class="aside" aria-live="polite">
+        <h3 data-m="r.yours">Randevunuz</h3>
+        <div><div class="big" id="aTime">—</div><div class="muted" id="aDate" data-m="r.pick">Gün ve saat seçin</div></div>
+        <dl>
+          <dt data-m="r.branch">Şube</dt><dd id="aSube">—</dd>
+          <dt data-m="r.len">Süre</dt><dd id="aSure">—</dd>
+          <dt data-m="r.entry">Giriş</dt><dd id="aGiris">—</dd>
+          <dt data-m="r.firmaK">Firma</dt><dd id="aFirma">—</dd>
+        </dl>
+        <hr>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:8px" data-m="r.next">Sonra ne olacak?</h3>
+          <ol><li data-m="r.n1t">Talebiniz bize düşer, inceleriz.</li><li data-m="r.n2t">Onaylanınca size WhatsApp’tan haber veririz; QR kodunuz Randevum sayfanızda görünür.</li><li data-m="r.n3t">Randevu günü kapıda QR kodunu okutur, telefonunuzun son 4 hanesini girersiniz.</li></ol>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="s-foot">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../assets/mark-128.webp?v=202610040302" alt="" width="22" height="28"><span class="brand-word">PURIX</span></a>
+    <span>© 2026 PURIX</span>
+    <span><a href="../kvkk.html" data-m="r.kvkkF" id="footKvkk">KVKK aydınlatma metni</a></span>
+  </div>
+</footer>
+
+<script src="../config.js?v=202610040302"></script>
+<script src="../magaza.js?v=202610040302"></script>
+<script>
+(function () {
+  PX.ekle({
+    tr: { 'r.sub1': 'Önümüzdeki {g} gündeki boş saatler görünüyor. Her randevu {d} dakika.', 'r.c1': '<a href="{k}" target="_blank" rel="noopener">KVKK aydınlatma metnini</a> okudum: randevu, giriş doğrulama ve mağaza içi kamera kaydı dahil.',
+      'r.c3': '<b>İsteğe bağlı:</b> PURIX’in ürün duyuruları için benimle iletişime geçmesine izin veriyorum.', 'r.ku1': 'QR kodu tek kullanımlıktır; randevudan {o} dk önce açılır, {s} dk sonra kapanır.', 'r.ku2': 'Kapıda telefonunuzun son 4 hanesi sorulur; kimlik veya kartvizit istenebilir.',
+      'r.ku3': 'En fazla {n} kişi girebilir.', 'r.ku4': 'Mağaza içi kamera, ekranın sizi yönlendirmesi ve güvenlik için kayıt yapar.', 'r.ku5': 'Cihazı ekrandaki yönlendirmeye göre kullanırım.',
+      'r.send': 'Talebi gönder', 'r.sending': 'Gönderiliyor…', 'r.edit': 'Düzenle', 'r.e1': 'Lütfen bir saat seçin.', 'r.eFirma': 'Firma unvanını yazın.', 'r.eVd': 'Vergi dairesini yazın.', 'r.eVno': '10 ya da 11 haneli olmalı.', 'r.eAd': 'Ad ve soyadı yazın.', 'r.eTel': 'Geçerli bir cep telefonu yazın.', 'r.eMail': 'Geçerli bir e-posta yazın.', 'r.eSek': 'Sektör seçin.', 'r.eNum': 'En az bir numune türü seçin.', 'r.eIk': 'Yanınızdaki kişinin adını yazın.', 'r.eOnay': 'Bu onay zorunlu.',
+      'r.sumR': 'Randevu', 'r.sumF': 'Firma', 'r.sumO': 'Onaylar', 'r.date': 'Tarih', 'r.window': 'Giriş penceresi', 'r.unvanK': 'Unvan', 'r.vergi': 'Vergi', 'r.yetkili': 'Yetkili', 'r.kisiK': 'Kişi', 'r.only': 'Yalnız kendisi', 'r.two': '2 kişi', 'r.numK': 'Numune', 'r.pcs': 'parça', 'r.kvkkK': 'KVKK', 'r.read': 'Okundu', 'r.kurK': 'Kurallar', 'r.acc': 'Kabul edildi', 'r.duy': 'Duyurular', 'r.yes': 'İzin verildi', 'r.no': 'İzin verilmedi',
+      'r.doneP': '{t} {s} saati, talebiniz yanıtlanana kadar sizin için tutuluyor. Onaylandığında {tel} numarasına WhatsApp’tan haber vereceğiz.', 'r.copied': 'Kopyalandı',
+      'r.chgH': 'Randevu saatini değiştir', 'r.chgP': 'Yeni gün ve saati seçin. Değişiklik yeniden onaya düşer.', 'r.chgB': 'Saati değiştir', 'r.noBranch': 'Şu an randevu alan bir mağaza yok.', 'r.kvkkF': 'KVKK aydınlatma metni' },
+    en: { 'r.h1': 'Book a visit', 'r.headP': 'Filling in the form takes a few minutes. Once approved, we let you know on WhatsApp; your QR entry code appears on your booking page.',
+      'r.st1': 'Store and time', 'r.st2': 'Company details', 'r.st3': 'Consents', 'r.st4': 'Summary', 'r.branch': 'Store', 'r.day': 'Day', 'r.time': 'Time', 'r.lFree': 'Free', 'r.lFull': 'Taken', 'r.lSel': 'Selected',
+      'r.sub1': 'Free times in the next {g} days are shown. Each visit lasts {d} minutes.', 'r.sub2': 'Bookings are only for companies.', 'r.firma': 'Company name', 'r.vd': 'Tax office', 'r.vno': 'Tax number', 'r.vnoH': '(10 digits; 11-digit ID number for sole traders)',
+      'r.sektor': 'Business type', 'r.s1': 'Jeweller', 'r.s2': 'Bullion dealer', 'r.s3': 'Refinery', 'r.s4': 'Workshop / manufacturing', 'r.s5': 'Wholesaler', 'r.s6': 'Other', 'r.ad': 'Contact name', 'r.unvan': 'Job title', 'r.opt': '(optional)',
+      'r.tel': 'Mobile phone', 'r.telH': 'We let you know about the approval on WhatsApp at this number. At the door you are asked for its last 4 digits.', 'r.mail': 'Email', 'r.kisi': 'How many people are coming?', 'r.k1': 'Just me', 'r.k2': '2 people', 'r.ikinci': 'Name of the person coming with you',
+      'r.numune': 'What will you bring?', 'r.multi': '(choose one or more)', 'r.n1': 'Bar', 'r.n2': 'Jewellery', 'r.n3': 'Scrap', 'r.n4': 'Other', 'r.adet': 'Approximate number of pieces', 'r.adet3': 'More than 10', 'r.not': 'Note',
+      'r.sub3': 'There is a camera system in the store, so the privacy notice is confirmed separately for the visit.', 'r.rulesB': 'Store rules in short',
+      'r.c1': 'I have read the <a href="{k}" target="_blank" rel="noopener">privacy notice</a>, including the booking, entry check and in-store camera recording.', 'r.c2': 'I accept the store rules.', 'r.c3': '<b>Optional:</b> PURIX may contact me about product news.',
+      'r.ku1': 'The QR code can be used once; it opens {o} min before the visit and closes {s} min after.', 'r.ku2': 'At the door you are asked for the last 4 digits of your phone; ID or a business card may be requested.', 'r.ku3': 'Up to {n} people may enter.', 'r.ku4': 'The in-store camera records so the screen can guide you, and for security.', 'r.ku5': 'I use the device as the screen guides me.',
+      'r.sub4': 'Check your details. After sending, your request goes for approval.', 'r.doneH': 'Request received', 'r.code': 'Booking code', 'r.saveLink': 'Save your booking link; your status and QR code are there.', 'r.copy': 'Copy link', 'r.goMy': 'View my booking', 'r.back': 'Back to the store page',
+      'r.prev': 'Back', 'r.nextB': 'Continue', 'r.yours': 'Your booking', 'r.pick': 'Choose a day and time', 'r.len': 'Length', 'r.entry': 'Entry', 'r.firmaK': 'Company', 'r.next': 'What happens next?',
+      'r.n1t': 'Your request reaches us and we review it.', 'r.n2t': 'Once approved, we let you know on WhatsApp; your QR code appears on your booking page.', 'r.n3t': 'On the day, scan the QR code at the door and enter the last 4 digits of your phone.',
+      'r.send': 'Send request', 'r.sending': 'Sending…', 'r.edit': 'Edit', 'r.e1': 'Please choose a time.', 'r.eFirma': 'Enter the company name.', 'r.eVd': 'Enter the tax office.', 'r.eVno': 'Must be 10 or 11 digits.', 'r.eAd': 'Enter first and last name.', 'r.eTel': 'Enter a valid mobile number.', 'r.eMail': 'Enter a valid email address.', 'r.eSek': 'Choose a business type.', 'r.eNum': 'Choose at least one sample type.', 'r.eIk': 'Enter the name of the person coming with you.', 'r.eOnay': 'This consent is required.',
+      'r.sumR': 'Visit', 'r.sumF': 'Company', 'r.sumO': 'Consents', 'r.date': 'Date', 'r.window': 'Entry window', 'r.unvanK': 'Company', 'r.vergi': 'Tax', 'r.yetkili': 'Contact', 'r.kisiK': 'People', 'r.only': 'Only the contact', 'r.two': '2 people', 'r.numK': 'Samples', 'r.pcs': 'pieces', 'r.kvkkK': 'Privacy notice', 'r.read': 'Read', 'r.kurK': 'Rules', 'r.acc': 'Accepted', 'r.duy': 'Product news', 'r.yes': 'Allowed', 'r.no': 'Not allowed',
+      'r.doneP': 'The {t} {s} slot is held for you until we reply. Once approved, we will let you know on WhatsApp at {tel}.', 'r.copied': 'Copied',
+      'r.chgH': 'Change your booking time', 'r.chgP': 'Choose a new day and time. The change goes back for approval.', 'r.chgB': 'Change time', 'r.noBranch': 'No store is taking bookings at the moment.', 'r.kvkkF': 'Privacy notice' }
+  });
+  PX.hazirla();
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)], M = PX.M, H = PX.hhmm;
+  const kvkk = PX.dil === 'en' ? '../privacy.html' : '../kvkk.html';
+  $('#footKvkk').href = kvkk;
+  $('#c1L').innerHTML = M('r.c1', { k: kvkk });
+  const kayit = PX.kayitlar()[0]; if (kayit) $('#navMy').href = 'durum/?t=' + kayit.token;
+  const degistir = PX.q.get('degistir');
+  const S = { step: 1, gun: null, saat: null, b: null };
+
+  function hataGoster(m) { $('#genelHata').innerHTML = '<div class="m-alert err">' + PX.esc(m) + '</div>'; }
+  async function yukle() {
+    let j;
+    try { j = await PX.api('magaza_bilgi', { sube: PX.q.get('sube') || undefined }); } catch (e) { hataGoster(e.message); return; }
+    if (!j.ok) { hataGoster(j.hata || M('g.err')); return; }
+    if (!j.sube.aktif) {
+      const ak = j.subeler.find(s => s.aktif);
+      if (ak && !PX.q.get('sube')) { location.replace('?sube=' + ak.kod + (PX.dil === 'en' ? '&l=en' : '')); return; }
+      $('#genelHata').innerHTML = '<div class="m-alert">' + PX.esc(ak ? M('g.soon') : M('r.noBranch')) + '</div>'; return;
+    }
+    S.b = j; const s = j.sube;
+    $('#grid').hidden = false;
+    $('#eyebrow').textContent = 'PURIX ' + M('nav.store') + ' · ' + s.ad;
+    $('#sub1').textContent = M('r.sub1', { g: s.ileri_gun, d: s.slot_dk });
+    $('#subePick').innerHTML = '<div class="sube-opt" aria-current="true"><img src="../assets/x1-kapali.webp?v=202610040302" alt=""><span>' + PX.esc(s.ad) + (s.adres ? '<small>' + PX.esc(s.adres) + '</small>' : '') + '</span></div>';
+    $('#aSube').textContent = s.ad; $('#aSure').textContent = s.slot_dk + ' ' + M('g.min');
+    $('#kuralList').innerHTML = [M('r.ku1', { o: s.qr_once, s: s.qr_sonra }), M('r.ku2'), M('r.ku3', { n: s.kisi_max }), M('r.ku4'), M('r.ku5')].map(t => '<li>' + PX.esc(t) + '</li>').join('');
+    if (s.kisi_max < 2) $('#kisiFs').hidden = true;
+    S.gunler = Array.from({ length: s.ileri_gun }, (_, i) => PX.gunEkle(j.bugun, i + 1));
+    S.dolu = new Set(j.dolu.map(([t, sa]) => t + '|' + sa));
+    S.gun = S.gunler.findIndex(g => bosSay(g) > 0);
+    if (S.gun < 0) S.gun = 0;
+    cizGunler(); cizSaatler(); yan();
+    if (degistir) {
+      $('#h1').textContent = M('r.chgH'); $('#headP').textContent = M('r.chgP');
+      $('#stepper').hidden = true; $('#next').textContent = M('r.chgB'); $('#next').className = 'btn btn-gold';
+    }
+  }
+  const acikGun = g => S.b.sube.gunler.includes(PX.haftaGunu(g)) && !S.b.kapanis.includes(g);
+  // Randevuya en az (dus_saat+1) saat olmalı: sunucu da denetler; burada yarından itibaren gösterildiği için ek süzgeç yok
+  const bos = (g, t) => !S.dolu.has(g + '|' + t);
+  const bosSay = g => acikGun(g) ? S.b.slotlar.filter(t => bos(g, t)).length : 0;
+  function cizGunler() {
+    $('#days').innerHTML = S.gunler.map((g, i) => {
+      const n = bosSay(g), kapali = !acikGun(g), alt = kapali ? M('g.closed') : n ? M('g.free', { n }) : M('g.full');
+      return '<button type="button" class="day" data-i="' + i + '" aria-pressed="' + (S.gun === i) + '"' + (kapali || !n ? ' disabled' : '') + '>' + M('g.days')[PX.haftaGunu(g)] + '<b>' + Number(g.slice(8)) + '</b><small>' + alt + '</small></button>';
+    }).join('');
+  }
+  function cizSaatler() {
+    const g = S.gunler[S.gun];
+    $('#slotsLbl').textContent = M('r.time') + ' · ' + PX.tarihUzun(g);
+    $('#slots').innerHTML = acikGun(g) ? S.b.slotlar.map(t => {
+      const full = !bos(g, t);
+      return '<button type="button" class="slot" data-t="' + t + '" aria-pressed="' + (S.saat === t) + '"' + (full ? ' disabled' : '') + '>' + H(t) + '<small>' + (full ? M('g.taken') : S.saat === t ? M('g.sel') : H(t + S.b.sube.slot_dk) + M('g.until')) + '</small></button>';
+    }).join('') : '';
+  }
+  function yan() {
+    if (S.gun != null && S.saat != null) {
+      $('#aTime').textContent = H(S.saat) + ' – ' + H(S.saat + S.b.sube.slot_dk);
+      $('#aDate').textContent = PX.tarihUzun(S.gunler[S.gun]);
+      $('#aGiris').textContent = H(S.saat - S.b.sube.qr_once) + ' – ' + H(S.saat + S.b.sube.qr_sonra);
+    }
+    $('#aFirma').textContent = $('#firma').value.trim() || '—';
+  }
+  $('#days').addEventListener('click', e => { const b = e.target.closest('.day'); if (!b || b.disabled) return; S.gun = +b.dataset.i; S.saat = null; cizGunler(); cizSaatler(); yan(); });
+  $('#slots').addEventListener('click', e => { const b = e.target.closest('.slot'); if (!b || b.disabled) return; S.saat = +b.dataset.t; cizSaatler(); yan(); $('#e1').textContent = ''; });
+  $('#firma').addEventListener('input', yan);
+  $$('input[name=kisi]').forEach(r => r.addEventListener('change', () => { $('#ikinciW').hidden = $('input[name=kisi]:checked').value !== '2'; }));
+
+  function hata(el, msg) { const box = el.closest('.field, .check'); const p = box && box.querySelector('.f-err'); if (p) p.textContent = msg || ''; if (el.tagName !== 'INPUT' || el.type !== 'checkbox') el.setAttribute('aria-invalid', msg ? 'true' : 'false'); return !msg; }
+  const val = id => $('#' + id).value.trim();
+  function dogrula(n) {
+    let ok = true;
+    if (n === 1 && S.saat == null) { $('#e1').textContent = M('r.e1'); ok = false; }
+    if (n === 2) {
+      ok = hata($('#firma'), val('firma').length < 3 ? M('r.eFirma') : '') && ok;
+      ok = hata($('#vd'), val('vd') ? '' : M('r.eVd')) && ok;
+      ok = hata($('#vno'), /^\d{10,11}$/.test(val('vno')) ? '' : M('r.eVno')) && ok;
+      ok = hata($('#ad'), val('ad').split(/\s+/).filter(Boolean).length >= 2 ? '' : M('r.eAd')) && ok;
+      ok = hata($('#tel'), val('tel').replace(/\D/g, '').length >= 10 ? '' : M('r.eTel')) && ok;
+      ok = hata($('#mail'), /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('mail')) ? '' : M('r.eMail')) && ok;
+      const sek = $('input[name=sektor]:checked'); $('#eSektor').textContent = sek ? '' : M('r.eSek'); ok = !!sek && ok;
+      const num = $$('input[name=numune]:checked'); $('#eNumune').textContent = num.length ? '' : M('r.eNum'); ok = num.length > 0 && ok;
+      if (!$('#ikinciW').hidden) ok = hata($('#ikinci'), val('ikinci') ? '' : M('r.eIk')) && ok;
+    }
+    if (n === 3) { ok = hata($('#c1'), $('#c1').checked ? '' : M('r.eOnay')) && ok; ok = hata($('#c2'), $('#c2').checked ? '' : M('r.eOnay')) && ok; }
+    if (!ok) { const f = document.querySelector('.r-step:not([hidden]) [aria-invalid=true], .r-step:not([hidden]) .f-err:not(:empty)'); if (f) f.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    return ok;
+  }
+  function etiket(name) { const el = $('input[name=' + name + ']:checked'); return el ? el.nextElementSibling.textContent : ''; }
+  function ozet() {
+    const s = S.b.sube, g = S.gunler[S.gun], iki = $('input[name=kisi]:checked').value === '2';
+    const blok = (baslik, adim, satirlar) => '<div class="sum-sec"><h3>' + baslik + '<button type="button" data-go="' + adim + '">' + M('r.edit') + '</button></h3><dl class="sum-dl">' + satirlar.map(([k, v]) => '<dt>' + k + '</dt><dd>' + PX.esc(v) + '</dd>').join('') + '</dl></div>';
+    $('#sum').innerHTML =
+      blok(M('r.sumR'), 1, [[M('r.branch'), s.ad], [M('r.date'), PX.tarihUzun(g)], [M('r.time'), H(S.saat) + ' – ' + H(S.saat + s.slot_dk)], [M('r.window'), H(S.saat - s.qr_once) + ' – ' + H(S.saat + s.qr_sonra)]]) +
+      blok(M('r.sumF'), 2, [[M('r.unvanK'), val('firma')], [M('r.vergi'), val('vd') + ' · ' + val('vno')], [M('r.sektor'), etiket('sektor')], [M('r.yetkili'), val('ad') + (val('unvan') ? ' (' + val('unvan') + ')' : '')], [M('r.tel'), val('tel')], [M('r.mail'), val('mail')], [M('r.kisiK'), iki ? M('r.two') + ' (' + val('ikinci') + ')' : M('r.only')], [M('r.numK'), $$('input[name=numune]:checked').map(x => x.nextElementSibling.textContent).join(', ') + ' · ' + $('#adet').selectedOptions[0].textContent + ' ' + M('r.pcs')]].concat(val('not') ? [[M('r.not'), val('not')]] : [])) +
+      blok(M('r.sumO'), 3, [[M('r.kvkkK'), M('r.read')], [M('r.kurK'), M('r.acc')], [M('r.duy'), $('#c3').checked ? M('r.yes') : M('r.no')]]);
+  }
+  $('#sum').addEventListener('click', e => { const b = e.target.closest('[data-go]'); if (b) git(+b.dataset.go); });
+  function git(n, kaydir = true) {
+    S.step = n;
+    $$('.r-step').forEach(s => s.hidden = +s.dataset.step !== n);
+    $$('#stepper li').forEach(li => { const k = +li.dataset.s; li.className = k === n ? 'is-on' : k < n ? 'is-done' : ''; });
+    $('#back').hidden = n === 1;
+    $('#next').textContent = n === 4 ? M('r.send') : M('r.nextB');
+    $('#next').className = n === 4 ? 'btn btn-gold' : 'btn btn-ink';
+    if (n === 4) ozet();
+    if (kaydir) $('#card').scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+  function kaynak() {
+    const u = PX.q.get('utm_source') || PX.q.get('k'); if (u) return 'Site · ' + u;
+    try { const r = document.referrer ? new URL(document.referrer).hostname : ''; return 'Site · ' + (r && !/purixxrf\.com$/.test(r) ? r : 'doğrudan'); } catch { return 'Site'; }
+  }
+  async function gonder() {
+    const b = $('#next'); b.disabled = true; b.textContent = M('r.sending'); $('#e4').textContent = '';
+    const g = S.gunler[S.gun];
+    const veri = { sube: S.b.sube.kod, tarih: g, saat: S.saat, firma: val('firma'), vd: val('vd'), vno: val('vno'), sektor: $('input[name=sektor]:checked').value, ad: val('ad'), unvan: val('unvan'), tel: val('tel'), eposta: val('mail'),
+      kisi: +$('input[name=kisi]:checked').value, ikinci: val('ikinci'), numune: $$('input[name=numune]:checked').map(x => x.value), adet: $('#adet').value, not: val('not'), dil: PX.dil, kaynak: kaynak(),
+      kvkk: $('#c1').checked, kurallar: $('#c2').checked, duyuru: $('#c3').checked, kvkk_surum: 'magaza-1', web: $('#web').value };
+    let j;
+    try { j = await PX.api('randevu_al', { veri }); } catch (e) { j = { ok: false, hata: e.message }; }
+    if (!j.ok) {
+      b.disabled = false; b.textContent = M('r.send'); $('#e4').textContent = j.hata || M('g.err');
+      if (j.dolu) { S.dolu.add(g + '|' + S.saat); S.saat = null; cizGunler(); cizSaatler(); git(1); $('#e1').textContent = j.hata; }
+      return;
+    }
+    PX.kayitEkle({ kod: j.kod, token: j.token, tarih: g, saat: S.saat });
+    const link = location.origin + location.pathname.replace(/randevu\/(index\.html)?$/, 'randevu/') + 'durum/?t=' + j.token + (PX.dil === 'en' ? '&l=en' : '');
+    $$('.r-step').forEach(s => s.hidden = true); $('#stepper').hidden = true; $('#rnav').hidden = true; $('#done').hidden = false;
+    $('#code').textContent = j.kod; $('#myLink').value = link; $('#goMy').href = 'durum/?t=' + j.token + (PX.dil === 'en' ? '&l=en' : '');
+    $('#doneP').textContent = M('r.doneP', { t: PX.tarihUzun(g), s: H(S.saat), tel: val('tel') });
+    $('#done').scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+  async function degistirGonder() {
+    const b = $('#next'); b.disabled = true;
+    let j;
+    try { j = await PX.api('randevu_islem', { token: degistir, eylem: 'degistir', tarih: S.gunler[S.gun], saat: S.saat }); } catch (e) { j = { ok: false, hata: e.message }; }
+    if (!j.ok) { b.disabled = false; $('#e1').textContent = j.hata || M('g.err'); return; }
+    location.href = 'durum/?t=' + degistir + (PX.dil === 'en' ? '&l=en' : '');
+  }
+  $('#copy').addEventListener('click', () => { const i = $('#myLink'); i.select(); try { navigator.clipboard.writeText(i.value); } catch { document.execCommand('copy'); } $('#copy').textContent = M('r.copied'); });
+  $('#next').addEventListener('click', () => {
+    if (degistir) { if (dogrula(1)) degistirGonder(); return; }
+    if (S.step < 4) { if (dogrula(S.step)) git(S.step + 1); return; }
+    gonder();
+  });
+  $('#back').addEventListener('click', () => git(S.step - 1));
+  git(1, false);
+  yukle();
+})();
+</script>
+</body>
+</html>
