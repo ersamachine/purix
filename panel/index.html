@@ -192,13 +192,105 @@ td .who small{color:var(--ink-3)}
 .decide .acts .btn-ok{background:var(--ok);color:#fff}
 .hint{font-size:13px;color:var(--ink-2);background:#FFF6E3;border:1px solid #EBD39C;border-radius:10px;padding:8px 12px}
 /* Ajanlar */
-.agrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:14px}
-.ag{background:var(--surface);border-radius:var(--r);padding:16px 18px;box-shadow:0 1px 0 var(--line-2);display:flex;flex-direction:column;gap:6px}
-.ag .n{display:flex;align-items:center;gap:10px}
-.ag .n i{width:34px;height:34px;border-radius:10px;background:var(--stone);color:var(--gold-l);display:grid;place-items:center;font-style:normal;font-weight:700;font-size:14px;flex:none}
-.ag b{font-size:15px}
-.ag p{margin:0;color:var(--ink-2);font-size:13.5px}
-.ag small{color:var(--ink-3);font-size:12.5px}
+/* Yapay Zekâ Ekibi (ajanlar) */
+#v-ajanlar{--ym-uy:#B7791F;--ym-mavi:#2B5C8A}
+.ym-hex{clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%)}
+.ym-bant{position:relative;border-radius:18px;overflow:hidden;background:linear-gradient(115deg,#12100F 0%,#1C1917 46%,#3A2A14 100%);color:#fff;padding:24px 28px 22px;display:flex;gap:26px;align-items:flex-end;flex-wrap:wrap}
+.ym-bant:before{content:"";position:absolute;right:-70px;top:-90px;width:420px;height:420px;background:radial-gradient(circle,rgba(228,203,147,.22),transparent 62%);pointer-events:none}
+.ym-petek{position:absolute;right:26px;top:18px;display:grid;grid-template-columns:repeat(6,34px);gap:4px 3px;opacity:.16;pointer-events:none}
+.ym-petek span{width:34px;height:38px;background:var(--gold-l)}.ym-petek span:nth-child(odd){transform:translateY(19px)}
+.ym-kimlik{position:relative;flex:1 1 340px;min-width:0}
+.ym-marka{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.ym-marka img{height:38px;width:auto}
+.ym-marka b{font-weight:700;font-stretch:125%;letter-spacing:.08em;font-size:21px}
+.ym-marka span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-l);border-left:1px solid #57534E;padding-left:12px;font-weight:600}
+.ym-h1{font-weight:600;font-stretch:118%;letter-spacing:-.02em;font-size:32px;line-height:1.05;margin:0;color:#fff}
+.ym-kimlik p{color:#CFC8BE;font-size:14px;margin:8px 0 0;max-width:560px}
+.ym-canli{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:#A7E3B9;margin-top:14px;background:rgba(47,125,74,.18);border:1px solid rgba(167,227,185,.3);border-radius:99px;padding:4px 11px}
+.ym-canli:before{content:"";width:7px;height:7px;border-radius:50%;background:#5BD08A;box-shadow:0 0 0 4px rgba(91,208,138,.22)}
+.ym-canli.uy{color:#F2C46B;background:rgba(183,121,31,.2);border-color:rgba(242,196,107,.35)}.ym-canli.uy:before{background:#F2C46B;box-shadow:0 0 0 4px rgba(242,196,107,.2)}
+.ym-say{position:relative;display:grid;grid-template-columns:repeat(5,minmax(96px,112px));gap:10px}
+.ym-sayi{background:rgba(255,255,255,.06);border:1px solid rgba(228,203,147,.22);border-radius:14px;padding:11px 13px}
+.ym-sayi b{display:block;font-weight:560;font-stretch:82%;font-size:32px;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.ym-sayi small{font-size:11.5px;color:#CFC8BE}
+.ym-sayi.a b{color:var(--gold-l)}.ym-sayi.u b{color:#F2C46B}.ym-sayi.h b{color:#8FD9A8}
+.ym-zincir{display:flex;align-items:center;flex-wrap:wrap;gap:10px 0;margin:16px 0 4px;background:var(--surface);border:1px solid var(--line-2);border-radius:16px;padding:13px 16px}
+.ym-dugum{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;text-align:left;cursor:default;color:inherit;font:inherit}
+button.ym-dugum{cursor:pointer}
+.ym-h{width:42px;height:46px;background:var(--ink);color:var(--gold-l);display:grid;place-items:center;font-weight:700;font-size:12.5px;flex:none}
+.ym-dugum.altin .ym-h{background:linear-gradient(140deg,#8A6331,#ECD49E 55%,#B48C50);color:#1F1406}
+.ym-dugum b{display:block;font-size:14px;font-weight:650}.ym-dugum small{color:var(--ink-3);font-size:12px}
+.ym-ok{flex:none;width:44px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-l));margin:0 12px;position:relative}
+.ym-ok:after{content:"";position:absolute;right:-1px;top:-4px;border-left:8px solid var(--gold-l);border-top:5px solid transparent;border-bottom:5px solid transparent}
+.ym-bl{display:flex;gap:8px;flex-wrap:wrap;flex:1 1 320px}
+.ym-bl button{border:1px solid var(--line);border-radius:10px;padding:6px 11px;font:inherit;font-size:12.5px;background:var(--bg);display:flex;gap:8px;align-items:center;cursor:pointer;color:var(--ink)}
+.ym-bl button:hover{border-color:var(--gold)}
+.ym-bl b{font-weight:650}.ym-bl i{font-style:normal;font-size:11px;color:var(--ink-3)}
+.ym-bl .ekle{border-style:dashed;color:var(--gold-text);background:#fff;font-weight:600}
+.ym-arac{display:flex;align-items:center;gap:8px;margin:14px 0 12px;flex-wrap:wrap}
+.ym-cipler{display:flex;gap:8px;flex-wrap:wrap;flex:1 1 auto}
+.ym-cip{border:1px solid var(--line);background:#fff;border-radius:99px;padding:6px 13px;font:inherit;font-size:13px;color:var(--ink-2);cursor:pointer}
+.ym-cip b{color:var(--ink-3);font-weight:500;margin-left:5px}
+.ym-cip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}.ym-cip[aria-pressed="true"] b{color:var(--gold-l)}
+.ym-ara{width:210px;min-height:38px;padding:7px 13px;background:#fff}
+.ym-altin{background:linear-gradient(100deg,#8A6331,#B48C50 30%,#ECD49E 60%,#B48C50);color:#1F1406;border:0;font-weight:650}
+.ym-govde{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start;margin-bottom:16px}
+.ym-bolum{background:var(--surface);border:1px solid var(--line-2);border-radius:16px;padding:16px 18px 18px;margin-bottom:14px}
+.ym-bh{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.ym-no{width:34px;height:38px;background:var(--ink);color:var(--gold-l);display:grid;place-items:center;font-size:11px;font-weight:700;flex:none}
+.ym-bh h2{font-size:17px;font-weight:650;margin:0}
+.ym-bh p{font-size:12.5px;color:var(--ink-3);margin:0}
+.ym-bh>div:nth-child(2){flex:1 1 200px;min-width:0}
+.ym-saglik{margin-left:auto;text-align:right;font-size:12px;color:var(--ink-3)}
+.ym-cubuk{width:150px;height:6px;border-radius:9px;background:var(--line-2);overflow:hidden;margin-top:5px;display:flex}
+.ym-cubuk s{display:block;height:100%}
+.ym-izgara{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:10px}
+.ym-ajan{border:1px solid var(--line-2);border-radius:13px;padding:11px 12px 10px;background:linear-gradient(180deg,#fff,#FBFAF8);text-align:left;font:inherit;color:inherit;cursor:pointer;display:flex;flex-direction:column;min-width:0}
+.ym-ajan:hover{border-color:var(--line)}
+.ym-ajan.sec{border-color:var(--gold);box-shadow:0 0 0 3px rgba(180,140,80,.16)}
+.ym-ust{display:flex;gap:9px;align-items:center;min-width:0}
+.ym-av{width:34px;height:38px;flex:none;display:grid;place-items:center;font-size:11px;font-weight:700;background:linear-gradient(140deg,#6E4B22,#B48C50 40%,#ECD49E 70%,#B48C50);color:#1F1406}
+.ym-av.k{background:var(--ink);color:var(--gold-l)}
+.ym-ajan b{font-size:13.5px;font-weight:650;line-height:1.15;display:block}
+.ym-kod{font-size:10.5px;color:var(--ink-3);letter-spacing:.05em;display:block}
+.ym-p{font-size:12px;color:var(--ink-2);margin:8px 0 9px;line-height:1.35;flex:1;display:block}
+.ym-alt{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:11px;color:var(--ink-3);border-top:1px solid var(--line-2);padding-top:7px}
+.ym-alt>span:last-child{text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.ym-d{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;border-radius:99px;padding:2px 8px;white-space:nowrap}
+.ym-d:before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.ym-d.c,.ym-d.t{color:var(--ok);background:rgba(47,125,74,.1)}.ym-d.s{color:var(--ink-3);background:var(--bg)}
+.ym-d.u{color:var(--ym-uy);background:rgba(183,121,31,.12)}.ym-d.p{color:var(--ym-mavi);background:rgba(43,92,138,.1)}.ym-d.h{color:var(--warn);background:rgba(180,69,42,.1)}
+.ym-ajan.bos{border-style:dashed;align-items:center;justify-content:center;color:var(--gold-text);font-weight:600;font-size:13px;background:#fff;min-height:118px}
+.ym-liste .ym-izgara{grid-template-columns:1fr;gap:6px}
+.ym-liste .ym-ajan{flex-direction:row;align-items:center;gap:14px;padding:8px 12px}
+.ym-liste .ym-ust{flex:0 0 230px}.ym-liste .ym-p{margin:0}.ym-liste .ym-alt{border:0;padding:0;flex:0 0 250px}
+.ym-liste .ym-ajan.bos{min-height:0;padding:8px}
+.ym-kart{background:var(--surface);border:1px solid var(--line-2);border-radius:16px;padding:16px 18px;margin-bottom:14px}
+.ym-kart h3{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold-text);font-weight:600;margin:0 0 12px}
+.ym-kart h4{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin:0 0 5px}
+.ym-bas{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.ym-bas .ym-av{width:48px;height:54px;font-size:15px}
+.ym-bas b{font-size:18px;font-weight:650;display:block;line-height:1.1}.ym-bas small{color:var(--ink-3);font-size:12px}
+.ym-neden{display:inline-block;margin-left:8px;color:var(--ink-3);font-size:12px}
+.ym-gorev,.ym-rapor{font-size:12.5px;color:var(--ink-2);background:var(--bg);border-radius:10px;padding:10px 12px;margin:10px 0 4px;line-height:1.4}
+.ym-satir{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:7px 0;border-top:1px solid var(--line-2)}
+.ym-satir span{color:var(--ink-3)}.ym-satir b{font-weight:600;text-align:right}
+.ym-kayit{margin-top:10px;font-size:12px;color:var(--ink-2)}.ym-kayit div{padding:5px 0;border-top:1px solid var(--line-2)}.ym-kayit time{color:var(--ink-3);margin-right:6px}
+.ym-dugme{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.ym-bekle button{display:flex;justify-content:space-between;align-items:center;width:100%;font:inherit;font-size:12.5px;padding:8px 0;border:0;border-top:1px solid var(--line-2);background:none;cursor:pointer;color:var(--ink);text-align:left}
+.ym-bekle h3+button{border-top:0;padding-top:0}
+.ym-bekle em{font-style:normal;background:var(--ink);color:var(--gold-l);border-radius:99px;padding:1px 9px;font-size:11.5px;font-weight:650}
+.ym-akis div{display:flex;gap:10px;font-size:12.5px;padding:8px 0;border-top:1px solid var(--line-2)}
+.ym-akis h3+div{border-top:0;padding-top:0}
+.ym-akis time{color:var(--ink-3);font-variant-numeric:tabular-nums;flex:none;width:38px}.ym-akis b{font-weight:650}
+.ym-bos{color:var(--ink-3);font-size:12.5px;margin:0}
+.ym-dlg{border:0;border-radius:16px;padding:22px 24px;max-width:min(480px,calc(100vw - 32px));box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.ym-dlg::backdrop{background:rgba(28,25,23,.5)}
+.ym-dlg h3{margin:0 0 8px;font-size:18px}.ym-dlg p{color:var(--ink-2);font-size:13.5px;margin:0 0 12px}
+.ym-ornek{background:var(--bg);border:1px dashed var(--gold);border-radius:10px;padding:10px 12px;font-size:13.5px;font-weight:600}
+@media(max-width:1180px){.ym-govde{grid-template-columns:1fr}.ym-say{grid-template-columns:repeat(5,1fr);width:100%}}
+@media(max-width:700px){.ym-zincir>button+.ym-ok{display:none}.ym-bl{flex-basis:100%}.ym-bant{padding:18px 16px}.ym-h1{font-size:26px}.ym-petek{display:none}.ym-say{grid-template-columns:repeat(3,1fr)}.ym-sayi b{font-size:26px}.ym-ok{width:22px;margin:0 8px}.ym-ara{width:100%}.ym-saglik{margin-left:0;text-align:left}.ym-izgara{grid-template-columns:1fr 1fr}.ym-liste .ym-ajan{flex-direction:column;align-items:stretch}.ym-liste .ym-ust,.ym-liste .ym-alt{flex:none}}
+@media(max-width:430px){.ym-izgara{grid-template-columns:1fr}}
 .rep summary{cursor:pointer;font-weight:600;padding:10px 0;list-style:none;display:flex;justify-content:space-between;gap:10px}
 .rep summary::-webkit-details-marker{display:none}
 .rep{border-bottom:1px solid var(--line-2)}
@@ -446,7 +538,7 @@ td .who small{color:var(--ink-3)}
     <button class="nav-btn" data-view="randevular"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4M8.5 14.5l2 2 4-4"/></svg>Randevular<span class="badge" id="rvBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="adaylar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".8"/></svg>Adaylar<span class="badge" id="adBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r=".6"/></svg>Instagram<span class="badge" id="igBadge" hidden>0</span></button>
-    <button class="nav-btn" data-view="ajanlar"><svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16.5h5"/></svg>Ajanlar</button>
+    <button class="nav-btn" data-view="ajanlar"><svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16.5h5"/></svg>Yapay Zekâ Ekibi</button>
     <button class="nav-btn" data-view="ofis"><svg viewBox="0 0 24 24"><path d="M3 20h18M5 20V9l7-5 7 5v11"/><path d="M9 20v-5h6v5M9 11h.01M15 11h.01"/></svg>Ofis</button>
     <button class="nav-btn" data-view="trafik"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.6 5.2 3.6 8.5s-1.2 6.1-3.6 8.5c-2.4-2.4-3.6-5.2-3.6-8.5S9.6 5.9 12 3.5z"/></svg>Trafik</button>
     <button class="nav-btn" data-view="sohbetler"><svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 011 1v10a1 1 0 01-1 1h-9.5L6 20.5V17H4a1 1 0 01-1-1V6a1 1 0 011-1z"/><path d="M8 10h8M8 13h5"/></svg>Sohbetler</button>
@@ -623,9 +715,39 @@ td .who small{color:var(--ink-3)}
       <p class="empty" id="igEmpty" hidden></p>
     </section>
 
-    <!-- AJANLAR -->
+    <!-- YAPAY ZEKÂ EKİBİ (ajanlar) -->
     <section id="v-ajanlar" hidden>
-      <div class="agrid" id="agGrid"></div>
+      <div class="ym-bant">
+        <div class="ym-petek" aria-hidden="true"><span class="ym-hex"></span><span class="ym-hex"></span><span class="ym-hex"></span><span class="ym-hex"></span><span class="ym-hex"></span><span class="ym-hex"></span><span class="ym-hex"></span><span class="ym-hex"></span><span class="ym-hex"></span><span class="ym-hex"></span><span class="ym-hex"></span><span class="ym-hex"></span></div>
+        <div class="ym-kimlik">
+          <div class="ym-marka"><img src="../assets/mark-192.webp" alt="" width="31" height="38"><b>PURIX</b><span>XRF · Yapay Zekâ Operasyon Merkezi</span></div>
+          <h2 class="ym-h1">Yapay Zekâ Ekibi</h2>
+          <p id="ymOzet">PURIX XRF için çalışan ajanlar. Her ajanın görevi, takvimi ve son çalışması tek ekranda.</p>
+          <span class="ym-canli" id="ymCanli">yükleniyor…</span>
+        </div>
+        <div class="ym-say" id="ymSay"></div>
+      </div>
+      <div class="ym-zincir" id="ymZincir"></div>
+      <div class="ym-arac">
+        <div class="ym-cipler" id="ymCip"></div>
+        <input class="inp ym-ara" id="ymAra" type="search" placeholder="Ajan ara…" aria-label="Ajan ara">
+        <button class="btn btn-line btn-sm" type="button" id="ymGor">Liste görünümü</button>
+        <button class="btn btn-sm ym-altin" type="button" data-yeni="">+ Yeni ajan</button>
+      </div>
+      <div class="ym-govde">
+        <div id="ymBolumler"><p class="empty">Yükleniyor…</p></div>
+        <div class="ym-yan">
+          <div class="ym-kart ym-detay" id="ymDetay"></div>
+          <div class="ym-kart ym-bekle" id="ymBekle"></div>
+          <div class="ym-kart ym-akis" id="ymAkis"></div>
+        </div>
+      </div>
+      <dialog id="ymDlg" class="ym-dlg">
+        <h3 id="ymDlgB">Yeni ajan</h3>
+        <p>Yeni ajan ya da bölüm Claude ile birlikte kurulur: görev tanımı yazılır, siz onaylarsınız, ajan bu sayfaya eklenir. Claude'a şu cümleyi yazmanız yeterli:</p>
+        <div class="ym-ornek" id="ymOrnek"></div>
+        <div class="ym-dugme"><button class="btn btn-ink btn-sm" type="button" id="ymKopya">Cümleyi kopyala</button><button class="btn btn-line btn-sm" type="button" id="ymKapat">Kapat</button></div>
+      </dialog>
       <div class="grid2">
         <div class="card"><h2>Son çalışmalar <small>ajan günlüğü</small></h2><div class="table-wrap" style="box-shadow:none"><table><thead><tr><th>Zaman</th><th>Ajan</th><th>Hafta</th><th>Sonuç</th></tr></thead><tbody id="agLog"></tbody></table></div></div>
         <div class="card"><h2>Raporlar <small>Analiz Ajanı</small></h2><div id="agRap"></div></div>
@@ -831,17 +953,18 @@ td .who small{color:var(--ink-3)}
     $('#login').hidden = true; $('#app').hidden = false; $('#demoBar').hidden = !DEMO;
     $('#apiInfo').textContent = DEMO ? 'Bağlı değil (demo verisi)' : (/script\.google\.com/.test(API) ? 'Google Apps Script (eski)' : 'PURIX platform · ' + new URL(API).hostname);
     hizliAcilis(); load(); igLoad(true); rvLoad(true); go('bugun'); clearInterval(timer); let tik = 0;
-    timer = setInterval(() => { load(true); if (!igUcus && (++tik % 5 === 0 || view === 'instagram' || view === 'ajanlar')) igLoad(true); if (view === 'trafik') tfLoad(true); if (view === 'sohbetler') shLoad(true); if (view === 'ofis') ofLoad(true); if (view === 'randevular' || tik % 5 === 1) rvLoad(true); }, 60000);
+    timer = setInterval(() => { load(true); if (!igUcus && (++tik % 5 === 0 || view === 'instagram' || view === 'ajanlar')) igLoad(true); if (view === 'trafik') tfLoad(true); if (view === 'sohbetler') shLoad(true); if (view === 'ofis') ofLoad(true); if (view === 'ajanlar') ymLoad(true); if (view === 'randevular' || tik % 5 === 1) rvLoad(true); }, 60000);
   }
   $('#refresh').addEventListener('click', () => { load(); igLoad(); });
 
   /* ---------- Görünümler ---------- */
-  const TITLES = { bugun: 'Bugün', genel: 'Genel bakış', talepler: 'Talepler', randevular: 'Randevular', adaylar: 'Adaylar', instagram: 'Instagram', ajanlar: 'Ajanlar', ofis: 'Ofis', trafik: 'Trafik', sohbetler: 'Sohbetler', ayarlar: 'Ayarlar' };
+  const TITLES = { bugun: 'Bugün', genel: 'Genel bakış', talepler: 'Talepler', randevular: 'Randevular', adaylar: 'Adaylar', instagram: 'Instagram', ajanlar: 'Yapay Zekâ Ekibi', ofis: 'Ofis', trafik: 'Trafik', sohbetler: 'Sohbetler', ayarlar: 'Ayarlar' };
   function go(v) {
     view = v; $$('.nav-btn[data-view]').forEach(b => b.dataset.view === v ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current'));
     Object.keys(TITLES).forEach(k => $('#v-' + k).hidden = k !== v); $('#title').textContent = TITLES[v];
     $('#side').classList.remove('open'); render();
     if (v === 'instagram' || v === 'ajanlar') igLoad(true);
+    if (v === 'ajanlar') ymLoad();
     if (v === 'instagram' || v === 'ayarlar') igBagYukle();
     if (v === 'adaylar') adLoad();
     if (v === 'bugun') bgLoad();
@@ -859,7 +982,7 @@ td .who small{color:var(--ink-3)}
   function render() {
     const yeni = data.filter(x => x.Durum === 'Yeni').length;
     $('#newBadge').hidden = !yeni; $('#newBadge').textContent = yeni;
-    $('#subtitle').textContent = view === 'adaylar' ? (ad.ozet ? `${ad.ozet.toplam} firma · bugün ${ad.ozet.bugun} yeni` : 'Satış ajanlarının bulduğu firmalar') : view === 'instagram' ? igAltBaslik() : view === 'ajanlar' ? '7 ajan · taslakları hazırlar, sahibin onayını bekler' : data.length ? `${data.length} talep · ${yeni} yeni` : 'Henüz talep yok';
+    $('#subtitle').textContent = view === 'adaylar' ? (ad.ozet ? `${ad.ozet.toplam} firma · bugün ${ad.ozet.bugun} yeni` : 'Satış ajanlarının bulduğu firmalar') : view === 'instagram' ? igAltBaslik() : view === 'ajanlar' ? (YM.veri ? `${YM.veri.ajanlar.length} ajan · ${(YM.veri.bolumler || []).length || 5} bölüm · PURIX XRF` : 'PURIX XRF yapay zekâ ekibi') : data.length ? `${data.length} talep · ${yeni} yeni` : 'Henüz talep yok';
     if (view === 'bugun') renderBugun(); else if (view === 'genel') renderGenel(); else if (view === 'talepler') renderList(); else if (view === 'adaylar') renderAd(); else if (view === 'instagram') renderIg(); else if (view === 'ajanlar') renderAjan(); else renderAyar();
   }
 
@@ -1395,30 +1518,98 @@ td .who small{color:var(--ink-3)}
   });
 
   /* ---------- Ajanlar ---------- */
-  const AJANLAR = [
-    { ad: 'Türkiye İçerik Ajanı', kisa: 'TR', gorev: '@purixxrf.tr için haftalık plan, Türkçe metinler ve story planı.', takvim: 'Pazartesi 08.00' },
-    { ad: 'Global İçerik Ajanı', kisa: 'GL', gorev: '@purixxrf için haftalık plan ve İngilizce metinler (çeviri değil, ayrı yazılır).', takvim: 'Pazartesi 08.00' },
-    { ad: 'Kreatif Ajan', kisa: 'K', gorev: 'Görseller, carousel kareleri ve Reels videoları.', takvim: 'Pazartesi, planlardan sonra' },
-    { ad: 'Marka Ajanı', kisa: 'M', gorev: 'Her taslağı kurallar dosyasına göre denetler; geçemeyeni panele göndermez.', takvim: 'Her üretimden ve düzeltmeden sonra' },
-    { ad: 'Yayın Ajanı', kisa: 'Y', gorev: 'Düzeltme isteklerini uygulatır, onaylananları yayın paketine çevirir.', takvim: 'Her gün 18.00' },
-    { ad: 'Talep Ajanı', kisa: 'T', gorev: 'DM ve yorumları sınıflar, gerçek talepleri Talepler’e ekler; yanıtı sahip verir.', takvim: 'Instagram bağlantısından sonra' },
-    { ad: 'Analiz Ajanı', kisa: 'A', gorev: 'Haftalık performans ve talep raporu, gelecek hafta için en çok 3 öneri.', takvim: 'Pazartesi, üretimden önce' },
-    { ad: 'Kaşif', kisa: 'S1', gorev: 'Türkiye\'de il il yeni firma bulur (İstanbul öncelikli); aynı firmayı iki kez getirmez.', takvim: 'Satış hattı, birkaç saatte bir' },
-    { ad: 'Kimlik Ajanı', kisa: 'S2', gorev: 'Firmanın karar vericisini (sahip, ortak, müdür) açık kaynaklardan bulur.', takvim: 'Satış hattı' },
-    { ad: 'Veri Ajanı', kisa: 'S3', gorev: 'Telefon, e-posta, adres ve web bilgisini çıkarır, doğrular, tekrarları temizler.', takvim: 'Satış hattı' },
-    { ad: 'Analist', kisa: 'S4', gorev: 'Firmayı A/B/C puanlar ve nedenini yazar.', takvim: 'Satış hattı' },
-    { ad: 'Mesaj Yazarı', kisa: 'S5', gorev: 'A ve B firmalara özel WhatsApp ve e-posta taslağı yazar (kural kitabına uygun).', takvim: 'Satış hattı' },
-    { ad: 'Takip Ajanı', kisa: 'S6', gorev: 'Temas kurulan firmaların takip gününü izler, hatırlatma mesajı hazırlar.', takvim: 'Her gün' },
-    { ad: 'Satış Yöneticisi', kisa: 'S7', gorev: 'Cevapları sınıflar, sıcak müşteriyi sana getirir, günlük özet yazar.', takvim: 'Her gün' },
-  ];
+  // Kadro, bölümler ve durumlar Worker'dan gelir (platform/src/ofis.js: AJANLAR, BOLUMLER, BILGI). Yeni ajan orada eklenir; bu sayfa kendiliğinden çizer.
   const AJ_RENK = { 'Başarılı': 'var(--ok)', 'Uyarı': 'var(--s-yeni)', 'Hata': 'var(--warn)' };
+  const YM = { veri: null, suz: 'hepsi', ara: '', secili: null, liste: false, hata: '' };
+  const ymKisa = ad => { const k = String(ad || '').split(/\s+/).filter(Boolean); return ((k[0] || '?')[0] + (k[1] ? k[1][0] : (k[0] || '')[1] || '')).toLocaleUpperCase('tr'); };
+  const ymSira = iso => {
+    if (!iso) return ''; const d = new Date(iso), b = new Date(), s = d.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+    const gun = Math.round((new Date(d.getFullYear(), d.getMonth(), d.getDate()) - new Date(b.getFullYear(), b.getMonth(), b.getDate())) / 864e5);
+    return gun === 0 ? 'Bugün ' + s : gun === 1 ? 'Yarın ' + s : gun > 1 && gun < 7 ? d.toLocaleDateString('tr-TR', { weekday: 'short' }) + ' ' + s : d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' });
+  };
+  // [etiket, renk sınıfı, sağdaki kısa not]
+  function ymDurum(a) {
+    if (a.durum === 'calis') return ['Çalışıyor', 'c', a.balon || 'şimdi'];
+    if (a.durum === 'err') return ['Hata', 'h', 'son çalışma hatalı'];
+    if (a.durum === 'uy') return ['Uyarı', 'u', a.balon || (a.neden === 'plan' ? 'planlı saatte çalışmadı' : 'son çalışmada uyarı')];
+    if (a.neden === 'duraklat') return ['Duraklatıldı', 'p', 'sahip kararı'];
+    if (a.id === 'asistan') return ['Açık', 'c', '7/24'];
+    if (!a.son) return ['Henüz çalışmadı', 's', ymSira(a.sonraki)];
+    const yeni = Date.now() - Date.parse(a.son) < 12 * 36e5;
+    return [yeni ? 'Tamamladı' : 'Sırada', yeni ? 't' : 's', ymSira(a.sonraki)];
+  }
+  const ymSorunlu = a => ['u', 'h'].includes(ymDurum(a)[1]);
+  async function ymLoad(sessiz) {
+    try { YM.veri = await api('ofis'); YM.hata = ''; } catch (e) { if (!sessiz || !YM.veri) YM.hata = e.message; }
+    ymRender(); if (view === 'ajanlar') render();
+  }
+  function ymRender() {
+    const v = YM.veri, kok = $('#ymBolumler'); if (!kok) return;
+    if (!v) { kok.innerHTML = `<p class="empty">${esc(YM.hata || 'Yükleniyor…')}</p>`; return; }
+    const A = v.ajanlar || [], bol = v.bolumler && v.bolumler.length ? v.bolumler : [...new Set(A.map(a => a.ekip))].map(ad => ({ ad, alt: '' }));
+    const say = d => A.filter(a => ymDurum(a)[1] === d).length, sorun = A.filter(ymSorunlu).length;
+    const haftaIs = v.hafta_is != null ? v.hafta_is : ig.gunluk.filter(x => x.Durum === 'Başarılı' && Date.now() - new Date(x.Zaman) < 7 * 864e5).length;
+    $('#ymOzet').textContent = `PURIX XRF için çalışan ${A.length} ajan, ${bol.length} bölüm. Her ajanın görevi, takvimi ve son çalışması tek ekranda.`;
+    const cn = $('#ymCanli'); cn.classList.toggle('uy', !!sorun);
+    cn.textContent = (sorun ? `${sorun} ajan dikkat istiyor` : 'Sistem çalışıyor') + ' · son güncelleme ' + new Date(v.zaman).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+    $('#ymSay').innerHTML = [[A.length, 'ajan', 'a'], [say('c'), 'şu an çalışıyor', 'h'], [Math.max(0, A.length - say('c') - sorun - say('p')), 'sırada', ''], [sorun, 'uyarı', 'u'], [haftaIs, 'bu hafta biten iş', '']]
+      .map(([n, t, c]) => `<div class="ym-sayi ${c}"><b>${n}</b><small>${t}</small></div>`).join('');
+    const ym = A.find(a => a.id === 'yonetici');
+    $('#ymZincir').innerHTML = `<div class="ym-dugum altin"><div class="ym-h ym-hex">SİZ</div><div><b>Sahip</b><small>onay ve karar</small></div></div><div class="ym-ok"></div>
+      <button type="button" class="ym-dugum" data-ajan="yonetici"><div class="ym-h ym-hex">ŞM</div><div><b>${esc(ym ? ym.ad : 'Şirket Müdürü')}</b><small>${esc(ym && ym.takvim ? ym.takvim : 'günde 2 denetim')}</small></div></button><div class="ym-ok"></div>
+      <div class="ym-bl">${bol.map(b => `<button type="button" data-bolum="${esc(b.ad)}"><b>${esc(b.ad)}</b><i>${A.filter(a => a.ekip === b.ad).length} ajan</i></button>`).join('')}<button type="button" class="ekle" data-yeni="yeni-bolum">+ Yeni bölüm</button></div>`;
+    $('#ymCip').innerHTML = [['hepsi', 'Tümü', A.length], ...bol.map(b => [b.ad, b.ad, A.filter(a => a.ekip === b.ad).length]), ['sorun', 'Yalnız uyarılar', sorun]]
+      .map(([k, t, n]) => `<button type="button" class="ym-cip" data-suz="${esc(k)}" aria-pressed="${YM.suz === k}">${esc(t)}<b>${n}</b></button>`).join('');
+    const ara = YM.ara.toLocaleLowerCase('tr');
+    const uygun = a => (YM.suz === 'hepsi' || (YM.suz === 'sorun' ? ymSorunlu(a) : a.ekip === YM.suz)) && (!ara || (a.ad + ' ' + (a.gorev || a.is || '') + ' ' + (a.kod || '')).toLocaleLowerCase('tr').includes(ara));
+    if (!YM.secili || !A.some(a => a.id === YM.secili)) YM.secili = (A.find(ymSorunlu) || A[0] || {}).id;
+    kok.className = YM.liste ? 'ym-liste' : '';
+    kok.innerHTML = bol.map((b, i) => {
+      const hep = A.filter(a => a.ekip === b.ad), gor = hep.filter(uygun); if (!gor.length && (YM.suz !== 'hepsi' || ara)) return '';
+      const iyi = hep.filter(a => !ymSorunlu(a)).length, oran = hep.length ? Math.round(iyi / hep.length * 100) : 100;
+      return `<section class="ym-bolum"><div class="ym-bh"><div class="ym-no ym-hex">${String(i + 1).padStart(2, '0')}</div><div><h2>${esc(b.ad)}</h2><p>${esc(b.alt || '')}</p></div>
+        <div class="ym-saglik">${iyi} / ${hep.length} sağlıklı<div class="ym-cubuk"><s style="width:${oran}%;background:var(--ok)"></s><s style="width:${100 - oran}%;background:var(--ym-uy)"></s></div></div></div>
+        <div class="ym-izgara">${gor.map(a => { const d = ymDurum(a); return `<button type="button" class="ym-ajan${a.id === YM.secili ? ' sec' : ''}" data-ajan="${esc(a.id)}"><span class="ym-ust"><span class="ym-av ym-hex${a.ekip === 'Yönetim' ? ' k' : ''}">${esc(ymKisa(a.ad))}</span><span><b>${esc(a.ad)}</b><span class="ym-kod">${esc([a.kod, a.yer && a.yer !== 'bulut' ? a.yer : ''].filter(Boolean).join(' · '))}</span></span></span><span class="ym-p">${esc(a.gorev || a.is || '')}</span><span class="ym-alt"><span class="ym-d ${d[1]}">${d[0]}</span><span>${esc(d[2] || '')}</span></span></button>`; }).join('')}<button type="button" class="ym-ajan bos" data-yeni="${esc(b.ad)}">+ Bu bölüme ajan ekle</button></div></section>`;
+    }).join('') || '<p class="empty">Bu süzgece uyan ajan yok.</p>';
+    ymDetay();
+    $('#ymBekle').innerHTML = '<h3>Sizden bekleyenler</h3>' + ((v.bekleyen || []).filter(b => b.n).map(b => `<button type="button" data-go="${esc(b.git || 'instagram')}"><span>${esc(b.ad)}</span><em>${b.n}</em></button>`).join('') || '<p class="ym-bos">Kararınızı bekleyen iş yok.</p>');
+    $('#ymAkis').innerHTML = '<h3>Canlı akış</h3>' + ((v.son || []).slice(0, 7).map(k => `<div><time>${new Date(k.zaman).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}</time><span><b>${esc(k.ajan)}</b> ${esc((k.ozet || '').slice(0, 90))}</span></div>`).join('') || '<p class="ym-bos">Ajanlar çalıştıkça burada görünür.</p>');
+  }
+  function ymDetay() {
+    const v = YM.veri, a = v && (v.ajanlar || []).find(x => x.id === YM.secili), kut = $('#ymDetay');
+    if (!a) { kut.innerHTML = '<h3>Seçili ajan</h3><p class="ym-bos">Bir ajan seçin.</p>'; return; }
+    const d = ymDurum(a), zz = iso => iso ? fmtD(iso) : '—';
+    const yer = a.yer === 'bulut' ? 'bulutta çalışır' : a.yer === 'site' ? 'sitede çalışır' : a.yer ? a.yer + 'da çalışır' : '';
+    kut.innerHTML = `<h3>Seçili ajan</h3><div class="ym-bas"><span class="ym-av ym-hex${a.ekip === 'Yönetim' ? ' k' : ''}">${esc(ymKisa(a.ad))}</span><div><b>${esc(a.ad)}</b><small>${esc([a.kod, a.ekip + ' bölümü', yer].filter(Boolean).join(' · '))}</small></div></div>
+      <span class="ym-d ${d[1]}">${d[0]}</span>${['u', 'p', 'h'].includes(d[1]) ? `<small class="ym-neden">${esc(d[2])}</small>` : ''}
+      <div class="ym-gorev">${esc(a.gorev || a.is || '')}</div>
+      <div class="ym-satir"><span>Bağlı olduğu</span><b>${a.id === 'yonetici' ? 'Sahip' : 'Şirket Müdürü'}</b></div>
+      <div class="ym-satir"><span>Takvim</span><b>${esc(a.takvim || '—')}</b></div>
+      <div class="ym-satir"><span>Son çalışma</span><b>${a.id === 'asistan' ? 'sürekli açık' : a.son ? zz(a.son) : 'henüz çalışmadı'}</b></div>
+      <div class="ym-satir"><span>Sıradaki</span><b>${a.id === 'asistan' ? '7/24' : zz(a.sonraki)}</b></div>
+      <div class="ym-rapor"><h4>Son rapor</h4>${esc(a.ozet || '—')}</div>
+      ${a.kayitlar && a.kayitlar.length ? `<div class="ym-kayit"><h4>Son kayıtlar</h4>${a.kayitlar.map(k => `<div><time>${fmtD(k.zaman)}</time><span class="of-d ${esc(k.durum)}">${esc(k.durum)}</span> ${esc((k.ozet || '').slice(0, 140))}</div>`).join('')}</div>` : ''}
+      <div class="ym-dugme"><button class="btn btn-line btn-sm" type="button" data-go="${a.id === 'asistan' ? 'sohbetler' : 'ofis'}">${a.id === 'asistan' ? 'Sohbetleri aç' : 'Ofiste gör'}</button></div>`;
+  }
+  function ymYeni(bolum) {
+    const yeniBolum = bolum === 'yeni-bolum';
+    $('#ymDlgB').textContent = yeniBolum ? 'Yeni bölüm' : 'Yeni ajan';
+    $('#ymOrnek').textContent = yeniBolum ? 'Yeni bölüm: (adı ve ne iş yapacağı)' : `Yeni ajan${bolum ? ' (' + bolum + ' bölümü)' : ''}: (ne yapmasını istediğiniz)`;
+    const dlg = $('#ymDlg'); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+  }
+  $('#ymKapat').addEventListener('click', () => $('#ymDlg').close());
+  $('#ymKopya').addEventListener('click', async () => { try { await navigator.clipboard.writeText($('#ymOrnek').textContent); toast('Kopyalandı'); } catch { toast('Kopyalanamadı; cümleyi elle seçin'); } });
+  $('#v-ajanlar').addEventListener('click', e => {
+    const t = e.target.closest('[data-ajan],[data-suz],[data-bolum],[data-yeni],#ymGor'); if (!t) return;
+    if (t.dataset.ajan) { YM.secili = t.dataset.ajan; ymRender(); if (innerWidth < 1180) $('#ymDetay').scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    else if (t.dataset.suz) { YM.suz = t.dataset.suz; ymRender(); }
+    else if (t.dataset.bolum) { YM.suz = t.dataset.bolum; ymRender(); }
+    else if (t.id === 'ymGor') { YM.liste = !YM.liste; t.textContent = YM.liste ? 'Kart görünümü' : 'Liste görünümü'; ymRender(); }
+    else if (t.dataset.yeni != null) ymYeni(t.dataset.yeni);
+  });
+  $('#ymAra').addEventListener('input', e => { YM.ara = e.target.value.trim(); ymRender(); });
   function renderAjan() {
-    $('#agGrid').innerHTML = AJANLAR.map(a => {
-      const son = ig.gunluk.find(x => x.Ajan === a.ad);
-      return `<div class="ag"><div class="n"><i>${esc(a.kisa)}</i><b>${esc(a.ad)}</b></div><p>${esc(a.gorev)}</p>
-        <small>Takvim: ${esc(a.takvim)}</small>
-        <small>${son ? `Son çalışma: ${fmtD(son.Zaman)} · <span class="pill" style="--c:${AJ_RENK[son.Durum] || 'var(--ink-3)'}">${esc(son.Durum)}</span>` : 'Henüz çalışmadı'}</small></div>`;
-    }).join('');
+    ymRender();
     $('#agLog').innerHTML = ig.gunluk.slice(0, 40).map(x => `<tr><td class="num">${fmtD(x.Zaman)}</td><td>${esc(x.Ajan)}</td><td>${esc(x.Hafta || '—')}</td><td style="white-space:normal"><span class="pill" style="--c:${AJ_RENK[x.Durum] || 'var(--ink-3)'}">${esc(x.Durum)}</span> ${esc(x['Özet'] || '')}</td></tr>`).join('')
       || '<tr><td colspan="4" class="empty">Ajanlar çalıştıkça burada görünür.</td></tr>';
     const acik = new Set($$('#agRap details[open]').map(d => d.dataset.k)), ilk = !$('#agRap details');
@@ -1494,7 +1685,7 @@ td .who small{color:var(--ink-3)}
       if (islem === 'sube_ayar') return res({ ok: false, hata: 'Demo modunda değişiklik kaydedilmez' });
       if (islem === 'ofis') { const s = m => new Date(Date.now() - m * 6e4).toISOString(), ileri = m => new Date(Date.now() + m * 6e4).toISOString();
         const A = (id, ad, ekip, is, durum, son, ozet, sonraki, balon) => ({ id, ad, ekip, is, durum, son: son == null ? null : s(son), ozet, sonraki: sonraki == null ? null : ileri(sonraki), balon: balon || '', kayitlar: son == null ? [] : [{ zaman: s(son), durum: durum === 'err' ? 'Hata' : durum === 'uy' ? 'Uyarı' : 'Başarılı', ozet }] });
-        return res({ ok: true, zaman: new Date().toISOString(), son: [], ajanlar: [
+        return res({ ok: true, zaman: new Date().toISOString(), son: [{ zaman: s(12), ajan: 'Auri Video', ozet: '6 videoyu panele yükledi' }, { zaman: s(35), ajan: 'Yönetici', ozet: 'denetimi tamamladı · 2 uyarı' }, { zaman: s(600), ajan: 'Kaşif', ozet: '59 yeni firma ekledi' }], ajanlar: [
           A('kasif', 'Kaşif', 'Satış', 'yeni firma bulur', 'ok', 600, 'Ankara ve Konya dizinleri tarandı; 59 yeni firma eklendi, 7 tekrar atlandı.', 840),
           A('kimlik', 'Kimlik', 'Satış', 'karar vericiyi bulur', 'calis', 900, 'Önceki tur: 22 firmada karar verici bulundu.', 840, 'çalışıyor…'),
           A('veri', 'Veri', 'Satış', 'iletişim bilgisi bulur', 'ok', 590, '31 firmanın e-posta ve WhatsApp bilgisi doğrulandı.', 840),
@@ -1502,7 +1693,7 @@ td .who small{color:var(--ink-3)}
           A('yazar', 'Mesaj Yazarı', 'Satış', 'mesaj taslağı yazar', 'gri', 2900, 'Dış iletişimi duraklattığın için mesaj taslağı yazmıyor.', 840),
           A('takip', 'Takip', 'Satış', 'takip günlerini izler', 'gri', 2900, 'Dış iletişimi duraklattığın için takip yazmıyor.', 840),
           A('satisyon', 'Satış Yön.', 'Satış', 'sıcak müşteriyi öne çıkarır', 'ok', 580, 'Bugün sıcak müşteri yok; 3 firma takipte.', 840),
-          A('mentor', 'Mentor', 'Satış', 'aylık değerlendirme', 'gri', null, 'Henüz kayıt yok.', 40000),
+          A('mentor', 'Mentor', 'Yönetim', 'aylık değerlendirme', 'gri', null, 'Henüz kayıt yok.', 40000),
           A('tr', 'TR İçerik', 'Instagram', '@purixxrf.tr gönderileri', 'uy', 7000, 'w41 için 3 gönderi hazırlandı.', 3000, '1 gönderi onayını bekliyor'),
           A('global', 'Global İçerik', 'Instagram', '@purixxrf gönderileri', 'ok', 7000, 'w41 için 2 gönderi ve 3 hikâye hazırlandı.', 3000),
           A('ulke', 'Ülke İçerik', 'Instagram', 'ülke hesapları', 'ok', 7000, 'Hindistan ve Almanya için 4 gönderi hazırlandı.', 3000),
@@ -1511,8 +1702,12 @@ td .who small{color:var(--ink-3)}
           A('yayin', 'Yayın', 'Instagram', 'paylaşıma hazırlar', 'ok', 1500, 'Onaylanan 2 gönderi zamanlandı.', 2300),
           A('talep', 'Talep', 'Instagram', 'DM taleplerini aktarır', 'ok', 1500, 'Yeni DM talebi yok.', 2300),
           A('analiz', 'Analiz', 'Instagram', 'haftalık performans', 'ok', 7030, 'Geçen hafta erişim %18 arttı.', 3000),
-          A('yonetici', 'Yönetici', 'Yönetim', 'sistemi denetler, sana raporlar', 'calis', 700, 'Sistem arızası yok; 1 Instagram onayı senin kararını bekliyor.', 660, 'denetliyor…'),
-          A('asistan', 'Site asistanı', 'Site', 'ziyaretçilere 14 dilde cevap verir', 'calis', null, 'Son 24 saatte 12 soru, 3 kez iletişim kartı açıldı.', null, 'ziyaretçiyle konuşuyor…')] }); }
+          A('yonetici', 'Şirket Müdürü', 'Yönetim', 'sistemi denetler, sana raporlar', 'calis', 700, 'Sistem arızası yok; 1 Instagram onayı senin kararını bekliyor.', 660, 'denetliyor…'),
+          A('asistan', 'Site asistanı', 'Site', 'ziyaretçilere 14 dilde cevap verir', 'calis', null, 'Son 24 saatte 12 soru, 3 kez iletişim kartı açıldı.', null, 'ziyaretçiyle konuşuyor…'),
+          A('auriedit', 'Auri Editörü', 'Auri', 'haber tarar, senaryo yazar', 'gri', null, 'Henüz kayıt yok.', 900),
+          A('aurivideo', 'Auri Video', 'Auri', 'videoları üretir, panele yükler', 'uy', 240, '6/6 video yüklendi (12-17 Ekim, 19:00).', 9000, '7 gönderi onayını bekliyor')],
+          bolumler: [{ ad: 'Auri', alt: '@auri.purix · haftada 6 video · Pazartesi–Cumartesi 19:00' }, { ad: 'Instagram', alt: '@purixxrf · @purixxrf.tr · ülke hesapları · haftalık üretim Pazartesi 08:00' }, { ad: 'Satış', alt: 'Türkiye\'de firma bulma, puanlama ve mesaj taslakları · her gün 09:11' }, { ad: 'Yönetim', alt: 'Denetim ve aylık değerlendirme' }, { ad: 'Site', alt: 'purixxrf.com ziyaretçilerine yanıt' }],
+          bekleyen: [{ ad: 'Auri videoları · onay', n: 7, git: 'instagram' }, { ad: 'Instagram gönderileri · onay', n: 1, git: 'instagram' }], hafta_is: 46 }); }
       if (islem === 'sohbet_liste') { const t = m => new Date(Date.now() - m * 6e4).toISOString(); return res({ ok: true, ayar: { acik: true, gunluk: 300, model: 'claude-haiku-4-5-20251001', anahtar_var: true }, son7gun: { mesaj: 41, oturum: 17, form: 9, talep: 4, giren: 52000, cikan: 6100 }, sohbetler: [
         { id: 9, zaman: t(5), oturum: 'a3', ulke: 'AE', dil: 'ar', soru: 'كم السعر؟', cevap: 'سيزودك فريق PURIX بمعلومات دقيقة عن الأسعار. اترك بياناتك وسيتواصل معك الفريق في أقرب وقت.', form: 1, durum: 'ok' },
         { id: 8, zaman: t(7), oturum: 'a3', ulke: 'AE', dil: 'ar', soru: 'هل يتلف القطعة؟', cevap: 'لا، القياس لا يتلف القطعة: بلا قطع أو كشط أو أحماض.', form: 0, durum: 'ok' },
@@ -2027,7 +2222,7 @@ td .who small{color:var(--ink-3)}
       <div class="of-kv"><div><small>Son çalışma</small><b>${d.id === 'asistan' ? 'sürekli açık' : zz(d.son)}</b></div><div><small>Sonraki</small><b>${d.id === 'asistan' ? '7/24' : zz(d.sonraki)}</b></div></div>
       <div class="of-rep"><h4>Son rapor</h4>${esc(d.ozet || '—')}</div>
       ${d.kayitlar && d.kayitlar.length ? `<div class="of-log"><h4>Son kayıtlar</h4>${d.kayitlar.map(k => `<div><time>${fmtD(k.zaman)}</time><span class="of-d ${esc(k.durum)}">${esc(k.durum)}</span> ${esc((k.ozet || '').slice(0, 140))}</div>`).join('')}</div>` : ''}
-      <button class="btn btn-line btn-sm" type="button" data-go="${d.id === 'asistan' ? 'sohbetler' : 'ajanlar'}">${d.id === 'asistan' ? 'Sohbetleri aç' : 'Ajanlar sekmesinde aç'}</button>`;
+      <button class="btn btn-line btn-sm" type="button" data-go="${d.id === 'asistan' ? 'sohbetler' : 'ajanlar'}">${d.id === 'asistan' ? 'Sohbetleri aç' : 'Yapay Zekâ Ekibi sayfasında aç'}</button>`;
     const c = $('#ofAv').getContext('2d'), P = (x, y, w, h, col) => { c.fillStyle = col; c.fillRect(x, y, w, h); };
     P(2, 6, 8, 8, a.gom); P(3, 0, 6, 6, a.ten); P(3, 0, 6, 2, a.sac); P(2, 1, 1, 3, a.sac); P(4, 3, 1, 1, '#2B2B33'); P(7, 3, 1, 1, '#2B2B33');
   }
