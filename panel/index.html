@@ -291,6 +291,110 @@ button.ym-dugum{cursor:pointer}
 @media(max-width:1180px){.ym-govde{grid-template-columns:1fr}.ym-say{grid-template-columns:repeat(5,1fr);width:100%}}
 @media(max-width:700px){.ym-zincir>button+.ym-ok{display:none}.ym-bl{flex-basis:100%}.ym-bant{padding:18px 16px}.ym-h1{font-size:26px}.ym-petek{display:none}.ym-say{grid-template-columns:repeat(3,1fr)}.ym-sayi b{font-size:26px}.ym-ok{width:22px;margin:0 8px}.ym-ara{width:100%}.ym-saglik{margin-left:0;text-align:left}.ym-izgara{grid-template-columns:1fr 1fr}.ym-liste .ym-ajan{flex-direction:column;align-items:stretch}.ym-liste .ym-ust,.ym-liste .ym-alt{flex:none}}
 @media(max-width:430px){.ym-izgara{grid-template-columns:1fr}}
+/* Genel Merkez (eski Ofis sekmesi): bina kesiti, her bölüm bir kat */
+.gm-ust{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.gm-govde{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start}
+.gm-govde>div{min-width:0}
+.gm-sahne{position:relative;border-radius:20px;overflow:hidden;background:linear-gradient(180deg,#14110F 0%,#1C1917 34%,#2A2117 100%);padding:24px 28px 0}
+.gm-sahne:before{content:"";position:absolute;inset:0;background:radial-gradient(60% 40% at 78% 0%,rgba(228,203,147,.20),transparent 70%),radial-gradient(40% 30% at 8% 12%,rgba(228,203,147,.08),transparent 70%);pointer-events:none}
+.gm-yildiz{position:absolute;width:2px;height:2px;border-radius:50%;background:#E4CB93;opacity:.5;animation:gmKirp 3.2s ease-in-out infinite}
+@keyframes gmKirp{50%{opacity:.1}}
+.gm-tabela{position:relative;display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
+.gm-tabela img{height:40px;width:auto;filter:drop-shadow(0 0 14px rgba(228,203,147,.55))}
+.gm-tabela b{font-weight:700;font-stretch:125%;letter-spacing:.1em;font-size:24px;color:#fff;position:relative;overflow:hidden}
+.gm-tabela b:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 35%,rgba(255,255,255,.65) 50%,transparent 65%);transform:translateX(-120%);animation:gmParla 5s ease-in-out infinite}
+@keyframes gmParla{55%,100%{transform:translateX(120%)}}
+.gm-tabela span{font-size:11px;letter-spacing:.2em;color:var(--gold-l);border-left:1px solid #57534E;padding-left:12px;font-weight:600}
+.gm-bina{position:relative;background:#0F0D0C;border:2px solid #3A3431;border-bottom:0;border-radius:16px 16px 0 0;padding:10px 10px 0;box-shadow:0 0 0 1px rgba(228,203,147,.18),0 -20px 60px rgba(228,203,147,.07)}
+.gm-bos{color:#CFC8BE;padding:30px;text-align:center}
+.gm-kat{position:relative;display:flex;min-height:146px;margin-bottom:8px;border-radius:9px;overflow:hidden;background:linear-gradient(180deg,#FBFAF7 0%,#F1EEE8 70%,#E4DED3 100%)}
+.gm-kat:last-child{margin-bottom:0}
+.gm-kat:after{content:"";position:absolute;left:0;right:0;bottom:0;height:7px;background:linear-gradient(90deg,#6E4B22,#B48C50 30%,#ECD49E 55%,#B48C50 80%,#6E4B22)}
+.gm-etiket{flex:none;width:148px;background:#1C1917;color:#fff;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:3px}
+.gm-no{font-size:10.5px;letter-spacing:.16em;color:var(--gold-l);font-weight:600}
+.gm-etiket b{font-size:15px;font-weight:650;line-height:1.1}
+.gm-etiket small{font-size:11px;color:#A8A29E}
+.gm-cub{height:4px;border-radius:9px;background:#3A3431;overflow:hidden;display:flex;margin-top:5px}
+.gm-cub s{display:block;height:100%}
+.gm-oda{flex:1;min-width:0;display:flex;flex-direction:column;margin-right:60px;background:repeating-linear-gradient(90deg,transparent 0 118px,rgba(28,25,23,.05) 118px 120px)}
+.gm-led{position:relative;min-height:20px;background:#1C1917;color:#E7E5E4;font-size:10.5px;display:flex;align-items:center;gap:8px;padding:2px 12px;overflow:hidden;white-space:nowrap}
+.gm-led b{color:var(--gold-l);font-weight:600;letter-spacing:.08em;font-size:9.5px;flex:none}
+.gm-led span{overflow:hidden;text-overflow:ellipsis}
+.gm-led i{position:absolute;top:0;bottom:0;width:90px;background:linear-gradient(90deg,transparent,rgba(228,203,147,.35),transparent);animation:gmTara 4.5s linear infinite}
+@keyframes gmTara{0%{left:-90px}100%{left:100%}}
+.gm-masalar{flex:1;display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 3px;padding:12px 10px 16px}
+.gm-masa{width:84px;display:flex;flex-direction:column;align-items:center;position:relative;background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer}
+.gm-av{width:30px;height:33px;display:grid;place-items:center;font-size:10px;font-weight:700;background:linear-gradient(140deg,#6E4B22,#B48C50 40%,#ECD49E 70%,#B48C50);color:#1F1406;margin-bottom:3px;position:relative;z-index:2}
+.gm-masa.k .gm-av{background:var(--ink);color:var(--gold-l)}
+.gm-ekran{width:40px;height:26px;border-radius:4px;background:#12100F;border:2px solid #3A3431;display:flex;flex-direction:column;justify-content:center;gap:3px;padding:0 5px}
+.gm-ekran i{display:block;height:2px;border-radius:2px;background:#57534E;width:70%}
+.gm-ekran i:nth-child(2){width:95%}.gm-ekran i:nth-child(3){width:50%}
+.gm-ayak{width:6px;height:5px;background:#3A3431}.gm-tabla{width:68px;height:6px;border-radius:3px;background:#8A6331}
+.gm-masa b{font-size:10.5px;font-weight:600;margin-top:5px;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
+.gm-masa small{font-size:9.5px;color:var(--ink-3);line-height:1.1;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.gm-masa.c .gm-ekran{border-color:#3B82F6;box-shadow:0 0 0 3px rgba(59,130,246,.18),0 0 18px rgba(59,130,246,.55)}
+.gm-masa.c .gm-ekran i{background:#8EC1FF;animation:gmYaz 1.1s ease-in-out infinite}
+.gm-masa.c .gm-ekran i:nth-child(2){animation-delay:.18s}.gm-masa.c .gm-ekran i:nth-child(3){animation-delay:.36s}
+@keyframes gmYaz{0%{width:10%}60%{width:95%}100%{width:10%}}
+.gm-masa.c .gm-av{animation:gmZipla 1.6s ease-in-out infinite}
+@keyframes gmZipla{50%{transform:translateY(-3px)}}
+.gm-masa.t .gm-ekran{border-color:var(--ok);box-shadow:0 0 12px rgba(47,125,74,.35)}.gm-masa.t .gm-ekran i{background:#7CCB96}
+.gm-masa.u .gm-ekran{border-color:#C27C0E;animation:gmUyari 1.2s steps(2) infinite}.gm-masa.u .gm-ekran i{background:#F2C46B}
+@keyframes gmUyari{50%{box-shadow:0 0 0 4px rgba(194,124,14,.25),0 0 18px rgba(194,124,14,.6)}}
+.gm-masa.h .gm-ekran{border-color:var(--warn);animation:gmHata 1s steps(2) infinite}.gm-masa.h .gm-ekran i{background:#E8A090}
+@keyframes gmHata{50%{box-shadow:0 0 0 4px rgba(180,69,42,.25),0 0 18px rgba(180,69,42,.6)}}
+.gm-masa.u:before,.gm-masa.h:before{content:"!";position:absolute;top:-4px;right:14px;width:16px;height:16px;border-radius:50%;background:#C27C0E;color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;z-index:3;animation:gmZipla 1.2s ease-in-out infinite}
+.gm-masa.h:before{background:var(--warn)}
+.gm-masa.p .gm-ekran,.gm-masa.s .gm-ekran{opacity:.55}.gm-masa.p .gm-av{filter:grayscale(1);opacity:.6}
+.gm-masa.sec:after{content:"";position:absolute;inset:-6px -1px -4px;border:2px solid var(--gold);border-radius:10px;box-shadow:0 0 0 3px rgba(180,140,80,.2);pointer-events:none}
+.gm-masa.aday .gm-av{background:#fff;color:var(--gold-text);outline:1.5px dashed var(--gold);outline-offset:-2px;clip-path:none;border-radius:8px}
+.gm-masa.aday .gm-ekran{opacity:.3}.gm-masa.aday .gm-tabla{opacity:.45}
+.gm-masa.aday b{color:var(--ink-2)}.gm-masa.aday small{color:var(--gold-text);font-weight:600}
+.gm-bosmasa{width:72px;height:70px;border:1.5px dashed #B48C50;border-radius:9px;display:grid;place-items:center;color:var(--gold-text);font:inherit;font-size:11px;font-weight:600;text-align:center;line-height:1.2;margin:0 0 2px 6px;background:rgba(255,255,255,.5);cursor:pointer}
+.gm-salon{margin-left:auto;align-self:stretch;display:flex;align-items:flex-end;gap:3px;border-left:1px dashed #B48C50;padding:18px 0 0 10px;position:relative}
+.gm-salon:before{content:"BEKLEME SALONU";position:absolute;left:10px;top:0;font-size:9px;letter-spacing:.14em;color:var(--gold-text);font-weight:600;white-space:nowrap}
+.gm-kat.sahip{background:linear-gradient(120deg,#2A2117,#3A2A14 60%,#5A4322);min-height:96px}
+.gm-kat.sahip .gm-etiket{background:transparent}
+.gm-siz{flex:1;min-width:0;display:flex;align-items:center;gap:16px;padding:10px 18px 14px;margin-right:60px;color:#fff;flex-wrap:wrap}
+.gm-sizhex{width:52px;height:58px;flex:none;background:linear-gradient(140deg,#8A6331,#ECD49E 55%,#B48C50);color:#1F1406;display:grid;place-items:center;font-weight:700;font-size:15px;animation:gmNabiz 2.4s ease-in-out infinite}
+@keyframes gmNabiz{50%{filter:drop-shadow(0 0 12px rgba(236,212,158,.9))}}
+.gm-siz b{font-size:16px;font-weight:650}.gm-siz small{display:block;color:#CFC8BE;font-size:12px}
+.gm-onay{margin-left:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.gm-zarf{background:rgba(255,255,255,.08);border:1px solid rgba(228,203,147,.4);border-radius:10px;padding:8px 13px;font:inherit;font-size:12.5px;color:#fff;display:flex;gap:8px;align-items:center;cursor:pointer}
+.gm-zarf em{font-style:normal;background:var(--gold-l);color:#1F1406;border-radius:99px;padding:1px 9px;font-weight:700;animation:gmZipla 1.4s ease-in-out infinite}
+.gm-btn{background:linear-gradient(100deg,#8A6331,#B48C50 30%,#ECD49E 60%,#B48C50);color:#1F1406;border:0;border-radius:10px;padding:8px 14px;font:inherit;font-size:12.5px;font-weight:650;cursor:pointer}
+.gm-saft{position:absolute;right:10px;top:10px;bottom:0;width:56px;background:linear-gradient(180deg,#1C1917,#12100F);border-left:1px solid #3A3431;border-right:1px solid #3A3431;z-index:3}
+.gm-saft:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;background:repeating-linear-gradient(180deg,rgba(228,203,147,.5) 0 6px,transparent 6px 14px)}
+.gm-kabin{position:absolute;left:8px;right:8px;height:46px;border-radius:7px;background:linear-gradient(140deg,#8A6331,#ECD49E 55%,#B48C50);box-shadow:0 0 18px rgba(236,212,158,.6);animation:gmAsansor 11s cubic-bezier(.6,0,.4,1) infinite;display:grid;place-items:center;font-size:9px;font-weight:700;color:#1F1406;letter-spacing:.06em}
+@keyframes gmAsansor{0%,8%{top:calc(100% - 60px)}30%,38%{top:58%}56%,64%{top:36%}80%,90%{top:28px}100%{top:calc(100% - 60px)}}
+.gm-paket{position:absolute;left:50%;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#ECD49E;box-shadow:0 0 10px #ECD49E;animation:gmYuksel 4.2s linear infinite;opacity:0}
+@keyframes gmYuksel{0%{bottom:10px;opacity:0}10%{opacity:1}85%{opacity:1}100%{bottom:calc(100% - 70px);opacity:0}}
+.gm-zemin{height:16px;margin:0 -28px;background:linear-gradient(180deg,#3A3431,#1C1917)}
+.gm-serit{position:relative;margin:0 -28px;background:#0F0D0C;border-top:1px solid #3A3431;color:#E7E5E4;font-size:12.5px;padding:9px 0;overflow:hidden;white-space:nowrap}
+.gm-serit>div{display:inline-block;padding-left:100%;animation:gmKay 40s linear infinite}
+.gm-serit b{color:var(--gold-l);font-weight:600}.gm-serit span{margin-right:44px}
+@keyframes gmKay{100%{transform:translateX(-100%)}}
+.gm-calisan{display:flex;gap:10px;align-items:center;padding:6px 0}
+.gm-calisan .ym-av{width:34px;height:38px}
+.gm-calisan b{font-size:14px;font-weight:650;display:block}.gm-calisan small{color:var(--ink-3);font-size:12px}
+.gm-ilerleme{height:6px;border-radius:9px;background:var(--line-2);overflow:hidden;margin:4px 0 6px}
+.gm-ilerleme s{display:block;height:100%;width:40%;background:linear-gradient(90deg,var(--gold),var(--gold-l));border-radius:9px;animation:gmIlerle 2.4s ease-in-out infinite}
+@keyframes gmIlerle{0%{margin-left:-40%}100%{margin-left:100%}}
+.gm-gundem div{display:flex;align-items:center;gap:9px;font-size:12.5px;padding:5px 0}
+.gm-gundem time{flex:none;width:80px;color:var(--ink-3);font-variant-numeric:tabular-nums;font-size:12px}
+.gm-gundem i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--ok)}
+.gm-gundem .u i{background:#C27C0E}.gm-gundem .h i{background:var(--warn)}.gm-gundem .gel i{background:#fff;outline:1.5px solid var(--gold)}
+.gm-gundem span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.gm-gundem b{font-weight:650}
+.gm-gundem .simdi{padding:2px 0}.gm-gundem .simdi span{flex:1;font-size:10.5px;color:var(--warn);font-weight:600;display:flex;align-items:center;gap:8px;overflow:visible}
+.gm-gundem .simdi span:after{content:"";flex:1;height:2px;background:var(--warn);animation:gmKirp 1.4s infinite}
+.gm-bsv{display:flex;gap:10px;align-items:center;width:100%;text-align:left;font:inherit;color:inherit;background:none;border:0;border-top:1px solid var(--line-2);padding:8px 0;cursor:pointer}
+.gm-kart-ilk{border-top:0;padding-top:0}
+.gm-bsv .hx{flex:none;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:10px;font-weight:700;color:var(--gold-text);outline:1.5px dashed var(--gold);outline-offset:-2px;background:#fff}
+.gm-bsv b{font-size:13px;font-weight:650;display:block;line-height:1.2}.gm-bsv small{font-size:11.5px;color:var(--ink-3);display:block;line-height:1.3}
+.gm-dl{font-size:13px;color:var(--ink-2);margin:0 0 12px}.gm-dl div{padding:6px 0;border-top:1px solid var(--line-2)}.gm-dl div:first-child{border-top:0}.gm-dl span{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+@media(max-width:1180px){.gm-govde{grid-template-columns:1fr}}
+@media(max-width:700px){.gm-sahne{padding:18px 12px 0}.gm-zemin,.gm-serit{margin:0 -12px}.gm-saft{display:none}.gm-kat{flex-direction:column}.gm-etiket{width:auto;flex-direction:row;align-items:center;flex-wrap:wrap;gap:4px 10px;padding:8px 12px}.gm-cub{display:none}.gm-oda,.gm-siz{margin-right:0}.gm-onay{margin-left:0}.gm-salon{margin-left:0;border-left:0;padding:18px 0 0}.gm-salon:before{left:0;top:0}}
+@media(prefers-reduced-motion:reduce){.gm-sahne *,.gm-ilerleme s{animation:none!important}}
 .rep summary{cursor:pointer;font-weight:600;padding:10px 0;list-style:none;display:flex;justify-content:space-between;gap:10px}
 .rep summary::-webkit-details-marker{display:none}
 .rep{border-bottom:1px solid var(--line-2)}
@@ -539,7 +643,7 @@ button.ym-dugum{cursor:pointer}
     <button class="nav-btn" data-view="adaylar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".8"/></svg>Adaylar<span class="badge" id="adBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r=".6"/></svg>Instagram<span class="badge" id="igBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="ajanlar"><svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16.5h5"/></svg>Yapay Zekâ Ekibi</button>
-    <button class="nav-btn" data-view="ofis"><svg viewBox="0 0 24 24"><path d="M3 20h18M5 20V9l7-5 7 5v11"/><path d="M9 20v-5h6v5M9 11h.01M15 11h.01"/></svg>Ofis</button>
+    <button class="nav-btn" data-view="ofis"><svg viewBox="0 0 24 24"><path d="M3 20h18M5 20V9l7-5 7 5v11"/><path d="M9 20v-5h6v5M9 11h.01M15 11h.01"/></svg>Genel Merkez</button>
     <button class="nav-btn" data-view="trafik"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.6 5.2 3.6 8.5s-1.2 6.1-3.6 8.5c-2.4-2.4-3.6-5.2-3.6-8.5S9.6 5.9 12 3.5z"/></svg>Trafik</button>
     <button class="nav-btn" data-view="sohbetler"><svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 011 1v10a1 1 0 01-1 1h-9.5L6 20.5V17H4a1 1 0 01-1-1V6a1 1 0 011-1z"/><path d="M8 10h8M8 13h5"/></svg>Sohbetler</button>
     <button class="nav-btn" data-view="ayarlar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>Ayarlar</button>
@@ -756,18 +860,35 @@ button.ym-dugum{cursor:pointer}
 
     <!-- AYARLAR -->
     <section id="v-ofis" hidden>
-      <div class="sh-top">
-        <div class="of-ust"><span id="ofZaman" class="of-z">yükleniyor…</span></div>
-        <div class="of-cip" id="ofCip"></div>
-      </div>
-      <div class="of-grid">
-        <div class="card of-kart">
-          <div class="of-wrap" id="ofWrap"><canvas id="ofCv" width="240" height="150" aria-label="Ajanların ofisi"></canvas></div>
-          <div class="of-lej"><span><i style="background:#3B82F6"></i>Şu an çalışıyor</span><span><i style="background:#2F7D4A"></i>Son çalışma başarılı</span><span><i style="background:#C27C0E"></i>Uyarı ya da kararını bekliyor</span><span><i style="background:#B4452A"></i>Hata</span><span><i style="background:#A8A29E"></i>Sırada / duraklatıldı</span></div>
+      <div class="gm-ust"><span id="gmZaman" class="of-z">yükleniyor…</span><div class="of-cip" id="gmCip"></div></div>
+      <div class="gm-govde">
+        <div>
+          <div class="gm-sahne">
+            <i class="gm-yildiz" style="left:6%;top:36px"></i><i class="gm-yildiz" style="left:17%;top:16px;animation-delay:.8s"></i><i class="gm-yildiz" style="left:31%;top:30px;animation-delay:1.6s"></i><i class="gm-yildiz" style="left:88%;top:20px;animation-delay:.4s"></i><i class="gm-yildiz" style="left:94%;top:44px;animation-delay:2s"></i><i class="gm-yildiz" style="left:70%;top:12px;animation-delay:1.2s"></i>
+            <div class="gm-tabela"><img src="../assets/mark-192.webp" alt="" width="33" height="40"><b>PURIX</b><span>XRF · GENEL MERKEZ</span></div>
+            <div class="gm-bina">
+              <div class="gm-saft" aria-hidden="true"><div class="gm-kabin">RAPOR</div><i class="gm-paket"></i><i class="gm-paket" style="animation-delay:1.4s"></i><i class="gm-paket" style="animation-delay:2.8s"></i></div>
+              <div id="gmKatlar"><p class="gm-bos">Yükleniyor…</p></div>
+            </div>
+            <div class="gm-zemin"></div>
+            <div class="gm-serit"><div id="gmSerit"></div></div>
+          </div>
+          <div class="of-lej"><span><i style="background:#3B82F6"></i>Şu an çalışıyor</span><span><i style="background:#2F7D4A"></i>Son çalışma başarılı</span><span><i style="background:#C27C0E"></i>Uyarı ya da kararınızı bekliyor</span><span><i style="background:#B4452A"></i>Hata</span><span><i style="background:#A8A29E"></i>Sırada / duraklatıldı</span><span><i style="background:#fff;outline:1.5px dashed #B48C50"></i>İş başvurusu</span></div>
+          <p class="of-not">Ajanlar zamanlanmış görevlerde çalışır ve işi bitince kayıt yazar. "Çalışıyor" durumu planlı saatten sonraki 40 dakika için gösterilir; asansör ve ışıklar yalnızca canlılık içindir.</p>
         </div>
-        <aside class="card of-det" id="ofDet"><p class="tf-bos">Yükleniyor…</p></aside>
+        <div class="gm-yan">
+          <div class="ym-kart ym-detay" id="gmDetay"></div>
+          <div class="ym-kart" id="gmCalisan"></div>
+          <div class="ym-kart" id="gmGun"></div>
+          <div class="ym-kart" id="gmBasvuru"></div>
+        </div>
       </div>
-      <p class="of-not">Ajanlar bulutta zamanlanmış görevlerde çalışır ve işi bitince kayıt yazar. "Çalışıyor" durumu planlı saatten sonraki 40 dakika için gösterilir; kahve molası ve yürüyüşler yalnızca canlılık içindir.</p>
+      <dialog id="gmDlg" class="ym-dlg">
+        <h3 id="gmDlgB"></h3>
+        <div id="gmDlgIc"></div>
+        <div class="ym-ornek" id="gmOrnek"></div>
+        <div class="ym-dugme"><button class="btn btn-ink btn-sm" type="button" id="gmKopya">Cümleyi kopyala</button><button class="btn btn-line btn-sm" type="button" id="gmKapat">Kapat</button></div>
+      </dialog>
     </section>
 
     <section id="v-trafik" hidden>
@@ -958,7 +1079,7 @@ button.ym-dugum{cursor:pointer}
   $('#refresh').addEventListener('click', () => { load(); igLoad(); });
 
   /* ---------- Görünümler ---------- */
-  const TITLES = { bugun: 'Bugün', genel: 'Genel bakış', talepler: 'Talepler', randevular: 'Randevular', adaylar: 'Adaylar', instagram: 'Instagram', ajanlar: 'Yapay Zekâ Ekibi', ofis: 'Ofis', trafik: 'Trafik', sohbetler: 'Sohbetler', ayarlar: 'Ayarlar' };
+  const TITLES = { bugun: 'Bugün', genel: 'Genel bakış', talepler: 'Talepler', randevular: 'Randevular', adaylar: 'Adaylar', instagram: 'Instagram', ajanlar: 'Yapay Zekâ Ekibi', ofis: 'Genel Merkez', trafik: 'Trafik', sohbetler: 'Sohbetler', ayarlar: 'Ayarlar' };
   function go(v) {
     view = v; $$('.nav-btn[data-view]').forEach(b => b.dataset.view === v ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current'));
     Object.keys(TITLES).forEach(k => $('#v-' + k).hidden = k !== v); $('#title').textContent = TITLES[v];
@@ -982,7 +1103,7 @@ button.ym-dugum{cursor:pointer}
   function render() {
     const yeni = data.filter(x => x.Durum === 'Yeni').length;
     $('#newBadge').hidden = !yeni; $('#newBadge').textContent = yeni;
-    $('#subtitle').textContent = view === 'adaylar' ? (ad.ozet ? `${ad.ozet.toplam} firma · bugün ${ad.ozet.bugun} yeni` : 'Satış ajanlarının bulduğu firmalar') : view === 'instagram' ? igAltBaslik() : view === 'ajanlar' ? (YM.veri ? `${YM.veri.ajanlar.length} ajan · ${(YM.veri.bolumler || []).length || 5} bölüm · PURIX XRF` : 'PURIX XRF yapay zekâ ekibi') : data.length ? `${data.length} talep · ${yeni} yeni` : 'Henüz talep yok';
+    $('#subtitle').textContent = view === 'adaylar' ? (ad.ozet ? `${ad.ozet.toplam} firma · bugün ${ad.ozet.bugun} yeni` : 'Satış ajanlarının bulduğu firmalar') : view === 'instagram' ? igAltBaslik() : view === 'ajanlar' ? (YM.veri ? `${YM.veri.ajanlar.length} ajan · ${(YM.veri.bolumler || []).length || 5} bölüm · PURIX XRF` : 'PURIX XRF yapay zekâ ekibi') : view === 'ofis' ? 'PURIX XRF yapay zekâ ekibi iş başında' : data.length ? `${data.length} talep · ${yeni} yeni` : 'Henüz talep yok';
     if (view === 'bugun') renderBugun(); else if (view === 'genel') renderGenel(); else if (view === 'talepler') renderList(); else if (view === 'adaylar') renderAd(); else if (view === 'instagram') renderIg(); else if (view === 'ajanlar') renderAjan(); else renderAyar();
   }
 
@@ -1541,7 +1662,7 @@ button.ym-dugum{cursor:pointer}
   const ymSorunlu = a => ['u', 'h'].includes(ymDurum(a)[1]);
   async function ymLoad(sessiz) {
     try { YM.veri = await api('ofis'); YM.hata = ''; } catch (e) { if (!sessiz || !YM.veri) YM.hata = e.message; }
-    ymRender(); if (view === 'ajanlar') render();
+    ymRender(); gmRender(); if (view === 'ajanlar' || view === 'ofis') render();
   }
   function ymRender() {
     const v = YM.veri, kok = $('#ymBolumler'); if (!kok) return;
@@ -1589,7 +1710,7 @@ button.ym-dugum{cursor:pointer}
       <div class="ym-satir"><span>Sıradaki</span><b>${a.id === 'asistan' ? '7/24' : zz(a.sonraki)}</b></div>
       <div class="ym-rapor"><h4>Son rapor</h4>${esc(a.ozet || '—')}</div>
       ${a.kayitlar && a.kayitlar.length ? `<div class="ym-kayit"><h4>Son kayıtlar</h4>${a.kayitlar.map(k => `<div><time>${fmtD(k.zaman)}</time><span class="of-d ${esc(k.durum)}">${esc(k.durum)}</span> ${esc((k.ozet || '').slice(0, 140))}</div>`).join('')}</div>` : ''}
-      <div class="ym-dugme"><button class="btn btn-line btn-sm" type="button" data-go="${a.id === 'asistan' ? 'sohbetler' : 'ofis'}">${a.id === 'asistan' ? 'Sohbetleri aç' : 'Ofiste gör'}</button></div>`;
+      <div class="ym-dugme"><button class="btn btn-line btn-sm" type="button" data-go="${a.id === 'asistan' ? 'sohbetler' : 'ofis'}">${a.id === 'asistan' ? 'Sohbetleri aç' : 'Genel Merkez’de gör'}</button></div>`;
   }
   function ymYeni(bolum) {
     const yeniBolum = bolum === 'yeni-bolum';
@@ -1707,7 +1828,8 @@ button.ym-dugum{cursor:pointer}
           A('auriedit', 'Auri Editörü', 'Auri', 'haber tarar, senaryo yazar', 'gri', null, 'Henüz kayıt yok.', 900),
           A('aurivideo', 'Auri Video', 'Auri', 'videoları üretir, panele yükler', 'uy', 240, '6/6 video yüklendi (12-17 Ekim, 19:00).', 9000, '7 gönderi onayını bekliyor')],
           bolumler: [{ ad: 'Auri', alt: '@auri.purix · haftada 6 video · Pazartesi–Cumartesi 19:00' }, { ad: 'Instagram', alt: '@purixxrf · @purixxrf.tr · ülke hesapları · haftalık üretim Pazartesi 08:00' }, { ad: 'Satış', alt: 'Türkiye\'de firma bulma, puanlama ve mesaj taslakları · her gün 09:11' }, { ad: 'Yönetim', alt: 'Denetim ve aylık değerlendirme' }, { ad: 'Site', alt: 'purixxrf.com ziyaretçilerine yanıt' }],
-          bekleyen: [{ ad: 'Auri videoları · onay', n: 7, git: 'instagram' }, { ad: 'Instagram gönderileri · onay', n: 1, git: 'instagram' }], hafta_is: 46 }); }
+          bekleyen: [{ ad: 'Auri videoları · onay', n: 7, git: 'instagram' }, { ad: 'Instagram gönderileri · onay', n: 1, git: 'instagram' }], hafta_is: 46,
+          basvurular: [{ id: 'dagitim', ad: 'Dağıtım Ajanı', ekip: 'Auri', kod: 'BŞV-01', gorev: 'Auri videolarını TikTok ve YouTube için hazırlar.', gerek: 'TikTok ve YouTube hesaplarının açılması', donem: 'H1 · 2026 son çeyrek' }, { id: 'olcum', ad: 'Ölçüm Ajanı', ekip: 'Yönetim', kod: 'BŞV-02', gorev: 'İstatistikleri haftalık toplar.', gerek: 'İstatistik izni', donem: 'H1 · 2026 son çeyrek' }, { id: 'telefon', ad: 'Telefon Asistanı', ekip: 'Çağrı merkezi', kod: 'BŞV-03', gorev: 'Gelen aramaları karşılar.', gerek: 'Santral bağlantı bilgisi', donem: 'H1 · 2026 son çeyrek' }, { id: 'linkedin', ad: 'LinkedIn Ajanı', ekip: 'Satış', kod: 'BŞV-05', gorev: 'Mesaj taslakları hazırlar.', gerek: 'Şirket sayfası', donem: 'H1–H2' }, { id: 'bekci', ad: 'Cihaz Bekçisi', ekip: 'Cihaz', kod: 'BŞV-07', gorev: 'Cihazları izler.', gerek: 'Cihazın bağlanması', donem: 'H2 · 2027 ilk çeyrek' }] }); }
       if (islem === 'sohbet_liste') { const t = m => new Date(Date.now() - m * 6e4).toISOString(); return res({ ok: true, ayar: { acik: true, gunluk: 300, model: 'claude-haiku-4-5-20251001', anahtar_var: true }, son7gun: { mesaj: 41, oturum: 17, form: 9, talep: 4, giren: 52000, cikan: 6100 }, sohbetler: [
         { id: 9, zaman: t(5), oturum: 'a3', ulke: 'AE', dil: 'ar', soru: 'كم السعر؟', cevap: 'سيزودك فريق PURIX بمعلومات دقيقة عن الأسعار. اترك بياناتك وسيتواصل معك الفريق في أقرب وقت.', form: 1, durum: 'ok' },
         { id: 8, zaman: t(7), oturum: 'a3', ulke: 'AE', dil: 'ar', soru: 'هل يتلف القطعة؟', cevap: 'لا، القياس لا يتلف القطعة: بلا قطع أو كشط أو أحماض.', form: 0, durum: 'ok' },
@@ -2110,128 +2232,81 @@ button.ym-dugum{cursor:pointer}
   $('#rvKapEkle').addEventListener('click', () => { const t = $('#rvKapT').value, n = $('#rvKapN').value.trim(); if (!t) { toast('Tarih seçin'); return; } rvKapanis({ kapanis_ekle: { tarih: t, neden: n } }); });
   $('#rvKap').addEventListener('click', e => { const b = e.target.closest('[data-ks]'); if (b && confirm('Kapanış silinsin mi?')) rvKapanis({ kapanis_sil: +b.dataset.ks }); });
 
-  /* ---------- Ofis (ajanların canlı görünümü; veri: ofis işlemi, çizim: piksel sahne) ---------- */
-  const OF = { veri: null, kur: false, t: 0, secili: 'kasif', zamanlayici: null };
-  const OF_RENK = { ok: '#2F7D4A', uy: '#C27C0E', gri: '#A8A29E', calis: '#3B82F6', err: '#B4452A' };
-  const OF_DURUM = { ok: ['Son çalışma başarılı', '#E8F3EC', '#2F7D4A'], uy: ['Uyarı', '#FDF3E1', '#9A5B05'], gri: ['Sırada / duraklatıldı', '#F0EFEC', '#57534E'], calis: ['Şu an çalışıyor', '#E6F0FE', '#1D4ED8'], err: ['Hata', '#FBEAE5', '#B4452A'] };
-  let ofG, ofBg, ofA = [];
-  function ofR(c, x, y, w, h, col) { c.fillStyle = col; c.fillRect(Math.round(x), Math.round(y), w, h); }
-  function ofSahne() {
-    const cv = $('#ofCv'); ofG = cv.getContext('2d');
-    ofBg = document.createElement('canvas'); ofBg.width = 240; ofBg.height = 150; const b = ofBg.getContext('2d');
-    const zemin = (x, y, w, h, a, c2) => { for (let i = 0; i < w; i += 4) for (let j = 0; j < h; j += 4) ofR(b, x + i, y + j, 4, 4, ((i + j) / 4) % 2 ? a : c2); };
-    ofR(b, 0, 0, 240, 150, '#3a2e28');
-    zemin(3, 14, 110, 84, '#D9A86C', '#D3A165'); zemin(117, 14, 120, 84, '#D9A86C', '#D3A165');
-    zemin(3, 102, 74, 45, '#B9C6A8', '#B3C0A2'); zemin(81, 102, 66, 45, '#E3D3B8', '#DCCCB1'); zemin(151, 102, 86, 45, '#CFC6BC', '#C8BFB5');
-    const duvar = (x, y, w) => { ofR(b, x, y, w, 9, '#6B5A4E'); ofR(b, x, y + 9, w, 2, '#4E4038'); for (let i = x + 8; i < x + w - 14; i += 26) { ofR(b, i, y + 1, 14, 7, '#8FB7D6'); ofR(b, i + 1, y + 2, 12, 5, '#B9D6EC'); ofR(b, i + 6, y + 1, 1, 7, '#6B5A4E'); } };
-    duvar(3, 3, 110); duvar(117, 3, 120);
-    ofR(b, 3, 98, 234, 4, '#4E4038'); ofR(b, 77, 102, 4, 45, '#4E4038'); ofR(b, 147, 102, 4, 45, '#4E4038'); ofR(b, 113, 3, 4, 95, '#4E4038');
-    ofR(b, 44, 98, 10, 4, '#B3C0A2'); ofR(b, 110, 98, 12, 4, '#DCCCB1'); ofR(b, 185, 98, 12, 4, '#C8BFB5'); ofR(b, 113, 80, 4, 14, '#D3A165');
-    const bitki = (x, y) => { ofR(b, x + 1, y + 6, 6, 5, '#9C5B3B'); ofR(b, x + 2, y + 6, 4, 1, '#B87350'); ofR(b, x, y + 1, 8, 5, '#3E8E4E'); ofR(b, x + 2, y - 1, 4, 3, '#4FA35E'); ofR(b, x + 1, y + 2, 2, 2, '#62B872'); };
-    [[103, 18], [227, 18], [5, 86], [119, 86], [64, 128], [134, 128], [222, 110], [154, 136]].forEach(([x, y]) => bitki(x, y));
-    ofR(b, 8, 106, 4, 34, '#7A5236'); for (let j = 108; j < 138; j += 7) { ofR(b, 8, j, 4, 1, '#5A3B26'); ofR(b, 8, j + 1, 4, 3, ['#B4452A', '#3F6FB5', '#E4CB93', '#3E8E4E'][j % 4]); }
-    ofR(b, 56, 104, 14, 9, '#F4F1EA'); ofR(b, 57, 105, 4, 3, '#B4452A'); ofR(b, 62, 105, 6, 1, '#999'); ofR(b, 62, 107, 6, 1, '#999'); ofR(b, 57, 109, 10, 1, '#999');
-    ofR(b, 86, 106, 8, 12, '#55606B'); ofR(b, 87, 108, 6, 3, '#2B2B33'); ofR(b, 88, 113, 4, 3, '#E9E3D6');
-    ofR(b, 100, 120, 30, 12, '#A4704A'); ofR(b, 100, 120, 30, 2, '#BE8A60'); ofR(b, 106, 117, 4, 3, '#fff'); ofR(b, 118, 117, 4, 3, '#fff');
-    ofR(b, 214, 139, 18, 8, '#3a2e28'); ofR(b, 215, 140, 16, 6, '#B48C50');
-    // ajan yerleşimi (Worker'daki kimliklerle aynı sıra)
-    const SAC = ['#2B1D14', '#5A3A22', '#1C1C1C', '#8A5A2B', '#3D2B1F', '#C9A15A', '#2B1D14', '#6B4A33'], TEN = ['#F1C9A0', '#E0B088', '#C99872', '#F3D2B0', '#B98262', '#EBC29B', '#D9A57C', '#F1C9A0'];
-    const yeni = (o) => Object.assign(o, { pos: { x: o.ev.x, y: o.ev.y }, mod: 'otur', yol: [], goz: Math.random() * 60, bekle: 0, durum: 'gri' });
-    ['kasif', 'kimlik', 'veri', 'analist', 'yazar', 'takip', 'satisyon', 'mentor'].forEach((id, i) => { const cx = 8 + (i % 4) * 26, cy = 34 + Math.floor(i / 4) * 32; ofA.push(yeni({ id, ekip: 'Satış', masa: { x: cx, y: cy }, ev: { x: cx + 4, y: cy - 15 }, sac: SAC[i], gom: '#3F6FB5', ten: TEN[i] })); });
-    ['tr', 'global', 'ulke', 'kreatif', 'marka', 'yayin', 'talep', 'analiz'].forEach((id, i) => { const cx = 124 + (i % 4) * 28, cy = 34 + Math.floor(i / 4) * 32; ofA.push(yeni({ id, ekip: 'Instagram', masa: { x: cx, y: cy }, ev: { x: cx + 4, y: cy - 15 }, sac: SAC[7 - i], gom: '#B4527A', ten: TEN[7 - i] })); });
-    ofA.push(yeni({ id: 'yonetici', ekip: 'Yönetim', masa: { x: 26, y: 122, buyuk: true }, ev: { x: 36, y: 108 }, sac: '#2B2B2B', gom: '#1C1917', ten: '#E0B088' }));
-    ofA.push(yeni({ id: 'asistan', ekip: 'Site', masa: { x: 160, y: 118, tezgah: true }, ev: { x: 176, y: 104 }, sac: '#3D2B1F', gom: '#2F7D4A', ten: '#C99872' }));
-    const wrap = $('#ofWrap');
-    ofA.forEach(a => { const d = document.createElement('button'); d.type = 'button'; d.className = 'of-lbl'; d.innerHTML = '<i></i><span></span>'; d.addEventListener('click', () => { OF.secili = a.id; ofDetay(); }); wrap.appendChild(d); a.el = d; });
-    [['Satış hattı', 22, 96], ['Instagram', 136, 96], ['Yönetici odası', 16, 146], ['Kahve', 84, 146], ['Resepsiyon · site', 154, 146]].forEach(([tx, x, y]) => { const d = document.createElement('div'); d.className = 'of-oda'; d.style.left = (x / 240 * 100) + '%'; d.style.top = (y / 150 * 100) + '%'; d.textContent = tx; wrap.appendChild(d); });
-    OF.kur = true;
+  /* ---------- Genel Merkez (eski Ofis): bina kesiti; veri Yapay Zekâ Ekibi sayfasıyla aynı (ofis işlemi → YM.veri) ---------- */
+  // Her bölüm bir kat, her ajan bir masa. Yeni ajan/bölüm Worker listesine eklenince (platform/src/ofis.js) kat ve masa kendiliğinden çizilir.
+  // İş başvuruları (v.basvurular): bölümü olan aday kendi katında "başvuru masası"nda, bölümü henüz olmayan aday giriş katındaki bekleme salonunda oturur.
+  const GM = { secili: null };
+  const gmSaat = iso => new Date(iso).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+  async function ofLoad(sessiz) { await ymLoad(sessiz); }
+  function gmRender() {
+    const v = YM.veri, kok = $('#gmKatlar'); if (!kok) return;
+    if (!v) { kok.innerHTML = `<p class="gm-bos">${esc(YM.hata || 'Yükleniyor…')}</p>`; return; }
+    const A = v.ajanlar || [], B = v.basvurular || [], say = s => A.filter(a => a.durum === s).length;
+    $('#gmZaman').textContent = 'son güncelleme ' + gmSaat(v.zaman);
+    $('#gmCip').innerHTML = `<span class="chip"><i style="background:#3B82F6"></i>${say('calis')} çalışıyor</span><span class="chip"><i style="background:#2F7D4A"></i>${say('ok')} tamam</span><span class="chip"><i style="background:#C27C0E"></i>${say('uy')} uyarı</span>${say('err') ? `<span class="chip"><i style="background:#B4452A"></i>${say('err')} hata</span>` : ''}<span class="chip"><i style="background:#A8A29E"></i>${say('gri')} sırada / duraklatıldı</span>${B.length ? `<span class="chip"><i style="background:#fff;outline:1.5px dashed #B48C50"></i>${B.length} iş başvurusu</span>` : ''}`;
+    const bolAd = v.bolumler && v.bolumler.length ? v.bolumler.map(b => b.ad) : [...new Set(A.map(a => a.ekip))];
+    const altAciklama = ad => ((v.bolumler || []).find(b => b.ad === ad) || {}).alt || '';
+    const giris = bolAd.includes('Site'), sira = [...bolAd.filter(b => b === 'Yönetim'), ...bolAd.filter(b => b !== 'Yönetim' && b !== 'Site'), ...bolAd.filter(b => b === 'Site')];
+    if (!GM.secili || !A.some(a => a.id === GM.secili)) GM.secili = (A.find(ymSorunlu) || A.find(a => a.id === 'yonetici') || A[0] || {}).id;
+    const masa = a => { const d = ymDurum(a); return `<button type="button" class="gm-masa ${d[1]}${a.ekip === 'Yönetim' ? ' k' : ''}${a.id === GM.secili ? ' sec' : ''}" data-gm="${esc(a.id)}" title="${esc(a.ad + ': ' + d[0])}"><span class="gm-av ym-hex">${esc(ymKisa(a.ad))}</span><span class="gm-ekran"><i></i><i></i><i></i></span><span class="gm-ayak"></span><span class="gm-tabla"></span><b>${esc(a.ad)}</b><small>${esc(d[2] || d[0])}</small></button>`; };
+    const adayMasa = b => `<button type="button" class="gm-masa aday" data-basvuru="${esc(b.id)}" title="${esc('İş başvurusu: ' + b.ad)}"><span class="gm-av">?</span><span class="gm-ekran"><i></i><i></i><i></i></span><span class="gm-ayak"></span><span class="gm-tabla"></span><b>${esc(b.ad)}</b><small>iş başvurusu</small></button>`;
+    const bek = (v.bekleyen || []).filter(b => b.n);
+    let h = `<div class="gm-kat sahip"><div class="gm-etiket"><span class="gm-no">ÇATI KATI</span><b>Sahip</b><small>onay ve karar</small></div>
+      <div class="gm-siz"><div class="gm-sizhex ym-hex">SİZ</div><div><b>${bek.length ? 'Kararınızı bekleyen işler' : 'Kararınızı bekleyen iş yok'}</b><small>Raporlar asansörle bu kata gelir</small></div>
+      <div class="gm-onay">${bek.map(b => `<button type="button" class="gm-zarf" data-go="${esc(b.git || 'instagram')}">${esc(String(b.ad).replace(' · onay', ''))}<em>${b.n}</em></button>`).join('')}${bek.length ? '<button type="button" class="gm-btn" data-go="instagram">Onayları aç</button>' : ''}</div></div></div>`;
+    h += sira.map((ad, i) => {
+      const hep = A.filter(a => a.ekip === ad), iyi = hep.filter(a => !ymSorunlu(a)).length, oran = hep.length ? Math.round(iyi / hep.length * 100) : 100;
+      const sonA = hep.filter(a => a.son).sort((x, y) => Date.parse(y.son) - Date.parse(x.son))[0];
+      const led = sonA ? `<b>SON İŞ · ${gmSaat(sonA.son)}</b><span>${esc(sonA.ad)}: ${esc((sonA.ozet || '').slice(0, 120))}</span>` : `<b>${esc(ad.toLocaleUpperCase('tr'))}</b><span>${esc(altAciklama(ad))}</span>`;
+      const sonKat = giris && i === sira.length - 1, no = sonKat ? 'GİRİŞ KATI' : (sira.length - (giris ? 1 : 0) - i) + '. KAT';
+      const salon = sonKat ? B.filter(b => !bolAd.includes(b.ekip)) : [];
+      return `<div class="gm-kat"><div class="gm-etiket"><span class="gm-no">${no}</span><b>${esc(ad === 'Site' ? 'Resepsiyon · site' : ad)}</b><small>${hep.length} ajan · ${iyi}/${hep.length} sağlıklı</small><div class="gm-cub"><s style="width:${oran}%;background:var(--ok)"></s><s style="width:${100 - oran}%;background:#C27C0E"></s></div></div>
+        <div class="gm-oda"><div class="gm-led">${led}<i></i></div><div class="gm-masalar">${hep.map(masa).join('')}${B.filter(b => b.ekip === ad).map(adayMasa).join('')}<button type="button" class="gm-bosmasa" data-yeni="${esc(ad)}">+ boş masa</button>${salon.length ? `<div class="gm-salon">${salon.map(adayMasa).join('')}</div>` : ''}</div></div></div>`;
+    }).join('');
+    kok.innerHTML = h;
+    $('#gmSerit').innerHTML = (v.son || []).slice(0, 8).map(k => `<span><b>${gmSaat(k.zaman)} · ${esc(k.ajan)}</b> ${esc((k.ozet || '').slice(0, 110))}</span>`).join('') || '<span>Ajanlar çalıştıkça günün akışı burada kayar.</span>';
+    gmDetay();
+    const cal = A.filter(a => a.durum === 'calis'), sonraki = A.filter(a => a.sonraki).sort((x, y) => Date.parse(x.sonraki) - Date.parse(y.sonraki))[0];
+    $('#gmCalisan').innerHTML = '<h3>Şu an çalışan</h3>' + (cal.length ? cal.map(a => `<div class="gm-calisan"><span class="ym-av ym-hex${a.ekip === 'Yönetim' ? ' k' : ''}">${esc(ymKisa(a.ad))}</span><div><b>${esc(a.ad)}</b><small>${esc(a.ekip)} · ${esc(a.balon || 'çalışıyor…')}</small></div></div><div class="gm-ilerleme"><s></s></div>`).join('')
+      : `<p class="ym-bos">Şu an çalışan ajan yok.${sonraki ? ` Sıradaki: <b>${esc(sonraki.ad)}</b>, ${esc(ymSira(sonraki.sonraki))}.` : ''}</p>`);
+    // bugünün takvimi: bugün yazılan kayıtlar + önümüzdeki 24 saatte planlı çalışmalar (aynı saat ve bölüm tek satır)
+    const bugun = new Date().toDateString(), gecen = (v.son || []).filter(k => new Date(k.zaman).toDateString() === bugun).slice(0, 7).reverse();
+    const gruplar = new Map();
+    A.filter(a => a.sonraki && Date.parse(a.sonraki) - Date.now() < 24 * 36e5).forEach(a => { const k = a.sonraki.slice(0, 16) + '|' + a.ekip; if (!gruplar.has(k)) gruplar.set(k, []); gruplar.get(k).push(a); });
+    const gelecek = [...gruplar.values()].sort((x, y) => Date.parse(x[0].sonraki) - Date.parse(y[0].sonraki)).slice(0, 5);
+    $('#gmGun').innerHTML = '<h3>Bugünün takvimi</h3><div class="gm-gundem">'
+      + gecen.map(k => `<div class="${k.durum === 'Uyarı' ? 'u' : k.durum === 'Hata' ? 'h' : ''}"><time>${gmSaat(k.zaman)}</time><i></i><span><b>${esc(k.ajan)}</b> ${esc((k.ozet || '').slice(0, 60))}</span></div>`).join('')
+      + `<div class="simdi"><span>şimdi ${gmSaat(v.zaman)}</span></div>`
+      + (gelecek.map(g => `<div class="gel"><time>${esc(ymSira(g[0].sonraki))}</time><i></i><span><b>${esc(g.length > 1 ? g[0].ekip : g[0].ad)}</b>${g.length > 1 ? ' · ' + g.length + ' ajan' : ''}</span></div>`).join('') || '<p class="ym-bos">Önümüzdeki 24 saatte planlı çalışma yok.</p>') + '</div>';
+    $('#gmBasvuru').innerHTML = `<h3>İş başvuruları${B.length ? ' · ' + B.length : ''}</h3>` + (B.map((b, i) => `<button type="button" class="gm-bsv${i ? '' : ' gm-kart-ilk'}" data-basvuru="${esc(b.id)}"><span class="hx">${esc(ymKisa(b.ad))}</span><span><b>${esc(b.ad)}</b><small>${esc(b.ekip)}${b.donem ? ' · ' + esc(b.donem) : ''}</small></span></button>`).join('') || '<p class="ym-bos">Bekleyen başvuru yok.</p>');
   }
-  function ofMasa(a) {
-    const m = a.masa, g = ofG, t = OF.t;
-    if (m.tezgah) { ofR(g, 160, 118, 44, 10, '#E4CB93'); ofR(g, 160, 118, 44, 2, '#F4E2B8'); ofR(g, 160, 128, 44, 3, '#B48C50'); ofR(g, 186, 112, 9, 6, '#2B2B33'); ofR(g, 187, 113, 7, 4, a.durum === 'calis' && t % 6 < 3 ? '#A7F3C1' : '#7FD39A'); return; }
-    if (m.buyuk) { ofR(g, 26, 122, 34, 9, '#6B4429'); ofR(g, 26, 122, 34, 2, '#8A5A36'); ofR(g, 40, 116, 11, 6, '#2B2B33'); ofR(g, 41, 117, 9, 4, a.durum === 'calis' && t % 6 < 3 ? '#F4E2B8' : '#E4CB93'); return; }
-    const ekr = a.durum === 'calis' ? ((t >> 1) % 2 ? '#93C5FD' : '#60A5FA') : a.durum === 'err' ? '#F2A08E' : '#5EA0D8';
-    ofR(g, m.x, m.y, 20, 8, '#8A5A36'); ofR(g, m.x, m.y, 20, 2, '#A4704A'); ofR(g, m.x + 1, m.y + 8, 2, 4, '#6B4429'); ofR(g, m.x + 17, m.y + 8, 2, 4, '#6B4429');
-    ofR(g, m.x + 6, m.y - 6, 9, 6, '#2B2B33'); ofR(g, m.x + 7, m.y - 5, 7, 4, ekr); ofR(g, m.x + 9, m.y, 3, 1, '#2B2B33'); ofR(g, m.x + 3, m.y + 2, 4, 2, '#E9E3D6');
+  function gmDetay() {
+    const v = YM.veri, a = v && (v.ajanlar || []).find(x => x.id === GM.secili), kut = $('#gmDetay');
+    if (!a) { kut.innerHTML = '<h3>Seçili ajan</h3><p class="ym-bos">Bir masaya dokunun.</p>'; return; }
+    const d = ymDurum(a), zz = iso => iso ? fmtD(iso) : '—';
+    kut.innerHTML = `<h3>Seçili ajan</h3><div class="ym-bas"><span class="ym-av ym-hex${a.ekip === 'Yönetim' ? ' k' : ''}">${esc(ymKisa(a.ad))}</span><div><b>${esc(a.ad)}</b><small>${esc([a.kod, a.ekip].filter(Boolean).join(' · '))}</small></div></div>
+      <span class="ym-d ${d[1]}">${d[0]}</span>${['u', 'p', 'h', 'c'].includes(d[1]) && d[2] ? `<small class="ym-neden">${esc(d[2])}</small>` : ''}
+      <div class="ym-rapor"><h4>Son rapor</h4>${esc(a.ozet || '—')}</div>
+      <div class="ym-satir"><span>Takvim</span><b>${esc(a.takvim || '—')}</b></div>
+      <div class="ym-satir"><span>Son çalışma</span><b>${a.id === 'asistan' ? 'sürekli açık' : a.son ? zz(a.son) : 'henüz çalışmadı'}</b></div>
+      <div class="ym-satir"><span>Sıradaki</span><b>${a.id === 'asistan' ? '7/24' : zz(a.sonraki)}</b></div>
+      <div class="ym-dugme"><button class="btn btn-line btn-sm" type="button" data-go="${a.id === 'asistan' ? 'sohbetler' : 'ajanlar'}">${a.id === 'asistan' ? 'Sohbetleri aç' : 'Ekip sayfasında aç'}</button></div>`;
   }
-  function ofOturan(a) {
-    const g = ofG, x = a.pos.x, y = a.pos.y, t = OF.t, kapali = ((t + a.goz) % 70) < 2;
-    ofR(g, x + 2, y + 6, 8, 6, a.gom); ofR(g, x + 3, y, 6, 6, a.ten); ofR(g, x + 3, y, 6, 2, a.sac); ofR(g, x + 2, y + 1, 1, 3, a.sac); ofR(g, x + 9, y + 1, 1, 2, a.sac);
-    if (!kapali) { ofR(g, x + 4, y + 3, 1, 1, '#2B2B33'); ofR(g, x + 7, y + 3, 1, 1, '#2B2B33'); }
-    if (a.durum === 'calis') { const k = (t >> 1) % 2; ofR(g, x + 1, y + 8 + k, 2, 2, a.ten); ofR(g, x + 9, y + 9 - k, 2, 2, a.ten); }
-    else { ofR(g, x + 1, y + 7, 1, 4, a.gom); ofR(g, x + 10, y + 7, 1, 4, a.gom); }
+  function gmPencere(baslik, icHtml, cumle) {
+    $('#gmDlgB').textContent = baslik; $('#gmDlgIc').innerHTML = icHtml; $('#gmOrnek').textContent = cumle;
+    const dlg = $('#gmDlg'); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
   }
-  function ofYuruyen(a) {
-    const g = ofG, x = a.pos.x, y = a.pos.y, s = (OF.t >> 1) % 2;
-    ofR(g, x + 3, y + 13, 2, 3 + s, '#3B3B46'); ofR(g, x + 7, y + 13, 2, 4 - s, '#3B3B46');
-    ofR(g, x + 2, y + 6, 8, 7, a.gom); ofR(g, x + 1, y + 7 + s, 1, 4, a.ten); ofR(g, x + 10, y + 8 - s, 1, 4, a.ten);
-    ofR(g, x + 3, y, 6, 6, a.ten); ofR(g, x + 3, y, 6, 2, a.sac); ofR(g, x + 2, y + 1, 1, 3, a.sac); ofR(g, x + 4, y + 3, 1, 1, '#2B2B33'); ofR(g, x + 7, y + 3, 1, 1, '#2B2B33');
-    if (a.bardak) ofR(g, x + 10, y + 9, 2, 3, '#fff');
-  }
-  function ofKahveYolu(a) {
-    const e = a.ev, m = a.masa, alt = m.y + 12, ara = m.x + 21, kor = 90, kapi = 114;
-    return [{ x: e.x, y: alt }, { x: ara, y: alt }, { x: ara, y: kor }, { x: kapi, y: kor }, { x: kapi, y: 108 }, { x: 104 + Math.floor(Math.random() * 14), y: 104, bekle: 30, bardak: true }, { x: kapi, y: 108 }, { x: kapi, y: kor }, { x: ara, y: kor }, { x: ara, y: alt }, { x: e.x, y: alt }, { x: e.x, y: e.y, otur: true }];
-  }
-  const ofTurYolu = () => [{ x: 46, y: 104 }, { x: 46, y: 90 }, { x: 29, y: 90 }, { x: 29, y: 46 }, { x: 104, y: 46, bekle: 12 }, { x: 104, y: 90 }, { x: 146, y: 90 }, { x: 146, y: 46 }, { x: 226, y: 46, bekle: 12 }, { x: 226, y: 90 }, { x: 46, y: 90 }, { x: 46, y: 104 }, { x: 36, y: 108, otur: true }];
-  function ofAdim(a) {
-    if (a.bekle > 0) { a.bekle--; return; }
-    const h = a.yol[0]; if (!h) { a.mod = 'otur'; a.pos = { x: a.ev.x, y: a.ev.y }; return; }
-    const dx = Math.sign(h.x - a.pos.x), dy = Math.sign(h.y - a.pos.y);
-    if (dx) a.pos.x += dx; else if (dy) a.pos.y += dy;
-    if (a.pos.x === h.x && a.pos.y === h.y) { a.yol.shift(); if (h.bekle) a.bekle = h.bekle; if (h.bardak) a.bardak = true; if (h.otur) { a.mod = 'otur'; a.bardak = false; } }
-  }
-  function ofKare() {
-    if (view !== 'ofis' || document.hidden) return;
-    const t = ++OF.t, g = ofG;
-    // canlılık: arada bir boştaki bir ajan kahveye gider; yönetici çalışırken ofisi dolaşır
-    if (t % 140 === 0) { const bos = ofA.filter(a => a.mod === 'otur' && a.durum !== 'calis' && a.id !== 'yonetici' && a.id !== 'asistan'); const k = bos[Math.floor(Math.random() * bos.length)]; if (k) { k.mod = 'yuru'; k.yol = ofKahveYolu(k); } }
-    const yon = ofA.find(a => a.id === 'yonetici'); if (yon && yon.durum === 'calis' && yon.mod === 'otur' && t % 400 === 1) { yon.mod = 'yuru'; yon.yol = ofTurYolu(); }
-    ofA.forEach(a => { if (a.mod === 'yuru') ofAdim(a); });
-    g.drawImage(ofBg, 0, 0);
-    ofA.forEach(a => { if (a.mod === 'otur') ofOturan(a); else if (!a.masa.buyuk && !a.masa.tezgah) { ofR(g, a.ev.x + 1, a.ev.y + 5, 10, 7, '#4A4A55'); ofR(g, a.ev.x + 2, a.ev.y + 6, 8, 5, '#5B5B68'); } ofMasa(a); });
-    ofA.filter(a => a.mod === 'yuru').sort((p, q) => p.pos.y - q.pos.y).forEach(ofYuruyen);
-    ofA.forEach(a => {
-      a.el.style.left = ((a.pos.x + 6) / 240 * 100) + '%'; a.el.style.top = ((a.pos.y - 1) / 150 * 100) + '%';
-      if (a.bal) { a.bal.style.left = a.el.style.left; a.bal.style.top = ((a.pos.y - 9) / 150 * 100) + '%'; }
-    });
-  }
-  function ofUygula() {
-    const v = OF.veri; if (!v || !OF.kur) return;
-    const wrap = $('#ofWrap');
-    ofA.forEach(a => {
-      const d = v.ajanlar.find(x => x.id === a.id); if (!d) return;
-      a.durum = d.durum; a.ad = d.ad; a.veri = d;
-      a.el.querySelector('span').textContent = d.ad;
-      const i = a.el.querySelector('i'); i.style.background = OF_RENK[d.durum] || OF_RENK.gri; i.className = d.durum === 'calis' || d.durum === 'uy' || d.durum === 'err' ? 'yanip' : '';
-      a.el.setAttribute('aria-label', d.ad + ': ' + (OF_DURUM[d.durum] || OF_DURUM.gri)[0]);
-      if (d.balon) { if (!a.bal) { a.bal = document.createElement('div'); a.bal.className = 'of-bal'; wrap.appendChild(a.bal); } a.bal.textContent = d.balon; a.bal.classList.toggle('uy', d.durum === 'uy' || d.durum === 'err'); }
-      else if (a.bal) { a.bal.remove(); a.bal = null; }
-    });
-    const n = s => v.ajanlar.filter(a => a.durum === s).length;
-    $('#ofCip').innerHTML = `<span class="chip"><i style="background:${OF_RENK.calis}"></i>${n('calis')} çalışıyor</span><span class="chip"><i style="background:${OF_RENK.ok}"></i>${n('ok')} tamam</span><span class="chip"><i style="background:${OF_RENK.uy}"></i>${n('uy')} uyarı</span>${n('err') ? `<span class="chip"><i style="background:${OF_RENK.err}"></i>${n('err')} hata</span>` : ''}<span class="chip"><i style="background:${OF_RENK.gri}"></i>${n('gri')} sırada / duraklatıldı</span>`;
-    $('#ofZaman').textContent = 'son güncelleme ' + new Date(v.zaman).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
-    ofDetay();
-  }
-  function ofDetay() {
-    const a = ofA.find(x => x.id === OF.secili), d = a && a.veri; if (!d) return;
-    ofA.forEach(x => x.el.classList.toggle('sel', x === a));
-    const NEDEN = { kayit: d.durum === 'uy' ? 'Son çalışmada uyarı verdi' : d.durum === 'err' ? 'Son çalışmada hata verdi' : null, onay: 'Kararını bekliyor', plan: 'Planlı saatte çalışmadı', duraklat: 'Duraklatıldı (dış iletişim kapalı)' };
-    const st0 = OF_DURUM[d.durum] || OF_DURUM.gri, st = [NEDEN[d.neden] || st0[0], st0[1], st0[2]], zz = iso => iso ? fmtD(iso) : '—';
-    $('#ofDet').innerHTML = `<div class="of-who"><div class="of-av"><canvas width="12" height="14" id="ofAv"></canvas></div><div><b>${esc(d.ad)}</b><small>${esc(d.ekip)} · ${esc(d.is)}</small></div></div>
-      <span class="of-st" style="background:${st[1]};color:${st[2]}"><i style="background:${OF_RENK[d.durum] || OF_RENK.gri}"></i>${st[0]}</span>
-      <div class="of-kv"><div><small>Son çalışma</small><b>${d.id === 'asistan' ? 'sürekli açık' : zz(d.son)}</b></div><div><small>Sonraki</small><b>${d.id === 'asistan' ? '7/24' : zz(d.sonraki)}</b></div></div>
-      <div class="of-rep"><h4>Son rapor</h4>${esc(d.ozet || '—')}</div>
-      ${d.kayitlar && d.kayitlar.length ? `<div class="of-log"><h4>Son kayıtlar</h4>${d.kayitlar.map(k => `<div><time>${fmtD(k.zaman)}</time><span class="of-d ${esc(k.durum)}">${esc(k.durum)}</span> ${esc((k.ozet || '').slice(0, 140))}</div>`).join('')}</div>` : ''}
-      <button class="btn btn-line btn-sm" type="button" data-go="${d.id === 'asistan' ? 'sohbetler' : 'ajanlar'}">${d.id === 'asistan' ? 'Sohbetleri aç' : 'Yapay Zekâ Ekibi sayfasında aç'}</button>`;
-    const c = $('#ofAv').getContext('2d'), P = (x, y, w, h, col) => { c.fillStyle = col; c.fillRect(x, y, w, h); };
-    P(2, 6, 8, 8, a.gom); P(3, 0, 6, 6, a.ten); P(3, 0, 6, 2, a.sac); P(2, 1, 1, 3, a.sac); P(4, 3, 1, 1, '#2B2B33'); P(7, 3, 1, 1, '#2B2B33');
-  }
-  async function ofLoad(sessiz) {
-    if (!OF.kur) ofSahne();
-    if (!OF.zamanlayici) OF.zamanlayici = setInterval(ofKare, 110);
-    try { OF.veri = await api('ofis'); ofUygula(); }
-    catch (e) { if (!sessiz) $('#ofDet').innerHTML = `<p class="tf-bos">${esc(e.message)}</p>`; }
-  }
+  $('#gmKapat').addEventListener('click', () => $('#gmDlg').close());
+  $('#gmKopya').addEventListener('click', async () => { try { await navigator.clipboard.writeText($('#gmOrnek').textContent); toast('Kopyalandı'); } catch { toast('Kopyalanamadı; cümleyi elle seçin'); } });
+  $('#v-ofis').addEventListener('click', e => {
+    const t = e.target.closest('[data-gm],[data-basvuru],[data-yeni]'); if (!t) return;
+    if (t.dataset.gm) { GM.secili = t.dataset.gm; gmRender(); if (innerWidth < 1180) $('#gmDetay').scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    else if (t.dataset.basvuru) {
+      const b = ((YM.veri || {}).basvurular || []).find(x => x.id === t.dataset.basvuru); if (!b) return;
+      gmPencere('İş başvurusu · ' + b.ad, `<div class="gm-dl"><div><span>Bölüm${b.donem ? ' · planlanan dönem' : ''}</span>${esc(b.ekip)}${b.donem ? ' · ' + esc(b.donem) : ''}</div><div><span>Ne yapacak</span>${esc(b.gorev || '')}</div><div><span>İşe almak için gereken</span>${esc(b.gerek || '—')}</div></div><p>İşe almak için Claude'a şu cümleyi yazmanız yeterli; görev tanımı hazırlanır, onayınızdan sonra ajan masasına oturur:</p>`, 'İşe al: ' + b.ad);
+    }
+    else if (t.dataset.yeni != null) gmPencere('Yeni ajan', `<p>Yeni ajan Claude ile birlikte kurulur: görev tanımı yazılır, siz onaylarsınız, ajan ${esc(t.dataset.yeni)} katındaki boş masaya oturur. Claude'a şu cümleyi yazmanız yeterli:</p>`, `Yeni ajan (${t.dataset.yeni} bölümü): (ne yapmasını istediğiniz)`);
+  });
 
   /* ---------- Sohbetler (site asistanı) ---------- */
   const SH = { veri: null, suz: 'hepsi' };
