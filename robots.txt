@@ -4,3 +4,4 @@ Disallow: /panel/
 Disallow: /kapi/
 Disallow: /rehber/
 Sitemap: https://www.purixxrf.com/sitemap.xml
+Sitemap: https://www.purixxrf.com/blog/sitemap.xml

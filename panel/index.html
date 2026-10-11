@@ -775,6 +775,28 @@ button.ym-dugum{cursor:pointer}
 .is-karne b{font-weight:600}
 .is-oran{display:block;height:5px;border-radius:3px;background:var(--line-2);margin-top:6px;max-width:120px;overflow:hidden}
 .is-oran i{display:block;height:100%;background:var(--ok)}
+/* Blog sayfası */
+.bl-ust{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.bl-yazi{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;background:var(--surface);border:1px solid var(--line-2);border-radius:16px;padding:14px;margin-bottom:12px}
+.bl-yazi .g{border-radius:12px;background:#EFEDE8 center/cover no-repeat;aspect-ratio:16/11;display:grid;place-items:center;color:var(--gold-l);font-weight:600;overflow:hidden}
+.bl-yazi .g.koyu{background:var(--stone)}.bl-yazi .g img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block}.bl-yazi .g.urun img{object-fit:contain;background:#fff}
+.bl-yazi h3{margin:6px 0 4px;font-size:17px;line-height:1.25}.bl-yazi p{margin:0;color:var(--ink-2);font-size:13.5px;line-height:1.45}
+.bl-kat{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-text)}
+.bl-durum{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--bg);color:var(--ink-2);margin-inline-start:8px;vertical-align:middle}
+.bl-durum.b{background:#FFF4D6;color:#7A5A10}.bl-durum.y{background:#E4F2E8;color:var(--ok)}.bl-durum.d{background:#FCE9E3;color:var(--warn)}
+.bl-kun{font-size:12.5px;color:var(--ink-3);margin-top:8px}
+.bl-dil{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.bl-dil button{font:500 12px/1 var(--f);padding:6px 9px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink-2);cursor:pointer}
+.bl-dil button.y{border-color:#BFDDC8;color:var(--ok)}.bl-dil button.b{border-color:#E4CB93;background:#FFF9E8;color:#7A5A10}.bl-dil button.d{border-color:#F1C7BA;color:var(--warn)}
+.bl-dugme{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.bl-dlg{border:0;border-radius:18px;padding:0;width:min(1100px,calc(100vw - 24px));height:min(92vh,1000px);box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:hidden}
+.bl-dlg[open]{display:flex;flex-direction:column}.bl-dlg::backdrop{background:rgba(28,25,23,.55)}
+.bl-dlg-ust{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line-2)}.bl-dlg-ust h3{margin:2px 0 0;font-size:16.5px}
+.bl-dlg iframe{flex:1;width:100%;border:0;background:var(--bg)}
+.bl-dlg-alt{padding:12px 18px;border-top:1px solid var(--line-2);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.bl-dlg-alt textarea{flex:1 1 280px;min-height:44px;max-height:110px}
+.bl-dlg-alt .bilgi{flex:1 1 280px;font-size:13px;color:var(--ink-2)}
+@media(max-width:640px){.bl-yazi{grid-template-columns:1fr}.bl-yazi .g{aspect-ratio:16/8}}
 </style>
 </head>
 <body>
@@ -804,6 +826,7 @@ button.ym-dugum{cursor:pointer}
     <button class="nav-btn" data-view="talepler"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Talepler<span class="badge" id="newBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="randevular"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4M8.5 14.5l2 2 4-4"/></svg>Randevular<span class="badge" id="rvBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="adaylar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".8"/></svg>Adaylar<span class="badge" id="adBadge" hidden>0</span></button>
+    <button class="nav-btn" data-view="blog"><svg viewBox="0 0 24 24"><path d="M6 4h9l4 4v12H6z"/><path d="M14.5 4v4.5H19M9 12.5h7M9 16h7"/></svg>Blog<span class="badge" id="blBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r=".6"/></svg>Instagram<span class="badge" id="igBadge" hidden>0</span></button>
     <button class="nav-btn" data-view="ajanlar"><svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16.5h5"/></svg>Yapay Zekâ Ekibi</button>
     <button class="nav-btn" data-view="ofis"><svg viewBox="0 0 24 24"><path d="M3 20h18M5 20V9l7-5 7 5v11"/><path d="M9 20v-5h6v5M9 11h.01M15 11h.01"/></svg>Genel Merkez</button>
@@ -852,6 +875,17 @@ button.ym-dugum{cursor:pointer}
       </div>
       <div class="is-ust"><div class="chips" id="grOzet"></div><button class="btn btn-line btn-sm" type="button" id="grArsiv">Arşivi göster</button></div>
       <div class="is-pano" id="grPano"><p class="empty">Yükleniyor…</p></div>
+    </section>
+
+    <!-- BLOG: SEO İçerik Ajanı'nın yazıları; sahip okur, yayınlar ya da düzeltme ister -->
+    <section id="v-blog" hidden>
+      <div class="bl-ust"><div class="chips" id="blOzet"></div><a class="btn btn-line btn-sm" id="blAdres" href="https://www.purixxrf.com/blog/" target="_blank" rel="noopener">Blogu sitede aç ↗</a></div>
+      <div id="blListe"><p class="empty">Yükleniyor…</p></div>
+      <dialog id="blDlg" class="bl-dlg" aria-labelledby="blDlgB">
+        <div class="bl-dlg-ust"><div><span class="is-kod" id="blDlgK"></span><h3 id="blDlgB"></h3></div><button type="button" class="btn btn-line btn-sm" id="blKapat">Kapat</button></div>
+        <iframe id="blCerceve" title="Yazı önizlemesi" sandbox="allow-same-origin"></iframe>
+        <div class="bl-dlg-alt" id="blDlgAlt"></div>
+      </dialog>
     </section>
 
     <!-- KARARLAR: ajanların sahibe sorduğu sorular -->
@@ -1279,10 +1313,10 @@ button.ym-dugum{cursor:pointer}
     hizliAcilis(); load(); igLoad(true); rvLoad(true); go('bugun'); clearInterval(timer); let tik = 0;
     timer = setInterval(() => { load(true); if (!igUcus && (++tik % 5 === 0 || view === 'instagram' || view === 'ajanlar')) igLoad(true); if (view === 'trafik') tfLoad(true); if (view === 'sohbetler') shLoad(true); if (view === 'ofis') ofLoad(true); if (view === 'ajanlar') ymLoad(true); if (view === 'gorevler') grLoad(true); if (view === 'kararlar') krLoad(true); if (view === 'bugun' && tik % 5 === 2) bgLoad(); if (view === 'randevular' || tik % 5 === 1) rvLoad(true); }, 60000);
   }
-  $('#refresh').addEventListener('click', () => { load(); igLoad(); if (view === 'gorevler') grLoad(); if (view === 'kararlar') krLoad(); if (view === 'bugun') bgLoad(); });
+  $('#refresh').addEventListener('click', () => { load(); igLoad(); if (view === 'gorevler') grLoad(); if (view === 'kararlar') krLoad(); if (view === 'blog') blLoad(); if (view === 'bugun') bgLoad(); });
 
   /* ---------- Görünümler ---------- */
-  const TITLES = { bugun: 'Bugün', gorevler: 'Görevler', kararlar: 'Kararlar', genel: 'Genel bakış', talepler: 'Talepler', randevular: 'Randevular', adaylar: 'Adaylar', instagram: 'Instagram', ajanlar: 'Yapay Zekâ Ekibi', ofis: 'Genel Merkez', trafik: 'Trafik', sohbetler: 'Sohbetler', ayarlar: 'Ayarlar' };
+  const TITLES = { bugun: 'Bugün', gorevler: 'Görevler', kararlar: 'Kararlar', blog: 'Blog', genel: 'Genel bakış', talepler: 'Talepler', randevular: 'Randevular', adaylar: 'Adaylar', instagram: 'Instagram', ajanlar: 'Yapay Zekâ Ekibi', ofis: 'Genel Merkez', trafik: 'Trafik', sohbetler: 'Sohbetler', ayarlar: 'Ayarlar' };
   function go(v) {
     try { if (SES.aktif) sesDur(); } catch (e) { /* ilk açılışta ses bölümü henüz kurulmamış olabilir */ }
     view = v; $$('.nav-btn[data-view]').forEach(b => b.dataset.view === v ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current'));
@@ -1292,6 +1326,7 @@ button.ym-dugum{cursor:pointer}
     if (v === 'ajanlar') { ymLoad(); if (IS.sekme === 'hafiza') hfLoad(true); if (IS.sekme === 'kullanim') kuLoad(true); if (IS.sekme === 'karne') knLoad(true); }
     if (v === 'gorevler') grLoad();
     if (v === 'kararlar') krLoad();
+    if (v === 'blog') blLoad();
     if (v === 'instagram' || v === 'ayarlar') igBagYukle();
     if (v === 'adaylar') adLoad();
     if (v === 'bugun') bgLoad();
@@ -1309,8 +1344,8 @@ button.ym-dugum{cursor:pointer}
   function render() {
     const yeni = data.filter(x => x.Durum === 'Yeni').length;
     $('#newBadge').hidden = !yeni; $('#newBadge').textContent = yeni;
-    $('#subtitle').textContent = view === 'adaylar' ? (ad.ozet ? `${ad.ozet.toplam} firma · bugün ${ad.ozet.bugun} yeni` : 'Satış ajanlarının bulduğu firmalar') : view === 'instagram' ? igAltBaslik() : view === 'ajanlar' ? (YM.veri ? `${YM.veri.ajanlar.length} ajan · ${(YM.veri.bolumler || []).length || 5} bölüm · PURIX XRF` : 'PURIX XRF yapay zekâ ekibi') : view === 'ofis' ? 'PURIX XRF yapay zekâ ekibi iş başında' : view === 'gorevler' ? 'Ajan ekibine verdiğiniz işler' : view === 'kararlar' ? 'Ajanların size sorduğu sorular' : data.length ? `${data.length} talep · ${yeni} yeni` : 'Henüz talep yok';
-    if (view === 'bugun') renderBugun(); else if (view === 'genel') renderGenel(); else if (view === 'talepler') renderList(); else if (view === 'adaylar') renderAd(); else if (view === 'instagram') renderIg(); else if (view === 'ajanlar') renderAjan(); else if (view === 'gorevler') renderGorev(); else if (view === 'kararlar') renderKarar(); else renderAyar();
+    $('#subtitle').textContent = view === 'adaylar' ? (ad.ozet ? `${ad.ozet.toplam} firma · bugün ${ad.ozet.bugun} yeni` : 'Satış ajanlarının bulduğu firmalar') : view === 'instagram' ? igAltBaslik() : view === 'ajanlar' ? (YM.veri ? `${YM.veri.ajanlar.length} ajan · ${(YM.veri.bolumler || []).length || 5} bölüm · PURIX XRF` : 'PURIX XRF yapay zekâ ekibi') : view === 'ofis' ? 'PURIX XRF yapay zekâ ekibi iş başında' : view === 'gorevler' ? 'Ajan ekibine verdiğiniz işler' : view === 'kararlar' ? 'Ajanların size sorduğu sorular' : view === 'blog' ? 'purixxrf.com/blog · siz onaylamadan hiçbir yazı yayınlanmaz' : data.length ? `${data.length} talep · ${yeni} yeni` : 'Henüz talep yok';
+    if (view === 'bugun') renderBugun(); else if (view === 'genel') renderGenel(); else if (view === 'talepler') renderList(); else if (view === 'adaylar') renderAd(); else if (view === 'instagram') renderIg(); else if (view === 'ajanlar') renderAjan(); else if (view === 'gorevler') renderGorev(); else if (view === 'kararlar') renderKarar(); else if (view === 'blog') renderBlog(); else renderAyar();
   }
 
   const bars = (pairs, total, colorOf) => pairs.length ? pairs.map(([k, v]) => `<div class="hbar"${colorOf ? ` style="--c:${colorOf(k)}"` : ''}><span>${esc(k)}</span><div class="t"><i style="width:${v ? Math.max(3, v / total * 100) : 0}%"></i></div><span class="v num">${v}</span></div>`).join('') : '<p class="empty">Veri yok</p>';
@@ -1998,6 +2033,74 @@ button.ym-dugum{cursor:pointer}
   });
   $('#grYeniden').addEventListener('click', () => { $('#grMetin').value = $('#grSesNot').dataset.taban || ''; $('#grSesNot').hidden = true; sesBasla($('#grSk')); });
   $('#grMetin').addEventListener('input', () => { if (!$('#grMetin').value.trim()) $('#grSesNot').hidden = true; });
+
+  /* Blog: SEO İçerik Ajanı'nın yazıları. Sahip önizler; Yayınla / Düzeltme iste / Reddet / Kaldır. Çeviriler aslı yayındayken gelir, toplu yayınlanır. */
+  const BL = { veri: null, acik: null };
+  const BL_KAT = { sozluk: 'Altın Sözlüğü', rehber: 'XRF Rehberi', gundem: 'Gündem' };
+  const blSinif = d => d === 'Yayında' ? 'y' : d === 'Onay bekliyor' ? 'b' : d === 'Düzeltme istendi' ? 'd' : '';
+  async function blLoad(sessiz) {
+    try { BL.veri = await api('blog_liste'); } catch (e) { if (!sessiz) toast(e.message); if (!BL.veri) BL.veri = { yazilar: [], diller: [] }; }
+    blRozet(); if (view === 'blog') renderBlog();
+  }
+  function blRozet() { const n = BL.veri ? BL.veri.yazilar.filter(y => y.durum === 'Onay bekliyor').length : 0; $('#blBadge').hidden = !n; $('#blBadge').textContent = n; }
+  function renderBlog() {
+    const v = BL.veri, kok = $('#blListe');
+    if (!v) { kok.innerHTML = '<p class="empty">Yükleniyor…</p>'; return; }
+    const Y = v.yazilar || [], say = d => Y.filter(y => y.durum === d).length;
+    $('#blOzet').innerHTML = [['Onayınızı bekliyor', say('Onay bekliyor')], ['Yayında', say('Yayında')], ['Düzeltmede', say('Düzeltme istendi')]].map(([t, n]) => `<span class="chip" style="cursor:default">${t} <b>${n}</b></span>`).join('');
+    if (v.adres) $('#blAdres').href = v.adres;
+    const grup = {}; Y.forEach(y => (grup[y.slug] = grup[y.slug] || []).push(y));
+    const sira = Object.values(grup).map(g => ({ asil: g.find(y => !y.asil) || g[0], ceviri: g.filter(y => y.asil) })).sort((a, b) => {
+      const bek = x => x.asil.durum === 'Onay bekliyor' || x.ceviri.some(c => c.durum === 'Onay bekliyor') ? 0 : 1;
+      return bek(a) - bek(b) || String(b.asil.guncelleme).localeCompare(String(a.asil.guncelleme));
+    });
+    kok.innerHTML = sira.length ? sira.map(({ asil: y, ceviri }) => {
+      const bek = ceviri.filter(c => c.durum === 'Onay bekliyor').length;
+      const gorsel = y.gorsel ? `<div class="g${/\/assets\//.test(y.gorsel) ? ' urun' : ''}"><img src="${esc(y.gorsel)}" alt="" loading="lazy"></div>` : `<div class="g koyu">${esc(BL_KAT[y.kategori] || y.kategori)}</div>`;
+      return `<article class="bl-yazi">${gorsel}<div>
+        <span class="bl-kat">${esc(BL_KAT[y.kategori] || y.kategori)}</span><span class="bl-durum ${blSinif(y.durum)}">${esc(y.durum)}</span>
+        <h3>${esc(y.baslik)}</h3><p>${esc(y.ozet)}</p>
+        <div class="bl-kun">${esc(y.dil.toUpperCase())} · sürüm ${esc(y.surum)} · ${esc(fmtD(y.guncelleme))}${y.video ? ' · Auri videolu' : ''}${y.durum === 'Yayında' ? ` · son 30 gün ${esc(y.goruntulenme_30g)} görüntülenme` : ''}${y.yalniz_tr ? ' · yalnız Türkçe' : ''}</div>
+        ${ceviri.length ? `<div class="bl-dil">${ceviri.map(c => `<button type="button" class="${blSinif(c.durum)}" data-bl="${esc(c.id)}" title="${esc(c.durum)}">${esc(c.dil.toUpperCase())}${c.durum === 'Yayında' ? ' ✓' : c.durum === 'Onay bekliyor' ? ' · bekliyor' : ''}</button>`).join('')}</div>` : ''}
+        <div class="bl-dugme"><button type="button" class="btn btn-ink btn-sm" data-bl="${esc(y.id)}">${y.durum === 'Onay bekliyor' ? 'Oku ve karar ver' : 'Yazıyı aç'}</button>
+        ${bek ? `<button type="button" class="btn btn-line btn-sm" data-bl-cev="${esc(y.slug)}">${bek} çeviriyi yayınla</button>` : ''}
+        ${y.adres ? `<a class="btn btn-line btn-sm" href="${esc(y.adres)}" target="_blank" rel="noopener">Sitede aç ↗</a>` : ''}</div>
+      </div></article>`;
+    }).join('') : '<div class="card"><p class="empty">Henüz yazı yok. SEO İçerik Ajanı Salı ve Cuma günleri yeni yazıları buraya onayınıza getirir.</p></div>';
+  }
+  async function blAc(id) {
+    const y = (BL.veri.yazilar || []).find(x => x.id === id); if (!y) return;
+    BL.acik = id; $('#blDlgK').textContent = `${BL_KAT[y.kategori] || y.kategori} · ${y.dil.toUpperCase()} · ${y.durum}`; $('#blDlgB').textContent = y.baslik;
+    const c = $('#blCerceve'); c.srcdoc = '<p style="font:15px system-ui;padding:24px;color:#57534E">Yükleniyor…</p>';
+    const not = '<textarea class="inp" id="blNot" maxlength="1500" placeholder="Düzeltme isterseniz ne değişsin? (Yayınlarken boş bırakabilirsiniz)" aria-label="Not"></textarea>';
+    $('#blDlgAlt').innerHTML = y.durum === 'Onay bekliyor' ? `${not}<button type="button" class="btn btn-line btn-sm" data-bl-k="Reddet">Reddet</button><button type="button" class="btn btn-line btn-sm" data-bl-k="Düzelt">Düzeltme iste</button><button type="button" class="btn btn-ink" data-bl-k="Yayınla">Yayınla</button>`
+      : y.durum === 'Yayında' ? `<span class="bilgi">Yayında${y.adres ? ': ' + esc(y.adres.replace('https://', '')) : ''}. Değişiklik için düzeltme isteyin; yazı, yeni sürümü onaylayana kadar yayından kalkar.</span>${not}<button type="button" class="btn btn-line btn-sm" data-bl-k="Düzelt">Düzeltme iste</button><button type="button" class="btn btn-line btn-sm" data-bl-k="Kaldır">Yayından kaldır</button>`
+      : y.durum === 'Düzeltme istendi' ? '<span class="bilgi">Düzeltme istediniz. Ajan bir sonraki çalışmasında yeni sürümü buraya getirir.</span>'
+      : y.durum === 'Kaldırıldı' ? '<span class="bilgi">Yayından kaldırıldı.</span><button type="button" class="btn btn-ink btn-sm" data-bl-k="Yayınla">Yeniden yayınla</button>' : '<span class="bilgi">Reddedildi.</span>';
+    const d = $('#blDlg'); if (!d.open) d.showModal();
+    try { const j = await api('blog_onizle', { id }); if (BL.acik === id) c.srcdoc = j.html; } catch (e) { c.srcdoc = '<p style="font:15px system-ui;padding:24px">Önizleme açılamadı.</p>'; toast(e.message); }
+  }
+  async function blKarar(b, mesaj) {
+    $$('#blDlgAlt button, #blListe button').forEach(x => x.disabled = true);
+    try { BL.veri = await api('blog_karar', b); toast(mesaj); if ($('#blDlg').open) $('#blDlg').close(); BL.acik = null; blRozet(); renderBlog(); }
+    catch (e) { toast(e.message); $$('#blDlgAlt button, #blListe button').forEach(x => x.disabled = false); }
+  }
+  $('#blListe').addEventListener('click', e => {
+    const a = e.target.closest('[data-bl]'); if (a) { blAc(a.dataset.bl); return; }
+    const c = e.target.closest('[data-bl-cev]'); if (!c) return;
+    const n = BL.veri.yazilar.filter(y => y.slug === c.dataset.blCev && y.asil && y.durum === 'Onay bekliyor').length;
+    if (confirm(`${n} dildeki çeviri yayınlansın mı? Çeviriler, onayladığınız Türkçe yazının aynısıdır; tek tek açıp bakmak için dil düğmelerine basabilirsiniz.`)) blKarar({ slug: c.dataset.blCev, ceviriler: true, karar: 'Yayınla' }, 'Çeviriler yayınlandı');
+  });
+  $('#blDlgAlt').addEventListener('click', e => {
+    const t = e.target.closest('[data-bl-k]'); if (!t || !BL.acik) return;
+    const karar = t.dataset.blK, kutu = $('#blNot'), not = kutu ? kutu.value.trim() : '';
+    if (karar === 'Düzelt' && not.length < 5) { toast('Ne değişmesini istediğinizi yazın.'); if (kutu) kutu.focus(); return; }
+    if (karar === 'Kaldır' && !confirm('Yazı yayından kaldırılsın mı? Varsa çevirileri de kalkar.')) return;
+    if (karar === 'Reddet' && !confirm('Yazı reddedilsin mi? Ajan bu yazıyı yeniden getirmez.')) return;
+    blKarar({ id: BL.acik, karar, not }, karar === 'Yayınla' ? 'Yayınlandı' : karar === 'Düzelt' ? 'Düzeltme istendi; ajan yeni sürümü getirecek' : karar === 'Kaldır' ? 'Yayından kaldırıldı' : 'Reddedildi');
+  });
+  $('#blKapat').addEventListener('click', () => { $('#blDlg').close(); BL.acik = null; });
+  $('#blDlg').addEventListener('close', () => { $('#blCerceve').srcdoc = ''; });
 
   /* Kararlar */
   async function krLoad(sessiz) {
