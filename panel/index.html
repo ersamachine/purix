@@ -715,6 +715,16 @@ button.ym-dugum{cursor:pointer}
 .ses-yok .sk-mik{display:none}.ses-yok .sk>.inp{padding-inline-end:14px}
 @media(max-width:640px){.sk-buyuk .sk-mik{width:54px;height:54px}.sk-buyuk>.inp{padding-inline-end:74px;min-height:130px}.sk-canli{padding-inline-end:75px}.sk-serit{inset-inline-end:76px}.sk-dalga{display:none}}
 @media(prefers-reduced-motion:reduce){.sk.dinle .sk-mik,.sk.ses-var .sk-dalga s{animation:none}}
+/* Ajan karnesi */
+.is-kr-oz{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.is-kd{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:650;white-space:nowrap;background:color-mix(in srgb,var(--c) 13%,#fff);color:var(--c)}
+.is-kd::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c)}
+.is-karne td{vertical-align:top;white-space:normal}
+.is-karne tr[data-kajan]{cursor:pointer}.is-karne tr[data-kajan]:hover td{background:var(--bg)}
+.is-karne small{display:block;color:var(--ink-3);font-size:12px;line-height:1.35;margin-top:2px}
+.is-karne b{font-weight:600}
+.is-oran{display:block;height:5px;border-radius:3px;background:var(--line-2);margin-top:6px;max-width:120px;overflow:hidden}
+.is-oran i{display:block;height:100%;background:var(--ok)}
 </style>
 </head>
 <body>
@@ -964,7 +974,8 @@ button.ym-dugum{cursor:pointer}
         </div>
         <div class="ym-say" id="ymSay"></div>
       </div>
-      <div class="is-tabs" id="ymSekme" role="tablist"><button class="is-tab" type="button" role="tab" data-sekme="ekip" aria-selected="true">Ekip</button><button class="is-tab" type="button" role="tab" data-sekme="hafiza" aria-selected="false">Hafıza</button><button class="is-tab" type="button" role="tab" data-sekme="kullanim" aria-selected="false">Kullanım</button></div>
+      <div class="is-tabs" id="ymSekme" role="tablist"><button class="is-tab" type="button" role="tab" data-sekme="ekip" aria-selected="true">Ekip</button><button class="is-tab" type="button" role="tab" data-sekme="hafiza" aria-selected="false">Hafıza</button><button class="is-tab" type="button" role="tab" data-sekme="kullanim" aria-selected="false">Kullanım</button><button class="is-tab" type="button" role="tab" data-sekme="karne" aria-selected="false">Karne</button></div>
+      <div id="ymKarne" hidden></div>
       <div id="ymHafiza" hidden></div>
       <div id="ymKullanim" hidden></div>
       <div id="ymEkip">
@@ -1228,7 +1239,7 @@ button.ym-dugum{cursor:pointer}
     Object.keys(TITLES).forEach(k => $('#v-' + k).hidden = k !== v); $('#title').textContent = TITLES[v];
     $('#side').classList.remove('open'); render();
     if (v === 'instagram' || v === 'ajanlar') igLoad(true);
-    if (v === 'ajanlar') { ymLoad(); if (IS.sekme === 'hafiza') hfLoad(true); if (IS.sekme === 'kullanim') kuLoad(true); }
+    if (v === 'ajanlar') { ymLoad(); if (IS.sekme === 'hafiza') hfLoad(true); if (IS.sekme === 'kullanim') kuLoad(true); if (IS.sekme === 'karne') knLoad(true); }
     if (v === 'gorevler') grLoad();
     if (v === 'kararlar') krLoad();
     if (v === 'instagram' || v === 'ayarlar') igBagYukle();
@@ -1983,7 +1994,7 @@ button.ym-dugum{cursor:pointer}
   /* Yapay Zekâ Ekibi sekmeleri: Ekip / Hafıza / Kullanım */
   function ymSekme(s) {
     IS.sekme = s; $$('#ymSekme .is-tab').forEach(b => b.setAttribute('aria-selected', String(b.dataset.sekme === s)));
-    $('#ymEkip').hidden = s !== 'ekip'; $('#ymHafiza').hidden = s !== 'hafiza'; $('#ymKullanim').hidden = s !== 'kullanim';
+    $('#ymEkip').hidden = s !== 'ekip'; $('#ymHafiza').hidden = s !== 'hafiza'; $('#ymKullanim').hidden = s !== 'kullanim'; $('#ymKarne').hidden = s !== 'karne'; if (s === 'karne') { renderKarne(); knLoad(true); }
     if (s === 'hafiza') { renderHafiza(); hfLoad(true); } if (s === 'kullanim') { renderKullanim(); kuLoad(true); }
   }
   $('#ymSekme').addEventListener('click', e => { const t = e.target.closest('[data-sekme]'); if (t) ymSekme(t.dataset.sekme); });
@@ -2056,6 +2067,33 @@ button.ym-dugum{cursor:pointer}
         ${u.rutinler.map(r => `<tr><td><b style="font-weight:600">${esc(r.ad)}</b></td><td class="hide-s" style="white-space:normal;color:var(--ink-3);font-size:12.5px">${esc(r.ajanlar.join(', ') || '—')}</td><td class="num">${r.bu.n}</td><td class="num">${r.bu.dk ? dkYazi(r.bu.dk) : r.bu.ort != null ? '1 dk altı' : '—'}</td><td class="num hide-s">${r.bu.ort != null ? String(r.bu.ort).replace('.', ',') + ' dk' : '—'}</td><td class="num hide-s">${r.once.n ? r.once.n + ' koşu · ' + dkYazi(r.once.dk) : '—'}</td><td class="num hide-s">${r.son ? esc(fmtD(r.son)) : '—'}</td></tr>`).join('') || '<tr><td colspan="7" class="empty">Henüz koşu kaydı yok.</td></tr>'}
         </tbody></table></div><p class="is-bilgi" style="margin-top:12px">${esc(u.not || '')}</p></div>`;
   }
+
+  /* Ajan karnesi (Yapay Zekâ Ekibi → Karne): hangi ajan iyi, hangisi izlenmeli, hangisi çalışmıyor */
+  const KD = { sorun: ['Sorunlu', 'var(--warn)'], yok: ['Çalışmıyor', 'var(--warn)'], izle: ['İzlenmeli', 'var(--s-yeni)'], dur: ['Duraklatıldı', 'var(--s-ilet)'], bos: ['Kaydı yok', 'var(--s-kay)'], iyi: ['İyi', 'var(--ok)'] };
+  async function knLoad(sessiz) {
+    try { const j = await api('karne'); if (j.ajanlar) IS.karne = j; else if (!IS.karne) IS.karne = { ajanlar: [], ozet: {} }; } catch (e) { if (!sessiz) toast(e.message); }
+    renderKarne();
+  }
+  function renderKarne() {
+    const v = IS.karne, kok = $('#ymKarne'); if (!kok || kok.hidden) return;
+    if (!v) { kok.innerHTML = '<div class="card"><p class="empty">Yükleniyor…</p></div>'; return; }
+    const kd = d => `<span class="is-kd" style="--c:${KD[d][1]}">${KD[d][0]}</span>`, o = v.ozet || {};
+    const satir = a => {
+      const t7 = a.k7.b + a.k7.u + a.k7.h, isT = a.is.biten + a.is.yapilamayan + a.is.acik;
+      return `<tr data-kajan="${esc(a.id)}"><td><b>${esc(a.ad)}</b><small>${esc([a.kod, a.ekip].filter(Boolean).join(' · '))}</small></td>
+        <td>${kd(a.durum)}<small>${esc(a.neden)}</small></td>
+        <td>${t7 ? `<b>${t7}</b> kayıt · %${a.basari7} başarılı<span class="is-oran"><i style="width:${a.basari7}%"></i></span><small>${[a.k7.u ? a.k7.u + ' uyarı' : '', a.k7.h ? a.k7.h + ' hata' : ''].filter(Boolean).join(' · ') || 'uyarı yok'}</small>` : '<span class="muted">kayıt yok</span>'}</td>
+        <td class="hide-s">${isT ? `<b>${a.is.biten}</b> bitti${a.is.yapilamayan ? ' · ' + a.is.yapilamayan + ' yapılamadı' : ''}${a.is.acik ? `<small>${a.is.acik} açık</small>` : ''}` : '<span class="muted">—</span>'}</td>
+        <td class="hide-s">${a.icerik ? `<b>%${a.icerik.oran}</b> onay<small>${a.icerik.onay} onay · ${a.icerik.duzeltme} düzeltme${a.icerik.red ? ' · ' + a.icerik.red + ' ret' : ''}</small>` : '<span class="muted">—</span>'}</td>
+        <td class="hide-s num">${a.son ? esc(ago(a.son)) : '—'}</td></tr>`;
+    };
+    kok.innerHTML = `<div class="card"><h2>Ajan karnesi <small>etiket son 7 güne, sayılar son 30 güne göre</small></h2>
+      <div class="is-kr-oz">${['sorun', 'yok', 'izle', 'dur', 'bos', 'iyi'].filter(d => o[d]).map(d => `<span class="chip" style="cursor:default">${kd(d)} <b>${o[d]}</b></span>`).join('') || '<span class="muted">Henüz veri yok.</span>'}</div>
+      <p class="is-bilgi" style="margin:-4px 0 14px">Sorunlu ve çalışmayan ajanlar üstte. Bir satıra basınca ajanın kartı açılır. “Çalışmıyor”: her gün çalışması gereken ajan günlerdir kendi adına kayıt yazmamış; Şirket Müdürü bunu görünce o ajan için iş açar. “Kaydı yok”: haftalık ya da gerektiğinde çalışan ajanın bu ay yazacak işi olmamış.</p>
+      <div class="table-wrap" style="box-shadow:none"><table class="is-karne"><thead><tr><th>Ajan</th><th>Durum</th><th>Son 7 gün</th><th class="hide-s">Verilen işler</th><th class="hide-s">İçerik onayı</th><th class="hide-s">Son kayıt</th></tr></thead>
+      <tbody>${(v.ajanlar || []).map(satir).join('') || '<tr><td colspan="6" class="empty">Kayıt yok.</td></tr>'}</tbody></table></div></div>`;
+  }
+  $('#ymKarne').addEventListener('click', e => { const t = e.target.closest('[data-kajan]'); if (t) { YM.secili = t.dataset.kajan; YM.suz = 'hepsi'; ymSekme('ekip'); ymRender(); $('#ymDetay').scrollIntoView({ behavior: 'smooth', block: 'center' }); } });
 
   /* Görev koşucusu (Ayarlar) */
   async function kcLoad(b) {
