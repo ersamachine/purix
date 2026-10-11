@@ -51,7 +51,7 @@
 <link rel="preload" href="fonts/archivo-latin.woff2?v=202610041410" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css?v=202610041410">
 <link rel="preload" as="image" href="assets/x1.webp?v=202610041410" imagesrcset="assets/x1-560.webp?v=202610041410 560w, assets/x1.webp?v=202610041410 900w" imagesizes="(max-width: 960px) 92vw, 46vw" fetchpriority="high">
-<link rel="stylesheet" href="styles.css?v=202610111925">
+<link rel="stylesheet" href="styles.css?v=202610112010">
 </head>
 <body>
 <a class="skip" href="#main" data-t="skip">İçeriğe geç</a>
@@ -434,62 +434,8 @@
   </div>
 </section>
 
-<!-- TEKLİF -->
 <!-- BLOG BANDI: son üç yazı /blog/son.json adresinden gelir (app.js blogBant); o dilde yazı yoksa görünmez -->
 <section class="bb" id="blog" aria-label="Blog" hidden></section>
-
-<section class="quote" id="teklif" aria-labelledby="quote-title">
-  <div class="wrap quote-grid">
-    <div class="q-side">
-      <h2 id="quote-title" data-t="qt.title">Teklifinizi hazırlayalım.</h2>
-      <p data-t="qt.lede">Formu doldurun, en kısa sürede işletmenize uygun model ve fiyatla dönelim. İsterseniz cihazı işyerinizde, kendi altınlarınızla deneyin.</p>
-      <dl class="contact">
-        <div><dt data-t="c.country">Ülke</dt><dd><button type="button" class="link-btn" id="cCountry" data-open-loc>—</button></dd></div>
-        <div><dt>Instagram</dt><dd><a id="cIg" href="https://www.instagram.com/purixxrf.tr/" target="_blank" rel="noopener" dir="ltr">@purixxrf.tr</a></dd></div>
-        <div><dt data-t="c.mail">E-posta</dt><dd><a id="cMail" href="mailto:info@purixxrf.com" dir="ltr">info@purixxrf.com</a></dd></div>
-        <div><dt data-t="c.show">Showroom</dt><dd data-t="c.showV">İstanbul</dd></div>
-        <div><dt data-t="c.hours">Çalışma saatleri</dt><dd data-t="c.hoursV">Hafta içi 09.00–18.30 (GMT+3)</dd></div>
-      </dl>
-    </div>
-
-    <div class="q-main">
-      <form class="form" id="qForm" novalidate>
-        <div class="err-sum" id="errSum" role="alert" tabindex="-1" hidden>
-          <h3 id="errTitle" data-t="f.errT">Formda düzeltilmesi gereken alanlar var</h3>
-          <ul id="errList"></ul>
-        </div>
-        <div class="row">
-          <div class="field"><label for="fAd" data-t="f.name">Ad soyad</label><input id="fAd" name="ad" autocomplete="name" required aria-describedby="fAd-e"><p class="f-err" id="fAd-e"></p></div>
-          <div class="field"><label for="fFirma"><span data-t="f.company">Firma</span> <small data-t="f.opt">(isteğe bağlı)</small></label><input id="fFirma" name="firma" autocomplete="organization"></div>
-        </div>
-        <div class="row">
-          <div class="field"><label for="fTel" data-t="f.phone">Telefon</label><input id="fTel" name="tel" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" required aria-describedby="fTel-h fTel-e"><p class="f-help" id="fTel-h"></p><p class="f-err" id="fTel-e"></p></div>
-          <div class="field"><label for="fMail"><span data-t="f.mail">E-posta</span> <small data-t="f.opt">(isteğe bağlı)</small></label><input id="fMail" name="mail" type="email" autocomplete="email" dir="ltr" aria-describedby="fMail-e"><p class="f-err" id="fMail-e"></p></div>
-        </div>
-        <div class="field"><label for="fSektor" data-t="f.sector">Sektör</label>
-            <select id="fSektor" name="sektor">
-              <option data-t="o1">Kuyumcu</option><option data-t="o2">Rehin / altın kredisi</option><option data-t="o3">Rafineri</option><option data-t="o4">Toptancı / atölye</option><option data-t="o5">Ayar evi / laboratuvar</option><option data-t="o6">Diğer</option>
-            </select></div>
-        <fieldset class="chips">
-          <legend data-t="f.want">Ne istiyorsunuz?</legend>
-          <label><input type="checkbox" name="istek" value="teklif" checked><span data-t="f.w1">Fiyat teklifi</span></label>
-          <label><input type="checkbox" name="istek" value="demo"><span data-t="f.w2">İşyerimde demo</span></label>
-          <label><input type="checkbox" name="istek" value="kiralama"><span data-t="f.w3">Kiralama</span></label>
-        </fieldset>
-        <div class="field"><label for="fMsg"><span data-t="f.msg">Mesajınız</span> <small data-t="f.opt">(isteğe bağlı)</small></label><textarea id="fMsg" name="mesaj" rows="3" aria-describedby="fMsg-h"></textarea><p class="f-help" id="fMsg-h" data-t="f.msgH">Günlük ölçüm adediniz ve ölçtüğünüz ürünler, doğru modeli önermemize yardımcı olur.</p></div>
-        <div class="field check"><input type="checkbox" id="fKvkk" required aria-describedby="fKvkk-e"><label for="fKvkk" data-t="f.kvkk"><a href="#">Gizlilik bildirimini</a> okudum; bilgilerimin bu talep için kullanılmasını onaylıyorum.</label><p class="f-err" id="fKvkk-e"></p></div>
-        <div class="hp" aria-hidden="true"><label>Web sitesi<input name="web" tabindex="-1" autocomplete="off"></label></div>
-        <p class="f-err" id="fSendErr" role="alert"></p>
-        <button class="btn btn-ink btn-block" type="submit" data-t="f.submit">Teklif iste</button>
-      </form>
-      <div class="done" id="done" tabindex="-1" hidden>
-        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22"/><path d="M14 24.5l7 7 13-14"/></svg>
-        <h3 data-t="f.doneT">Teklif talebiniz alındı</h3>
-        <p data-t="f.doneP">En kısa sürede sizinle iletişime geçeceğiz.</p>
-      </div>
-    </div>
-  </div>
-</section>
 </main>
 
 <footer class="foot2">
@@ -526,6 +472,66 @@
   </div>
 </footer>
 
+<!-- TEKLİF PENCERESİ: form sayfada bölüm değildir; "#teklif" bağlantıları (Teklif iste düğmeleri) bu pencereyi açar (app.js teklifAc) -->
+<dialog class="loc-dlg q-dlg" id="teklif" aria-labelledby="quote-title">
+  <button type="button" class="loc-x q-x" id="qClose" aria-label="Kapat" data-t-aria="loc.close"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
+  <div class="q-body">
+    <div class="q-sol">
+      <div class="q-ust">
+        <span class="q-et" dir="ltr">PURIX X1</span>
+        <h2 id="quote-title" data-t="qt.title">Teklifinizi hazırlayalım.</h2>
+        <p data-t="qt.lede">Formu doldurun, en kısa sürede işletmenize uygun model ve fiyatla dönelim. İsterseniz cihazı işyerinizde, kendi altınlarınızla deneyin.</p>
+      </div>
+      <div class="q-alt">
+        <div class="q-urun"><img src="assets/x1-560.webp?v=202610041410" alt="" width="560" height="556" loading="lazy" decoding="async"></div>
+    <dl class="contact">
+      <div><dt data-t="c.country">Ülke</dt><dd><button type="button" class="link-btn" id="cCountry" data-open-loc>—</button></dd></div>
+      <div><dt>Instagram</dt><dd><a id="cIg" href="https://www.instagram.com/purixxrf.tr/" target="_blank" rel="noopener" dir="ltr">@purixxrf.tr</a></dd></div>
+      <div><dt data-t="c.mail">E-posta</dt><dd><a id="cMail" href="mailto:info@purixxrf.com" dir="ltr">info@purixxrf.com</a></dd></div>
+      <div><dt data-t="c.show">Showroom</dt><dd data-t="c.showV">İstanbul</dd></div>
+      <div><dt data-t="c.hours">Çalışma saatleri</dt><dd data-t="c.hoursV">Hafta içi 09.00–18.30 (GMT+3)</dd></div>
+    </dl>
+      </div>
+    </div>
+    <div class="q-main">
+      <form class="form" id="qForm" novalidate>
+        <div class="err-sum" id="errSum" role="alert" tabindex="-1" hidden>
+          <h3 id="errTitle" data-t="f.errT">Formda düzeltilmesi gereken alanlar var</h3>
+          <ul id="errList"></ul>
+        </div>
+        <div class="row">
+          <div class="field"><label for="fAd" data-t="f.name">Ad soyad</label><input id="fAd" name="ad" autocomplete="name" required aria-describedby="fAd-e"><p class="f-err" id="fAd-e"></p></div>
+          <div class="field"><label for="fFirma"><span data-t="f.company">Firma</span> <small data-t="f.opt">(isteğe bağlı)</small></label><input id="fFirma" name="firma" autocomplete="organization"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="fTel" data-t="f.phone">Telefon</label><input id="fTel" name="tel" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" required aria-describedby="fTel-h fTel-e"><p class="f-help" id="fTel-h"></p><p class="f-err" id="fTel-e"></p></div>
+          <div class="field"><label for="fMail"><span data-t="f.mail">E-posta</span> <small data-t="f.opt">(isteğe bağlı)</small></label><input id="fMail" name="mail" type="email" autocomplete="email" dir="ltr" aria-describedby="fMail-e"><p class="f-err" id="fMail-e"></p></div>
+        </div>
+        <div class="field"><label for="fSektor" data-t="f.sector">Sektör</label>
+            <select id="fSektor" name="sektor">
+              <option data-t="o1">Kuyumcu</option><option data-t="o2">Rehin / altın kredisi</option><option data-t="o3">Rafineri</option><option data-t="o4">Toptancı / atölye</option><option data-t="o5">Ayar evi / laboratuvar</option><option data-t="o6">Diğer</option>
+            </select></div>
+        <fieldset class="chips">
+          <legend data-t="f.want">Ne istiyorsunuz?</legend>
+          <label><input type="checkbox" name="istek" value="teklif" checked><span data-t="f.w1">Fiyat teklifi</span></label>
+          <label><input type="checkbox" name="istek" value="demo"><span data-t="f.w2">İşyerimde demo</span></label>
+          <label><input type="checkbox" name="istek" value="kiralama"><span data-t="f.w3">Kiralama</span></label>
+        </fieldset>
+        <div class="field"><label for="fMsg"><span data-t="f.msg">Mesajınız</span> <small data-t="f.opt">(isteğe bağlı)</small></label><textarea id="fMsg" name="mesaj" rows="2" aria-describedby="fMsg-h"></textarea><p class="f-help" id="fMsg-h" data-t="f.msgH">Günlük ölçüm adediniz ve ölçtüğünüz ürünler, doğru modeli önermemize yardımcı olur.</p></div>
+        <div class="field check"><input type="checkbox" id="fKvkk" required aria-describedby="fKvkk-e"><label for="fKvkk" data-t="f.kvkk"><a href="#">Gizlilik bildirimini</a> okudum; bilgilerimin bu talep için kullanılmasını onaylıyorum.</label><p class="f-err" id="fKvkk-e"></p></div>
+        <div class="hp" aria-hidden="true"><label>Web sitesi<input name="web" tabindex="-1" autocomplete="off"></label></div>
+        <p class="f-err" id="fSendErr" role="alert"></p>
+        <button class="btn btn-gold btn-block" type="submit" data-t="f.submit">Teklif iste</button>
+      </form>
+      <div class="done" id="done" tabindex="-1" hidden>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22"/><path d="M14 24.5l7 7 13-14"/></svg>
+        <h3 data-t="f.doneT">Teklif talebiniz alındı</h3>
+        <p data-t="f.doneP">En kısa sürede sizinle iletişime geçeceğiz.</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
 <dialog class="loc-dlg" id="locDlg" aria-labelledby="locTitle">
   <div class="loc-head">
     <h2 id="locTitle" data-t="loc.title">Ülkenizi seçin</h2>
@@ -537,7 +543,7 @@
 </dialog>
 
 <script src="config.js?v=202610041410"></script>
-<script src="app.js?v=202610111925"></script>
+<script src="app.js?v=202610112010"></script>
 <script src="asistan.js?v=202610041410" defer></script>
 </body>
 </html>

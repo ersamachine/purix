@@ -649,6 +649,20 @@
   }
   errList.addEventListener('click', e => { const a = e.target.closest('a'); if (!a) return; e.preventDefault(); $(a.getAttribute('href')).focus(); });
 
+  /* ---------- Teklif penceresi: form sayfada bölüm değildir; "#teklif" bağlantıları bu pencereyi açar ---------- */
+  const qDlg = $('#teklif');
+  function teklifAc() { if (!qDlg.open) { toggle(false); qDlg.showModal(); qDlg.scrollTop = 0; $('.q-main', qDlg).scrollTop = 0; } }
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href$="#teklif"]');
+    if (!a || a.pathname !== location.pathname) return;
+    e.preventDefault(); teklifAc();
+  });
+  $('#qClose').addEventListener('click', () => qDlg.close());
+  qDlg.addEventListener('click', e => { if (e.target === qDlg) qDlg.close(); });   // pencerenin dışına tıklama
+  // Başka sayfadan (blog, randevu, mağaza) "…/#teklif" ile gelindiyse pencere kendiliğinden açılır
+  const teklifAdres = () => { if (location.hash === '#teklif') { history.replaceState(null, '', location.pathname + location.search); teklifAc(); } };
+  addEventListener('hashchange', teklifAdres);
+
   /* ---------- Ziyaret ölçümü (çerezsiz, anonim; IP ve kişisel veri saklanmaz; panel → Trafik) ---------- */
   const olcumApi = (window.PURIX_API || '').trim();
   const olcumKapali = !olcumApi || /^(localhost|127\.0\.0\.1)$/.test(location.hostname) || navigator.doNotTrack === '1' || navigator.globalPrivacyControl === true;
@@ -676,6 +690,7 @@
   select('bilezik');
   setLocale(boot.c, boot.l, { save: fromUrl }).finally(() => {
     html.classList.remove('i18n-wait'); html.classList.add('ready');
+    teklifAdres();
     olcum('g', '', true);
     heroSpectrum();
     new IntersectionObserver(([e], o) => { if (e.isIntersecting) { o.disconnect(); setTimeout(run, reduce ? 0 : 350); } }, { threshold: .4 }).observe($('.console'));
