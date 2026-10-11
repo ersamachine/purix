@@ -2174,7 +2174,7 @@ button.ym-dugum{cursor:pointer}
   /* Kişiler: her ajanın adı ve Genel Merkez'deki görünümü. [isim, ten, saç biçimi, saç rengi, giysi, gözlük]
      Listede olmayan (yeni) ajan isimsiz ve kimliğinden türetilen bir görünümle çizilir; isim vermek için buraya satır eklenir. */
   const GM_KISI = {
-    yonetici: ['Kaan', 'c', 'kisa', '#3B2A1E', '#1C1917', 1], mentor: ['Nevin', 'b', 'topuz', '#8D8880', '#3F5873', 1],
+    yonetici: ['Kaan', 'c', 'kisa', '#3B2A1E', '#1C1917', 1], mentor: ['Nan', 'b', 'topuz', '#8D8880', '#3F5873', 1],
     auriedit: ['Belle', 'a', 'uzun', '#B48C50', '#2F5D50', 0], aurivideo: ['Dola', 'b', 'atkuyrugu', '#3B2A1E', '#B48C50', 0],
     tr: ['Defne', 'b', 'uzun', '#3B2A1E', '#B4452A', 0], global: ['Kerem', 'd', 'kisa', '#1C1917', '#3F5873', 0], ulke: ['Zeynep', 'a', 'topuz', '#B48C50', '#2F5D50', 0],
     kreatif: ['Deniz', 'c', 'kivircik', '#1C1917', '#B48C50', 0], marka: ['Murat', 'b', 'sakal', '#6E4B22', '#1C1917', 1], yayin: ['Selin', 'e', 'atkuyrugu', '#1C1917', '#F4EFE6', 0],
@@ -2184,7 +2184,7 @@ button.ym-dugum{cursor:pointer}
     satisyon: ['Gökhan', 'c', 'kisa', '#1C1917', '#1C1917', 1], asistan: ['Nil', 'a', 'uzun', '#3B2A1E', '#B48C50', 0],
   };
   const GM_TEN = { a: '#F6D9BE', b: '#F2CFA9', c: '#E3B58A', d: '#C98F62', e: '#A26A42' };
-  const GM_SAHIP = { isim: '', ten: 'c', sac: 'kisa', sr: '#1C1917', gy: '#F4EFE6', gozluk: 0 };
+  const GM_SAHIP = { isim: 'Ertuğrul', ten: 'c', sac: 'kisa', sr: '#1C1917', gy: '#F4EFE6', gozluk: 0 };
   function gmKisi(id) {
     const k = GM_KISI[id]; if (k) return { isim: k[0], ten: k[1], sac: k[2], sr: k[3], gy: k[4], gozluk: k[5] };
     let h = 0; for (const c of String(id)) h = (h * 31 + c.charCodeAt(0)) >>> 0;
@@ -2249,7 +2249,7 @@ button.ym-dugum{cursor:pointer}
     $('#ymSay').innerHTML = [[A.length, 'ajan', 'a'], [say('c'), 'şu an çalışıyor', 'h'], [Math.max(0, A.length - say('c') - sorun - say('p')), 'sırada', ''], [sorun, 'uyarı', 'u'], [haftaIs, 'bu hafta biten iş', '']]
       .map(([n, t, c]) => `<div class="ym-sayi ${c}"><b>${n}</b><small>${t}</small></div>`).join('');
     const ym = A.find(a => a.id === 'yonetici');
-    $('#ymZincir').innerHTML = `<div class="ym-dugum altin"><div class="ym-h ym-hex">SİZ</div><div><b>Sahip</b><small>onay ve karar</small></div></div><div class="ym-ok"></div>
+    $('#ymZincir').innerHTML = `<div class="ym-dugum altin"><div class="ym-h ym-hex">SİZ</div><div><b>${esc(GM_SAHIP.isim)}</b><small>Sahip · onay ve karar</small></div></div><div class="ym-ok"></div>
       <button type="button" class="ym-dugum" data-ajan="yonetici"><div class="ym-h ym-hex">ŞM</div><div><b>${esc(ym ? ym.ad : 'Şirket Müdürü')}</b><small>${esc(ym && ym.takvim ? ym.takvim : 'günde 2 denetim')}</small></div></button><div class="ym-ok"></div>
       <div class="ym-bl">${bol.map(b => `<button type="button" data-bolum="${esc(b.ad)}"><b>${esc(b.ad)}</b><i>${A.filter(a => a.ekip === b.ad).length} ajan</i></button>`).join('')}<button type="button" class="ekle" data-yeni="yeni-bolum">+ Yeni bölüm</button></div>`;
     $('#ymCip').innerHTML = [['hepsi', 'Tümü', A.length], ...bol.map(b => [b.ad, b.ad, A.filter(a => a.ekip === b.ad).length]), ['sorun', 'Yalnız uyarılar', sorun]]
@@ -2828,7 +2828,7 @@ button.ym-dugum{cursor:pointer}
     const adayMasa = b => `<button type="button" class="gm-masa aday" data-basvuru="${esc(b.id)}" title="${esc('İş başvurusu: ' + b.ad)}"><span class="gm-av">?</span>${gmFigur(gmKisi(b.id))}<span class="gm-on"><b>${esc(b.ad)}</b><small>iş başvurusu</small></span></button>`;
     const bek = (v.bekleyen || []).filter(b => b.n);
     let h = `<div class="gm-kat sahip"><div class="gm-etiket"><span class="gm-no">ÇATI KATI</span><b>Sahip</b><small>onay ve karar</small></div>
-      <div class="gm-siz"><div class="gm-masa siz ${bek.length ? 's' : 't'}"><span class="gm-av ym-hex">SİZ</span>${gmFigur(GM_SAHIP)}<span class="gm-on"><b>Sahip</b><small>${bek.length ? 'karar bekleniyor' : 'bekleyen iş yok'}</small></span></div><div><b>${bek.length ? 'Kararınızı bekleyen işler' : 'Kararınızı bekleyen iş yok'}</b><small>Raporlar asansörle bu kata gelir</small></div>
+      <div class="gm-siz"><div class="gm-masa siz ${bek.length ? 's' : 't'}"><span class="gm-av ym-hex">SİZ</span>${gmFigur(GM_SAHIP)}<span class="gm-on"><b>${esc(GM_SAHIP.isim)}</b><em>Sahip</em><small>${bek.length ? 'karar bekleniyor' : 'bekleyen iş yok'}</small></span></div><div><b>${bek.length ? 'Kararınızı bekleyen işler' : 'Kararınızı bekleyen iş yok'}</b><small>Raporlar asansörle bu kata gelir</small></div>
       <div class="gm-onay">${bek.map(b => `<button type="button" class="gm-zarf" data-go="${esc(b.git || 'instagram')}">${esc(String(b.ad).replace(' · onay', ''))}<em>${b.n}</em></button>`).join('')}${bek.length ? '<button type="button" class="gm-btn" data-go="instagram">Onayları aç</button>' : ''}</div></div></div>`;
     h += sira.map((ad, i) => {
       const hep = A.filter(a => a.ekip === ad), iyi = hep.filter(a => !ymSorunlu(a)).length, oran = hep.length ? Math.round(iyi / hep.length * 100) : 100;
