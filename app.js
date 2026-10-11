@@ -96,6 +96,25 @@
     document.head.appendChild(l); fontsLoaded[script] = 1;
   }
 
+  // Blog bandı ve menüdeki Blog bağlantısı: o dilde yayındaki son üç yazı Worker'dan gelir (/blog/son.json).
+  // O dilde yazı yoksa ya da istek başarısızsa ikisi de gizli kalır (boş sayfaya bağlantı verilmez).
+  let blogSira = 0;
+  async function blogBant() {
+    const no = ++blogSira, kok = $('#blog'), bag = $$('[data-blog]'), e = x => String(x == null ? '' : x).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const gizle = () => { if (kok) { kok.hidden = true; kok.innerHTML = ''; } bag.forEach(a => { a.hidden = true; }); };
+    try {
+      const r = await fetch('/blog/son.json?dil=' + encodeURIComponent(lang), { headers: { Accept: 'application/json' } });
+      const j = r.ok ? await r.json() : null;
+      if (no !== blogSira) return;   // bu sırada dil yeniden değişti
+      if (!j || !j.ok || !Array.isArray(j.yazilar) || !j.yazilar.length || !kok) return gizle();
+      const yol = x => /^\/(blog|assets)\/[\w./-]+$/.test(x) ? x : '';
+      bag.forEach(a => { a.textContent = j.metin.blog; a.href = '/blog/' + j.dil + '/'; a.hidden = false; });
+      kok.innerHTML = `<div class="wrap"><div class="bb-in"><div><span class="bb-et">PURIX ${e(j.metin.blog)}</span><h2>${e(j.metin.slogan)}</h2><p class="bb-a">${e(j.metin.alt)}</p><a class="bb-dugme" href="/blog/${e(j.dil)}/">${e(j.metin.tum)} <span aria-hidden="true">→</span></a></div>
+        <div class="bb-liste" data-n="${j.yazilar.length}">${j.yazilar.map(y => `<a class="bb-kart" href="${e(yol(y.url) || '/blog/')}">${yol(y.gorsel) ? `<div class="bb-g${y.urun ? ' urun' : ''}"><img src="${e(yol(y.gorsel))}" alt="" loading="lazy" decoding="async">${y.auri ? `<span class="bb-r"><i></i>${e(j.metin.auri)}</span>` : ''}</div>` : `<div class="bb-g bos">${e(y.kategori)}</div>`}<div class="bb-m"><span class="bb-k">${e(y.kategori)}</span><b>${e(y.baslik)}</b><span class="bb-o">${e(y.ozet)}</span></div></a>`).join('')}</div></div></div>`;
+      kok.hidden = false;
+    } catch (err) { if (no === blogSira) gizle(); }
+  }
+
   async function setLocale(cCode, lCode, { save = true } = {}) {
     const ctry = byCode[cCode] || byCode.INTL;
     if (!LANGS[lCode]) lCode = ctry.langs[0];
@@ -111,6 +130,7 @@
     $$('[data-t-alt]').forEach(el => { el.alt = t(el.dataset.tAlt); });
     $$('[data-t-aria]').forEach(el => { el.setAttribute('aria-label', t(el.dataset.tAria)); });
     $$('[data-t-content]').forEach(el => { el.content = t(el.dataset.tContent); });
+    blogBant();
 
     // ülkeye bağlı alanlar
     const cn = countryName(ctry.c), igUrl = `https://www.instagram.com/${ctry.ig}/`;
@@ -548,7 +568,7 @@
   burger.addEventListener('click', () => toggle(burger.getAttribute('aria-expanded') !== 'true'));
   drawer.addEventListener('click', e => { if (e.target.closest('a')) toggle(false); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && !drawer.hidden) { toggle(false); burger.focus(); } });
-  const links = $$('.menu a');
+  const links = $$('.menu a[href^="#"]');
   const spy = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
     links.forEach(a => a.getAttribute('href') === '#' + e.target.id ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current'));

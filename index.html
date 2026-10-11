@@ -51,7 +51,7 @@
 <link rel="preload" href="fonts/archivo-latin.woff2?v=202610041410" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css?v=202610041410">
 <link rel="preload" as="image" href="assets/x1.webp?v=202610041410" imagesrcset="assets/x1-560.webp?v=202610041410 560w, assets/x1.webp?v=202610041410 900w" imagesizes="(max-width: 960px) 92vw, 46vw" fetchpriority="high">
-<link rel="stylesheet" href="styles.css?v=202610041410">
+<link rel="stylesheet" href="styles.css?v=202610111925">
 </head>
 <body>
 <a class="skip" href="#main" data-t="skip">İçeriğe geç</a>
@@ -68,6 +68,7 @@
       <a href="#seri" data-t="nav.series">Özellikler</a>
       <a href="#uygulama" data-t="nav.apps">Uygulamalar</a>
       <a href="#servis" data-t="nav.service">Servis</a>
+      <a href="/blog/" data-blog hidden>Blog</a>
     </nav>
     <div class="nav-end">
       <button class="loc-btn" type="button" id="locBtn" aria-haspopup="dialog" aria-controls="locDlg" aria-label="Ülke ve dil" data-t-aria="nav.loc">
@@ -84,6 +85,7 @@
     <a href="#seri" data-t="nav.series">Özellikler</a>
     <a href="#uygulama" data-t="nav.apps">Uygulamalar</a>
     <a href="#servis" data-t="nav.service">Servis</a>
+    <a href="/blog/" data-blog hidden>Blog</a>
     <a class="btn btn-ink" href="#teklif" data-t="cta.quote">Teklif iste</a>
   </div>
   <div class="progress" aria-hidden="true"><span id="progress"></span></div>
@@ -433,6 +435,9 @@
 </section>
 
 <!-- TEKLİF -->
+<!-- BLOG BANDI: son üç yazı /blog/son.json adresinden gelir (app.js blogBant); o dilde yazı yoksa görünmez -->
+<section class="bb" id="blog" aria-label="Blog" hidden></section>
+
 <section class="quote" id="teklif" aria-labelledby="quote-title">
   <div class="wrap quote-grid">
     <div class="q-side">
@@ -532,7 +537,7 @@
 </dialog>
 
 <script src="config.js?v=202610041410"></script>
-<script src="app.js?v=202610041410"></script>
+<script src="app.js?v=202610111925"></script>
 <script src="asistan.js?v=202610041410" defer></script>
 </body>
 </html>
