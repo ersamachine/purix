@@ -322,35 +322,85 @@ button.ym-dugum{cursor:pointer}
 .gm-led span{overflow:hidden;text-overflow:ellipsis}
 .gm-led i{position:absolute;top:0;bottom:0;width:90px;background:linear-gradient(90deg,transparent,rgba(228,203,147,.35),transparent);animation:gmTara 4.5s linear infinite}
 @keyframes gmTara{0%{left:-90px}100%{left:100%}}
-.gm-masalar{flex:1;display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 3px;padding:12px 10px 16px}
-.gm-masa{width:84px;display:flex;flex-direction:column;align-items:center;position:relative;background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer}
-.gm-av{width:30px;height:33px;display:grid;place-items:center;font-size:10px;font-weight:700;background:linear-gradient(140deg,#6E4B22,#B48C50 40%,#ECD49E 70%,#B48C50);color:#1F1406;margin-bottom:3px;position:relative;z-index:2}
+.gm-masalar{flex:1;display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px 4px;padding:14px 10px 58px}
+.gm-masa{width:96px;display:flex;flex-direction:column;align-items:center;position:relative;background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer}
+.gm-masa svg{width:96px;height:77px;display:block;overflow:visible}
+.gm-av{position:absolute;right:5px;top:9px;width:21px;height:23px;display:grid;place-items:center;font-size:8px;font-weight:700;background:linear-gradient(140deg,#6E4B22,#B48C50 40%,#ECD49E 70%,#B48C50);color:#1F1406;z-index:2}
 .gm-masa.k .gm-av{background:var(--ink);color:var(--gold-l)}
-.gm-ekran{width:40px;height:26px;border-radius:4px;background:#12100F;border:2px solid #3A3431;display:flex;flex-direction:column;justify-content:center;gap:3px;padding:0 5px}
-.gm-ekran i{display:block;height:2px;border-radius:2px;background:#57534E;width:70%}
-.gm-ekran i:nth-child(2){width:95%}.gm-ekran i:nth-child(3){width:50%}
-.gm-ayak{width:6px;height:5px;background:#3A3431}.gm-tabla{width:68px;height:6px;border-radius:3px;background:#8A6331}
-.gm-masa b{font-size:10.5px;font-weight:600;margin-top:5px;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
-.gm-masa small{font-size:9.5px;color:var(--ink-3);line-height:1.1;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
-.gm-masa.c .gm-ekran{border-color:#3B82F6;box-shadow:0 0 0 3px rgba(59,130,246,.18),0 0 18px rgba(59,130,246,.55)}
-.gm-masa.c .gm-ekran i{background:#8EC1FF;animation:gmYaz 1.1s ease-in-out infinite}
-.gm-masa.c .gm-ekran i:nth-child(2){animation-delay:.18s}.gm-masa.c .gm-ekran i:nth-child(3){animation-delay:.36s}
-@keyframes gmYaz{0%{width:10%}60%{width:95%}100%{width:10%}}
-.gm-masa.c .gm-av{animation:gmZipla 1.6s ease-in-out infinite}
+.gm-masa .gm-on{display:block;width:92px;background:linear-gradient(180deg,#2A2117,#1C1917);border:1px solid rgba(228,203,147,.35);border-top:0;border-radius:0 0 7px 7px;padding:4px 3px 5px;text-align:center;line-height:1.15}
+.gm-masa .gm-on b,.gm-masa .gm-on em,.gm-masa .gm-on small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0}
+.gm-masa .gm-on b{font-size:11.5px;font-weight:650;color:#fff}
+.gm-masa .gm-on em{font-style:normal;font-size:9px;letter-spacing:.02em;color:var(--gold-l)}
+.gm-masa .gm-on small{font-size:9.5px;color:#CFC8BE;margin-top:1px}
+.gm-masa.sec:after{content:"";position:absolute;inset:3px -3px -4px;border:2px solid var(--gold);border-radius:10px;box-shadow:0 0 0 3px rgba(180,140,80,.2);pointer-events:none}
+/* kişi: çalışan yazar, işi biten yaslanır, uyarı ve hata veren el kaldırır, sıradaki bekler, duraklatılan uyur */
+.g-kolEl,.g-keyif,.g-uyku,.g-rozU,.g-rozT,.g-zz{display:none}
+.g-kafa,.g-ust{transform-origin:38px 110px}
+.g-kolEl{transform-origin:55px 88px}
+.g-goz{transform-box:fill-box;transform-origin:center;animation:gmKirpis 4.6s infinite}
+@keyframes gmKirpis{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.g-st{transform-box:fill-box;transform-origin:left center;fill:#57534E}
+.g-ekr{fill:#12100F;stroke:#3A3431;stroke-width:2}
+.gm-masa.c .g-ekr{stroke:#3B82F6;filter:drop-shadow(0 0 5px rgba(59,130,246,.85))}
+.gm-masa.c .g-st{fill:#8EC1FF;animation:gmYaz 1.1s ease-in-out infinite}
+.gm-masa.c .g-st2{animation-delay:.18s}.gm-masa.c .g-st3{animation-delay:.36s}
+@keyframes gmYaz{0%,100%{transform:scaleX(.12)}60%{transform:scaleX(1)}}
+.gm-masa.c .g-elL{animation:gmTus .32s ease-in-out infinite alternate}
+.gm-masa.c .g-elR{animation:gmTus .32s ease-in-out infinite alternate-reverse}
+@keyframes gmTus{to{transform:translateY(-2.6px)}}
+.gm-masa.c .g-kafa{animation:gmSalla 1.4s ease-in-out infinite alternate}
+@keyframes gmSalla{from{transform:rotate(-2deg)}to{transform:rotate(2deg) translateY(.8px)}}
+.gm-masa.c .gm-on small{color:#8EC1FF}
+.gm-masa.t .g-ekr{stroke:var(--ok);filter:drop-shadow(0 0 4px rgba(47,125,74,.6))}.gm-masa.t .g-st{fill:#7CCB96}
+.gm-masa.t .g-kolLy,.gm-masa.t .g-kolRy{display:none}.gm-masa.t .g-keyif,.gm-masa.t .g-rozT{display:block}
+.gm-masa.t .g-ust{animation:gmYaslan 3.6s ease-in-out infinite alternate}
+@keyframes gmYaslan{from{transform:rotate(-2deg)}to{transform:rotate(-5deg)}}
+.g-buhar{animation:gmBuhar 2.2s ease-in-out infinite;opacity:0}.g-buhar.b2{animation-delay:1.1s}
+@keyframes gmBuhar{0%{transform:translateY(2px);opacity:0}40%{opacity:.7}100%{transform:translateY(-6px);opacity:0}}
+.gm-masa.u .g-ekr{stroke:#C27C0E;animation:gmUyari 1.2s steps(2) infinite}.gm-masa.u .g-st{fill:#F2C46B}
+@keyframes gmUyari{50%{filter:drop-shadow(0 0 6px rgba(194,124,14,.9))}}
+.gm-masa.h .g-ekr{stroke:var(--warn);animation:gmHata 1s steps(2) infinite}.gm-masa.h .g-st{fill:#E8A090}
+@keyframes gmHata{50%{filter:drop-shadow(0 0 6px rgba(180,69,42,.9))}}
+.gm-masa.u .g-kolRy,.gm-masa.h .g-kolRy{display:none}.gm-masa.u .g-kolEl,.gm-masa.u .g-rozU,.gm-masa.h .g-kolEl,.gm-masa.h .g-rozU{display:block}
+.gm-masa.u .g-kolEl,.gm-masa.h .g-kolEl{animation:gmElSalla .5s ease-in-out infinite alternate}
+@keyframes gmElSalla{from{transform:rotate(-9deg)}to{transform:rotate(11deg)}}
+.gm-masa.u .g-rozU,.gm-masa.h .g-rozU{animation:gmZipla 1.2s ease-in-out infinite}
 @keyframes gmZipla{50%{transform:translateY(-3px)}}
-.gm-masa.t .gm-ekran{border-color:var(--ok);box-shadow:0 0 12px rgba(47,125,74,.35)}.gm-masa.t .gm-ekran i{background:#7CCB96}
-.gm-masa.u .gm-ekran{border-color:#C27C0E;animation:gmUyari 1.2s steps(2) infinite}.gm-masa.u .gm-ekran i{background:#F2C46B}
-@keyframes gmUyari{50%{box-shadow:0 0 0 4px rgba(194,124,14,.25),0 0 18px rgba(194,124,14,.6)}}
-.gm-masa.h .gm-ekran{border-color:var(--warn);animation:gmHata 1s steps(2) infinite}.gm-masa.h .gm-ekran i{background:#E8A090}
-@keyframes gmHata{50%{box-shadow:0 0 0 4px rgba(180,69,42,.25),0 0 18px rgba(180,69,42,.6)}}
-.gm-masa.u:before,.gm-masa.h:before{content:"!";position:absolute;top:-4px;right:14px;width:16px;height:16px;border-radius:50%;background:#C27C0E;color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;z-index:3;animation:gmZipla 1.2s ease-in-out infinite}
-.gm-masa.h:before{background:var(--warn)}
-.gm-masa.p .gm-ekran,.gm-masa.s .gm-ekran{opacity:.55}.gm-masa.p .gm-av{filter:grayscale(1);opacity:.6}
-.gm-masa.sec:after{content:"";position:absolute;inset:-6px -1px -4px;border:2px solid var(--gold);border-radius:10px;box-shadow:0 0 0 3px rgba(180,140,80,.2);pointer-events:none}
-.gm-masa.aday .gm-av{background:#fff;color:var(--gold-text);outline:1.5px dashed var(--gold);outline-offset:-2px;clip-path:none;border-radius:8px}
-.gm-masa.aday .gm-ekran{opacity:.3}.gm-masa.aday .gm-tabla{opacity:.45}
-.gm-masa.aday b{color:var(--ink-2)}.gm-masa.aday small{color:var(--gold-text);font-weight:600}
-.gm-bosmasa{width:72px;height:70px;border:1.5px dashed #B48C50;border-radius:9px;display:grid;place-items:center;color:var(--gold-text);font:inherit;font-size:11px;font-weight:600;text-align:center;line-height:1.2;margin:0 0 2px 6px;background:rgba(255,255,255,.5);cursor:pointer}
+.gm-masa.h .g-rozU circle{fill:var(--warn)}
+.gm-masa.u .gm-on small{color:#F2C46B}.gm-masa.h .gm-on small{color:#F0A898}
+.gm-masa.s .g-ekr,.gm-masa.s .g-st{opacity:.55}
+.gm-masa.s .g-kafa{animation:gmBakin 7s ease-in-out infinite}
+@keyframes gmBakin{0%,40%,100%{transform:rotate(0)}50%,60%{transform:rotate(-5deg)}75%,85%{transform:rotate(4deg)}}
+.gm-masa.p .g-dik{display:none}.gm-masa.p .g-uyku,.gm-masa.p .g-zz{display:block}
+.gm-masa.p .g-ekr,.gm-masa.p .g-st{opacity:.35}
+.gm-masa.p .g-uykuUst{transform-origin:38px 112px;animation:gmNefes 3.4s ease-in-out infinite}
+@keyframes gmNefes{50%{transform:scaleY(1.035)}}
+.g-zz{font-size:9px;font-weight:700;fill:#78716C;animation:gmZzz 3s ease-in infinite;opacity:0}
+.g-zz.z2{animation-delay:1s}.g-zz.z3{animation-delay:2s}
+@keyframes gmZzz{0%{transform:translate(0,0);opacity:0}25%{opacity:.9}100%{transform:translate(8px,-18px);opacity:0}}
+.gm-masa.p .gm-on{opacity:.78}
+/* iş başvurusu: kesik çizgili siluet */
+.gm-masa.aday .g-kisi *{fill:none!important;stroke:#B48C50;stroke-width:1.1;stroke-dasharray:3 2.4}
+.gm-masa.aday .g-yuz{display:none}
+.gm-masa.aday .g-sand{fill:none;stroke:#B48C50;stroke-width:1.1;stroke-dasharray:3 2.4;opacity:.45}
+.gm-masa.aday .g-ekr,.gm-masa.aday .g-st{opacity:.3}
+.gm-masa.aday .g-kisi{animation:gmBelir 3s ease-in-out infinite}
+@keyframes gmBelir{50%{opacity:.45}}
+.gm-masa.aday .gm-av{background:none;color:var(--gold-text);outline:1.5px dashed var(--gold);outline-offset:-3px;clip-path:none;border-radius:6px}
+.gm-masa.aday .gm-on{background:rgba(255,255,255,.7);border:1.5px dashed var(--gold)}
+.gm-masa.aday .gm-on b{color:var(--ink-2)}.gm-masa.aday .gm-on small{color:var(--gold-text);font-weight:600}
+.gm-masa.siz{cursor:default;flex:none}
+.gm-masa.siz .gm-av{width:25px;height:28px;font-size:7.5px;background:linear-gradient(140deg,#8A6331,#ECD49E 55%,#B48C50);animation:gmNabiz 2.4s ease-in-out infinite}
+.gm-bosmasa{width:84px;height:92px;border:1.5px dashed #B48C50;border-radius:9px;display:grid;place-items:center;color:var(--gold-text);font:inherit;font-size:11px;font-weight:600;text-align:center;line-height:1.2;margin:0 6px;background:rgba(255,255,255,.5);cursor:pointer}
+/* kurye: raporu asansöre taşır */
+.gm-kurye{position:absolute;bottom:9px;left:160px;width:34px;height:55px;z-index:2;opacity:0;animation:gmYuru 16s linear infinite;pointer-events:none}
+.gm-kurye svg{width:100%;height:100%;overflow:visible;animation:gmHop .25s ease-in-out infinite alternate}
+@keyframes gmHop{to{transform:translateY(-1.5px)}}
+@keyframes gmYuru{0%{left:190px;opacity:0}4%{opacity:1}48%{left:calc(100% - 92px);opacity:1}52%,100%{left:calc(100% - 66px);opacity:0}}
+.g-bacak{transform-origin:20px 40px;animation:gmAdim .25s ease-in-out infinite alternate}
+.g-bacak.b2{animation-direction:alternate-reverse}
+@keyframes gmAdim{from{transform:rotate(-24deg)}to{transform:rotate(24deg)}}
+.gm-bitki{position:absolute;left:154px;bottom:7px;width:26px;height:50px;z-index:1;pointer-events:none}
 .gm-salon{margin-left:auto;align-self:stretch;display:flex;align-items:flex-end;gap:3px;border-left:1px dashed #B48C50;padding:18px 0 0 10px;position:relative}
 .gm-salon:before{content:"BEKLEME SALONU";position:absolute;left:10px;top:0;font-size:9px;letter-spacing:.14em;color:var(--gold-text);font-weight:600;white-space:nowrap}
 .gm-kat.sahip{background:linear-gradient(120deg,#2A2117,#3A2A14 60%,#5A4322);min-height:96px}
@@ -393,8 +443,8 @@ button.ym-dugum{cursor:pointer}
 .gm-bsv b{font-size:13px;font-weight:650;display:block;line-height:1.2}.gm-bsv small{font-size:11.5px;color:var(--ink-3);display:block;line-height:1.3}
 .gm-dl{font-size:13px;color:var(--ink-2);margin:0 0 12px}.gm-dl div{padding:6px 0;border-top:1px solid var(--line-2)}.gm-dl div:first-child{border-top:0}.gm-dl span{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
 @media(max-width:1180px){.gm-govde{grid-template-columns:1fr}}
-@media(max-width:700px){.gm-sahne{padding:18px 12px 0}.gm-zemin,.gm-serit{margin:0 -12px}.gm-saft{display:none}.gm-kat{flex-direction:column}.gm-etiket{width:auto;flex-direction:row;align-items:center;flex-wrap:wrap;gap:4px 10px;padding:8px 12px}.gm-cub{display:none}.gm-oda,.gm-siz{margin-right:0}.gm-onay{margin-left:0}.gm-salon{margin-left:0;border-left:0;padding:18px 0 0}.gm-salon:before{left:0;top:0}}
-@media(prefers-reduced-motion:reduce){.gm-sahne *,.gm-ilerleme s{animation:none!important}}
+@media(max-width:700px){.gm-sahne{padding:18px 12px 0}.gm-zemin,.gm-serit{margin:0 -12px}.gm-saft,.gm-kurye,.gm-bitki{display:none}.gm-masalar{padding-bottom:16px}.gm-kat{flex-direction:column}.gm-etiket{width:auto;flex-direction:row;align-items:center;flex-wrap:wrap;gap:4px 10px;padding:8px 12px}.gm-cub{display:none}.gm-oda,.gm-siz{margin-right:0}.gm-onay{margin-left:0}.gm-salon{margin-left:0;border-left:0;padding:18px 0 0}.gm-salon:before{left:0;top:0}}
+@media(prefers-reduced-motion:reduce){.gm-sahne *,.gm-ilerleme s{animation:none!important}.gm-kurye{display:none}}
 .rep summary{cursor:pointer;font-weight:600;padding:10px 0;list-style:none;display:flex;justify-content:space-between;gap:10px}
 .rep summary::-webkit-details-marker{display:none}
 .rep{border-bottom:1px solid var(--line-2)}
@@ -1023,7 +1073,7 @@ button.ym-dugum{cursor:pointer}
             <div class="gm-serit"><div id="gmSerit"></div></div>
           </div>
           <div class="of-lej"><span><i style="background:#3B82F6"></i>Şu an çalışıyor</span><span><i style="background:#2F7D4A"></i>Son çalışma başarılı</span><span><i style="background:#C27C0E"></i>Uyarı ya da kararınızı bekliyor</span><span><i style="background:#B4452A"></i>Hata</span><span><i style="background:#A8A29E"></i>Sırada / duraklatıldı</span><span><i style="background:#fff;outline:1.5px dashed #B48C50"></i>İş başvurusu</span></div>
-          <p class="of-not">Ajanlar zamanlanmış görevlerde çalışır ve işi bitince kayıt yazar. "Çalışıyor" durumu planlı saatten sonraki 40 dakika için gösterilir; asansör ve ışıklar yalnızca canlılık içindir.</p>
+          <p class="of-not">Ajanlar zamanlanmış görevlerde çalışır ve işi bitince kayıt yazar. "Çalışıyor" durumu planlı saatten sonraki 40 dakika için gösterilir; asansör, kurye ve ışıklar yalnızca canlılık içindir. Masadaki kişi durumu gösterir: çalışan yazar, işi biten arkasına yaslanır, uyarı veren el kaldırır, sıradaki bekler, duraklatılan uyur.</p>
         </div>
         <div class="gm-yan">
           <div class="ym-kart ym-detay" id="gmDetay"></div>
@@ -2121,6 +2171,49 @@ button.ym-dugum{cursor:pointer}
   /* ---------- Ajanlar ---------- */
   // Kadro, bölümler ve durumlar Worker'dan gelir (platform/src/ofis.js: AJANLAR, BOLUMLER, BILGI). Yeni ajan orada eklenir; bu sayfa kendiliğinden çizer.
   const AJ_RENK = { 'Başarılı': 'var(--ok)', 'Uyarı': 'var(--s-yeni)', 'Hata': 'var(--warn)' };
+  /* Kişiler: her ajanın adı ve Genel Merkez'deki görünümü. [isim, ten, saç biçimi, saç rengi, giysi, gözlük]
+     Listede olmayan (yeni) ajan isimsiz ve kimliğinden türetilen bir görünümle çizilir; isim vermek için buraya satır eklenir. */
+  const GM_KISI = {
+    yonetici: ['Tarık', 'c', 'kisa', '#3B2A1E', '#1C1917', 1], mentor: ['Nevin', 'b', 'topuz', '#8D8880', '#3F5873', 1],
+    auriedit: ['Cem', 'd', 'sakal', '#1C1917', '#2F5D50', 0], aurivideo: ['Melis', 'a', 'atkuyrugu', '#7A2E1D', '#B48C50', 0],
+    tr: ['Defne', 'b', 'uzun', '#3B2A1E', '#B4452A', 0], global: ['Kerem', 'd', 'kisa', '#1C1917', '#3F5873', 0], ulke: ['Zeynep', 'a', 'topuz', '#B48C50', '#2F5D50', 0],
+    kreatif: ['Deniz', 'c', 'kivircik', '#1C1917', '#B48C50', 0], marka: ['Murat', 'b', 'sakal', '#6E4B22', '#1C1917', 1], yayin: ['Selin', 'e', 'atkuyrugu', '#1C1917', '#F4EFE6', 0],
+    talep: ['Hakan', 'c', 'kisa', '#8D8880', '#6E4B22', 0], analiz: ['Ayşe', 'a', 'uzun', '#7A2E1D', '#3F5873', 1],
+    kasif: ['Emre', 'c', 'kisa', '#3B2A1E', '#2F5D50', 0], kimlik: ['Burcu', 'b', 'uzun', '#1C1917', '#B48C50', 1], veri: ['Onur', 'e', 'kivircik', '#1C1917', '#3F5873', 0],
+    analist: ['İpek', 'a', 'atkuyrugu', '#B48C50', '#B4452A', 0], yazar: ['Yasemin', 'd', 'topuz', '#3B2A1E', '#F4EFE6', 0], takip: ['Barış', 'b', 'sakal', '#1C1917', '#6E4B22', 0],
+    satisyon: ['Gökhan', 'c', 'kisa', '#1C1917', '#1C1917', 1], asistan: ['Nil', 'a', 'uzun', '#3B2A1E', '#B48C50', 0],
+  };
+  const GM_TEN = { a: '#F6D9BE', b: '#F2CFA9', c: '#E3B58A', d: '#C98F62', e: '#A26A42' };
+  const GM_SAHIP = { isim: '', ten: 'c', sac: 'kisa', sr: '#1C1917', gy: '#F4EFE6', gozluk: 0 };
+  function gmKisi(id) {
+    const k = GM_KISI[id]; if (k) return { isim: k[0], ten: k[1], sac: k[2], sr: k[3], gy: k[4], gozluk: k[5] };
+    let h = 0; for (const c of String(id)) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+    return { isim: '', ten: 'abcde'[h % 5], sac: ['kisa', 'uzun', 'topuz', 'kivircik', 'sakal', 'atkuyrugu'][(h >> 3) % 6], sr: ['#1C1917', '#3B2A1E', '#6E4B22', '#B48C50', '#7A2E1D'][(h >> 6) % 5], gy: ['#1C1917', '#B48C50', '#2F5D50', '#B4452A', '#3F5873', '#6E4B22'][(h >> 9) % 6], gozluk: (h >> 12) % 4 === 0 };
+  }
+  const gmAd = a => { const i = gmKisi(a.id).isim; return i ? i + ' (' + a.ad + ')' : a.ad; };
+  // kayıt defterindeki ad (ör. "Yönetici", "Türkiye İçerik") → kişi adı; ekip kaydı ("Satış hattı") olduğu gibi kalır
+  const GM_TAKMA = [[/^Yönetici$/i, 'yonetici'], [/^Türkiye İçerik/i, 'tr'], [/^Satış Yönetici/i, 'satisyon'], [/^Mesaj/i, 'yazar'], [/^Auri Editör/i, 'auriedit']];
+  function gmKim(A, ad) { const t = GM_TAKMA.find(x => x[0].test(ad || '')), a = (A || []).find(x => t ? x.id === t[1] : x.ad === ad); return a ? gmAd(a) : ad; }
+  function gmKafa(k, uyur) {
+    const t = GM_TEN[k.ten], r = k.sr, kep = `<path d="M26 61C23 40 53 40 50 61C48 53 44 51 38 51C32 51 28 53 26 61Z" fill="${r}"/>`;
+    let arka = '', on = kep;
+    if (k.sac === 'uzun') { arka = `<path d="M24 62C20 38 56 38 52 62L53 85Q46 81 38 81Q30 81 23 85Z" fill="${r}"/>`; on = `<path d="M26 62C23 40 53 40 50 62C49 54 45 50 36 52C31 53 28 56 26 62Z" fill="${r}"/>`; }
+    else if (k.sac === 'topuz') arka = `<circle cx="38" cy="42.5" r="5.8" fill="${r}"/>`;
+    else if (k.sac === 'atkuyrugu') arka = `<path d="M48 50Q60 52 57 72Q52 67 50 60Z" fill="${r}"/>`;
+    else if (k.sac === 'kivircik') { arka = `<g fill="${r}"><circle cx="27" cy="53" r="5.2"/><circle cx="32.5" cy="47.5" r="5.6"/><circle cx="38.5" cy="45.5" r="5.8"/><circle cx="44.5" cy="47.5" r="5.6"/><circle cx="49.5" cy="53" r="5"/><circle cx="25.8" cy="59" r="3.6"/><circle cx="50.4" cy="59" r="3.6"/></g>`; on = `<path d="M27 58C26 47 50 47 49 58C46 52 42 51 38 51C34 51 30 52 27 58Z" fill="${r}"/>`; }
+    else if (k.sac === 'sakal') on = kep + `<path d="M26.8 63Q28 77 38 78Q48 77 49.2 63Q46 71 38 71Q30 71 26.8 63Z" fill="${r}"/>`;
+    const goz = uyur ? '<path d="M31.8 61.5h3.4M40.8 61.5h3.4" stroke="#1C1917" stroke-width="1.2" stroke-linecap="round" fill="none"/>'
+      : '<circle class="g-goz" cx="33.5" cy="61" r="1.3" fill="#1C1917"/><circle class="g-goz" cx="42.5" cy="61" r="1.3" fill="#1C1917"/>';
+    const gz = k.gozluk ? '<g fill="none" stroke="#1C1917" stroke-width="1"><circle cx="33.5" cy="61" r="3.7"/><circle cx="42.5" cy="61" r="3.7"/><path d="M37.2 61h1.6"/></g>' : '';
+    return `${arka}<circle cx="26.5" cy="61.5" r="2.2" fill="${t}"/><circle cx="49.5" cy="61.5" r="2.2" fill="${t}"/><ellipse cx="38" cy="60" rx="11.5" ry="12.5" fill="${t}"/>${on}<g class="g-yuz">${goz}${gz}<path d="M34.5 66.5Q38 69 41.5 66.5" stroke="#1C1917" stroke-width="1.1" stroke-linecap="round" fill="none"/></g>`;
+  }
+  // masada oturan kişi + ekran; duruş, kapsayan .gm-masa'nın durum sınıfına (c t u h s p aday) göre CSS ile değişir
+  function gmFigur(k) {
+    const t = GM_TEN[k.ten], g = k.gy, kol = `fill="none" stroke="${g}" stroke-width="7.5" stroke-linecap="round"`, cz = g === '#F4EFE6' ? ' stroke="#CFC8BE" stroke-width=".8"' : '';
+    return `<svg viewBox="0 30 112 90" aria-hidden="true" focusable="false"><rect class="g-sand" x="20" y="66" width="36" height="46" rx="9" fill="#2B2622"/><g class="g-kisi"><g class="g-dik"><g class="g-ust"><path d="M17 112C17 88 23 82 31 81L45 81C53 82 59 88 59 112Z" fill="${g}"${cz}/><rect x="34" y="70" width="8" height="13" rx="3" fill="${t}"/><g class="g-keyif"><path d="M21 88Q8 78 25 62" ${kol}/><path d="M55 88Q68 78 51 62" ${kol}/></g><g class="g-kafa">${gmKafa(k, false)}</g><g class="g-kolEl"><path d="M55 88Q67 80 64 61" ${kol}/><circle cx="64" cy="57" r="4.2" fill="${t}"/></g></g><g class="g-kolLy g-elL"><path d="M21 88Q17 104 31 108" ${kol}/><circle cx="32" cy="107.5" r="3.8" fill="${t}"/></g><g class="g-kolRy g-elR"><path d="M55 88Q59 104 45 108" ${kol}/><circle cx="44" cy="107.5" r="3.8" fill="${t}"/></g></g><g class="g-uyku"><g class="g-uykuUst"><path d="M16 112C16 92 26 86 38 86C50 86 60 92 60 112Z" fill="${g}"${cz}/></g><g transform="translate(0 35) rotate(-14 38 60)">${gmKafa(k, true)}</g><rect x="15" y="102" width="46" height="11" rx="5.5" fill="${g}"${cz}/></g></g><rect x="25" y="108.5" width="26" height="3.5" rx="1.5" fill="#3A3431" opacity=".55"/><rect class="g-ekr" x="70" y="76" width="38" height="27" rx="4"/><rect class="g-st" x="75" y="83" width="20" height="2.2" rx="1.1"/><rect class="g-st g-st2" x="75" y="88.5" width="27" height="2.2" rx="1.1"/><rect class="g-st g-st3" x="75" y="94" width="14" height="2.2" rx="1.1"/><rect x="86" y="104" width="6" height="6" fill="#3A3431"/><rect x="80" y="109" width="18" height="3" rx="1.5" fill="#3A3431"/><g class="g-rozT"><path d="M60 104h8v5.5a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3z" fill="#fff" stroke="#8A6331" stroke-width=".9"/><path d="M68 105.5h1.6a1.6 1.6 0 0 1 0 3.2H68" fill="none" stroke="#8A6331" stroke-width=".9"/><path class="g-buhar" d="M62.5 101q-1.5-2 0-4" fill="none" stroke="#A8A29E" stroke-width="1" stroke-linecap="round"/><path class="g-buhar b2" d="M65.5 101q1.5-2 0-4" fill="none" stroke="#A8A29E" stroke-width="1" stroke-linecap="round"/></g><g class="g-rozU"><circle cx="71" cy="74" r="6.5" fill="#C27C0E"/><text x="71" y="78" text-anchor="middle" font-size="10.5" font-weight="700" fill="#fff">!</text></g><text class="g-zz" x="56" y="84">z</text><text class="g-zz z2" x="56" y="84">z</text><text class="g-zz z3" x="56" y="84">z</text><rect x="2" y="112" width="108" height="7" rx="3.5" fill="#8A6331"/></svg>`;
+  }
+  const GM_KURYE = '<svg viewBox="0 0 40 64"><line class="g-bacak" x1="20" y1="40" x2="20" y2="60" stroke="#1C1917" stroke-width="5" stroke-linecap="round"/><line class="g-bacak b2" x1="20" y1="40" x2="20" y2="60" stroke="#3A3431" stroke-width="5" stroke-linecap="round"/><rect x="13" y="18" width="14" height="25" rx="6" fill="#B48C50"/><circle cx="20" cy="10" r="7" fill="#E3B58A"/><path d="M12.6 10C12 0 27 0 27.4 9c-3-3-8-4-11-3-2 1-3 2-3.8 4z" fill="#3B2A1E"/><circle cx="23.5" cy="10.5" r="1" fill="#1C1917"/><line x1="19" y1="24" x2="29" y2="31" stroke="#8A6331" stroke-width="4.5" stroke-linecap="round"/><rect x="26" y="23" width="11" height="14" rx="1.5" fill="#ECD49E" stroke="#8A6331"/><path d="M28.5 27.5h6M28.5 30.5h6M28.5 33.5h4" stroke="#8A6331" stroke-width="1"/></svg>';
+  const GM_BITKI = '<svg class="gm-bitki" viewBox="0 0 30 58" aria-hidden="true"><path d="M15 40C6 34 3 22 7 12c5 7 8 16 8 28zM15 40c9-6 12-18 8-28-5 7-8 16-8 28zM15 40C13 28 14 14 15 4c3 10 3 24 0 36z" fill="#2F5D50"/><path d="M7 40h16l-2.5 16h-11z" fill="#B48C50"/></svg>';
   const YM = { veri: null, suz: 'hepsi', ara: '', secili: null, liste: false, hata: '' };
   const ymKisa = ad => { const k = String(ad || '').split(/\s+/).filter(Boolean); return ((k[0] || '?')[0] + (k[1] ? k[1][0] : (k[0] || '')[1] || '')).toLocaleUpperCase('tr'); };
   const ymSira = iso => {
@@ -2162,7 +2255,7 @@ button.ym-dugum{cursor:pointer}
     $('#ymCip').innerHTML = [['hepsi', 'Tümü', A.length], ...bol.map(b => [b.ad, b.ad, A.filter(a => a.ekip === b.ad).length]), ['sorun', 'Yalnız uyarılar', sorun]]
       .map(([k, t, n]) => `<button type="button" class="ym-cip" data-suz="${esc(k)}" aria-pressed="${YM.suz === k}">${esc(t)}<b>${n}</b></button>`).join('');
     const ara = YM.ara.toLocaleLowerCase('tr');
-    const uygun = a => (YM.suz === 'hepsi' || (YM.suz === 'sorun' ? ymSorunlu(a) : a.ekip === YM.suz)) && (!ara || (a.ad + ' ' + (a.gorev || a.is || '') + ' ' + (a.kod || '')).toLocaleLowerCase('tr').includes(ara));
+    const uygun = a => (YM.suz === 'hepsi' || (YM.suz === 'sorun' ? ymSorunlu(a) : a.ekip === YM.suz)) && (!ara || (gmKisi(a.id).isim + ' ' + a.ad + ' ' + (a.gorev || a.is || '') + ' ' + (a.kod || '')).toLocaleLowerCase('tr').includes(ara));
     if (!YM.secili || !A.some(a => a.id === YM.secili)) YM.secili = (A.find(ymSorunlu) || A[0] || {}).id;
     kok.className = YM.liste ? 'ym-liste' : '';
     kok.innerHTML = bol.map((b, i) => {
@@ -2170,18 +2263,18 @@ button.ym-dugum{cursor:pointer}
       const iyi = hep.filter(a => !ymSorunlu(a)).length, oran = hep.length ? Math.round(iyi / hep.length * 100) : 100;
       return `<section class="ym-bolum"><div class="ym-bh"><div class="ym-no ym-hex">${String(i + 1).padStart(2, '0')}</div><div><h2>${esc(b.ad)}</h2><p>${esc(b.alt || '')}</p></div>
         <div class="ym-saglik">${iyi} / ${hep.length} sağlıklı<div class="ym-cubuk"><s style="width:${oran}%;background:var(--ok)"></s><s style="width:${100 - oran}%;background:var(--ym-uy)"></s></div></div></div>
-        <div class="ym-izgara">${gor.map(a => { const d = ymDurum(a); return `<button type="button" class="ym-ajan${a.id === YM.secili ? ' sec' : ''}" data-ajan="${esc(a.id)}"><span class="ym-ust"><span class="ym-av ym-hex${a.ekip === 'Yönetim' ? ' k' : ''}">${esc(ymKisa(a.ad))}</span><span><b>${esc(a.ad)}</b><span class="ym-kod">${esc([a.kod, a.yer && a.yer !== 'bulut' ? a.yer : ''].filter(Boolean).join(' · '))}</span></span></span><span class="ym-p">${esc(a.gorev || a.is || '')}</span><span class="ym-alt"><span class="ym-d ${d[1]}">${d[0]}</span><span>${esc(d[2] || '')}</span></span></button>`; }).join('')}<button type="button" class="ym-ajan bos" data-yeni="${esc(b.ad)}">+ Bu bölüme ajan ekle</button></div></section>`;
+        <div class="ym-izgara">${gor.map(a => { const d = ymDurum(a); return `<button type="button" class="ym-ajan${a.id === YM.secili ? ' sec' : ''}" data-ajan="${esc(a.id)}"><span class="ym-ust"><span class="ym-av ym-hex${a.ekip === 'Yönetim' ? ' k' : ''}">${esc(ymKisa(a.ad))}</span><span><b>${esc(gmKisi(a.id).isim || a.ad)}</b><span class="ym-kod">${esc([gmKisi(a.id).isim && a.ad, a.kod, a.yer && a.yer !== 'bulut' ? a.yer : ''].filter(Boolean).join(' · '))}</span></span></span><span class="ym-p">${esc(a.gorev || a.is || '')}</span><span class="ym-alt"><span class="ym-d ${d[1]}">${d[0]}</span><span>${esc(d[2] || '')}</span></span></button>`; }).join('')}<button type="button" class="ym-ajan bos" data-yeni="${esc(b.ad)}">+ Bu bölüme ajan ekle</button></div></section>`;
     }).join('') || '<p class="empty">Bu süzgece uyan ajan yok.</p>';
     ymDetay();
     $('#ymBekle').innerHTML = '<h3>Sizden bekleyenler</h3>' + ((v.bekleyen || []).filter(b => b.n).map(b => `<button type="button" data-go="${esc(b.git || 'instagram')}"><span>${esc(b.ad)}</span><em>${b.n}</em></button>`).join('') || '<p class="ym-bos">Kararınızı bekleyen iş yok.</p>');
-    $('#ymAkis').innerHTML = '<h3>Canlı akış</h3>' + ((v.son || []).slice(0, 7).map(k => `<div><time>${new Date(k.zaman).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}</time><span><b>${esc(k.ajan)}</b> ${esc((k.ozet || '').slice(0, 90))}</span></div>`).join('') || '<p class="ym-bos">Ajanlar çalıştıkça burada görünür.</p>');
+    $('#ymAkis').innerHTML = '<h3>Canlı akış</h3>' + ((v.son || []).slice(0, 7).map(k => `<div><time>${new Date(k.zaman).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}</time><span><b>${esc(gmKim(A, k.ajan))}</b> ${esc((k.ozet || '').slice(0, 90))}</span></div>`).join('') || '<p class="ym-bos">Ajanlar çalıştıkça burada görünür.</p>');
   }
   function ymDetay() {
     const v = YM.veri, a = v && (v.ajanlar || []).find(x => x.id === YM.secili), kut = $('#ymDetay');
     if (!a) { kut.innerHTML = '<h3>Seçili ajan</h3><p class="ym-bos">Bir ajan seçin.</p>'; return; }
     const d = ymDurum(a), zz = iso => iso ? fmtD(iso) : '—';
     const yer = a.yer === 'bulut' ? 'bulutta çalışır' : a.yer === 'site' ? 'sitede çalışır' : a.yer ? a.yer + 'da çalışır' : '';
-    kut.innerHTML = `<h3>Seçili ajan</h3><div class="ym-bas"><span class="ym-av ym-hex${a.ekip === 'Yönetim' ? ' k' : ''}">${esc(ymKisa(a.ad))}</span><div><b>${esc(a.ad)}</b><small>${esc([a.kod, a.ekip + ' bölümü', yer].filter(Boolean).join(' · '))}</small></div></div>
+    kut.innerHTML = `<h3>Seçili ajan</h3><div class="ym-bas"><span class="ym-av ym-hex${a.ekip === 'Yönetim' ? ' k' : ''}">${esc(ymKisa(a.ad))}</span><div><b>${esc(gmKisi(a.id).isim || a.ad)}</b><small>${esc([gmKisi(a.id).isim && a.ad, a.kod, a.ekip + ' bölümü', yer].filter(Boolean).join(' · '))}</small></div></div>
       <span class="ym-d ${d[1]}">${d[0]}</span>${['u', 'p', 'h'].includes(d[1]) ? `<small class="ym-neden">${esc(d[2])}</small>` : ''}
       <div class="ym-gorev">${esc(a.gorev || a.is || '')}</div>
       <div class="ym-satir"><span>Bağlı olduğu</span><b>${a.id === 'yonetici' ? 'Sahip' : 'Şirket Müdürü'}</b></div>
@@ -2731,43 +2824,43 @@ button.ym-dugum{cursor:pointer}
     const altAciklama = ad => ((v.bolumler || []).find(b => b.ad === ad) || {}).alt || '';
     const giris = bolAd.includes('Site'), sira = [...bolAd.filter(b => b === 'Yönetim'), ...bolAd.filter(b => b !== 'Yönetim' && b !== 'Site'), ...bolAd.filter(b => b === 'Site')];
     if (!GM.secili || !A.some(a => a.id === GM.secili)) GM.secili = (A.find(ymSorunlu) || A.find(a => a.id === 'yonetici') || A[0] || {}).id;
-    const masa = a => { const d = ymDurum(a); return `<button type="button" class="gm-masa ${d[1]}${a.ekip === 'Yönetim' ? ' k' : ''}${a.id === GM.secili ? ' sec' : ''}" data-gm="${esc(a.id)}" title="${esc(a.ad + ': ' + d[0])}"><span class="gm-av ym-hex">${esc(ymKisa(a.ad))}</span><span class="gm-ekran"><i></i><i></i><i></i></span><span class="gm-ayak"></span><span class="gm-tabla"></span><b>${esc(a.ad)}</b><small>${esc(d[2] || d[0])}</small></button>`; };
-    const adayMasa = b => `<button type="button" class="gm-masa aday" data-basvuru="${esc(b.id)}" title="${esc('İş başvurusu: ' + b.ad)}"><span class="gm-av">?</span><span class="gm-ekran"><i></i><i></i><i></i></span><span class="gm-ayak"></span><span class="gm-tabla"></span><b>${esc(b.ad)}</b><small>iş başvurusu</small></button>`;
+    const masa = a => { const d = ymDurum(a), k = gmKisi(a.id); return `<button type="button" class="gm-masa ${d[1]}${a.ekip === 'Yönetim' ? ' k' : ''}${a.id === GM.secili ? ' sec' : ''}" data-gm="${esc(a.id)}" title="${esc(gmAd(a) + ': ' + d[0])}"><span class="gm-av ym-hex">${esc(ymKisa(a.ad))}</span>${gmFigur(k)}<span class="gm-on"><b>${esc(k.isim || a.ad)}</b>${k.isim ? `<em>${esc(a.ad)}</em>` : ''}<small>${esc(d[2] || d[0])}</small></span></button>`; };
+    const adayMasa = b => `<button type="button" class="gm-masa aday" data-basvuru="${esc(b.id)}" title="${esc('İş başvurusu: ' + b.ad)}"><span class="gm-av">?</span>${gmFigur(gmKisi(b.id))}<span class="gm-on"><b>${esc(b.ad)}</b><small>iş başvurusu</small></span></button>`;
     const bek = (v.bekleyen || []).filter(b => b.n);
     let h = `<div class="gm-kat sahip"><div class="gm-etiket"><span class="gm-no">ÇATI KATI</span><b>Sahip</b><small>onay ve karar</small></div>
-      <div class="gm-siz"><div class="gm-sizhex ym-hex">SİZ</div><div><b>${bek.length ? 'Kararınızı bekleyen işler' : 'Kararınızı bekleyen iş yok'}</b><small>Raporlar asansörle bu kata gelir</small></div>
+      <div class="gm-siz"><div class="gm-masa siz ${bek.length ? 's' : 't'}"><span class="gm-av ym-hex">SİZ</span>${gmFigur(GM_SAHIP)}<span class="gm-on"><b>Sahip</b><small>${bek.length ? 'karar bekleniyor' : 'bekleyen iş yok'}</small></span></div><div><b>${bek.length ? 'Kararınızı bekleyen işler' : 'Kararınızı bekleyen iş yok'}</b><small>Raporlar asansörle bu kata gelir</small></div>
       <div class="gm-onay">${bek.map(b => `<button type="button" class="gm-zarf" data-go="${esc(b.git || 'instagram')}">${esc(String(b.ad).replace(' · onay', ''))}<em>${b.n}</em></button>`).join('')}${bek.length ? '<button type="button" class="gm-btn" data-go="instagram">Onayları aç</button>' : ''}</div></div></div>`;
     h += sira.map((ad, i) => {
       const hep = A.filter(a => a.ekip === ad), iyi = hep.filter(a => !ymSorunlu(a)).length, oran = hep.length ? Math.round(iyi / hep.length * 100) : 100;
       const sonA = hep.filter(a => a.son).sort((x, y) => Date.parse(y.son) - Date.parse(x.son))[0];
-      const led = sonA ? `<b>SON İŞ · ${gmSaat(sonA.son)}</b><span>${esc(sonA.ad)}: ${esc((sonA.ozet || '').slice(0, 120))}</span>` : `<b>${esc(ad.toLocaleUpperCase('tr'))}</b><span>${esc(altAciklama(ad))}</span>`;
+      const led = sonA ? `<b>SON İŞ · ${gmSaat(sonA.son)}</b><span>${esc(gmAd(sonA))}: ${esc((sonA.ozet || '').slice(0, 120))}</span>` : `<b>${esc(ad.toLocaleUpperCase('tr'))}</b><span>${esc(altAciklama(ad))}</span>`;
       const sonKat = giris && i === sira.length - 1, no = sonKat ? 'GİRİŞ KATI' : (sira.length - (giris ? 1 : 0) - i) + '. KAT';
       const salon = sonKat ? B.filter(b => !bolAd.includes(b.ekip)) : [];
       return `<div class="gm-kat"><div class="gm-etiket"><span class="gm-no">${no}</span><b>${esc(ad === 'Site' ? 'Resepsiyon · site' : ad)}</b><small>${hep.length} ajan · ${iyi}/${hep.length} sağlıklı</small><div class="gm-cub"><s style="width:${oran}%;background:var(--ok)"></s><s style="width:${100 - oran}%;background:#C27C0E"></s></div></div>
-        <div class="gm-oda"><div class="gm-led">${led}<i></i></div><div class="gm-masalar">${hep.map(masa).join('')}${B.filter(b => b.ekip === ad).map(adayMasa).join('')}<button type="button" class="gm-bosmasa" data-yeni="${esc(ad)}">+ boş masa</button>${salon.length ? `<div class="gm-salon">${salon.map(adayMasa).join('')}</div>` : ''}</div></div></div>`;
+        <div class="gm-oda"><div class="gm-led">${led}<i></i></div><div class="gm-masalar">${hep.map(masa).join('')}${B.filter(b => b.ekip === ad).map(adayMasa).join('')}<button type="button" class="gm-bosmasa" data-yeni="${esc(ad)}">+ boş masa</button>${salon.length ? `<div class="gm-salon">${salon.map(adayMasa).join('')}</div>` : ''}</div></div>${GM_BITKI}${sonA ? `<i class="gm-kurye" style="animation-delay:${(i * 2.3).toFixed(1)}s" aria-hidden="true">${GM_KURYE}</i>` : ''}</div>`;
     }).join('');
     kok.innerHTML = h;
-    $('#gmSerit').innerHTML = (v.son || []).slice(0, 8).map(k => `<span><b>${gmSaat(k.zaman)} · ${esc(k.ajan)}</b> ${esc((k.ozet || '').slice(0, 110))}</span>`).join('') || '<span>Ajanlar çalıştıkça günün akışı burada kayar.</span>';
+    $('#gmSerit').innerHTML = (v.son || []).slice(0, 8).map(k => `<span><b>${gmSaat(k.zaman)} · ${esc(gmKim(A, k.ajan))}</b> ${esc((k.ozet || '').slice(0, 110))}</span>`).join('') || '<span>Ajanlar çalıştıkça günün akışı burada kayar.</span>';
     gmDetay();
     const cal = A.filter(a => a.durum === 'calis'), sonraki = A.filter(a => a.sonraki).sort((x, y) => Date.parse(x.sonraki) - Date.parse(y.sonraki))[0];
-    $('#gmCalisan').innerHTML = '<h3>Şu an çalışan</h3>' + (cal.length ? cal.map(a => `<div class="gm-calisan"><span class="ym-av ym-hex${a.ekip === 'Yönetim' ? ' k' : ''}">${esc(ymKisa(a.ad))}</span><div><b>${esc(a.ad)}</b><small>${esc(a.ekip)} · ${esc(a.balon || 'çalışıyor…')}</small></div></div><div class="gm-ilerleme"><s></s></div>`).join('')
-      : `<p class="ym-bos">Şu an çalışan ajan yok.${sonraki ? ` Sıradaki: <b>${esc(sonraki.ad)}</b>, ${esc(ymSira(sonraki.sonraki))}.` : ''}</p>`);
+    $('#gmCalisan').innerHTML = '<h3>Şu an çalışan</h3>' + (cal.length ? cal.map(a => `<div class="gm-calisan"><span class="ym-av ym-hex${a.ekip === 'Yönetim' ? ' k' : ''}">${esc(ymKisa(a.ad))}</span><div><b>${esc(gmKisi(a.id).isim || a.ad)}</b><small>${esc([gmKisi(a.id).isim && a.ad, a.ekip, a.balon || 'çalışıyor…'].filter(Boolean).join(' · '))}</small></div></div><div class="gm-ilerleme"><s></s></div>`).join('')
+      : `<p class="ym-bos">Şu an çalışan ajan yok.${sonraki ? ` Sıradaki: <b>${esc(gmAd(sonraki))}</b>, ${esc(ymSira(sonraki.sonraki))}.` : ''}</p>`);
     // bugünün takvimi: bugün yazılan kayıtlar + önümüzdeki 24 saatte planlı çalışmalar (aynı saat ve bölüm tek satır)
     const bugun = new Date().toDateString(), gecen = (v.son || []).filter(k => new Date(k.zaman).toDateString() === bugun).slice(0, 7).reverse();
     const gruplar = new Map();
     A.filter(a => a.sonraki && Date.parse(a.sonraki) - Date.now() < 24 * 36e5).forEach(a => { const k = a.sonraki.slice(0, 16) + '|' + a.ekip; if (!gruplar.has(k)) gruplar.set(k, []); gruplar.get(k).push(a); });
     const gelecek = [...gruplar.values()].sort((x, y) => Date.parse(x[0].sonraki) - Date.parse(y[0].sonraki)).slice(0, 5);
     $('#gmGun').innerHTML = '<h3>Bugünün takvimi</h3><div class="gm-gundem">'
-      + gecen.map(k => `<div class="${k.durum === 'Uyarı' ? 'u' : k.durum === 'Hata' ? 'h' : ''}"><time>${gmSaat(k.zaman)}</time><i></i><span><b>${esc(k.ajan)}</b> ${esc((k.ozet || '').slice(0, 60))}</span></div>`).join('')
+      + gecen.map(k => `<div class="${k.durum === 'Uyarı' ? 'u' : k.durum === 'Hata' ? 'h' : ''}"><time>${gmSaat(k.zaman)}</time><i></i><span><b>${esc(gmKim(A, k.ajan))}</b> ${esc((k.ozet || '').slice(0, 60))}</span></div>`).join('')
       + `<div class="simdi"><span>şimdi ${gmSaat(v.zaman)}</span></div>`
-      + (gelecek.map(g => `<div class="gel"><time>${esc(ymSira(g[0].sonraki))}</time><i></i><span><b>${esc(g.length > 1 ? g[0].ekip : g[0].ad)}</b>${g.length > 1 ? ' · ' + g.length + ' ajan' : ''}</span></div>`).join('') || '<p class="ym-bos">Önümüzdeki 24 saatte planlı çalışma yok.</p>') + '</div>';
+      + (gelecek.map(g => `<div class="gel"><time>${esc(ymSira(g[0].sonraki))}</time><i></i><span><b>${esc(g.length > 1 ? g[0].ekip : gmAd(g[0]))}</b>${g.length > 1 ? ' · ' + g.length + ' ajan' : ''}</span></div>`).join('') || '<p class="ym-bos">Önümüzdeki 24 saatte planlı çalışma yok.</p>') + '</div>';
     $('#gmBasvuru').innerHTML = `<h3>İş başvuruları${B.length ? ' · ' + B.length : ''}</h3>` + (B.map((b, i) => `<button type="button" class="gm-bsv${i ? '' : ' gm-kart-ilk'}" data-basvuru="${esc(b.id)}"><span class="hx">${esc(ymKisa(b.ad))}</span><span><b>${esc(b.ad)}</b><small>${esc(b.ekip)}${b.donem ? ' · ' + esc(b.donem) : ''}</small></span></button>`).join('') || '<p class="ym-bos">Bekleyen başvuru yok.</p>');
   }
   function gmDetay() {
     const v = YM.veri, a = v && (v.ajanlar || []).find(x => x.id === GM.secili), kut = $('#gmDetay');
     if (!a) { kut.innerHTML = '<h3>Seçili ajan</h3><p class="ym-bos">Bir masaya dokunun.</p>'; return; }
     const d = ymDurum(a), zz = iso => iso ? fmtD(iso) : '—';
-    kut.innerHTML = `<h3>Seçili ajan</h3><div class="ym-bas"><span class="ym-av ym-hex${a.ekip === 'Yönetim' ? ' k' : ''}">${esc(ymKisa(a.ad))}</span><div><b>${esc(a.ad)}</b><small>${esc([a.kod, a.ekip].filter(Boolean).join(' · '))}</small></div></div>
+    kut.innerHTML = `<h3>Seçili ajan</h3><div class="ym-bas"><span class="ym-av ym-hex${a.ekip === 'Yönetim' ? ' k' : ''}">${esc(ymKisa(a.ad))}</span><div><b>${esc(gmKisi(a.id).isim || a.ad)}</b><small>${esc([gmKisi(a.id).isim && a.ad, a.kod, a.ekip].filter(Boolean).join(' · '))}</small></div></div>
       <span class="ym-d ${d[1]}">${d[0]}</span>${['u', 'p', 'h', 'c'].includes(d[1]) && d[2] ? `<small class="ym-neden">${esc(d[2])}</small>` : ''}
       <div class="ym-rapor"><h4>Son rapor</h4>${esc(a.ozet || '—')}</div>
       <div class="ym-satir"><span>Takvim</span><b>${esc(a.takvim || '—')}</b></div>
