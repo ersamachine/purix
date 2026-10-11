@@ -797,6 +797,49 @@ button.ym-dugum{cursor:pointer}
 .bl-dlg-alt textarea{flex:1 1 280px;min-height:44px;max-height:110px}
 .bl-dlg-alt .bilgi{flex:1 1 280px;font-size:13px;color:var(--ink-2)}
 @media(max-width:640px){.bl-yazi{grid-template-columns:1fr}.bl-yazi .g{aspect-ratio:16/8}}
+/* ===== ADAYLAR → INSTAGRAM sekmesi (Instagram Kaşifi) ===== */
+.igk-acik{color:var(--ink-2);font-size:14px;margin:0 0 16px;max-width:900px}
+.igk-tab-yeni{font-size:11px;font-weight:700;background:var(--gold);color:#1F1406;border-radius:99px;padding:1px 8px;margin-left:8px}
+.is-tab[aria-selected="true"] b{color:var(--gold-l);opacity:1}
+.igk-hedef{background:var(--surface);border-radius:var(--r);padding:14px 18px;box-shadow:0 1px 0 var(--line-2);display:flex;align-items:center;gap:18px;margin-bottom:16px;flex-wrap:wrap}
+.igk-hedef b{font-weight:600;white-space:nowrap}
+.igk-cubuk{flex:1 1 160px;height:8px;border-radius:5px;background:var(--line-2);overflow:hidden}.igk-cubuk i{display:block;height:100%;background:var(--gold);transition:width .3s}
+.igk-hedef small{color:var(--ink-3);font-size:12.5px}
+.igk-suz{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.igk-suz .chip i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.igk-suz .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}.igk-suz .chip[aria-pressed="true"] b{color:var(--gold-l)}
+.igk-suz .chip b{font-weight:650;color:var(--ink-3)}
+.igk-suz .inp{min-height:38px;width:auto;background:#fff}.igk-suz .search{margin-left:auto;flex:0 1 270px}
+.igk-liste{background:var(--surface);border-radius:var(--r);box-shadow:0 1px 0 var(--line-2);overflow:hidden}
+.igk-bas,.igk-satir{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,150px) minmax(0,1.3fr) 92px minmax(250px,330px);gap:16px;align-items:center;padding:12px 18px}
+.igk-bas{font-size:12.5px;font-weight:600;color:var(--ink-3);background:#FAFAF8;border-bottom:1px solid var(--line-2)}
+.igk-satir{border-bottom:1px solid var(--line-2)}.igk-satir:last-child{border-bottom:0}
+.igk-satir.acildi{background:#FFFBF1;box-shadow:inset 3px 0 0 var(--gold)}
+.igk-hesap{display:flex;gap:12px;align-items:center;min-width:0}
+.igk-av{flex:none;width:40px;height:44px;display:grid;place-items:center;background:var(--stone);color:var(--gold-l);font-weight:650;font-stretch:84%;font-size:13px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.igk-hesap>div{min-width:0}
+.igk-hesap a{display:block;font-weight:600;font-size:14.5px;color:var(--gold-text);text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.igk-hesap a:hover{text-decoration:underline}
+.igk-hesap small,.igk-yer small{display:block;color:var(--ink-3);font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.igk-bio{font-size:13px;color:var(--ink-2);line-height:1.35;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.igk-tarih{font-size:13px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.igk-islem{display:flex;gap:8px;justify-content:flex-end;align-items:center;flex-wrap:wrap}
+.igk-islem .btn{min-height:40px;padding:0 16px;font-size:13.5px}.igk-islem .btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.igk-not{flex-basis:100%;text-align:right;font-size:12.5px;color:var(--gold-text);font-weight:600}
+.igk-link{border:0;background:none;padding:6px 2px;font:inherit;font-size:12.5px;color:var(--ink-3);text-decoration:underline;cursor:pointer}
+.igk-onay{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-2);cursor:pointer;min-height:36px}
+.igk-onay input{width:17px;height:17px;accent-color:var(--gold)}
+.igk-pill{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 11px;border-radius:999px;font-size:12.5px;font-weight:650;background:color-mix(in srgb,var(--c) 13%,#fff);color:var(--c);white-space:nowrap}
+.igk-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c)}
+@media(max-width:1000px){
+  .igk-bas{display:none}
+  .igk-liste{background:none;box-shadow:none;overflow:visible}
+  .igk-satir{grid-template-columns:1fr;gap:8px;background:var(--surface);border:0;border-radius:14px;box-shadow:0 1px 0 var(--line-2);margin-bottom:9px;padding:13px}
+  .igk-satir.acildi{box-shadow:inset 0 0 0 1.5px var(--gold)}
+  .igk-yer{font-size:13px;color:var(--ink-3)}.igk-yer small{display:inline}.igk-yer small::before{content:" · "}
+  .igk-tarih{display:none}
+  .igk-islem{justify-content:stretch}.igk-islem .btn{flex:1 1 0;min-width:0;min-height:44px;padding:0 10px}.igk-not{text-align:left}.igk-islem>.igk-link[data-igk-e="ilgisiz"]{order:3;flex-basis:100%;text-align:right;padding:2px}.igk-bos{display:none}
+  .igk-suz .search{margin-left:0;flex:1 1 100%}
+}
 </style>
 </head>
 <body>
@@ -1017,6 +1060,17 @@ button.ym-dugum{cursor:pointer}
     </section>
 
     <section id="v-adaylar" hidden>
+      <div class="is-tabs" id="adSekme" role="tablist"><button class="is-tab" type="button" role="tab" data-adsekme="firma" aria-selected="true">Firmalar<b id="adSayF"></b></button><button class="is-tab" type="button" role="tab" data-adsekme="ig" aria-selected="false">Instagram<b id="adSayI"></b><span class="igk-tab-yeni" id="adSayYeni" hidden></span></button></div>
+      <div id="adIg" hidden>
+        <p class="igk-acik">Instagram Kaşifi'nin Instagram'da bulduğu kuyumcu hesapları. Hesabı açın, <b>@purixxrf.tr</b> hesabınızdan ekleyin (takip edin), sonra burada <b>Eklendi</b> diye işaretleyin.</p>
+        <div class="kpis" id="igkKpi"></div>
+        <div class="igk-hedef" id="igkHedef"></div>
+        <div class="igk-suz"><span id="igkChip" style="display:contents"></span><select class="inp" id="igkIl" aria-label="İl"></select><input class="inp search" id="igkQ" type="search" placeholder="Hesap, firma ya da ilçe ara" aria-label="Ara"></div>
+        <div class="igk-liste" id="igkListe"><p class="empty">Yükleniyor…</p></div>
+        <div class="pager"><span id="igkSay"></span></div>
+        <div class="ad-more"><button class="btn btn-line btn-sm" id="igkMore" hidden>Daha fazla göster</button></div>
+      </div>
+      <div id="adFirma">
       <div class="kpis" id="adKpis"></div>
       <div class="filters"><div class="chips" id="adDurum" role="group" aria-label="Duruma göre filtre"></div></div>
       <div class="filters">
@@ -1032,6 +1086,7 @@ button.ym-dugum{cursor:pointer}
       </div>
       <div class="pager"><span id="adCount"></span></div>
       <div class="ad-more"><button class="btn btn-line btn-sm" id="adMore" hidden>Daha fazla göster</button></div>
+      </div>
     </section>
 
     <!-- INSTAGRAM -->
@@ -1311,7 +1366,7 @@ button.ym-dugum{cursor:pointer}
     $('#login').hidden = true; $('#app').hidden = false; $('#demoBar').hidden = !DEMO;
     $('#apiInfo').textContent = DEMO ? 'Bağlı değil (demo verisi)' : (/script\.google\.com/.test(API) ? 'Google Apps Script (eski)' : 'PURIX platform · ' + new URL(API).hostname);
     hizliAcilis(); load(); igLoad(true); rvLoad(true); go('bugun'); clearInterval(timer); let tik = 0;
-    timer = setInterval(() => { load(true); if (!igUcus && (++tik % 5 === 0 || view === 'instagram' || view === 'ajanlar')) igLoad(true); if (view === 'trafik') tfLoad(true); if (view === 'sohbetler') shLoad(true); if (view === 'ofis') ofLoad(true); if (view === 'ajanlar') ymLoad(true); if (view === 'gorevler') grLoad(true); if (view === 'kararlar') krLoad(true); if (view === 'bugun' && tik % 5 === 2) bgLoad(); if (view === 'randevular' || tik % 5 === 1) rvLoad(true); }, 60000);
+    timer = setInterval(() => { load(true); if (!igUcus && (++tik % 5 === 0 || view === 'instagram' || view === 'ajanlar')) igLoad(true); if (view === 'trafik') tfLoad(true); if (view === 'sohbetler') shLoad(true); if (view === 'ofis') ofLoad(true); if (view === 'ajanlar') ymLoad(true); if (view === 'gorevler') grLoad(true); if (view === 'kararlar') krLoad(true); if (view === 'adaylar' && IGK.sekme === 'ig') igkLoad(true); if (view === 'bugun' && tik % 5 === 2) bgLoad(); if (view === 'randevular' || tik % 5 === 1) rvLoad(true); }, 60000);
   }
   $('#refresh').addEventListener('click', () => { load(); igLoad(); if (view === 'gorevler') grLoad(); if (view === 'kararlar') krLoad(); if (view === 'blog') blLoad(); if (view === 'bugun') bgLoad(); });
 
@@ -1328,7 +1383,7 @@ button.ym-dugum{cursor:pointer}
     if (v === 'kararlar') krLoad();
     if (v === 'blog') blLoad();
     if (v === 'instagram' || v === 'ayarlar') igBagYukle();
-    if (v === 'adaylar') adLoad();
+    if (v === 'adaylar') { adLoad(); igkLoad(true); }
     if (v === 'bugun') bgLoad();
     if (v === 'genel') segLoad();
     if (v === 'ayarlar') { sagLoad(); kcLoad(); }
@@ -1344,7 +1399,7 @@ button.ym-dugum{cursor:pointer}
   function render() {
     const yeni = data.filter(x => x.Durum === 'Yeni').length;
     $('#newBadge').hidden = !yeni; $('#newBadge').textContent = yeni;
-    $('#subtitle').textContent = view === 'adaylar' ? (ad.ozet ? `${ad.ozet.toplam} firma · bugün ${ad.ozet.bugun} yeni` : 'Satış ajanlarının bulduğu firmalar') : view === 'instagram' ? igAltBaslik() : view === 'ajanlar' ? (YM.veri ? `${YM.veri.ajanlar.length} ajan · ${(YM.veri.bolumler || []).length || 5} bölüm · PURIX XRF` : 'PURIX XRF yapay zekâ ekibi') : view === 'ofis' ? 'PURIX XRF yapay zekâ ekibi iş başında' : view === 'gorevler' ? 'Ajan ekibine verdiğiniz işler' : view === 'kararlar' ? 'Ajanların size sorduğu sorular' : view === 'blog' ? 'purixxrf.com/blog · siz onaylamadan hiçbir yazı yayınlanmaz' : data.length ? `${data.length} talep · ${yeni} yeni` : 'Henüz talep yok';
+    $('#subtitle').textContent = view === 'adaylar' ? (IGK.sekme === 'ig' ? igkAltBaslik() : ad.ozet ? `${ad.ozet.toplam} firma · bugün ${ad.ozet.bugun} yeni` : 'Satış ajanlarının bulduğu firmalar') : view === 'instagram' ? igAltBaslik() : view === 'ajanlar' ? (YM.veri ? `${YM.veri.ajanlar.length} ajan · ${(YM.veri.bolumler || []).length || 5} bölüm · PURIX XRF` : 'PURIX XRF yapay zekâ ekibi') : view === 'ofis' ? 'PURIX XRF yapay zekâ ekibi iş başında' : view === 'gorevler' ? 'Ajan ekibine verdiğiniz işler' : view === 'kararlar' ? 'Ajanların size sorduğu sorular' : view === 'blog' ? 'purixxrf.com/blog · siz onaylamadan hiçbir yazı yayınlanmaz' : data.length ? `${data.length} talep · ${yeni} yeni` : 'Henüz talep yok';
     if (view === 'bugun') renderBugun(); else if (view === 'genel') renderGenel(); else if (view === 'talepler') renderList(); else if (view === 'adaylar') renderAd(); else if (view === 'instagram') renderIg(); else if (view === 'ajanlar') renderAjan(); else if (view === 'gorevler') renderGorev(); else if (view === 'kararlar') renderKarar(); else if (view === 'blog') renderBlog(); else renderAyar();
   }
 
@@ -1703,6 +1758,7 @@ button.ym-dugum{cursor:pointer}
     } catch (err) { if (seq === adSeq) toast(err.message); }
   }
   function renderAd() {
+    renderIgk(); if (ad.ozet) $('#adSayF').textContent = Number(ad.ozet.toplam || 0).toLocaleString('tr-TR');
     if (!adYuklendi) { $('#adRows').innerHTML = SKEL_SATIR(6).repeat(8); $('#adCount').textContent = 'Yükleniyor…'; return; }
     const o = ad.ozet || { toplam: 0, bugun: 0, puan: { A: 0, B: 0, C: 0 }, durum: {}, bolge: {} }, d = o.durum || {};
     $('#adKpis').innerHTML = `
@@ -1878,6 +1934,82 @@ button.ym-dugum{cursor:pointer}
     const s = e.target.closest('[data-bgaday]');
     if (s && bg) { const x = [...(bg.cevap || []), ...(bg.takip || []), ...(bg.hazir || [])].find(a => a.ID === s.dataset.bgaday); if (x) { if (!ad.adaylar.some(a => a.ID === x.ID)) ad.adaylar = ad.adaylar.concat([x]); adOpen(x.ID); } }
   });
+
+  /* ---------- Adaylar → Instagram sekmesi: Instagram Kaşifi'nin bulduğu hesaplar ---------- */
+  // Ajan yalnızca bulur. Hesabı Instagram'da eklemek (takip etmek) sahibin işidir; burada "Eklendi" diye o işaretler (Worker: platform/src/igkesif.js).
+  const IGK = { veri: null, sekme: 'firma', suz: 'Eklenmedi', il: '', q: '', goster: 60, acilan: new Set() };
+  try { JSON.parse(ss.get('purix_igk_acilan') || '[]').forEach(h => IGK.acilan.add(h)); } catch {}
+  const IGK_RENK = { 'Eklenmedi': 'var(--gold)', 'Eklendi': 'var(--ok)', 'Geri ekledi': 'var(--gold-text)', 'İlgisiz': 'var(--s-kay)' };
+  const IGK_AC = '<svg viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg>';
+  const igkGun = iso => { const d = new Date(iso), b = new Date(); if (isNaN(d)) return '—'; const g = Math.floor((new Date(b.getFullYear(), b.getMonth(), b.getDate()) - new Date(d.getFullYear(), d.getMonth(), d.getDate())) / 864e5); return g <= 0 ? 'bugün' : g === 1 ? 'dün' : d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }); };
+  const igkAltBaslik = () => IGK.veri && IGK.veri.ozet ? `${IGK.veri.ozet.toplam} Instagram hesabı · bugün ${IGK.veri.ozet.bugun_bulunan} yeni` : 'Instagram Kaşifi\'nin bulduğu hesaplar';
+  async function igkLoad(sessiz) {
+    try { const j = await api('igk_panel'); if (j.hesaplar) IGK.veri = j; else if (!IGK.veri) IGK.veri = { hesaplar: [], ozet: { toplam: 0, eklenmedi: 0, eklendi: 0, ilgisiz: 0, geri: 0, bugun_bulunan: 0, bugun_eklendi: 0, hafta_eklendi: 0, hedef: 20 } }; }
+    catch (e) { if (!sessiz) toast(e.message); }
+    renderIgk(); if (view === 'adaylar' && IGK.sekme === 'ig') $('#subtitle').textContent = igkAltBaslik();
+  }
+  function adSekme(s) {
+    IGK.sekme = s; $$('#adSekme .is-tab').forEach(b => b.setAttribute('aria-selected', String(b.dataset.adsekme === s)));
+    $('#adFirma').hidden = s !== 'firma'; $('#adIg').hidden = s !== 'ig';
+    if (s === 'ig') igkLoad(true); render();
+  }
+  $('#adSekme').addEventListener('click', e => { const t = e.target.closest('[data-adsekme]'); if (t) adSekme(t.dataset.adsekme); });
+  const igkDurum = x => x.durum === 'Eklendi' && x.geri ? 'Geri ekledi' : x.durum;
+  function igkSatir(x) {
+    const acildi = x.durum === 'Eklenmedi' && IGK.acilan.has(x.hesap), adres = 'https://www.instagram.com/' + encodeURIComponent(x.hesap) + '/';
+    const kisa = (x.ad || x.hesap).replace(/[^\p{L}\p{N} ]/gu, ' ').trim().split(/\s+/).slice(0, 2).map(w => w[0] || '').join('').toLocaleUpperCase('tr') || '@';
+    let islem;
+    if (x.durum === 'Eklenmedi') islem = (acildi ? '<span class="igk-not">Profili açtınız. Eklediyseniz işaretleyin:</span>' : '<button type="button" class="igk-link" data-igk-e="ilgisiz">İlgisiz</button>')
+      + `<a class="btn btn-line" href="${adres}" target="_blank" rel="noopener noreferrer" data-igk-ac>${IGK_AC}${acildi ? 'Yeniden aç' : 'Instagram\'da aç'}</a><button type="button" class="btn ${acildi ? 'btn-gold' : 'btn-ink'}" data-igk-e="eklendi">Eklendi</button>`;
+    else if (x.durum === 'Eklendi') islem = `<label class="igk-onay"><input type="checkbox" data-igk-geri${x.geri ? ' checked' : ''}>Bizi geri ekledi</label><span class="igk-pill" style="--c:${x.geri ? 'var(--gold-text)' : 'var(--ok)'}">Eklendi · ${esc(igkGun(x.eklenme))}</span><button type="button" class="igk-link" data-igk-e="geri_al">Geri al</button>`;
+    else islem = `<span class="igk-pill" style="--c:var(--s-kay)">İlgisiz</span><button type="button" class="igk-link" data-igk-e="geri_al">Geri al</button>`;
+    return `<div class="igk-satir${acildi ? ' acildi' : ''}" data-igk="${esc(x.hesap)}"><div class="igk-hesap"><span class="igk-av">${esc(kisa)}</span><div><a href="${adres}" target="_blank" rel="noopener noreferrer" data-igk-ac>@${esc(x.hesap)}</a><small>${esc(x.ad)}</small></div></div>
+      <div class="igk-yer${x.il || x.ilce ? '' : ' igk-bos'}">${esc(x.il || '—')}${x.ilce ? `<small>${esc(x.ilce)}</small>` : ''}</div><div class="igk-bio${x.bio || x.telefon ? '' : ' igk-bos'}">${esc([x.bio, x.telefon].filter(Boolean).join(' · ') || '—')}</div><div class="igk-tarih">${esc(igkGun(x.bulunma))}</div><div class="igk-islem">${islem}</div></div>`;
+  }
+  function renderIgk() {
+    const v = IGK.veri; if (!v) return;
+    const H = v.hesaplar || [], o = v.ozet || {}, hedef = o.hedef || 20, say = d => H.filter(x => igkDurum(x) === d || (d === 'Eklendi' && x.durum === 'Eklendi')).length;
+    $('#adSayI').textContent = Number(o.toplam || 0).toLocaleString('tr-TR'); const yeni = $('#adSayYeni'); yeni.hidden = !o.bugun_bulunan; yeni.textContent = (o.bugun_bulunan || 0) + ' yeni';
+    if ($('#adIg').hidden) return;
+    $('#igkKpi').innerHTML = `<div class="kpi accent"><span>Eklenmedi</span><b class="num">${o.eklenmedi || 0}</b><small>sırada bekleyen hesap</small></div>
+      <div class="kpi"><span>Eklendi</span><b class="num">${o.eklendi || 0}</b><small>son 7 günde ${o.hafta_eklendi || 0}</small></div>
+      <div class="kpi"><span>Sizi geri ekleyen</span><b class="num">${o.geri || 0}</b><small>${o.eklendi ? 'eklediklerinizin %' + Math.round((o.geri || 0) / o.eklendi * 100) + '\'i' : 'henüz eklediğiniz yok'}</small></div>
+      <div class="kpi"><span>Bulunan hesap</span><b class="num">${o.toplam || 0}</b><small>bugün ${o.bugun_bulunan || 0}${o.ilgisiz ? ' · ' + o.ilgisiz + ' tanesi ilgisiz' : ''}</small></div>`;
+    $('#igkHedef').innerHTML = `<b>Bugün ${o.bugun_eklendi || 0} / ${hedef} eklendi</b><div class="igk-cubuk"><i style="width:${Math.min(100, (o.bugun_eklendi || 0) / hedef * 100)}%"></i></div><small>${(o.bugun_eklendi || 0) >= hedef ? 'Bugünlük yeter; yarın devam edin. ' : ''}Günde en çok ${hedef} hesap önerilir; fazlası Instagram'da kısıtlamaya yol açabilir.</small>`;
+    $('#igkChip').innerHTML = [['Eklenmedi', o.eklenmedi || 0], ['Eklendi', o.eklendi || 0], ['Geri ekledi', o.geri || 0], ['İlgisiz', o.ilgisiz || 0], ['Tümü', o.toplam || 0]]
+      .map(([d, n]) => `<button type="button" class="chip" data-igk-suz="${d}" aria-pressed="${IGK.suz === d}">${IGK_RENK[d] ? `<i style="--c:${IGK_RENK[d]}"></i>` : ''}${d} <b>${n}</b></button>`).join('');
+    const iller = [...new Set(H.map(x => x.il).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'tr')), sel = $('#igkIl');
+    if (sel.dataset.n !== String(iller.length)) { sel.innerHTML = '<option value="">Tüm iller</option>' + iller.map(i => `<option${i === IGK.il ? ' selected' : ''}>${esc(i)}</option>`).join(''); sel.dataset.n = String(iller.length); }
+    const q = IGK.q.toLocaleLowerCase('tr');
+    const L = H.filter(x => (IGK.suz === 'Tümü' || (IGK.suz === 'Eklendi' ? x.durum === 'Eklendi' : igkDurum(x) === IGK.suz)) && (!IGK.il || x.il === IGK.il) && (!q || (x.hesap + ' ' + x.ad + ' ' + x.il + ' ' + x.ilce + ' ' + x.bio).toLocaleLowerCase('tr').includes(q)))
+      .sort((a, b) => (IGK.acilan.has(b.hesap) && b.durum === 'Eklenmedi' ? 1 : 0) - (IGK.acilan.has(a.hesap) && a.durum === 'Eklenmedi' ? 1 : 0));
+    const bos = !H.length ? 'Henüz hesap yok. Instagram Kaşifi her gün 11:00\'da çalışır ve bulduklarını buraya yazar.' : IGK.suz === 'Eklenmedi' ? 'Sırada eklenecek hesap kalmadı.' : 'Bu süzgece uyan hesap yok.';
+    $('#igkListe').innerHTML = L.length ? '<div class="igk-bas"><span>Hesap</span><span>Yer</span><span>Profilinde yazan</span><span>Bulundu</span><span style="text-align:right">Durum</span></div>' + L.slice(0, IGK.goster).map(igkSatir).join('') : `<p class="empty" style="padding:26px 18px">${bos}</p>`;
+    $('#igkSay').textContent = L.length ? `${Math.min(L.length, IGK.goster)} / ${L.length} hesap` : ''; $('#igkMore').hidden = L.length <= IGK.goster;
+  }
+  $('#igkMore').addEventListener('click', () => { IGK.goster += 60; renderIgk(); });
+  $('#igkQ').addEventListener('input', e => { IGK.q = e.target.value.trim(); IGK.goster = 60; renderIgk(); });
+  $('#igkIl').addEventListener('change', e => { IGK.il = e.target.value; IGK.goster = 60; renderIgk(); });
+  $('#adIg').addEventListener('click', async e => {
+    const c = e.target.closest('[data-igk-suz]'); if (c) { IGK.suz = c.dataset.igkSuz; IGK.goster = 60; renderIgk(); return; }
+    const satir = e.target.closest('[data-igk]'); if (!satir) return; const hesap = satir.dataset.igk;
+    if (e.target.closest('[data-igk-ac]')) {  // bağlantı kendi açılır; satırı "açıldı" diye işaretle (telefonda Instagram'dan dönünce de kalsın)
+      IGK.acilan.add(hesap); ss.set('purix_igk_acilan', JSON.stringify([...IGK.acilan].slice(-200))); setTimeout(renderIgk, 400); return;
+    }
+    const t = e.target.closest('[data-igk-e]'); if (!t) return;
+    await igkKarar(hesap, t.dataset.igkE, undefined, t);
+  });
+  $('#adIg').addEventListener('change', e => { const k = e.target.closest('[data-igk-geri]'); if (k) igkKarar(k.closest('[data-igk]').dataset.igk, 'geri_ekledi', k.checked, k); });
+  async function igkKarar(hesap, eylem, deger, dugme) {
+    if (dugme) dugme.disabled = true;
+    try {
+      const j = await api('igk_karar', { hesap, eylem, deger });
+      if (j.hesap && IGK.veri) { const i = IGK.veri.hesaplar.findIndex(x => x.hesap === hesap); if (i >= 0) IGK.veri.hesaplar[i] = j.hesap; IGK.veri.ozet = j.ozet || IGK.veri.ozet; }
+      if (eylem !== 'geri_ekledi') { IGK.acilan.delete(hesap); ss.set('purix_igk_acilan', JSON.stringify([...IGK.acilan])); }
+      toast({ eklendi: '@' + hesap + ' eklendi olarak işaretlendi', geri_al: 'Geri alındı', ilgisiz: 'İlgisiz olarak işaretlendi', geri_ekledi: deger ? 'Geri ekledi olarak işaretlendi' : 'İşaret kaldırıldı' }[eylem] || 'Kaydedildi');
+      renderIgk(); if (view === 'adaylar' && IGK.sekme === 'ig') $('#subtitle').textContent = igkAltBaslik();
+    } catch (err) { toast(err.message); if (dugme) { dugme.disabled = false; if (dugme.type === 'checkbox') dugme.checked = !dugme.checked; } }
+  }
 
   /* ---------- İş yönetimi: görev panosu, panelden iş verme, kararlar, ajan hafızası, kullanım ---------- */
   // Veri Worker'dan gelir (platform/src/is.js); ajanlar aynı kayıtları panel_api.py ile okur ve yazar.
